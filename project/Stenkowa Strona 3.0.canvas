@@ -1,29 +1,27 @@
 {
 	"nodes":[
+		{"id":"4587e1ed76b485c6","type":"group","x":620,"y":-360,"width":880,"height":1210,"color":"1","label":"Tables"},
 		{"id":"3b6c08a5cd0a9d0a","type":"text","text":"Stenkowa Strona 3.0\n","x":-200,"y":60,"width":220,"height":60,"color":"5"},
 		{"id":"dc6c578b35356918","type":"text","text":"Functionalities","x":-177,"y":280,"width":175,"height":60,"color":"4"},
 		{"id":"bb9a0f25c142190a","type":"text","text":"Storage Management","x":-325,"y":415,"width":225,"height":60,"color":"4"},
 		{"id":"4ade891d9076f341","type":"text","text":"Todo List","x":20,"y":425,"width":140,"height":50,"color":"4"},
 		{"id":"4e9fe299333acccf","type":"text","text":"Database\n","x":240,"y":60,"width":140,"height":60,"color":"1"},
-		{"id":"b82ccacb8669c37d","type":"text","text":"Tables\n","x":560,"y":120,"width":120,"height":60,"color":"1"},
-		{"id":"8f7390ef0d4a0bc4","type":"text","text":"Todos\n- id\n- title\n- description\n- deadline","x":941,"y":310,"width":260,"height":199,"color":"1"},
-		{"id":"e865c7a5bdc5abee","type":"text","text":"StorageItems\n- id\n- name\n- description\n- image","x":920,"y":600,"width":260,"height":190,"color":"1"},
-		{"id":"21cc1d2e051dd02d","type":"text","text":"Bookmarks\n- id\n- name\n- link\n","x":951,"y":-380,"width":250,"height":197,"color":"1"},
-		{"id":"8b9062e613c9d89d","type":"text","text":"Users\n- id\n- user_name\n- password\n- privileges","x":964,"y":-17,"width":215,"height":197,"color":"1"},
-		{"id":"e4ebfe00dc4baeec","type":"file","file":"project/Storage Items.md","x":1360,"y":280,"width":400,"height":205,"color":"1"}
+		{"id":"e865c7a5bdc5abee","type":"text","text":"StorageItems\n- id\n- name\n- description\n- image","x":640,"y":640,"width":260,"height":190},
+		{"id":"8f7390ef0d4a0bc4","type":"text","text":"Todos\n- id\n- title\n- description\n- deadline","x":661,"y":350,"width":260,"height":199},
+		{"id":"21cc1d2e051dd02d","type":"text","text":"Bookmarks\n- id\n- name\n- link\n","x":671,"y":-340,"width":250,"height":197},
+		{"id":"8b9062e613c9d89d","type":"text","text":"Users\n- id\n- user_name\n- password","x":684,"y":23,"width":215,"height":157},
+		{"id":"27d72e27d3fe779e","type":"text","text":"Privileges\n- id\n- name","x":1080,"y":-37,"width":250,"height":127},
+		{"id":"e4ebfe00dc4baeec","type":"file","file":"project/Access to storage.md","x":1080,"y":245,"width":400,"height":205}
 	],
 	"edges":[
 		{"id":"791f6ce67c1127a0","fromNode":"3b6c08a5cd0a9d0a","fromSide":"right","toNode":"4e9fe299333acccf","toSide":"left"},
 		{"id":"503696b0dcd575fb","fromNode":"3b6c08a5cd0a9d0a","fromSide":"bottom","toNode":"dc6c578b35356918","toSide":"top"},
 		{"id":"2c528b14de77c8f8","fromNode":"dc6c578b35356918","fromSide":"bottom","toNode":"bb9a0f25c142190a","toSide":"top"},
 		{"id":"bdbb7b9fbe89194f","fromNode":"dc6c578b35356918","fromSide":"bottom","toNode":"4ade891d9076f341","toSide":"top"},
-		{"id":"3cc6de6d8e89ebcb","fromNode":"4e9fe299333acccf","fromSide":"right","toNode":"b82ccacb8669c37d","toSide":"left"},
 		{"id":"711df54bc3d581ad","fromNode":"8f7390ef0d4a0bc4","fromSide":"top","toNode":"8b9062e613c9d89d","toSide":"bottom","fromEnd":"arrow","color":"1","label":"1:n"},
-		{"id":"cac9bcb4dd1878c2","fromNode":"b82ccacb8669c37d","fromSide":"right","toNode":"8b9062e613c9d89d","toSide":"left"},
-		{"id":"3a6a490329975f41","fromNode":"b82ccacb8669c37d","fromSide":"right","toNode":"8f7390ef0d4a0bc4","toSide":"left"},
 		{"id":"cdd37fe80de17f93","fromNode":"21cc1d2e051dd02d","fromSide":"bottom","toNode":"8b9062e613c9d89d","toSide":"top","fromEnd":"arrow","color":"1","label":"n:1"},
-		{"id":"7b5b924c77615978","fromNode":"b82ccacb8669c37d","fromSide":"right","toNode":"21cc1d2e051dd02d","toSide":"left"},
-		{"id":"d417a91bde79dd99","fromNode":"b82ccacb8669c37d","fromSide":"bottom","toNode":"e865c7a5bdc5abee","toSide":"left"},
-		{"id":"91904f7111e1595d","fromNode":"8b9062e613c9d89d","fromSide":"right","toNode":"e865c7a5bdc5abee","toSide":"right","fromEnd":"arrow","color":"1","label":"n:n\n"}
+		{"id":"91904f7111e1595d","fromNode":"8b9062e613c9d89d","fromSide":"right","toNode":"e865c7a5bdc5abee","toSide":"right","fromEnd":"arrow","color":"1","label":"n:n\n"},
+		{"id":"ef6cca69e8ed2722","fromNode":"4e9fe299333acccf","fromSide":"right","toNode":"4587e1ed76b485c6","toSide":"left"},
+		{"id":"9fca3a8bfaa1a798","fromNode":"8b9062e613c9d89d","fromSide":"right","toNode":"27d72e27d3fe779e","toSide":"left","fromEnd":"arrow","color":"1","label":"1:n"}
 	]
 }
