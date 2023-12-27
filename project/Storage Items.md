@@ -1,0 +1,1 @@
+Logged user can manage storage (read, add, delete items) if preveliges are given. By default, only Marcin and Natalia have permissions to storage.
