@@ -15,9 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": 654.9584827958472,
-                  "y": 505.9477875367556,
-                  "zoom": -0.337695895400288
+                  "x": 120.3104341067955,
+                  "y": 40.23252769941234,
+                  "zoom": -0.43967307709375875
                 }
               }
             }
@@ -88,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Faster bookmarks loading.md",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Faster bookmarks loading.md",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "Faster bookmarks loading.md"
+                "file": "project/Stenkowa Strona 3.0.canvas"
               }
             }
           }
@@ -151,6 +151,6 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "Faster bookmarks loading.md"
+    "project/Faster bookmarks loading.md"
   ]
 }
