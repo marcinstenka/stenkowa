@@ -1,17 +1,24 @@
 {
 	"nodes":[
 		{"id":"4587e1ed76b485c6","type":"group","x":620,"y":-360,"width":880,"height":1210,"color":"1","label":"Tables"},
+		{"id":"f14105d148566d8e","type":"group","x":-575,"y":-480,"width":1003,"height":239,"color":"3","label":"Tech Stack"},
 		{"id":"3b6c08a5cd0a9d0a","type":"text","text":"Stenkowa Strona 3.0\n","x":-200,"y":60,"width":220,"height":60,"color":"5"},
 		{"id":"dc6c578b35356918","type":"text","text":"Functionalities","x":-177,"y":280,"width":175,"height":60,"color":"4"},
 		{"id":"bb9a0f25c142190a","type":"text","text":"Storage Management","x":-325,"y":415,"width":225,"height":60,"color":"4"},
 		{"id":"4ade891d9076f341","type":"text","text":"Todo List","x":20,"y":425,"width":140,"height":50,"color":"4"},
 		{"id":"4e9fe299333acccf","type":"text","text":"Database\n","x":240,"y":60,"width":140,"height":60,"color":"1"},
-		{"id":"e865c7a5bdc5abee","type":"text","text":"StorageItems\n- id\n- name\n- description\n- image","x":640,"y":640,"width":260,"height":190},
-		{"id":"8f7390ef0d4a0bc4","type":"text","text":"Todos\n- id\n- title\n- description\n- deadline","x":661,"y":350,"width":260,"height":199},
-		{"id":"21cc1d2e051dd02d","type":"text","text":"Bookmarks\n- id\n- name\n- link\n","x":671,"y":-340,"width":250,"height":197},
-		{"id":"8b9062e613c9d89d","type":"text","text":"Users\n- id\n- user_name\n- password","x":684,"y":23,"width":215,"height":157},
-		{"id":"27d72e27d3fe779e","type":"text","text":"Privileges\n- id\n- name","x":1080,"y":-37,"width":250,"height":127},
-		{"id":"e4ebfe00dc4baeec","type":"file","file":"project/Access to storage.md","x":1080,"y":245,"width":400,"height":205}
+		{"id":"e865c7a5bdc5abee","type":"text","text":"StorageItems\n- id\n- name\n- description\n- image","x":640,"y":640,"width":260,"height":190,"color":"1"},
+		{"id":"8f7390ef0d4a0bc4","type":"text","text":"Todos\n- id\n- title\n- description\n- deadline","x":661,"y":350,"width":260,"height":199,"color":"1"},
+		{"id":"21cc1d2e051dd02d","type":"text","text":"Bookmarks\n- id\n- name\n- link\n","x":671,"y":-340,"width":250,"height":197,"color":"1"},
+		{"id":"8b9062e613c9d89d","type":"text","text":"Users\n- id\n- user_name\n- password","x":684,"y":23,"width":215,"height":157,"color":"1"},
+		{"id":"27d72e27d3fe779e","type":"text","text":"Privileges\n- id\n- name","x":1080,"y":-37,"width":250,"height":127,"color":"1"},
+		{"id":"e4ebfe00dc4baeec","type":"file","file":"project/Access to storage.md","x":1080,"y":245,"width":400,"height":205,"color":"1"},
+		{"id":"5b5eefa8c0b28d41","type":"text","text":"Utils","x":-200,"y":-97,"width":198,"height":60,"color":"3"},
+		{"id":"3fcb48a1d4d60ce4","type":"text","text":"Hosting - https://stenkowa-liart.vercel.app","x":-555,"y":-460,"width":415,"height":60,"color":"3"},
+		{"id":"a990c25f2a5ab570","type":"text","text":"Repo - https://github.com/marcinstenka/stenkowa-3.0","x":-101,"y":-460,"width":509,"height":60,"color":"3"},
+		{"id":"4e9b10f71283816f","type":"text","text":"Postgresql","x":60,"y":-340,"width":250,"height":60,"color":"1"},
+		{"id":"f8255eec5770baa1","type":"text","text":"Next.js v14","x":-555,"y":-340,"width":250,"height":60,"color":"3"},
+		{"id":"de301bafd1ee0f55","type":"file","file":"Faster bookmarks loading.md","x":1040,"y":654,"width":429,"height":162,"color":"1"}
 	],
 	"edges":[
 		{"id":"791f6ce67c1127a0","fromNode":"3b6c08a5cd0a9d0a","fromSide":"right","toNode":"4e9fe299333acccf","toSide":"left"},
@@ -22,6 +29,9 @@
 		{"id":"cdd37fe80de17f93","fromNode":"21cc1d2e051dd02d","fromSide":"bottom","toNode":"8b9062e613c9d89d","toSide":"top","fromEnd":"arrow","color":"1","label":"n:1"},
 		{"id":"91904f7111e1595d","fromNode":"8b9062e613c9d89d","fromSide":"right","toNode":"e865c7a5bdc5abee","toSide":"right","fromEnd":"arrow","color":"1","label":"n:n\n"},
 		{"id":"ef6cca69e8ed2722","fromNode":"4e9fe299333acccf","fromSide":"right","toNode":"4587e1ed76b485c6","toSide":"left"},
-		{"id":"9fca3a8bfaa1a798","fromNode":"8b9062e613c9d89d","fromSide":"right","toNode":"27d72e27d3fe779e","toSide":"left","fromEnd":"arrow","color":"1","label":"1:n"}
+		{"id":"9fca3a8bfaa1a798","fromNode":"8b9062e613c9d89d","fromSide":"right","toNode":"27d72e27d3fe779e","toSide":"left","fromEnd":"arrow","color":"1","label":"1:n"},
+		{"id":"a231f3860159aec2","fromNode":"4e9fe299333acccf","fromSide":"top","toNode":"4e9b10f71283816f","toSide":"bottom"},
+		{"id":"3c02dc6c80d3b93b","fromNode":"3b6c08a5cd0a9d0a","fromSide":"top","toNode":"5b5eefa8c0b28d41","toSide":"bottom"},
+		{"id":"6474be87a19b9a28","fromNode":"5b5eefa8c0b28d41","fromSide":"top","toNode":"f14105d148566d8e","toSide":"bottom"}
 	]
 }

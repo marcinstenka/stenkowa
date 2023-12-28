@@ -1,23 +1,23 @@
 {
   "main": {
-    "id": "459b10b8c7fd22cc",
+    "id": "db7a832a6c938dbb",
     "type": "split",
     "children": [
       {
-        "id": "1340a9a6d69da590",
+        "id": "a0ef02e2bf0332d2",
         "type": "tabs",
         "children": [
           {
-            "id": "b52b2f4758d4abf5",
+            "id": "f3cad457e3826e7c",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
-                "file": "Stenkowa Strona 3.0.canvas",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": 716.1933799179635,
-                  "y": 256.58108869369823,
-                  "zoom": -0.11289772601039336
+                  "x": 654.9584827958472,
+                  "y": 505.9477875367556,
+                  "zoom": -0.337695895400288
                 }
               }
             }
@@ -28,15 +28,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "401940d259b2c130",
+    "id": "70424003ccd32758",
     "type": "split",
     "children": [
       {
-        "id": "8692b63faee34bdc",
+        "id": "198292571a1542d4",
         "type": "tabs",
         "children": [
           {
-            "id": "3617da89b53f0f84",
+            "id": "be933784cd3dce0f",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -46,7 +46,7 @@
             }
           },
           {
-            "id": "dd48e20b032966c9",
+            "id": "e92a7bf366408579",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -61,7 +61,7 @@
             }
           },
           {
-            "id": "125f5aec6c8e8503",
+            "id": "015e517071b3bb64",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -75,20 +75,20 @@
     "width": 300
   },
   "right": {
-    "id": "e391522e20d95218",
+    "id": "dc6f5e84755577e5",
     "type": "split",
     "children": [
       {
-        "id": "442b064b8c3589b7",
+        "id": "171bd86fd802593f",
         "type": "tabs",
         "children": [
           {
-            "id": "be107afc9213c042",
+            "id": "b570625a8aa5db74",
             "type": "leaf",
             "state": {
               "type": "backlink",
               "state": {
-                "file": "Stenkowa Strona 3.0.canvas",
+                "file": "Faster bookmarks loading.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -100,19 +100,19 @@
             }
           },
           {
-            "id": "b205d0e1b0f9d443",
+            "id": "5b7a9551183bf022",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "Stenkowa Strona 3.0.canvas",
+                "file": "Faster bookmarks loading.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
             }
           },
           {
-            "id": "1c6bd8b27b732eb6",
+            "id": "199b4f73e6c90037",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -123,12 +123,12 @@
             }
           },
           {
-            "id": "4786971ced6b103d",
+            "id": "44d78245832661a6",
             "type": "leaf",
             "state": {
               "type": "outline",
               "state": {
-                "file": "Stenkowa Strona 3.0.canvas"
+                "file": "Faster bookmarks loading.md"
               }
             }
           }
@@ -149,11 +149,8 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "b52b2f4758d4abf5",
+  "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "Access to storage.md",
-    "Stenkowa Strona 3.0.canvas",
-    "project",
-    "Nowy folder"
+    "Faster bookmarks loading.md"
   ]
 }
