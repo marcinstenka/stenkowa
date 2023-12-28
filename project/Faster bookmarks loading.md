@@ -1,0 +1,1 @@
+Due to database limitations, bookmarks are managed also through local storage. 

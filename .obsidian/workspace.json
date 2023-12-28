@@ -1,0 +1,156 @@
+{
+  "main": {
+    "id": "db7a832a6c938dbb",
+    "type": "split",
+    "children": [
+      {
+        "id": "a0ef02e2bf0332d2",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "f3cad457e3826e7c",
+            "type": "leaf",
+            "state": {
+              "type": "canvas",
+              "state": {
+                "file": "project/Stenkowa Strona 3.0.canvas",
+                "viewState": {
+                  "x": 525.4472402214464,
+                  "y": 230.72284658445085,
+                  "zoom": -0.2341981245460357
+                }
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "70424003ccd32758",
+    "type": "split",
+    "children": [
+      {
+        "id": "198292571a1542d4",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "be933784cd3dce0f",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "e92a7bf366408579",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "015e517071b3bb64",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "dc6f5e84755577e5",
+    "type": "split",
+    "children": [
+      {
+        "id": "171bd86fd802593f",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "b570625a8aa5db74",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "project/Stenkowa Strona 3.0.canvas",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "5b7a9551183bf022",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "project/Stenkowa Strona 3.0.canvas",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "199b4f73e6c90037",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "44d78245832661a6",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "project/Stenkowa Strona 3.0.canvas"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "f3cad457e3826e7c",
+  "lastOpenFiles": [
+    "project/Faster bookmarks loading.md"
+  ]
+}
