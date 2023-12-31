@@ -1,4 +1,4 @@
-# stenkowa 3.0
+# Stenkowa Strona 3.0
 Third version of custom page on browser open.
 # What's new
 Version 3.0 provides:
