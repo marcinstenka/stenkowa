@@ -15,9 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": 206.81410787636068,
-                  "y": -42.51107140495926,
-                  "zoom": -0.16650667175726205
+                  "x": -440,
+                  "y": 90.0512326071179,
+                  "zoom": -1
                 }
               }
             }
@@ -151,6 +151,7 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
+    "project/design.fig",
     "stenkowa/package.json",
     "stenkowa/tsconfig.json",
     "stenkowa/next.config.js",
@@ -164,7 +165,6 @@
     "stenkowa/app/layout.tsx",
     "stenkowa/app/globals.css",
     "stenkowa/app/favicon.ico",
-    "stenkowa/app",
     "project/Faster bookmarks loading.md"
   ]
 }
