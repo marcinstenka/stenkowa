@@ -15,9 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": -327.65611905584933,
-                  "y": 495.7720937084806,
-                  "zoom": -0.3333333333333334
+                  "x": -304.54517501992507,
+                  "y": 640.4180664769654,
+                  "zoom": -1.6666666666666665
                 }
               }
             }
@@ -151,7 +151,8 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "Icon picker.md",
+    "project/Color picker.md",
+    "project/Icon picker.md",
     "project/design.fig",
     "stenkowa/package.json",
     "stenkowa/tsconfig.json",
