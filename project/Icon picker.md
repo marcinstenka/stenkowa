@@ -1,0 +1,1 @@
+When creating new bookmark, user can pick from plenty of icons.

@@ -1,0 +1,1 @@
+When creating new bookmark, user can pick color of the tile from the color picker
