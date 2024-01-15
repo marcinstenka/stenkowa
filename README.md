@@ -9,3 +9,5 @@ tbc
 # Stack
 - next.js v14
 - postgresql
+- obsidian (mind map)
+- figma (design project)
