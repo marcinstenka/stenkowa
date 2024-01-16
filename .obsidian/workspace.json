@@ -15,9 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": -304.54517501992507,
-                  "y": 640.4180664769654,
-                  "zoom": -1.6666666666666665
+                  "x": 162.1226271773798,
+                  "y": 755.1696279347473,
+                  "zoom": -0.48092162054728577
                 }
               }
             }
@@ -151,21 +151,22 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "project/Color picker.md",
-    "project/Icon picker.md",
-    "project/design.fig",
-    "stenkowa/package.json",
     "stenkowa/tsconfig.json",
-    "stenkowa/next.config.js",
-    "stenkowa/README.md",
-    "stenkowa/next-env.d.ts",
     "stenkowa/public/vercel.svg",
     "stenkowa/public/next.svg",
     "stenkowa/public",
-    "stenkowa/app/page.module.css",
+    "stenkowa/package.json",
+    "stenkowa/package-lock.json",
+    "stenkowa/next.config.js",
     "stenkowa/app/page.tsx",
+    "stenkowa/app/page.module.css",
     "stenkowa/app/layout.tsx",
     "stenkowa/app/globals.css",
+    "stenkowa/app/favicon.ico",
+    "stenkowa/app",
+    "stenkowa/README.md",
+    "project/Icon picker.md",
+    "project/Color picker.md",
     "project/Faster bookmarks loading.md"
   ]
 }

@@ -6,6 +6,7 @@
 		{"id":"6f034572db8f7ecb","type":"group","x":-1260,"y":140,"width":480,"height":480,"color":"6","label":"Icons"},
 		{"id":"fc8bd51f06b32f0d","type":"group","x":-320,"y":440,"width":680,"height":200,"color":"4","label":"Functions"},
 		{"id":"2ad0bbc9ca654958","type":"group","x":-1060,"y":320,"width":250,"height":280,"color":"4","label":"Links"},
+		{"id":"0ea5d1532440c2ac","x":-782,"y":991,"width":250,"height":60,"type":"text","text":""},
 		{"id":"dc6c578b35356918","type":"text","text":"Functionalities","x":-177,"y":280,"width":175,"height":60,"color":"4"},
 		{"id":"bb9a0f25c142190a","type":"text","text":"Storage Management","x":-282,"y":465,"width":222,"height":50,"color":"4"},
 		{"id":"b4694bfe7fdf49e5","type":"text","text":"RiTodoLine ","x":-1040,"y":340,"width":150,"height":60,"color":"6"},
