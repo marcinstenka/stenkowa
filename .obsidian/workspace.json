@@ -15,8 +15,8 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": -66.94747473646692,
-                  "y": 118.61934321149181,
+                  "x": -1327.532072190951,
+                  "y": -547.1952575609075,
                   "zoom": -1.3333333333333333
                 }
               }
@@ -151,8 +151,11 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "project/Sign up & sign in.md",
+    "Forms.md",
+    "Background.md",
+    "Untitled.md",
     "project/Stenkowa Strona 3.0.canvas",
+    "project/Sign up & sign in.md",
     "stenkowa/tsconfig.json",
     "stenkowa/public/vercel.svg",
     "stenkowa/public/next.svg",
