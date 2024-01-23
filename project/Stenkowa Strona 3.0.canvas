@@ -78,8 +78,8 @@
 		{"id":"85719015d72ef095","type":"text","text":"Animations","x":-1028,"y":-481,"width":250,"height":60,"color":"6"},
 		{"id":"b665b61561688f56","type":"text","text":"Figma","x":-936,"y":-40,"width":116,"height":50,"color":"6"},
 		{"id":"7b34a4743ce38274","type":"text","text":"IoMailOutline","x":-1319,"y":293,"width":179,"height":50,"color":"6"},
-		{"id":"0cabbbda4400ef2b","type":"file","file":"Forms.md","x":-1320,"y":-1120,"width":400,"height":440,"color":"6"},
-		{"id":"aee90203534518a4","type":"file","file":"Background.md","x":-1780,"y":-777,"width":320,"height":353,"color":"6"}
+		{"id":"0cabbbda4400ef2b","type":"file","file":"project/Forms.md","x":-1320,"y":-1120,"width":400,"height":440,"color":"6"},
+		{"id":"aee90203534518a4","type":"file","file":"project/Background.md","x":-1780,"y":-777,"width":320,"height":353,"color":"6"}
 	],
 	"edges":[
 		{"id":"791f6ce67c1127a0","fromNode":"3b6c08a5cd0a9d0a","fromSide":"right","toNode":"4e9fe299333acccf","toSide":"left","color":"1"},
