@@ -12,17 +12,30 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 18px 30px;
-		background: var(--background);
+		// background: var(--background);
+		z-index: 1;
 		svg {
 			font-size: 40px;
 			color: var(--primary);
 		}
 	}
 	.active {
+		position: absolute;
+		height: 100%;
+		top: 0;
+		width: 100px;
+		z-index: 2;
+		transition: all 0.5s ease 0s;
 		color: var(--background);
 		background: var(--primary);
 		svg {
 			color: var(--background);
 		}
 	}
+}
+.nav .start {
+	width: 100px;
+	left: 0;
+	background-color: var(--primary);
+	z-index: -2;
 }
