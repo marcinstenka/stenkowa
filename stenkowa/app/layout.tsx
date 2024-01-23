@@ -6,7 +6,7 @@ import Background from './lib/components/background/Background';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Stenkowa Strona',
+	title: 'Twoja nowa, w pełni konfigurowalna strona startowa w przeglądarce.',
 	description: 'Your starting, fully customizable page.',
 };
 
