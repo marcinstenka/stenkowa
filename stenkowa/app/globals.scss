@@ -1,0 +1,13 @@
+:root {
+	--primary: hsl(214, 100%, 36%);
+	--background: hsl(0, 0%, 100%);
+}
+
+* {
+	margin: 0;
+	font-family: 'Lato';
+}
+
+h2 {
+	color: var(--background);
+}
