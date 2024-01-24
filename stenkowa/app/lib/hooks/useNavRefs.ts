@@ -36,7 +36,6 @@ export default function useNavRefs({
 		) {
 			if (indicator.current && currentItem.current) {
 				indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-				indicator.current.style.width = `${currentItem.current.clientWidth}px`;
 				if (!currentItem.current.classList.contains(styles.active)) {
 					for (let j = 0; j < navItems.length; j++) {
 						if (j != i) {
@@ -56,7 +55,6 @@ export default function useNavRefs({
 			if (indicator.current && currentItem.current) {
 				if (currentItem.current.classList.contains(styles.active)) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-					indicator.current.style.width = `${currentItem.current.clientWidth}px`;
 				}
 			}
 		}
