@@ -12,30 +12,36 @@
 		flex-direction: column;
 		align-items: center;
 		padding: 18px 30px;
-		// background: var(--background);
+		cursor: pointer;
 		z-index: 1;
 		svg {
 			font-size: 40px;
 			color: var(--primary);
 		}
 	}
-	.active {
+	.indicator {
 		position: absolute;
 		height: 100%;
 		top: 0;
+		left: 0;
 		width: 100px;
-		z-index: 2;
-		transition: all 0.5s ease 0s;
+		z-index: -2;
+		transition: all 0.3s ease 0s;
 		color: var(--background);
 		background: var(--primary);
 		svg {
 			color: var(--background);
 		}
 	}
-}
-.nav .start {
-	width: 100px;
-	left: 0;
-	background-color: var(--primary);
-	z-index: -2;
+	.active {
+		transition: 0.2s;
+		transition-delay: 0.1s;
+		color: var(--background);
+		svg {
+			transition: 0.2s;
+			transition-delay: 0.1s;
+
+			color: var(--background);
+		}
+	}
 }
