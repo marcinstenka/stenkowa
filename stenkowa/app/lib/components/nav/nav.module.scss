@@ -1,0 +1,47 @@
+.nav {
+	position: fixed;
+	display: flex;
+	width: 100vw;
+	justify-content: space-between;
+	font-size: 15px;
+	bottom: 0;
+	background: var(--background);
+
+	&_item {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		padding: 18px 30px;
+		cursor: pointer;
+		z-index: 1;
+		svg {
+			font-size: 40px;
+			color: var(--primary);
+		}
+	}
+	.indicator {
+		position: absolute;
+		height: 100%;
+		top: 0;
+		left: 0;
+		width: 100px;
+		z-index: -2;
+		transition: all 0.3s ease 0s;
+		color: var(--background);
+		background: var(--primary);
+		svg {
+			color: var(--background);
+		}
+	}
+	.active {
+		transition: 0.2s;
+		transition-delay: 0.1s;
+		color: var(--background);
+		svg {
+			transition: 0.2s;
+			transition-delay: 0.1s;
+
+			color: var(--background);
+		}
+	}
+}

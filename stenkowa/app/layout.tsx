@@ -7,8 +7,9 @@ import Nav from './lib/components/nav/Nav';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Twoja nowa, w pełni konfigurowalna strona startowa w przeglądarce.',
-	description: 'Your starting, fully customizable page.',
+	title: 'Stenkowa',
+	description:
+		'Twoja nowa, w pełni konfigurowalna strona startowa w przeglądarce.',
 };
 
 export default function RootLayout({
@@ -21,7 +22,7 @@ export default function RootLayout({
 			<body className={inter.className}>
 				<Background />
 				{children}
-				<Nav/>
+				<Nav />
 			</body>
 		</html>
 	);
