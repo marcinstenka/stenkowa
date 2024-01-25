@@ -3,10 +3,12 @@ import { MutableRefObject, useEffect, useRef } from 'react';
 type useNavRefProps = {
 	styles: { readonly [key: string]: string };
 };
+
 type useNavRefReturn = {
 	navItems: MutableRefObject<HTMLDivElement | null>[];
 	indicator: MutableRefObject<HTMLDivElement | null>;
 };
+
 export default function useNavRefs({
 	styles,
 }: useNavRefProps): useNavRefReturn {
