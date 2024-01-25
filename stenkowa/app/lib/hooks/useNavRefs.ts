@@ -62,6 +62,7 @@ export default function useNavRefs({
 		}
 
 		for (let i = 0; i < navItems.length; i++) {
+			if (indicator.current) indicator.current.style.display = 'block';
 			const currentItem = navItems[i];
 			currentItem.current?.addEventListener('click', () =>
 				handleNavItemClick(currentItem, i)
