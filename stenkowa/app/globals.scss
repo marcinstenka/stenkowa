@@ -15,3 +15,9 @@ body {
 h2 {
 	color: var(--background);
 }
+a {
+	text-decoration: none;
+}
+a:visited {
+	color: inherit;
+}
