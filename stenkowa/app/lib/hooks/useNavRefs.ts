@@ -51,27 +51,24 @@ export default function useNavRefs({
 				}
 			}
 		}
-
 		window.addEventListener('resize', handleResize);
 
+		let activeExist = false;
+		// moving indicator to .active nav_link
 		for (let i = 0; i < navItemsRefs.length; i++) {
 			const currentItem = navItemsRefs[i];
 			if (indicator.current && currentItem.current) {
 				if (currentItem.current.classList.contains(styles.active)) {
-					indicator.current.style.transition = 'none';
-
-					requestAnimationFrame(() => {
-						if (indicator.current && currentItem.current)
-							indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-
-						requestAnimationFrame(() => {
-							if (indicator.current)
-								indicator.current.style.transition = 'all 0.3s ease 0s';
-						});
-					});
+					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+					activeExist = true;
 				}
 			}
 		}
+		// "from / to e.g. /todo and then going back to /" case - setting position out of view
+		if (!activeExist && indicator.current) {
+			indicator.current.style.transform = `translateX(-100%)`;
+		}
+
 		for (let i = 0; i < navItemsRefs.length; i++) {
 			const currentItem = navItemsRefs[i];
 
@@ -91,6 +88,7 @@ export default function useNavRefs({
 		};
 	}, [navItemsRefs]);
 
+	//indicator moving when clicking "back button"
 	useEffect(() => {
 		for (let i = 0; i < navItemsRefs.length; i++) {
 			if (indicator.current) indicator.current.style.display = 'block';
