@@ -3,10 +3,12 @@ import styles from './nav.module.scss';
 import { MdOutlineStorage } from 'react-icons/md';
 import { RiTodoLine } from 'react-icons/ri';
 import { TbTableShortcut } from 'react-icons/tb';
+import { IoIosAdd } from 'react-icons/io';
+
 import useNavRefs from '../../hooks/useNavRefs';
 
 export default function Nav() {
-	const { navItems, indicator } = useNavRefs({styles});
+	const { navItems, indicator } = useNavRefs({ styles });
 
 	return (
 		<nav className={styles.nav}>
@@ -23,6 +25,9 @@ export default function Nav() {
 				<p>Shortcuts</p>
 			</div>
 			<div ref={indicator} className={styles.indicator}></div>
+			<div className={styles.button}>
+				<IoIosAdd />
+			</div>
 		</nav>
 	);
 }
