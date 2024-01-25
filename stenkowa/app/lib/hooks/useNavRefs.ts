@@ -6,14 +6,14 @@ type useNavRefProps = {
 };
 
 type useNavRefReturn = {
-	navItems: MutableRefObject<HTMLAnchorElement | null>[];
+	navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[];
 	indicator: MutableRefObject<HTMLDivElement | null>;
 };
 
 export default function useNavRefs({
 	styles,
 }: useNavRefProps): useNavRefReturn {
-	const navItems: MutableRefObject<HTMLAnchorElement | null>[] = [
+	const navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[] = [
 		useRef(null),
 		useRef(null),
 		useRef(null),
@@ -23,8 +23,8 @@ export default function useNavRefs({
 
 	useEffect(() => {
 		function handleResize() {
-			for (let i = 0; i < navItems.length; i++) {
-				const currentItem = navItems[i];
+			for (let i = 0; i < navItemsRefs.length; i++) {
+				const currentItem = navItemsRefs[i];
 				if (
 					indicator.current &&
 					currentItem.current &&
@@ -41,9 +41,9 @@ export default function useNavRefs({
 			if (indicator.current && currentItem.current) {
 				indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
 				if (!currentItem.current.classList.contains(styles.active)) {
-					for (let j = 0; j < navItems.length; j++) {
+					for (let j = 0; j < navItemsRefs.length; j++) {
 						if (j != i) {
-							const item = navItems[j];
+							const item = navItemsRefs[j];
 							item.current && item.current.classList.remove(styles.active);
 						}
 					}
@@ -54,17 +54,27 @@ export default function useNavRefs({
 
 		window.addEventListener('resize', handleResize);
 
-		for (let i = 0; i < navItems.length; i++) {
-			const currentItem = navItems[i];
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
 			if (indicator.current && currentItem.current) {
 				if (currentItem.current.classList.contains(styles.active)) {
-					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+					indicator.current.style.transition = 'none';
+
+					requestAnimationFrame(() => {
+						if (indicator.current && currentItem.current)
+							indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+
+						requestAnimationFrame(() => {
+							if (indicator.current)
+								indicator.current.style.transition = 'all 0.3s ease 0s';
+						});
+					});
 				}
 			}
 		}
-		for (let i = 0; i < navItems.length; i++) {
-			if (indicator.current) indicator.current.style.display = 'block';
-			const currentItem = navItems[i];
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
+
 			currentItem.current?.addEventListener('click', () =>
 				handleNavItemClick(currentItem, i)
 			);
@@ -72,19 +82,19 @@ export default function useNavRefs({
 
 		() => {
 			window.removeEventListener('resize', handleResize);
-			for (let i = 0; i < navItems.length; i++) {
-				const currentItem = navItems[i];
+			for (let i = 0; i < navItemsRefs.length; i++) {
+				const currentItem = navItemsRefs[i];
 				currentItem.current?.removeEventListener('click', () =>
 					handleNavItemClick(currentItem, i)
 				);
 			}
 		};
-	}, []);
+	}, [navItemsRefs]);
 
 	useEffect(() => {
-		for (let i = 0; i < navItems.length; i++) {
+		for (let i = 0; i < navItemsRefs.length; i++) {
 			if (indicator.current) indicator.current.style.display = 'block';
-			const currentItem = navItems[i];
+			const currentItem = navItemsRefs[i];
 			if (indicator.current && currentItem.current) {
 				if (currentItem.current.classList.contains(styles.active)) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
@@ -93,5 +103,5 @@ export default function useNavRefs({
 		}
 	}, [pathname]);
 
-	return { navItems, indicator };
+	return { navItemsRefs, indicator };
 }
