@@ -26,7 +26,7 @@ $navItemWidht: 100px;
 		position: absolute;
 		height: 100%;
 		top: 0;
-		left: 0;
+		transform: translateX(-100%);
 		width: $navItemWidht;
 		z-index: -2;
 		transition: all 0.3s ease 0s;

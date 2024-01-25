@@ -5,14 +5,14 @@ type useNavRefProps = {
 };
 
 type useNavRefReturn = {
-	navItems: MutableRefObject<HTMLDivElement | null>[];
+	navItems: MutableRefObject<HTMLAnchorElement | null>[];
 	indicator: MutableRefObject<HTMLDivElement | null>;
 };
 
 export default function useNavRefs({
 	styles,
 }: useNavRefProps): useNavRefReturn {
-	const navItems: MutableRefObject<HTMLDivElement | null>[] = [
+	const navItems: MutableRefObject<HTMLAnchorElement | null>[] = [
 		useRef(null),
 		useRef(null),
 		useRef(null),
@@ -33,7 +33,7 @@ export default function useNavRefs({
 			}
 		}
 		function handleNavItemClick(
-			currentItem: MutableRefObject<HTMLDivElement | null>,
+			currentItem: MutableRefObject<HTMLAnchorElement | null>,
 			i: number
 		) {
 			if (indicator.current && currentItem.current) {
