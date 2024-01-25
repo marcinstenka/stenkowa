@@ -1,3 +1,4 @@
+import { usePathname } from 'next/navigation';
 import { MutableRefObject, useEffect, useRef } from 'react';
 
 type useNavRefProps = {
@@ -18,6 +19,7 @@ export default function useNavRefs({
 		useRef(null),
 	];
 	const indicator = useRef<HTMLDivElement | null>(null);
+	const pathname = usePathname();
 
 	useEffect(() => {
 		function handleResize() {
@@ -60,7 +62,6 @@ export default function useNavRefs({
 				}
 			}
 		}
-
 		for (let i = 0; i < navItems.length; i++) {
 			if (indicator.current) indicator.current.style.display = 'block';
 			const currentItem = navItems[i];
@@ -79,6 +80,18 @@ export default function useNavRefs({
 			}
 		};
 	}, []);
+
+	useEffect(() => {
+		for (let i = 0; i < navItems.length; i++) {
+			if (indicator.current) indicator.current.style.display = 'block';
+			const currentItem = navItems[i];
+			if (indicator.current && currentItem.current) {
+				if (currentItem.current.classList.contains(styles.active)) {
+					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+				}
+			}
+		}
+	}, [pathname]);
 
 	return { navItems, indicator };
 }
