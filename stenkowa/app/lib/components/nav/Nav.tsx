@@ -14,9 +14,10 @@ export default function Nav() {
 
 	return (
 		<nav className={styles.nav}>
-			{navItems.map((navItem) => {
+			{navItems.map((navItem, index) => {
 				return (
 					<Link
+						key={index}
 						href={navItem.pathname}
 						ref={navItem.ref}
 						className={navItem.class}
