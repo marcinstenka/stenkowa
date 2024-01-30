@@ -1,3 +1,5 @@
+import BookmarksContainer from '../bookmarks/BookmarksContainer';
+import StorageContainer from '../storage/StorageContainer';
 import TodoContainer from '../todo/TodoContainer';
 import styles from './main.module.scss';
 import { CiSettings } from 'react-icons/ci';
@@ -15,6 +17,8 @@ export default function Main({ page }: MainProps) {
 			<div className={styles.container}>
 				<h2>Stenkowa</h2>
 				{page == 'todo' && <TodoContainer />}
+				{page == 'storage' && <StorageContainer />}
+				{page == 'bookmarks' && <BookmarksContainer />}
 			</div>
 		</main>
 	);
