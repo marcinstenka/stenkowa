@@ -1,0 +1,27 @@
+.container {
+	padding: 60px 10px 0 10px;
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+
+.todo {
+	height: 70px;
+	display: flex;
+	font-size: 13px;
+	box-shadow: var(--shadow);
+	align-items: center;
+	&_color {
+		min-width: 12px;
+		height: 70px;
+		background: var(--primary);
+	}
+	&_text {
+		overflow: hidden;
+
+		display: -webkit-box;
+		-webkit-box-orient: vertical;
+		-webkit-line-clamp: 2;
+		padding: 0 10px;
+	}
+}
