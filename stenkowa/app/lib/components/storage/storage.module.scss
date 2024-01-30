@@ -1,0 +1,26 @@
+.container {
+	padding: 60px 10px 0 10px;
+	display: flex;
+	flex-direction: column;
+}
+.storage_section {
+	display: flex;
+	flex-direction: column;
+
+	.storage_date {
+		font-size: 18px;
+		text-align: center;
+	}
+
+	.storage_items {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+	}
+
+	.storage_item {
+		box-shadow: var(--shadow);
+		padding: 12px;
+		flex-grow: 1;
+	}
+}
