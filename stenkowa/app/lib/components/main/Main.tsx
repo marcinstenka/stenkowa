@@ -1,3 +1,4 @@
+import TodoContainer from '../todo/TodoContainer';
 import styles from './main.module.scss';
 import { CiSettings } from 'react-icons/ci';
 
@@ -13,7 +14,7 @@ export default function Main({ page }: MainProps) {
 			</div>
 			<div className={styles.container}>
 				<h2>Stenkowa</h2>
-				<p>hello {page}</p>
+				{page == 'todo' && <TodoContainer />}
 			</div>
 		</main>
 	);
