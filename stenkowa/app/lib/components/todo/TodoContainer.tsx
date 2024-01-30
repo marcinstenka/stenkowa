@@ -11,11 +11,11 @@ export default function TodoContainer() {
 			text: 'Quis autem vel eum iure reprehenderit qui in ea voluptate.',
 		},
 	];
-    
+
 	return (
 		<div className={styles.container}>
-			{todos.map((todo) => {
-				return <Todo color={todo.color} text={todo.text} />;
+			{todos.map((todo, index) => {
+				return <Todo color={todo.color} text={todo.text} key={index} />;
 			})}
 		</div>
 	);
