@@ -20,8 +20,14 @@ export default function StorageContainer() {
 	];
 	return (
 		<div className={styles.container}>
-			{storage.map((section) => {
-				return <StorageSection date={section.date} items={section.items} />;
+			{storage.map((section, index) => {
+				return (
+					<StorageSection
+						date={section.date}
+						items={section.items}
+						key={index}
+					/>
+				);
 			})}
 		</div>
 	);
