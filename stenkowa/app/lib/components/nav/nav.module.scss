@@ -30,7 +30,6 @@ $navItemWidht: 100px;
 		transform: translateX(-100%);
 		width: $navItemWidht;
 		z-index: -2;
-		// transition: all 0.3s ease 0s;
 		color: var(--background);
 		background: var(--primary);
 		svg {
@@ -49,12 +48,12 @@ $navItemWidht: 100px;
 	}
 	.button {
 		position: absolute;
-		bottom: 130px;
+		bottom: 110px;
 		left: 50%;
 		transform: translateX(-50%);
 		background: var(--background);
-		width: $navItemWidht - 20px;
-		height: $navItemWidht - 20px;
+		width: $navItemWidht - 30px;
+		height: $navItemWidht - 30px;
 		border-radius: 50%;
 		box-shadow: var(--shadow);
 		cursor: pointer;
