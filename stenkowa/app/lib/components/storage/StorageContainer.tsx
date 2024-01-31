@@ -1,9 +1,11 @@
 'use client';
+import { useState } from 'react';
 import StorageSection from './StorageSection';
-import styles from './storage.module.scss';
 import useStorageItemsOffsetTop from '../../hooks/useStorageItemsOffsetTop';
+import { StorageSectionType } from '../../types/types';
+import styles from './storage.module.scss';
 export default function StorageContainer() {
-	const storage = [
+	const [storage, setStorage] = useState<StorageSectionType[]>([
 		{
 			date: 'styczeń 2023',
 			items: [
@@ -11,15 +13,15 @@ export default function StorageContainer() {
 				'Torby prezentowe',
 				'Szafka',
 				'Toster',
-				'Jakieś nowe rzeczy',
+				'Jakieś rzeczy',
 			],
 		},
 		{
 			date: 'luty 2023',
 			items: ['Xbox One', 'Żelki'],
 		},
-	];
-	useStorageItemsOffsetTop();
+	]);
+	useStorageItemsOffsetTop(storage);
 
 	return (
 		<div className={styles.container}>
