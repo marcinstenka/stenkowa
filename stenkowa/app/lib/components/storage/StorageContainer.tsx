@@ -1,6 +1,7 @@
+'use client';
 import StorageSection from './StorageSection';
 import styles from './storage.module.scss';
-
+import useStorageItemsOffsetTop from '../../hooks/useStorageItemsOffsetTop';
 export default function StorageContainer() {
 	const storage = [
 		{
@@ -18,6 +19,8 @@ export default function StorageContainer() {
 			items: ['Xbox One', 'Żelki'],
 		},
 	];
+	useStorageItemsOffsetTop();
+
 	return (
 		<div className={styles.container}>
 			{storage.map((section, index) => {

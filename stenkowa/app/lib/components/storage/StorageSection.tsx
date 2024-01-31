@@ -3,7 +3,9 @@ type StorageSectionProps = {
 	date: string;
 	items: string[];
 };
+
 export default function StorageSection({ date, items }: StorageSectionProps) {
+	
 	return (
 		<section className={styles.storage_section}>
 			<h3 className={styles.storage_date}>{date}</h3>

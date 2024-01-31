@@ -39,7 +39,6 @@ export default function useNavItems({
 
 	useEffect(() => {
 		const newNavItems = pathnames.map((path, i) => {
-			console.log(navItemsRefs);
 			let icon;
 			if (i == 0) icon = MdOutlineStorage;
 			else if (i == 1) icon = RiTodoLine;
@@ -58,5 +57,5 @@ export default function useNavItems({
 		setNavItems(newNavItems);
 	}, [pathname]);
 
-	return {navItems};
+	return { navItems };
 }
