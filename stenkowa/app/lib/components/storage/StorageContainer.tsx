@@ -28,8 +28,7 @@ export default function StorageContainer() {
 			{storage.map((section, index) => {
 				return (
 					<StorageSection
-						date={section.date}
-						items={section.items}
+						section={section}
 						key={index}
 					/>
 				);

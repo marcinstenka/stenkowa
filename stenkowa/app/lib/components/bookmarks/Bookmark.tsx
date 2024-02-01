@@ -12,7 +12,8 @@ const iconMap: IconMap = {
 	FaFacebookF: FaFacebookF,
 };
 
-export default function Bookmark({ bookmark }: { bookmark: BookmarkType }) {
+type BookmarkProps = { bookmark: BookmarkType };
+export default function Bookmark({ bookmark }: BookmarkProps) {
 	const IconComponent = iconMap[bookmark.icon];
 
 	return (

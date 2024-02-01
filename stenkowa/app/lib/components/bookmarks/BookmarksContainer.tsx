@@ -1,7 +1,7 @@
 import { BookmarkType } from '../../types/types';
 import Bookmark from './Bookmark';
 import styles from './bookmarks.module.scss';
-import { SiNetflix } from 'react-icons/si';
+
 export default function BookmarksContainer() {
 	const bookmarks: BookmarkType[] = [
 		{
