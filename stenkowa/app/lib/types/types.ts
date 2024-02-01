@@ -8,3 +8,7 @@ export type BookmarkType = {
 	color: string;
 	text: string;
 };
+export type TodoType = {
+	color: string;
+	text: string;
+};

@@ -1,19 +1,17 @@
+import { StorageSectionType } from '../../types/types';
+import StorageItem from './StorageItem';
 import styles from './storage.module.scss';
-type StorageSectionProps = {
-	date: string;
-	items: string[];
-};
 
-export default function StorageSection({ date, items }: StorageSectionProps) {
-	
+type StorageSectionProps = {
+	section: StorageSectionType;
+};
+export default function StorageSection({ section }: StorageSectionProps) {
 	return (
 		<section className={styles.storage_section}>
-			<h3 className={styles.storage_date}>{date}</h3>
+			<h3 className={styles.storage_date}>{section.date}</h3>
 			<div className={styles.storage_items}>
-				{items.map((item, index) => (
-					<div className={styles.storage_item} key={index}>
-						{item}
-					</div>
+				{section.items.map((item, index) => (
+					<StorageItem item={item} key={index} />
 				))}
 			</div>
 		</section>

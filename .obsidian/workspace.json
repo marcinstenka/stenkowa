@@ -151,6 +151,7 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
+    "stenkowa/app/lib/components/storage/StorageItem.tsx",
     "stenkowa/node_modules/immutable/package.json",
     "stenkowa/node_modules/sass/package.json",
     "stenkowa/node_modules/react-icons/package.json",
@@ -161,7 +162,6 @@
     "stenkowa/node_modules/@next/swc-win32-arm64-msvc",
     "stenkowa/node_modules/@next/swc-linux-x64-gnu",
     "stenkowa/node_modules/@next/swc-linux-x64-musl",
-    "stenkowa/node_modules/@next/swc-linux-arm64-gnu",
     "project/Background.md",
     "README.md",
     "Untitled.md",
