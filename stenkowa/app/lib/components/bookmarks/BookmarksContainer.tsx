@@ -32,7 +32,7 @@ export default function BookmarksContainer() {
 	return (
 		<div className={styles.container}>
 			{bookmarks.map((bookmark, index) => {
-				return <Bookmark bookmark={bookmark} />;
+				return <Bookmark bookmark={bookmark} key={index} />;
 			})}
 		</div>
 	);
