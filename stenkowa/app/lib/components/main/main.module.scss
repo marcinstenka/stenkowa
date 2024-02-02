@@ -2,13 +2,7 @@ $backgroundPadding: 80px;
 .main {
 	padding: $backgroundPadding 0 0 0;
 }
-.options {
-	position: absolute;
-	top: 15px;
-	right: 15px;
-	font-size: 40px;
-	color: var(--background);
-}
+
 .container {
 	background: var(--background);
 	height: calc(100vh - $backgroundPadding);

@@ -1,8 +1,9 @@
 import BookmarksContainer from '../bookmarks/BookmarksContainer';
+import Options from '../global/Options';
+import StenkowaTitle from '../global/StenkowaTitle';
 import StorageContainer from '../storage/StorageContainer';
 import TodoContainer from '../todo/TodoContainer';
 import styles from './main.module.scss';
-import { CiSettings } from 'react-icons/ci';
 
 type MainProps = {
 	page: string;
@@ -11,11 +12,9 @@ type MainProps = {
 export default function Main({ page }: MainProps) {
 	return (
 		<main className={styles.main}>
-			<div className={styles.options}>
-				<CiSettings />
-			</div>
+			<Options />
 			<div className={styles.container}>
-				<h2>Stenkowa</h2>
+				<StenkowaTitle/>
 				{page == 'todo' && <TodoContainer />}
 				{page == 'storage' && <StorageContainer />}
 				{page == 'bookmarks' && <BookmarksContainer />}
