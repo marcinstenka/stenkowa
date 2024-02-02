@@ -1,6 +1,7 @@
 import Todo from './Todo';
 import styles from './todo.module.scss';
 import { TodoType } from '../../types/types';
+
 export default function TodoContainer() {
 	const todos: TodoType[] = [
 		{

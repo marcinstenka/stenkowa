@@ -1,10 +1,11 @@
 import { useEffect } from 'react';
 import styles from '../components/storage/storage.module.scss';
 import { StorageSectionType } from '../types/types';
-export default function useStorageItemsOffsetTop(storage: StorageSectionType[]) {
+export default function useStorageItemsOffsetTop(
+	storage: StorageSectionType[]
+) {
 	useEffect(() => {
 		const sections = document.querySelectorAll(`.${styles.storage_section}`);
-		console.log('Zmieniono');
 		sections.forEach((section) => {
 			let offsets: number[] = [];
 			let offsetsLength = 0;
