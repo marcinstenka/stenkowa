@@ -10,11 +10,11 @@ import { pathnames } from './nav-links';
 export default function Nav() {
 	//render nav only on specific subpages
 	const pathname = usePathname();
-	if (!pathnames.includes(pathname)) return;
 
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
 	const { navItems } = useNavItems({ navItemsRefs, styles });
 
+	if (!pathnames.includes(pathname)) return;
 	return (
 		<nav className={styles.nav}>
 			{navItems.map((navItem, index) => {
