@@ -6,8 +6,6 @@ import useNavRefs from '../../hooks/useNavRefs';
 import useNavItems from '../../hooks/useNavItems';
 import Link from 'next/link';
 
-
-
 export default function Nav() {
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
 	const { navItems } = useNavItems({navItemsRefs, styles});
