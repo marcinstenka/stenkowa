@@ -5,10 +5,15 @@ import { IoIosAdd } from 'react-icons/io';
 import useNavRefs from '../../hooks/useNavRefs';
 import useNavItems from '../../hooks/useNavItems';
 import Link from 'next/link';
-
+import { usePathname } from 'next/navigation';
+import { pathnames } from './nav-links';
 export default function Nav() {
+	//render nav only on specific subpages
+	const pathname = usePathname();
+	if (!pathnames.includes(pathname)) return;
+
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
-	const { navItems } = useNavItems({navItemsRefs, styles});
+	const { navItems } = useNavItems({ navItemsRefs, styles });
 
 	return (
 		<nav className={styles.nav}>

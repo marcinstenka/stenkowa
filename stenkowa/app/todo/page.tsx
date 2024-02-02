@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import Main from '../lib/components/main/Main';
 
-const page = "Todo"
+const page = 'Todo';
 
 export const metadata: Metadata = {
 	title: `${page} | Stenkowa`,
