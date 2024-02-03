@@ -49,12 +49,12 @@ $navItemWidht: 100px;
 	}
 	.button {
 		position: absolute;
-		bottom: 130px;
+		bottom: 110px;
 		left: 50%;
 		transform: translateX(-50%);
 		background: var(--background);
-		width: $navItemWidht - 20px;
-		height: $navItemWidht - 20px;
+		width: $navItemWidht - 30px;
+		height: $navItemWidht - 30px;
 		border-radius: 50%;
 		box-shadow: var(--shadow);
 		transition: 0.3s;

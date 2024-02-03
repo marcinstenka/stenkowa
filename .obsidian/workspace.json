@@ -15,9 +15,15 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
+<<<<<<< HEAD
                   "x": -788.9236414634815,
                   "y": 481.68669059019703,
                   "zoom": -1.9999999999999998
+=======
+                  "x": -1566.016891112919,
+                  "y": 307.26648134687946,
+                  "zoom": -0.8752378775676213
+>>>>>>> 116330a82c927f05662a312ddbc655a62a8bc148
                 }
               }
             }
@@ -151,24 +157,25 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
+    "stenkowa/app/login/page.module.scss",
+    "stenkowa/app/lib/components/main/mainLogin.module.scss",
+    "stenkowa/app/lib/components/main/MainLogin.tsx",
+    "stenkowa/app/lib/components/main/MainLogging.tsx",
+    "stenkowa/app/lib/components/global/StenkowaTitle.tsx",
+    "stenkowa/app/lib/components/global/StenkowaTitle.module.scss",
+    "stenkowa/app/lib/components/global/global.module.scss",
+    "stenkowa/app/lib/components/global/global.scss",
+    "stenkowa/app/lib/components/global/Options.tsx",
+    "stenkowa/app/lib/components/global/options.module.scss",
+    "stenkowa/app/lib/components/global",
     "project/Background.md",
     "README.md",
     "Untitled.md",
     "project/Stenkowa Strona 3.0.canvas",
     "project/Forms.md",
     "project/Sign up & sign in.md",
-    "stenkowa/tsconfig.json",
     "stenkowa/public/vercel.svg",
     "stenkowa/public/next.svg",
-    "stenkowa/public",
-    "stenkowa/package.json",
-    "stenkowa/package-lock.json",
-    "stenkowa/next.config.js",
-    "stenkowa/app/page.tsx",
-    "stenkowa/app/page.module.css",
-    "stenkowa/app/layout.tsx",
-    "stenkowa/app/globals.css",
-    "stenkowa/app/favicon.ico",
     "stenkowa/README.md",
     "project/Icon picker.md",
     "project/Color picker.md",
