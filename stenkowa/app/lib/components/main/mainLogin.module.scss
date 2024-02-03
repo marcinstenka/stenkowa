@@ -1,10 +1,10 @@
 .main {
-	padding: var(--loginBgPaddingTop) 0 0 0;
+	padding: 40px 0 0 0;
 }
 
 .container {
 	background: var(--background);
-	height: calc(100vh - var(--loginBgPaddingTop));
+	height: calc(100vh - 230px);
 	position: relative;
 	border-radius: 35px 35px 0 0;
 }
