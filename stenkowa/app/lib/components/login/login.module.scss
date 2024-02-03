@@ -1,26 +1,4 @@
 .container {
-	position: fixed;
-	width: 100%;
+	
 }
-.about {
-	position: absolute;
-	top: calc(60px - var(--loginBgPaddingTop));
-	color: #fff;
-	padding: 0 30px;
-}
-.heading {
-	h1 {
-		font-weight: normal;
-		font-size: 34px;
-		&:first-of-type {
-			text-align: left;
-		}
-		&:last-of-type {
-			text-align: right;
-		}
-	}
-}
-.text {
-	padding: 40px 0 0 0;
-	font-size: 14px;
-}
+
