@@ -1,10 +1,10 @@
 .main {
-	padding: 40px 0 0 0;
+	padding: calc(30px - var(--stenkowaTitleOffset)) 0 0 0;
 }
 
 .container {
 	background: var(--background);
-	height: calc(100vh - 230px);
+	// height: calc(100vh - 230px);
 	position: relative;
 	border-radius: 35px 35px 0 0;
 }
