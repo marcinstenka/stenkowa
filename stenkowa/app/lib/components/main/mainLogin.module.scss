@@ -4,7 +4,7 @@
 
 .container {
 	background: var(--background);
-	// height: calc(100vh - 230px);
+	min-height: 400px;
 	position: relative;
 	border-radius: 35px 35px 0 0;
 }

@@ -1,5 +1,6 @@
 import StenkowaTitle from '../global/StenkowaTitle';
 import LoginContainer from '../login/LoginContainer';
+import SignUpContainer from '../login/SignUpContainer';
 import styles from './mainLogin.module.scss';
 
 type MainLoginProps = {
@@ -12,6 +13,7 @@ export default function Page({ page }: MainLoginProps) {
 			<div className={styles.container}>
 				<StenkowaTitle />
 				{page == 'login' && <LoginContainer />}
+				{page == 'rejestracja' && <SignUpContainer />}
 			</div>
 		</main>
 	);
