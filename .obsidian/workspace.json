@@ -15,9 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": -1566.016891112919,
-                  "y": 307.26648134687946,
-                  "zoom": -0.8752378775676213
+                  "x": -1025.0399322579187,
+                  "y": -739.1611968750669,
+                  "zoom": 0.4580954557657119
                 }
               }
             }
@@ -88,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas",
+                "file": "project/Forms.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas",
+                "file": "project/Forms.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas"
+                "file": "project/Forms.md"
               }
             }
           }
@@ -151,28 +151,27 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "project/design (1).fig",
+    "Main page.md",
+    "stenkowa/tsconfig.json",
+    "stenkowa/public/vercel.svg",
+    "stenkowa/public/next.svg",
+    "stenkowa/public",
+    "stenkowa/package.json",
+    "stenkowa/package-lock.json",
+    "stenkowa/next.config.js",
     "stenkowa/app/todo/page.tsx",
     "stenkowa/app/todo",
     "stenkowa/app/storage/page.tsx",
     "stenkowa/app/storage",
     "stenkowa/app/sign-up/page.tsx",
-    "stenkowa/app/sign-up",
-    "stenkowa/app/page.module.scss",
-    "stenkowa/app/manifest.ts",
-    "stenkowa/app/login/page.tsx",
-    "stenkowa/app/login",
+    "stenkowa/README.md",
     "project/Sign up & sign in.md",
+    "project/Icon picker.md",
     "project/Forms.md",
+    "project/Color picker.md",
     "project/Background.md",
     "README.md",
-    "Untitled.md",
     "project/Stenkowa Strona 3.0.canvas",
-    "stenkowa/public/vercel.svg",
-    "stenkowa/public/next.svg",
-    "stenkowa/README.md",
-    "project/Icon picker.md",
-    "project/Color picker.md",
     "project/Faster bookmarks loading.md"
   ]
 }
