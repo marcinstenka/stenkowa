@@ -1,7 +1,100 @@
-.container {
-	
+$unFocusedColor: #c3c3c3;
+$inputPadding: 40px;
+.form {
+	display: flex;
+	flex-direction: column;
+	padding: 40px 30px 0 40px;
+	gap: 35px;
 }
-.form{
-    display: flex;
-    flex-direction: column;
+.input {
+	position: relative;
+	input {
+		width: calc(100% - $inputPadding);
+		height: 40px;
+		border: none;
+		border-bottom: 4px $unFocusedColor solid;
+		padding: 5px 0 5px $inputPadding;
+		font-size: 16px;
+		color: var(--primary);
+		&:focus {
+			border-bottom: 4px var(--primary) solid;
+			outline: none;
+		}
+		&:focus ~ label {
+			color: var(--primary);
+			display: none;
+		}
+		&:focus ~ svg {
+			transform: translateY(calc(-50% - 3px));
+			color: #000000;
+		}
+		&:not(:placeholder-shown) ~ label {
+			display: none;
+		}
+		&:not(:placeholder-shown) {
+			border-bottom: 4px var(--primary) solid;
+		}
+	}
+
+	label,
+	svg {
+		position: absolute;
+		top: 50%;
+		left: 0;
+		transform: translateY(-50%);
+	}
+	label {
+		padding: 0 0 0 $inputPadding;
+		color: $unFocusedColor;
+		display: block;
+	}
+	svg {
+		color: #3a3a3a;
+		font-size: 33px;
+		transition: 0.3s;
+		transform: translateY(-50%);
+	}
+}
+.buttons {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
+	.button {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		width: 100%;
+		border-radius: 10px;
+		border: 0;
+		background: var(--primary);
+		color: #fff;
+		height: 50px;
+		font-size: 16px;
+		transition: 0.3s;
+		&_secondary {
+			background: none;
+			border: 1px $unFocusedColor solid;
+			color: $unFocusedColor;
+		}
+		&:hover {
+			transform: scale(1.01);
+		}
+	}
+	.line {
+		position: relative;
+		width: 100%;
+		height: 2px;
+		background: $unFocusedColor;
+		&::after {
+			content: 'lub';
+			background: #fff;
+			color: $unFocusedColor;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			font-size: 14px;
+			padding: 2px;
+		}
+	}
 }
