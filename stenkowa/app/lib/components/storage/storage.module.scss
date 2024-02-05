@@ -1,0 +1,28 @@
+.container {
+	padding: var(--containerPadding);
+	display: flex;
+	flex-direction: column;
+}
+.storage_section {
+	display: flex;
+	flex-direction: column;
+
+	.storage_date {
+		font-size: 18px;
+		text-align: center;
+		margin: 0 0 10px 0;
+	}
+
+	.storage_items {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 10px;
+		margin: 0 0 15px 0;
+	}
+
+	.storage_item {
+		box-shadow: var(--shadow);
+		padding: 12px;
+		text-align: center;
+	}
+}

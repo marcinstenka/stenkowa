@@ -1,12 +1,14 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
-import './globals.css';
-
+import './globals.scss';
+import Background from './lib/components/background/Background';
+import Nav from './lib/components/nav/Nav';
 const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-	title: 'Stenkowa Strona',
-	description: 'Your starting, fully customizable page.',
+	title: 'Stenkowa',
+	description:
+		'Twoja nowa, w pełni konfigurowalna strona startowa w przeglądarce.',
 };
 
 export default function RootLayout({
@@ -16,7 +18,10 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='pl'>
-			<body className={inter.className}>{children}</body>
+			<body className={inter.className}>
+				{children}
+				<Nav />
+			</body>
 		</html>
 	);
 }
