@@ -15,15 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-<<<<<<< HEAD
-                  "x": -788.9236414634815,
-                  "y": 481.68669059019703,
-                  "zoom": -1.9999999999999998
-=======
                   "x": -1566.016891112919,
                   "y": 307.26648134687946,
                   "zoom": -0.8752378775676213
->>>>>>> 116330a82c927f05662a312ddbc655a62a8bc148
                 }
               }
             }
@@ -157,23 +151,23 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
-    "stenkowa/app/login/page.module.scss",
-    "stenkowa/app/lib/components/main/mainLogin.module.scss",
-    "stenkowa/app/lib/components/main/MainLogin.tsx",
-    "stenkowa/app/lib/components/main/MainLogging.tsx",
-    "stenkowa/app/lib/components/global/StenkowaTitle.tsx",
-    "stenkowa/app/lib/components/global/StenkowaTitle.module.scss",
-    "stenkowa/app/lib/components/global/global.module.scss",
-    "stenkowa/app/lib/components/global/global.scss",
-    "stenkowa/app/lib/components/global/Options.tsx",
-    "stenkowa/app/lib/components/global/options.module.scss",
-    "stenkowa/app/lib/components/global",
+    "project/design (1).fig",
+    "stenkowa/app/todo/page.tsx",
+    "stenkowa/app/todo",
+    "stenkowa/app/storage/page.tsx",
+    "stenkowa/app/storage",
+    "stenkowa/app/sign-up/page.tsx",
+    "stenkowa/app/sign-up",
+    "stenkowa/app/page.module.scss",
+    "stenkowa/app/manifest.ts",
+    "stenkowa/app/login/page.tsx",
+    "stenkowa/app/login",
+    "project/Sign up & sign in.md",
+    "project/Forms.md",
     "project/Background.md",
     "README.md",
     "Untitled.md",
     "project/Stenkowa Strona 3.0.canvas",
-    "project/Forms.md",
-    "project/Sign up & sign in.md",
     "stenkowa/public/vercel.svg",
     "stenkowa/public/next.svg",
     "stenkowa/README.md",
