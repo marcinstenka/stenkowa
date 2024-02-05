@@ -151,6 +151,7 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
+    "project/design (1).fig",
     "stenkowa/app/todo/page.tsx",
     "stenkowa/app/todo",
     "stenkowa/app/storage/page.tsx",
@@ -161,7 +162,6 @@
     "stenkowa/app/manifest.ts",
     "stenkowa/app/login/page.tsx",
     "stenkowa/app/login",
-    "stenkowa/app/lib/components/todo/TodoContainer.tsx",
     "project/Sign up & sign in.md",
     "project/Forms.md",
     "project/Background.md",
