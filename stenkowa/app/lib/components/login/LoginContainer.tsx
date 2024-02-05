@@ -38,7 +38,7 @@ export default function LoginContainer() {
 					<button className={styles.button}>Zaloguj</button>
 					<div className={styles.line}></div>
 					<Link
-						href='/sing-up'
+						href='/sign-up'
 						className={`${styles.button} ${styles.button_secondary}`}
 					>
 						Zarejestruj
