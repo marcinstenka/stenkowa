@@ -3,6 +3,6 @@ When hovering on button:
 - second button: same but in reverse 
 
 When focusing on input:
-- border changing color to primary_color, color slides from the bottom
+- border changing color to primary_color
 - input text changing color to primary_color
-- icon changing color to primary_color
+- icon changing color to black (from gray) little transform in Y axios
