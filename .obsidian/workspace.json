@@ -1,29 +1,23 @@
 {
   "main": {
-    "id": "db7a832a6c938dbb",
+    "id": "02f98074f200fea5",
     "type": "split",
     "children": [
       {
-        "id": "a0ef02e2bf0332d2",
+        "id": "65c9a8d84522e1b5",
         "type": "tabs",
         "children": [
           {
-            "id": "f3cad457e3826e7c",
+            "id": "a6c479904325c3ee",
             "type": "leaf",
             "state": {
               "type": "canvas",
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-<<<<<<< HEAD
-                  "x": -788.9236414634815,
-                  "y": 481.68669059019703,
-                  "zoom": -1.9999999999999998
-=======
-                  "x": -1566.016891112919,
-                  "y": 307.26648134687946,
-                  "zoom": -0.8752378775676213
->>>>>>> 116330a82c927f05662a312ddbc655a62a8bc148
+                  "x": -1072.995283018868,
+                  "y": 362.30962758082177,
+                  "zoom": 0.10749695925359704
                 }
               }
             }
@@ -34,15 +28,15 @@
     "direction": "vertical"
   },
   "left": {
-    "id": "70424003ccd32758",
+    "id": "ce3082748cd41a85",
     "type": "split",
     "children": [
       {
-        "id": "198292571a1542d4",
+        "id": "66e31111dd97a4cf",
         "type": "tabs",
         "children": [
           {
-            "id": "be933784cd3dce0f",
+            "id": "82a3955996e3b3ba",
             "type": "leaf",
             "state": {
               "type": "file-explorer",
@@ -52,7 +46,7 @@
             }
           },
           {
-            "id": "e92a7bf366408579",
+            "id": "0eff8913bead8ec6",
             "type": "leaf",
             "state": {
               "type": "search",
@@ -67,7 +61,7 @@
             }
           },
           {
-            "id": "015e517071b3bb64",
+            "id": "a444062fdf837270",
             "type": "leaf",
             "state": {
               "type": "bookmarks",
@@ -81,15 +75,15 @@
     "width": 300
   },
   "right": {
-    "id": "dc6f5e84755577e5",
+    "id": "d8b91caa70686982",
     "type": "split",
     "children": [
       {
-        "id": "171bd86fd802593f",
+        "id": "52f6279abc81cc4b",
         "type": "tabs",
         "children": [
           {
-            "id": "b570625a8aa5db74",
+            "id": "eb4660ae70df747d",
             "type": "leaf",
             "state": {
               "type": "backlink",
@@ -106,7 +100,7 @@
             }
           },
           {
-            "id": "5b7a9551183bf022",
+            "id": "701b70d752bbcfbe",
             "type": "leaf",
             "state": {
               "type": "outgoing-link",
@@ -118,7 +112,7 @@
             }
           },
           {
-            "id": "199b4f73e6c90037",
+            "id": "3fd88d715d64f7ff",
             "type": "leaf",
             "state": {
               "type": "tag",
@@ -129,7 +123,7 @@
             }
           },
           {
-            "id": "44d78245832661a6",
+            "id": "1c053e8c9f54f23d",
             "type": "leaf",
             "state": {
               "type": "outline",
@@ -155,30 +149,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "f3cad457e3826e7c",
+  "active": "a6c479904325c3ee",
   "lastOpenFiles": [
-    "stenkowa/app/login/page.module.scss",
-    "stenkowa/app/lib/components/main/mainLogin.module.scss",
-    "stenkowa/app/lib/components/main/MainLogin.tsx",
-    "stenkowa/app/lib/components/main/MainLogging.tsx",
-    "stenkowa/app/lib/components/global/StenkowaTitle.tsx",
-    "stenkowa/app/lib/components/global/StenkowaTitle.module.scss",
-    "stenkowa/app/lib/components/global/global.module.scss",
-    "stenkowa/app/lib/components/global/global.scss",
-    "stenkowa/app/lib/components/global/Options.tsx",
-    "stenkowa/app/lib/components/global/options.module.scss",
-    "stenkowa/app/lib/components/global",
-    "project/Background.md",
-    "README.md",
-    "Untitled.md",
-    "project/Stenkowa Strona 3.0.canvas",
-    "project/Forms.md",
-    "project/Sign up & sign in.md",
-    "stenkowa/public/vercel.svg",
-    "stenkowa/public/next.svg",
-    "stenkowa/README.md",
-    "project/Icon picker.md",
-    "project/Color picker.md",
-    "project/Faster bookmarks loading.md"
+    "Untitled.canvas",
+    "2024-02-04.md"
   ]
 }
