@@ -5,7 +5,7 @@ export default function Home() {
 	return (
 		<>
 			<Background />
-			<Main page='main' />
+			<Main page='home' />
 		</>
 	);
 }

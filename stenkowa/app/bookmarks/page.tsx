@@ -1,6 +1,6 @@
 import type { Metadata } from 'next';
-import Main from '../lib/components/main/Main';
 import Background from '../lib/components/background/Background';
+import Main from '../lib/components/main/Main';
 
 const page = 'Bookmarks';
 

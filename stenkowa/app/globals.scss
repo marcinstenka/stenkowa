@@ -11,6 +11,7 @@
 	margin: 0;
 	font-family: 'Lato';
 	-webkit-tap-highlight-color: transparent;
+	box-sizing: border-box;
 }
 body {
 	position: relative;
@@ -24,4 +25,7 @@ a {
 }
 a:visited {
 	color: inherit;
+}
+.swiper {
+	padding: 10px!important; //so box shadow work
 }
