@@ -13,6 +13,7 @@ $todoHeight: 60px;
 	font-size: 13px;
 	box-shadow: var(--shadow);
 	align-items: center;
+	text-align: start;
 	&_color {
 		min-width: 12px;
 		height: $todoHeight;

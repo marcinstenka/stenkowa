@@ -1,8 +1,8 @@
 import { Metadata } from 'next';
 import MainLogin from '../lib/components/main/MainLogin';
-import BackgroundLogin from '../lib/components/background/BackgroundLogin';
+import BackgroundSignUp from '../lib/components/background/BackgroundSignUp';
 
-const page = 'Login';
+const page = 'Rejestracja';
 
 export const metadata: Metadata = {
 	title: `${page} | Stenkowa`,
@@ -11,7 +11,7 @@ export const metadata: Metadata = {
 export default function Page() {
 	return (
 		<>
-			<BackgroundLogin />
+			<BackgroundSignUp />
 			<MainLogin page={`${page.toLowerCase()}`} />
 		</>
 	);

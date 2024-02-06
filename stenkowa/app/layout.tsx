@@ -19,7 +19,6 @@ export default function RootLayout({
 	return (
 		<html lang='pl'>
 			<body className={inter.className}>
-				<Background />
 				{children}
 				<Nav />
 			</body>

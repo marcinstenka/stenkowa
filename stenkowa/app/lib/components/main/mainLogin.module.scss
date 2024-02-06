@@ -1,10 +1,10 @@
 .main {
-	padding: var(--loginBgPaddingTop) 0 0 0;
+	padding: calc(30px - var(--stenkowaTitleOffset)) 0 0 0;
 }
 
 .container {
 	background: var(--background);
-	height: calc(100vh - var(--loginBgPaddingTop));
+	min-height: 400px;
 	position: relative;
 	border-radius: 35px 35px 0 0;
 }

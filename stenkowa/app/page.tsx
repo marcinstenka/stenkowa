@@ -1,5 +1,11 @@
+import Background from './lib/components/background/Background';
 import Main from './lib/components/main/Main';
 
 export default function Home() {
-	return <Main page='main' />;
+	return (
+		<>
+			<Background />
+			<Main page='home' />
+		</>
+	);
 }

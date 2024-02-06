@@ -3,6 +3,7 @@ import styles from './login.module.scss';
 
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import { IoMailOutline } from 'react-icons/io5';
 
 export default function LoginContainer() {
 	return (
@@ -23,6 +24,19 @@ export default function LoginContainer() {
 				</div>
 				<div className={styles.input}>
 					<input
+						type='email'
+						name='email'
+						id='email'
+						placeholder=' '
+						required
+						minLength={6}
+						autoComplete='off'
+					/>
+					<label htmlFor='email'>Email</label>
+					<IoMailOutline />
+				</div>
+				<div className={styles.input}>
+					<input
 						type='password'
 						name='password'
 						id='password'
@@ -35,13 +49,13 @@ export default function LoginContainer() {
 					<RiLockPasswordLine />
 				</div>
 				<div className={styles.buttons}>
-					<button className={styles.button}>Zaloguj</button>
+					<button className={styles.button}>Zarejestruj</button>
 					<div className={styles.line}></div>
 					<Link
-						href='/sign-up'
+						href='/login'
 						className={`${styles.button} ${styles.button_secondary}`}
 					>
-						Zarejestruj
+						Zaloguj
 					</Link>
 				</div>
 			</form>
