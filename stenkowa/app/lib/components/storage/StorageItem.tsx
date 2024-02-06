@@ -1,8 +1,8 @@
 import styles from './storage.module.scss';
-
+import { StorageItem } from '../../types/types';
 type StorageItemProps = {
 	item: string;
 };
-export default function StorageItem({ item }: StorageItemProps) {
-	return <div className={styles.storage_item}>{item}</div>;
+export default function StorageItem({ color, text }: StorageItem) {
+	return <div className={styles.storage_item} style={{borderColor: color}}>{text}</div>;
 }

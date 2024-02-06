@@ -23,6 +23,8 @@
 	.storage_item {
 		box-shadow: var(--shadow);
 		padding: 12px;
+		border-width: 2px;
+		border-style: solid;
 		text-align: center;
 	}
 }

@@ -57,11 +57,18 @@ export default function Slider() {
 	const storage: StorageSectionType[] = [
 		{
 			date: 'styczeń 2023',
-			items: ['Krzesła', 'Torby prezentowe', 'Toster'],
+			items: [
+				{ text: 'Krzesła', color: 'red' },
+				{ text: 'Torby prezentowe', color: 'orange' },
+				{ text: 'Toster', color: '#eb9605' },
+			],
 		},
 		{
 			date: 'luty 2023',
-			items: ['Xbox One', 'Żelki'],
+			items: [
+				{ text: 'Xbox One', color: 'var(--primary)' },
+				{ text: 'Żelki', color: 'blue' },
+			],
 		},
 	];
 	useStorageItemsOffsetTop(storage);

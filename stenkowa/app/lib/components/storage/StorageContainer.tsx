@@ -9,16 +9,19 @@ export default function StorageContainer() {
 		{
 			date: 'styczeń 2023',
 			items: [
-				'Krzesła',
-				'Torby prezentowe',
-				'Szafka',
-				'Toster',
-				'Jakieś rzeczy',
+				{ text: 'Krzesła', color: 'red' },
+				{ text: 'Torby prezentowe', color: 'orange' },
+				{ text: 'Szafka', color: '#964000' },
+				{ text: 'Toster', color: '#eb9605' },
+				{ text: 'Jakieś rzeczy', color: '#bc544b' },
 			],
 		},
 		{
 			date: 'luty 2023',
-			items: ['Xbox One', 'Żelki'],
+			items: [
+				{ text: 'Xbox One', color: 'var(--primary)' },
+				{ text: 'Żelki', color: 'blue' },
+			],
 		},
 	];
 	useStorageItemsOffsetTop(storage);
