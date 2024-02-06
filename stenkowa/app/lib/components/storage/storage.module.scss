@@ -2,11 +2,11 @@
 	padding: var(--containerPadding);
 	display: flex;
 	flex-direction: column;
+	gap: 15px;
 }
 .storage_section {
 	display: flex;
 	flex-direction: column;
-
 	.storage_date {
 		font-size: 18px;
 		text-align: center;
@@ -17,7 +17,6 @@
 		display: flex;
 		flex-wrap: wrap;
 		gap: 10px;
-		margin: 0 0 15px 0;
 	}
 
 	.storage_item {

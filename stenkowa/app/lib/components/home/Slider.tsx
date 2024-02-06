@@ -1,16 +1,16 @@
 'use client';
 import styles from './home.module.scss';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
-import { FaArrowCircleLeft } from 'react-icons/fa';
-import { FaArrowCircleRight } from 'react-icons/fa';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
-import Bookmark from '../bookmarks/Bookmark';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import { BookmarkType, StorageSectionType, TodoType } from '../../types/types';
 import Todo from '../todo/Todo';
-import useStorageItemsOffsetTop from '../../hooks/useStorageItemsOffsetTop';
+import Bookmark from '../bookmarks/Bookmark';
 import StorageSection from '../storage/StorageSection';
+import useStorageItemsOffsetTop from '../../hooks/useStorageItemsOffsetTop';
+import { FaArrowCircleLeft } from 'react-icons/fa';
+import { FaArrowCircleRight } from 'react-icons/fa';
 
 export default function Slider() {
 	const bookmarks: BookmarkType[] = [
@@ -85,6 +85,7 @@ export default function Slider() {
 				modules={[Navigation]}
 				slidesPerView={1}
 				spaceBetween={15}
+				loop
 				navigation={{
 					nextEl: `.${styles.right}`,
 					prevEl: `.${styles.left}`,

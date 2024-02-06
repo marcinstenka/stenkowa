@@ -3,6 +3,7 @@ import styles from './login.module.scss';
 
 import { MdOutlineAccountCircle } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
+import LoginButtons from './LoginButtons';
 
 export default function LoginContainer() {
 	return (
@@ -34,16 +35,7 @@ export default function LoginContainer() {
 					<label htmlFor='password'>Hasło</label>
 					<RiLockPasswordLine />
 				</div>
-				<div className={styles.buttons}>
-					<button className={styles.button}>Zaloguj</button>
-					<div className={styles.line}></div>
-					<Link
-						href='/sign-up'
-						className={`${styles.button} ${styles.button_secondary}`}
-					>
-						Zarejestruj
-					</Link>
-				</div>
+				<LoginButtons type='login' />
 			</form>
 		</div>
 	);
