@@ -7,7 +7,8 @@ import { FaArrowCircleRight } from 'react-icons/fa';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Bookmark from '../bookmarks/Bookmark';
-import { BookmarkType } from '../../types/types';
+import { BookmarkType, TodoType } from '../../types/types';
+import Todo from '../todo/Todo';
 
 export default function Slider() {
 	const bookmarks: BookmarkType[] = [
@@ -36,6 +37,20 @@ export default function Slider() {
 			color: '#FF0000',
 		},
 	];
+	const todos: TodoType[] = [
+		{
+			color: '#CCCC00',
+			text: 'Po egzaminie pojechać do fryzjera, potem do sklepu po warzywa, a na koniec do piekarni po świeży chleb.',
+		},
+		{
+			color: '#FFA500',
+			text: 'Wyjść z psem na spacer.',
+		},
+		{
+			color: 'violet',
+			text: 'Pójść do babci.',
+		},
+	];
 	return (
 		<div className={styles.slider}>
 			<div className={styles.left}>
@@ -60,11 +75,20 @@ export default function Slider() {
 								return <Bookmark bookmark={bookmark} key={index} />;
 							})}
 						</div>
-						<p className={styles.slide_text}>Tworzenie skrótów do stron internetowych</p>
+						<p className={styles.slide_text}>
+							Tworzenie skrótów do stron internetowych
+						</p>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className={styles.slide}>2</div>
+					<div className={styles.slide}>
+						<div className={styles.todos}>
+							{todos.map((todo, index) => {
+								return <Todo todo={todo} key={index} />;
+							})}
+						</div>
+						<p className={styles.slide_text}>Tworzenie listy zadań</p>
+					</div>
 				</SwiperSlide>
 				<SwiperSlide>
 					<div className={styles.slide}>3 </div>
