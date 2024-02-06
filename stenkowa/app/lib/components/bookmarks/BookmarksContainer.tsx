@@ -8,25 +8,25 @@ export default function BookmarksContainer() {
 			link: 'https://www.netflix.com/browse',
 			icon: 'SiNetflix',
 			text: 'Netflix',
-			color: 'var(--primary)',
+			color: '#E50914',
+		},
+		{
+			link: 'https://mail.google.com/mail/u/0/',
+			icon: 'SiGmail',
+			text: 'Gmail',
+			color: '#f2a60c',
 		},
 		{
 			link: 'https://www.facebook.com',
 			icon: 'FaFacebookF',
 			text: 'Facebook',
-			color: 'var(--primary)',
+			color: '#4267B2',
 		},
 		{
-			link: 'https://www.netflix.com/browse',
-			icon: 'SiNetflix',
-			text: 'Netflix',
-			color: 'var(--primary)',
-		},
-		{
-			link: 'https://www.netflix.com/browse',
-			icon: 'SiNetflix',
-			text: 'Netflix',
-			color: 'var(--primary)',
+			link: 'https://www.youtube.com/',
+			icon: 'FaYoutube',
+			text: 'Youtube',
+			color: '#FF0000',
 		},
 	];
 	return (

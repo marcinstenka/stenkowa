@@ -5,12 +5,16 @@ import { TodoType } from '../../types/types';
 export default function TodoContainer() {
 	const todos: TodoType[] = [
 		{
-			color: 'var(--primary)',
-			text: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim.',
+			color: '#CCCC00',
+			text: 'Po egzaminie pojechać do fryzjera, potem do sklepu po warzywa, a na koniec do piekarni po świeży chleb.',
 		},
 		{
-			color: 'var(--primary)',
-			text: 'Quis autem vel eum iure reprehenderit qui in ea voluptate.',
+			color: '#FFA500',
+			text: 'Wyjść z psem na spacer.',
+		},
+		{
+			color: 'violet',
+			text: 'Pójść do babci.',
 		},
 	];
 
