@@ -8,6 +8,7 @@ export default function HomeContainer() {
 			<h4>
 				Jesteś na Stenkowej Stronie, nowej, modyfikowalnej stronie startowej.
 			</h4>
+			<h3>Co umożliwia Stenkowa?</h3>
 			<Slider />
 		</div>
 	);
