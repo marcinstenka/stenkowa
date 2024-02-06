@@ -17,7 +17,7 @@
                 "viewState": {
                   "x": -1025.0399322579187,
                   "y": -739.1611968750669,
-                  "zoom": 0.4580954557657119
+                  "zoom": -1.541904544234288
                 }
               }
             }
@@ -88,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "project/Forms.md",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "project/Forms.md",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "project/Forms.md"
+                "file": "project/Stenkowa Strona 3.0.canvas"
               }
             }
           }
@@ -151,19 +151,20 @@
   },
   "active": "f3cad457e3826e7c",
   "lastOpenFiles": [
+    "stenkowa/app/lib/components/home/Slider.tsx",
+    "stenkowa/app/lib/components/login/SignUpContainer.tsx",
+    "stenkowa/app/lib/components/background/BackgroundLogin.tsx",
+    "stenkowa/app/lib/components/background/Svg.tsx",
+    "stenkowa/node_modules/swiper/swiper-bundle.min.js.map",
+    "stenkowa/node_modules/swiper/modules/scrollbar.min.mjs.map",
+    "stenkowa/node_modules/swiper/shared/utils.mjs",
+    "stenkowa/node_modules/swiper/shared/utils.min.mjs.map",
+    "stenkowa/node_modules/swiper/shared/utils.min.mjs",
+    "stenkowa/node_modules/swiper/shared/update-swiper.mjs",
+    "stenkowa/node_modules/swiper/shared/update-swiper.min.mjs.map",
     "Main page.md",
-    "stenkowa/tsconfig.json",
     "stenkowa/public/vercel.svg",
     "stenkowa/public/next.svg",
-    "stenkowa/public",
-    "stenkowa/package.json",
-    "stenkowa/package-lock.json",
-    "stenkowa/next.config.js",
-    "stenkowa/app/todo/page.tsx",
-    "stenkowa/app/todo",
-    "stenkowa/app/storage/page.tsx",
-    "stenkowa/app/storage",
-    "stenkowa/app/sign-up/page.tsx",
     "stenkowa/README.md",
     "project/Sign up & sign in.md",
     "project/Icon picker.md",

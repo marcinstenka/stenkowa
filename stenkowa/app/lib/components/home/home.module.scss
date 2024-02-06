@@ -78,3 +78,14 @@
 		font-size: 14px;
 	}
 }
+
+.todos {
+	display: grid;
+	grid-template-rows: repeat(2, 1fr);
+	justify-content: center;
+	gap: 20px;
+	padding: 50px;
+}
+.storage {
+	padding: 50px;
+}

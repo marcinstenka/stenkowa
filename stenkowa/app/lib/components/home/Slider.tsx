@@ -7,7 +7,10 @@ import { FaArrowCircleRight } from 'react-icons/fa';
 import 'swiper/css/navigation';
 import { Navigation } from 'swiper/modules';
 import Bookmark from '../bookmarks/Bookmark';
-import { BookmarkType } from '../../types/types';
+import { BookmarkType, StorageSectionType, TodoType } from '../../types/types';
+import Todo from '../todo/Todo';
+import useStorageItemsOffsetTop from '../../hooks/useStorageItemsOffsetTop';
+import StorageSection from '../storage/StorageSection';
 
 export default function Slider() {
 	const bookmarks: BookmarkType[] = [
@@ -36,6 +39,33 @@ export default function Slider() {
 			color: '#FF0000',
 		},
 	];
+	const todos: TodoType[] = [
+		{
+			color: '#CCCC00',
+			text: 'Po egzaminie pojechać do fryzjera, potem do sklepu po warzywa, a na koniec do piekarni po świeży chleb.',
+		},
+		{
+			color: '#FFA500',
+			text: 'Wyjść z psem na spacer.',
+		},
+		{
+			color: 'violet',
+			text: 'Pójść do babci.',
+		},
+	];
+
+	const storage: StorageSectionType[] = [
+		{
+			date: 'styczeń 2023',
+			items: ['Krzesła', 'Torby prezentowe', 'Toster'],
+		},
+		{
+			date: 'luty 2023',
+			items: ['Xbox One', 'Żelki'],
+		},
+	];
+	useStorageItemsOffsetTop(storage);
+
 	return (
 		<div className={styles.slider}>
 			<div className={styles.left}>
@@ -60,14 +90,30 @@ export default function Slider() {
 								return <Bookmark bookmark={bookmark} key={index} />;
 							})}
 						</div>
-						<p className={styles.slide_text}>Tworzenie skrótów do stron internetowych</p>
+						<p className={styles.slide_text}>
+							Tworzenie skrótów do stron internetowych
+						</p>
 					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className={styles.slide}>2</div>
+					<div className={styles.slide}>
+						<div className={styles.todos}>
+							{todos.map((todo, index) => {
+								return <Todo todo={todo} key={index} />;
+							})}
+						</div>
+						<p className={styles.slide_text}>Tworzenie listy zadań</p>
+					</div>
 				</SwiperSlide>
 				<SwiperSlide>
-					<div className={styles.slide}>3 </div>
+					<div className={styles.slide}>
+						<div className={styles.storage}>
+							{storage.map((section, index) => {
+								return <StorageSection section={section} key={index} />;
+							})}
+						</div>
+						<p className={styles.slide_text}>Zarządzanie magazynem</p>
+					</div>
 				</SwiperSlide>
 			</Swiper>
 		</div>
