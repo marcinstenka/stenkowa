@@ -30,6 +30,14 @@ export default function HomeContainer() {
 					value='#ffffff'
 				/>
 			</div>
+			<p className={styles.text}>
+				Pamiętaj, aby ustawić Stenkową jako stronę startową w swojej ulubionej
+				przeglądarce!
+				<br />
+				<br />
+				<a href='https://github.com/marcinstenka/stenkowa-3.0'>Tutaj</a>{' '}
+				znajdziesz poradnik jak to zrobić.
+			</p>
 		</div>
 	);
 }
