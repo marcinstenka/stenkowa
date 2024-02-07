@@ -16,7 +16,7 @@ export default function Nav() {
 
 	if (!pathnames.includes(pathname)) return;
 	return (
-		<nav className={styles.nav}>
+		<nav className={styles.nav} id='nav'>
 			{navItems.map((navItem, index) => {
 				return (
 					<Link

@@ -27,5 +27,9 @@ a:visited {
 	color: inherit;
 }
 .swiper {
-	padding: 10px!important; //so box shadow work
+	padding: 10px !important; //so box shadow work
+}
+#container {
+	transition: 0.5s;
+	margin: 0 0 0 0;
 }

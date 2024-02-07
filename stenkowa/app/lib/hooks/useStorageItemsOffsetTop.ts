@@ -21,7 +21,6 @@ export default function useStorageItemsOffsetTop(
 
 			items.forEach((item) => {
 				if (item instanceof HTMLElement) {
-					console.log(lastOffset);
 					if (item.offsetTop != lastOffset) {
 						item.style.flexGrow = '1';
 					}
