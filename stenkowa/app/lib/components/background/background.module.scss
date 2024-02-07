@@ -16,7 +16,7 @@
 	padding: 40px 30px 0 30px;
 	gap: 20px;
 	font-size: 14px;
-	ul{
+	ul {
 		margin: -20px 0 0 0;
 	}
 	li {
@@ -35,4 +35,19 @@
 			text-align: right;
 		}
 	}
+}
+.profile {
+	h2 {
+		font-size: 30px;
+		font-weight: normal;
+		text-align: center;
+		padding: 60px 25px 20px 25px;
+	}
+	h3 {
+		font-size: 24px;
+		font-weight: normal;
+		color: #fff;
+		padding: 40px 25px 0 25px;
+	}
+	
 }
