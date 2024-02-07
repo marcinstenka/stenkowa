@@ -1,4 +1,3 @@
-import Link from 'next/link';
 import styles from './login.module.scss';
 
 import { MdOutlineAccountCircle } from 'react-icons/md';

@@ -1,5 +1,5 @@
 .container {
-	padding: 40px 0 0 0;
+	padding: 40px 0 20px 0;
 	text-align: center;
 	h1,
 	h3,
@@ -21,7 +21,6 @@
 		padding-bottom: 25px;
 	}
 }
-
 .slider {
 	position: relative;
 	margin: 0;
@@ -52,7 +51,6 @@
 .left {
 	left: 20px;
 }
-
 .bookmarks {
 	display: grid;
 	grid-template-columns: repeat(2, minmax(100px, 120px));
@@ -79,7 +77,6 @@
 		font-size: 14px;
 	}
 }
-
 .todos {
 	display: grid;
 	grid-template-rows: repeat(2, 1fr);
@@ -92,4 +89,40 @@
 	flex-direction: column;
 	padding: 50px;
 	gap: 15px;
+}
+.text {
+	padding: 40px 20px 20px 20px;
+	font-size: 18px;
+	text-align: left;
+	a {
+		color: var(--primary);
+	}
+	&:last-of-type {
+		padding-top: 20px;
+	}
+}
+.colors {
+	display: flex;
+	justify-content: center;
+	gap: 15px;
+	.color {
+		-webkit-appearance: none;
+		width: 70px;
+		height: 70px;
+		border: 1px var(--primary) solid;
+		padding: 0;
+		background: none;
+		border-radius: 50%;
+		cursor: pointer;
+		&::-webkit-color-swatch-wrapper {
+			border: none;
+			border-radius: 50%;
+			padding: 0;
+		}
+		&::-webkit-color-swatch {
+			border: none;
+			border-radius: 50%;
+			padding: 0;
+		}
+	}
 }
