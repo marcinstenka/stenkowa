@@ -10,7 +10,7 @@ export default function Options() {
 		const nav = document.getElementById('nav');
 		if (isExpanded) {
 			if (nav) nav.style.transform = 'translateY(300px)';
-			if (container) container.style.margin = '80vh 0 0 0';
+			if (container) container.style.margin = '700px 0 0 0';
 		} else {
 			if (nav) nav.style.transform = 'translateY(0) ';
 			if (container) container.style.margin = '0 0 0 0';
