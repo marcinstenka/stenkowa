@@ -9,6 +9,8 @@ $navItemWidht: 100px;
 	bottom: 0;
 	background: var(--background);
 	box-shadow: var(--shadow);
+	transform: translateY(0);
+	transition: 0.5s transform;
 	&_item {
 		display: flex;
 		flex-direction: column;

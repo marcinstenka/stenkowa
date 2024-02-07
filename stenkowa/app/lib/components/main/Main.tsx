@@ -14,7 +14,7 @@ export default function Main({ page }: MainProps) {
 	return (
 		<main className={styles.main}>
 			<Options />
-			<div className={styles.container}>
+			<div className={styles.container} id='container'>
 				<StenkowaTitle />
 				{page == 'todo' && <TodoContainer />}
 				{page == 'storage' && <StorageContainer />}

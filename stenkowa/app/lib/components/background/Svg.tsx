@@ -37,7 +37,7 @@ export default function Svg({ primary }: SvgProps) {
 				></path>
 				<path
 					d='M430 900L263.52 900L430 553.77z'
-					fill='rgba(0, 0, 0, 1)'
+					fill='rgba(0, 0, 0, 0.1)'
 				></path>
 				<path
 					d='M430 553.77L263.52 900L223.99999999999997 900L430 307.17999999999995z'
