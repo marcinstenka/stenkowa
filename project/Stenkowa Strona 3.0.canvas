@@ -84,7 +84,7 @@
 		{"id":"4dd127b199d926fb","x":-2820,"y":285,"width":148,"height":50,"color":"6","type":"text","text":"MdDelete"},
 		{"id":"aef270921dfe2f49","x":-2820,"y":210,"width":150,"height":50,"color":"6","type":"text","text":"BiSolidEdit"},
 		{"id":"0b4008c8a6c740fd","x":-2820,"y":135,"width":261,"height":50,"color":"6","type":"text","text":"IoReturnDownBackOutline"},
-		{"id":"b124d81cc470031f","type":"file","file":"Main page.md","x":-2602,"y":-439,"width":497,"height":431,"color":"6"},
+		{"id":"b124d81cc470031f","type":"file","file":"project/Main page.md","x":-2602,"y":-439,"width":497,"height":431,"color":"6"},
 		{"id":"d1c396c8eec83e42","type":"text","text":"/profile","x":-1421,"y":-378,"width":137,"height":50,"color":"6"},
 		{"id":"4e4998f83e6b29b5","type":"text","text":"/","x":-1824,"y":-378,"width":50,"height":50,"color":"6"},
 		{"id":"9330e619e2b19ee4","type":"text","text":"/login","x":-1566,"y":-378,"width":131,"height":50,"color":"6"},

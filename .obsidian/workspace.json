@@ -11,14 +11,11 @@
             "id": "a6c479904325c3ee",
             "type": "leaf",
             "state": {
-              "type": "canvas",
+              "type": "markdown",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas",
-                "viewState": {
-                  "x": -449.1192251809087,
-                  "y": 706.9983676798072,
-                  "zoom": -1.6666666666666663
-                }
+                "file": "README.md",
+                "mode": "source",
+                "source": false
               }
             }
           }
@@ -88,7 +85,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -105,7 +102,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -128,7 +125,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "project/Stenkowa Strona 3.0.canvas"
+                "file": "README.md"
               }
             }
           }
@@ -149,8 +146,13 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a6c479904325c3ee",
+  "active": "82a3955996e3b3ba",
   "lastOpenFiles": [
+    "Untitled.canvas",
+    "README.md",
+    "project/Main page.md",
+    "2024-02-04.md",
+    "project/Stenkowa Strona 3.0.canvas",
     "stenkowa/app/login/page.module.scss",
     "stenkowa/app/lib/components/main/mainLogin.module.scss",
     "stenkowa/app/lib/components/main/MainLogin.tsx",
@@ -161,11 +163,8 @@
     "stenkowa/app/lib/components/global/global.scss",
     "stenkowa/app/lib/components/global/Options.tsx",
     "stenkowa/app/lib/components/global/options.module.scss",
-    "stenkowa/app/lib/components/global",
     "project/Background.md",
-    "README.md",
     "Untitled.md",
-    "project/Stenkowa Strona 3.0.canvas",
     "project/Forms.md",
     "project/Sign up & sign in.md",
     "stenkowa/public/vercel.svg",
