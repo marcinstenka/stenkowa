@@ -1,7 +1,5 @@
+import TodoDetails from '@/app/lib/components/todo/TodoDetails';
+
 export default function Page() {
-	return (
-		<>
-			<p>Todo item</p>
-		</>
-	);
+	return <TodoDetails />;
 }
