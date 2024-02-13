@@ -1,18 +1,5 @@
-import type { Metadata } from 'next';
-import Main from '../lib/components/main/Main';
-import Background from '../lib/components/background/Background';
+import StorageContainer from '../lib/components/storage/StorageContainer';
 
-const page = 'Storage';
-
-export const metadata: Metadata = {
-	title: `${page} | Stenkowa`,
-};
-
-export default function Storage() {
-	return (
-		<>
-			<Background />
-			<Main page={`${page.toLowerCase()}`} />
-		</>
-	);
+export default function Page() {
+	return <StorageContainer />;
 }

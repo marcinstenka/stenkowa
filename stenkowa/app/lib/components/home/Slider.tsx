@@ -41,14 +41,17 @@ export default function Slider() {
 	];
 	const todos: TodoType[] = [
 		{
+			id: 1,
 			color: '#CCCC00',
 			text: 'Po egzaminie pojechać do fryzjera, potem do sklepu po warzywa, a na koniec do piekarni po świeży chleb.',
 		},
 		{
+			id: 2,
 			color: '#FFA500',
 			text: 'Wyjść z psem na spacer.',
 		},
 		{
+			id: 3,
 			color: 'violet',
 			text: 'Pójść do babci.',
 		},

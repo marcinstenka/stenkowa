@@ -13,6 +13,7 @@ export type BookmarkType = {
 	text: string;
 };
 export type TodoType = {
+	id: number,
 	color: string;
 	text: string;
 };
