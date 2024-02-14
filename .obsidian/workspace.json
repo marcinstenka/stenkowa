@@ -11,11 +11,14 @@
             "id": "a6c479904325c3ee",
             "type": "leaf",
             "state": {
-              "type": "markdown",
+              "type": "canvas",
               "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
+                "file": "project/Stenkowa Strona 3.0.canvas",
+                "viewState": {
+                  "x": -2514.1270296052166,
+                  "y": 263.22428340403235,
+                  "zoom": 0.4408302925869303
+                }
               }
             }
           }
@@ -85,7 +88,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "README.md",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -102,7 +105,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "README.md",
+                "file": "project/Stenkowa Strona 3.0.canvas",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -125,7 +128,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "README.md"
+                "file": "project/Stenkowa Strona 3.0.canvas"
               }
             }
           }
@@ -146,10 +149,10 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "82a3955996e3b3ba",
+  "active": "a6c479904325c3ee",
   "lastOpenFiles": [
-    "Untitled.canvas",
     "README.md",
+    "Untitled.canvas",
     "project/Main page.md",
     "2024-02-04.md",
     "project/Stenkowa Strona 3.0.canvas",
