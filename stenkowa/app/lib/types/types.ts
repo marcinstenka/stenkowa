@@ -3,6 +3,7 @@ export type StorageSectionType = {
 	items: StorageItem[];
 };
 export type StorageItem = {
+	id: number;
 	color: string;
 	text: string;
 };
