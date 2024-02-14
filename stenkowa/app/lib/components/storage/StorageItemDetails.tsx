@@ -2,6 +2,8 @@ import styles from './storage.module.scss';
 import { MdDelete } from 'react-icons/md';
 import { BiSolidEdit } from 'react-icons/bi';
 import { formatDate } from '../../functions/functions';
+import Link from 'next/link';
+import { IoReturnDownBackOutline } from 'react-icons/io5';
 export default function StorageItemDetails() {
 	const tempItem = {
 		name: 'Zrobić pranie',
@@ -29,6 +31,9 @@ export default function StorageItemDetails() {
 					<MdDelete style={{ color: `${tempItem.color}` }} />
 				</div>
 			</div>
+			<Link href='/storage' style={{ backgroundColor: `${tempItem.color}` }}>
+				<IoReturnDownBackOutline />
+			</Link>
 		</div>
 	);
 }
