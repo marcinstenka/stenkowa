@@ -1,8 +1,15 @@
 import styles from './storage.module.scss';
 import { StorageItem } from '../../types/types';
-type StorageItemProps = {
-	item: string;
-};
-export default function StorageItem({ color, text }: StorageItem) {
-	return <div className={styles.storage_item} style={{borderColor: color}}>{text}</div>;
+import Link from 'next/link';
+
+export default function StorageItem(item: StorageItem) {
+	return (
+		<Link
+			href={`/storage/${item.id}`}
+			className={styles.storage_item}
+			style={{ borderColor: item.color }}
+		>
+			{item.text}
+		</Link>
+	);
 }
