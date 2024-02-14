@@ -8,13 +8,14 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { pathnames } from './nav-links';
 export default function Nav() {
-	//render nav only on specific subpages
 	const pathname = usePathname();
-
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
 	const { navItems } = useNavItems({ navItemsRefs, styles });
+	const shouldRenderNav = pathnames.some((name) => pathname.includes(name));
 
-	if (!pathnames.includes(pathname)) return;
+	if (!shouldRenderNav) {
+		return;
+	}
 	return (
 		<nav className={styles.nav} id='nav'>
 			{navItems.map((navItem, index) => {

@@ -48,7 +48,7 @@ export default function useNavItems({
 				ref: navItemsRefs[i],
 				class: clsx({
 					[styles.nav_item]: true,
-					[styles.active]: pathname === path,
+					[styles.active]: pathname.includes(path),
 				}),
 				text: pathnameToText(path),
 				icon,

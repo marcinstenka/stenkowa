@@ -2,6 +2,7 @@ import styles from './todo.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { BiSolidEdit } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
+import Link from 'next/link';
 
 function addZero(number: number) {
 	if (number < 10) {
@@ -96,27 +97,29 @@ export default function TodoDetails() {
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
-				<h4>{tempTodo.name}</h4>
+				<h4 style={{ borderColor: `${tempTodo.color}` }}>{tempTodo.name}</h4>
 				<div className={styles.details_header_icons}>
-					<BiSolidEdit />
-					<MdDelete />
+					<BiSolidEdit style={{ color: `${tempTodo.color}` }} />
+					<MdDelete style={{ color: `${tempTodo.color}` }} />
 				</div>
 			</div>
 			<div className={styles.details_text}>{tempTodo.details}</div>
 			<div className={styles.details_dates}>
 				<div className={styles.details_date}>
 					<p>Dodane:</p>
-					<p>{date_added}</p>
+					<p style={{ borderColor: `${tempTodo.color}` }}>Deadline:</p>
 				</div>
 				<div className={styles.details_date}>
-					<p>Deadline:</p>
-					<p>{date_deadline}</p>
+					<p>{date_added}</p>
+					<p style={{ borderColor: `${tempTodo.color}` }}>{date_deadline}</p>
 				</div>
 			</div>
-			<h3>Zostało: {timeLeft}</h3>
-			<button>
+			<h3>
+				Zostało: <span style={{ color: `${tempTodo.color}` }}>{timeLeft}</span>
+			</h3>
+			<Link href='/todo' style={{ backgroundColor: `${tempTodo.color}` }}>
 				<IoReturnDownBackOutline />
-			</button>
+			</Link>
 		</div>
 	);
 }
