@@ -1,7 +1,5 @@
+import StorageItemDetails from '@/app/lib/components/storage/StorageItemDetails';
+
 export default function Page() {
-	return (
-		<>
-			<p>Storage item</p>
-		</>
-	);
+	return <StorageItemDetails />;
 }

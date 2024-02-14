@@ -5,8 +5,6 @@ import { MdDelete } from 'react-icons/md';
 import Link from 'next/link';
 import { calculateTimedifference, formatDate } from '../../functions/functions';
 
-
-
 export default function TodoDetails() {
 	const tempTodo = {
 		id: 1,
@@ -18,7 +16,9 @@ export default function TodoDetails() {
 		color: 'hsl(214, 100%, 36%)',
 	};
 
-	const { date_added, date_deadline} = formatDate(tempTodo);
+	const date_added = formatDate(tempTodo.date_added, true);
+	const date_deadline = formatDate(tempTodo.date_deadline, true);
+
 	const timeLeft = calculateTimedifference(
 		tempTodo.date_added,
 		tempTodo.date_deadline

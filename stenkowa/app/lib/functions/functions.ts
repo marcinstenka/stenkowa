@@ -63,16 +63,19 @@ export function calculateTimedifference(added: Date, deadline: Date) {
 	return formattedTime;
 }
 
-export function formatDate(tempTodo: any) {
-	const date_added = `${addZero(tempTodo.date_added.getDate())}.${addZero(
-		tempTodo.date_added.getMonth()
-	)}.${tempTodo.date_added.getFullYear()} | ${addZero(
-		tempTodo.date_added.getHours()
-	)}:${addZero(tempTodo.date_added.getMinutes())}`;
-	const date_deadline = `${addZero(tempTodo.date_deadline.getDay())}.${addZero(
-		tempTodo.date_deadline.getMonth()
-	)}.${tempTodo.date_deadline.getFullYear()} | ${addZero(
-		tempTodo.date_deadline.getHours()
-	)}:${addZero(tempTodo.date_deadline.getMinutes())}`;
-	return { date_added, date_deadline };
+export function formatDate(date: Date, full: boolean) {
+	let formatteDate = '';
+	if (full) {
+		formatteDate = `${addZero(date.getDate())}.${addZero(
+			date.getMonth()
+		)}.${date.getFullYear()} | ${addZero(date.getHours())}:${addZero(
+			date.getMinutes()
+		)}`;
+	} else {
+		formatteDate = `${addZero(date.getDate())}.${addZero(
+			date.getMonth()
+		)}.${date.getFullYear()}`;
+	}
+
+	return formatteDate;
 }
