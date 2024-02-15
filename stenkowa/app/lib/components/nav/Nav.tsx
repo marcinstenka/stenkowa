@@ -7,11 +7,13 @@ import useNavItems from '../../hooks/useNavItems';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { pathnames } from './nav-links';
+import useNavRender from '../../hooks/useNavRender';
 export default function Nav() {
 	const pathname = usePathname();
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
 	const { navItems } = useNavItems({ navItemsRefs, styles });
-	const shouldRenderNav = pathnames.some((name) => pathname.includes(name));
+	const { shouldRenderNav, shouldRenderAddIcon } = useNavRender(pathnames, pathname);
+	
 
 	if (!shouldRenderNav) {
 		return;
@@ -32,9 +34,11 @@ export default function Nav() {
 				);
 			})}
 			<div ref={indicator} className={styles.indicator}></div>
-			<div className={styles.button}>
-				<IoIosAdd />
-			</div>
+			{shouldRenderAddIcon && (
+				<div className={styles.button}>
+					<IoIosAdd />
+				</div>
+			)}
 		</nav>
 	);
 }

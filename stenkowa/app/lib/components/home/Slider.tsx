@@ -61,16 +61,16 @@ export default function Slider() {
 		{
 			date: 'styczeń 2023',
 			items: [
-				{ text: 'Krzesła', color: 'red' },
-				{ text: 'Torby prezentowe', color: 'orange' },
-				{ text: 'Toster', color: '#eb9605' },
+				{ id: 1, text: 'Krzesła', color: 'red' },
+				{ id: 2, text: 'Torby prezentowe', color: 'orange' },
+				{ id: 3, text: 'Toster', color: '#eb9605' },
 			],
 		},
 		{
 			date: 'luty 2023',
 			items: [
-				{ text: 'Xbox One', color: 'var(--primary)' },
-				{ text: 'Żelki', color: 'blue' },
+				{ id: 4, text: 'Xbox One', color: 'var(--primary)' },
+				{ id: 5, text: 'Żelki', color: 'blue' },
 			],
 		},
 	];
