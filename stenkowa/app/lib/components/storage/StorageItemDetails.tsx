@@ -1,4 +1,4 @@
-import styles from './storage.module.scss';
+import styles from '../../styles/details.module.scss';
 import { MdDelete } from 'react-icons/md';
 import { BiSolidEdit } from 'react-icons/bi';
 import { formatDate } from '../../functions/functions';
