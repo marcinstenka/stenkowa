@@ -1,6 +1,6 @@
 {
 	"nodes":[
-		{"id":"4587e1ed76b485c6","type":"group","x":620,"y":-360,"width":880,"height":1260,"color":"1","label":"Tables"},
+		{"id":"4587e1ed76b485c6","type":"group","x":620,"y":-360,"width":880,"height":1320,"color":"1","label":"Tables"},
 		{"id":"6f034572db8f7ecb","type":"group","x":-2880,"y":40,"width":2160,"height":455,"color":"6","label":"Icons"},
 		{"id":"f14105d148566d8e","type":"group","x":-600,"y":-620,"width":1003,"height":380,"color":"3","label":"Tech Stack"},
 		{"id":"2b85d3db41ca0830","type":"group","x":-2260,"y":115,"width":867,"height":340,"color":"4","label":"Available bookmark icons"},
@@ -19,7 +19,6 @@
 		{"id":"79f64ab926a30f5f","type":"file","file":"project/Color picker.md","x":-1888,"y":1850,"width":393,"height":130,"color":"6"},
 		{"id":"9247caf4a602a575","type":"text","text":"Popup disappears","x":-940,"y":2000,"width":235,"height":60,"color":"2"},
 		{"id":"b54547e1ea91fdf9","type":"file","file":"project/Icon picker.md","x":-2245,"y":1800,"width":332,"height":140,"color":"6"},
-		{"id":"de301bafd1ee0f55","type":"file","file":"project/Faster bookmarks loading.md","x":1040,"y":654,"width":429,"height":162,"color":"1"},
 		{"id":"e4ebfe00dc4baeec","type":"file","file":"project/Access to storage.md","x":1080,"y":245,"width":400,"height":205,"color":"1"},
 		{"id":"27d72e27d3fe779e","type":"text","text":"Privileges\n- id\n- name","x":1080,"y":-37,"width":250,"height":127,"color":"1"},
 		{"id":"e8871db84c6eb5eb","type":"text","text":"username is saved to db ","x":-740,"y":1505,"width":250,"height":60,"color":"1"},
@@ -37,7 +36,6 @@
 		{"id":"21c89e9c66b4b54d","type":"text","text":"User enters:\n- link\n- name\n- icon from picker\n- color from picker (default primary_color)","x":-1888,"y":1190,"width":405,"height":180,"color":"2"},
 		{"id":"0ca7b97e4b7bd717","type":"text","text":"User enters:\n- title\n- description\n- date of insertion (today is deafult value)","x":-740,"y":1296,"width":390,"height":169,"color":"2"},
 		{"id":"be581d4e3351bf03","type":"text","text":"User enters:\n- title\n- description\n- deadline date (today is deafult value)","x":-1263,"y":1331,"width":389,"height":174,"color":"2"},
-		{"id":"e865c7a5bdc5abee","type":"text","text":"StorageItems\n- id\n- name\n- description\n- image\n- insertDate = today\n- userID (who inserted)","x":671,"y":619,"width":260,"height":261,"color":"1"},
 		{"id":"e3220dbe33339326","type":"text","text":"TiWeatherPartlySunny","x":-1979,"y":145,"width":236,"height":50,"color":"6"},
 		{"id":"a0f4eceaf4672fd5","type":"text","text":"FaStackOverflow","x":-2080,"y":220,"width":195,"height":50,"color":"6"},
 		{"id":"4e04dde5d78f3238","type":"text","text":"IoIosDocument","x":-2049,"y":295,"width":174,"height":50,"color":"6"},
@@ -94,12 +92,14 @@
 		{"id":"0cabbbda4400ef2b","type":"file","file":"project/Forms.md","x":-1320,"y":-1120,"width":400,"height":440,"color":"6"},
 		{"id":"4e9b10f71283816f","type":"text","text":"Postgresql","x":135,"y":-329,"width":145,"height":50,"color":"1"},
 		{"id":"4e9fe299333acccf","type":"text","text":"Database\n","x":240,"y":70,"width":140,"height":50,"color":"1"},
-		{"id":"8f7390ef0d4a0bc4","type":"text","text":"Todos\n- id\n- title\n- description\n- deadline = today\n- isDone = false","x":661,"y":350,"width":260,"height":214,"color":"1"},
-		{"id":"21cc1d2e051dd02d","type":"text","text":"Bookmarks\n- id\n- name\n- link\n- color\n","x":671,"y":-340,"width":250,"height":197,"color":"1"},
+		{"id":"8f7390ef0d4a0bc4","type":"text","text":"Todos\n- id\n- title\n- description\n- color\n- date_added = today\n- date_deadline = today\n- is_done = false","x":661,"y":350,"width":260,"height":279,"color":"1"},
+		{"id":"21cc1d2e051dd02d","type":"text","text":"Bookmarks\n- id\n- name\n- link\n- color\n- icon","x":671,"y":-340,"width":250,"height":220,"color":"1"},
 		{"id":"5a4bd12cee184858","type":"text","text":"Bookmarks","x":-306,"y":520,"width":154,"height":50,"color":"4"},
 		{"id":"8b9062e613c9d89d","type":"text","text":"Users\n- id\n- user_name\n- password\n- primary_color\n- secondary_color","x":689,"y":27,"width":215,"height":218,"color":"1"},
-		{"id":"a5f0adb815e485ce","x":26,"y":-552,"width":154,"height":60,"color":"3","type":"text","text":"TypeScript"},
-		{"id":"1a2c0aac33400204","x":-564,"y":-574,"width":383,"height":52,"color":"3","type":"text","text":"Will be on mikr.us later, domain on nazwa.pl"}
+		{"id":"a5f0adb815e485ce","type":"text","text":"TypeScript","x":26,"y":-552,"width":154,"height":60,"color":"3"},
+		{"id":"1a2c0aac33400204","type":"text","text":"Will be on mikr.us later, domain on nazwa.pl","x":-564,"y":-574,"width":383,"height":52,"color":"3"},
+		{"id":"de301bafd1ee0f55","type":"file","file":"project/Faster bookmarks loading.md","x":1040,"y":654,"width":429,"height":162,"color":"1"},
+		{"id":"e865c7a5bdc5abee","type":"text","text":"StorageItems\n- id\n- name\n- description\n- image (?)\n- insert_date = today\n- user_ID (who inserted)","x":661,"y":669,"width":260,"height":261,"color":"1"}
 	],
 	"edges":[
 		{"id":"791f6ce67c1127a0","fromNode":"3b6c08a5cd0a9d0a","fromSide":"right","toNode":"4e9fe299333acccf","toSide":"left","color":"1"},
