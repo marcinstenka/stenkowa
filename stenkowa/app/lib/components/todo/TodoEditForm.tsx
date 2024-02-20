@@ -5,7 +5,7 @@ import { MdDelete, MdDone } from 'react-icons/md';
 import { calculateTimedifference, formatDate } from '../../functions/functions';
 
 import Link from 'next/link';
-import { FormEvent, useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 type TodoEditFormProps = {
 	//change to proper Todo type
@@ -26,7 +26,7 @@ export default function TodoEditForm({ todo }: TodoEditFormProps) {
 	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
 
 	const [details_header, setDetails_header] = useState(todo.name);
-	const handleChange = (e: FormEvent<HTMLInputElement>) => {
+	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);
 	};
 	return (
