@@ -1,4 +1,3 @@
-
 import styles from '../../styles/details.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { BiSolidEdit } from 'react-icons/bi';
@@ -29,7 +28,9 @@ export default function TodoDetails() {
 			<div className={styles.details_header}>
 				<h4 style={{ borderColor: `${tempTodo.color}` }}>{tempTodo.name}</h4>
 				<div className={styles.details_header_icons}>
-					<BiSolidEdit style={{ color: `${tempTodo.color}` }} />
+					<Link href={`/todo/${tempTodo.id}/edit`}>
+						<BiSolidEdit style={{ color: `${tempTodo.color}` }} />
+					</Link>
 					<MdDelete style={{ color: `${tempTodo.color}` }} />
 				</div>
 			</div>
@@ -47,7 +48,11 @@ export default function TodoDetails() {
 			<h3>
 				Zostało: <span style={{ color: `${tempTodo.color}` }}>{timeLeft}</span>
 			</h3>
-			<Link href='/todo' style={{ backgroundColor: `${tempTodo.color}` }}>
+			<Link
+				className={styles.details_back}
+				href='/todo'
+				style={{ backgroundColor: `${tempTodo.color}` }}
+			>
 				<IoReturnDownBackOutline />
 			</Link>
 		</div>
