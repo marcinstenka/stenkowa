@@ -1,3 +1,6 @@
+$paddingTop: 15px;
+$marginBottom: 25px;
+
 .details {
 	display: flex;
 	flex-direction: column;
@@ -13,6 +16,16 @@
 			border-bottom-width: 2px;
 			border-bottom-style: solid;
 			font-weight: normal;
+			position: relative;
+		}
+		input:focus ~ h4 {
+			&::after {
+				content: '|';
+				position: absolute;
+				right: -5px;
+				top: 0px;
+				animation: blinking 0.4s infinite alternate;
+			}
 		}
 		p {
 			font-size: 16px;
@@ -25,12 +38,15 @@
 				font-size: 23px;
 				cursor: pointer;
 			}
+			a {
+				display: flex;
+			}
 		}
 	}
 	&_text {
 		font-size: 15px;
-		padding: 15px 10px;
-		margin: 15px 0 25px 0;
+		padding: $paddingTop 10px;
+		margin: 15px 0 $marginBottom 0;
 		box-shadow: var(--shadow);
 		text-align: justify;
 	}
@@ -60,7 +76,8 @@
 		font-size: 15px;
 	}
 	&_date {
-		p:last-child {
+		p:last-child,
+		div:last-of-type p {
 			border-bottom-width: 2px;
 			border-bottom-style: solid;
 		}
@@ -94,5 +111,30 @@
 				transform: translateX(-3px) scaleX(1.3);
 			}
 		}
+	}
+}
+
+.input_container {
+	position: relative;
+	input,
+	textarea {
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		opacity: 0;
+		z-index: 1;
+	}
+	textarea {
+		top: $paddingTop;
+		height: calc(100% - $paddingTop - $marginBottom);
+	}
+}
+@keyframes blinking {
+	from {
+		opacity: 1;
+	}
+	to {
+		opacity: 0;
 	}
 }
