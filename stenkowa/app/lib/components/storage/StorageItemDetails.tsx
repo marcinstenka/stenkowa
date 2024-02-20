@@ -31,7 +31,11 @@ export default function StorageItemDetails() {
 					<MdDelete style={{ color: `${tempItem.color}` }} />
 				</div>
 			</div>
-			<Link href='/storage' style={{ backgroundColor: `${tempItem.color}` }}>
+			<Link
+				className={styles.details_back}
+				href='/storage'
+				style={{ backgroundColor: `${tempItem.color}` }}
+			>
 				<IoReturnDownBackOutline />
 			</Link>
 		</div>
