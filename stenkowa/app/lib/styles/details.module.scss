@@ -142,7 +142,7 @@ $marginBottom: 25px;
 	}
 	textarea {
 		top: $paddingTop;
-		height: calc(100% + $paddingTop - $marginBottom);
+		height: calc(100% - $paddingTop - $marginBottom);
 		font-size: 15px;
 		padding: $paddingTop 10px;
 		text-align: justify;
