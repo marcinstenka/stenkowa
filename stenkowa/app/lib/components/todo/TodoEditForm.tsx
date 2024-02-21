@@ -8,8 +8,7 @@ import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
 import { TodoType } from '../../types/types';
 
-
-export default function TodoEditForm( todo : TodoType) {
+export default function TodoEditForm(todo: TodoType) {
 	const date_added = formatDate(todo.date_added, true);
 	const date_deadline = formatDate(todo.date_deadline, true);
 
@@ -61,13 +60,28 @@ export default function TodoEditForm( todo : TodoType) {
 			<h3>
 				Zostało: <span style={{ color: `${todo.color}` }}>{timeLeft}</span>
 			</h3>
-			<Link
-				className={styles.details_back}
-				href='/todo'
-				style={{ backgroundColor: `${todo.color}` }}
+			<p
+				className={styles.details_edit_info}
+				style={{ borderColor: `${todo.color}` }}
 			>
-				<IoReturnDownBackOutline />
-			</Link>
+				Kliknij element, aby zmienić
+			</p>
+			<div className={styles.details_back_button}>
+				<Link
+					className={styles.details_back}
+					href='/todo'
+					style={{ backgroundColor: `${todo.color}` }}
+				>
+					<IoReturnDownBackOutline />
+				</Link>
+				<Link
+					className={styles.details_back}
+					href='/todo'
+					style={{ backgroundColor: `${todo.color}` }}
+				>
+					<MdDone />
+				</Link>
+			</div>
 		</form>
 	);
 }
