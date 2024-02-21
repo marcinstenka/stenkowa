@@ -15,8 +15,12 @@ export default function TodoEditForm(todo: TodoType) {
 	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
 
 	const [details_header, setDetails_header] = useState(todo.name);
+	const [details, setDetails] = useState(todo.details);
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);
+	};
+	const handleChange2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		setDetails(e.target.value);
 	};
 	return (
 		<form className={styles.details}>
@@ -37,8 +41,10 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 			</div>
 			<div className={styles.input_container}>
-				<div className={styles.details_text}>{todo.details}</div>
-				<textarea name='details_text' id='details_text'></textarea>
+				<div className={styles.details_text}>{details}</div>
+				<textarea name='details_text' id='details_text' onChange={handleChange2}>
+					{details}
+				</textarea>
 			</div>
 
 			<div className={styles.details_dates}>

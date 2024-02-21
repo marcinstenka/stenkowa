@@ -18,15 +18,6 @@ $marginBottom: 25px;
 			font-weight: normal;
 			position: relative;
 		}
-		input:focus ~ h4 {
-			&::after {
-				content: '|';
-				position: absolute;
-				right: -5px;
-				top: 0px;
-				animation: blinking 0.4s infinite alternate;
-			}
-		}
 		p {
 			font-size: 16px;
 			border-bottom-style: solid;
@@ -141,14 +132,10 @@ $marginBottom: 25px;
 	}
 	textarea {
 		top: $paddingTop;
-		height: calc(100% - $paddingTop - $marginBottom);
-	}
-}
-@keyframes blinking {
-	from {
-		opacity: 1;
-	}
-	to {
-		opacity: 0;
+		height: calc(100% + $paddingTop - $marginBottom);
+		font-size: 15px;
+		padding: $paddingTop 10px;
+		text-align: justify;
+		border: none;
 	}
 }
