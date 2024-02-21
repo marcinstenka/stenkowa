@@ -7,24 +7,33 @@ export default function TodoContainer() {
 		{
 			id: 1,
 			color: '#CCCC00',
-			text: 'Po egzaminie pojechać do fryzjera, potem do sklepu po warzywa, a na koniec do piekarni po świeży chleb.',
+			name: 'Po egzaminie pojechać do fryzjera, potem do sklepu po warzywa, a na koniec do piekarni po świeży chleb.',
+			details: '',
+			date_added: new Date(2024, 1, 20, 16, 31),
+			date_deadline: new Date(2024, 1, 21, 12, 0),
 		},
 		{
 			id: 2,
 			color: '#FFA500',
-			text: 'Wyjść z psem na spacer.',
+			name: 'Wyjść z psem na spacer.',
+			details: '',
+			date_added: new Date(2024, 1, 20, 16, 31),
+			date_deadline: new Date(2024, 1, 21, 12, 0),
 		},
 		{
 			id: 3,
 			color: 'violet',
-			text: 'Pójść do babci.',
+			name: 'Pójść do babci.',
+			details: '',
+			date_added: new Date(2024, 1, 20, 16, 31),
+			date_deadline: new Date(2024, 1, 21, 12, 0),
 		},
 	];
 
 	return (
 		<div className={styles.container}>
 			{todos.map((todo, index) => {
-				return <Todo todo={todo} key={index} />;
+				return <Todo {...todo} key={index} />;
 			})}
 		</div>
 	);

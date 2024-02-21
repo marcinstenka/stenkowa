@@ -1,7 +1,9 @@
 
 import TodoEditForm from './TodoEditForm'
+import {TodoType} from '../../types/types'
+
 export default function TodoDetails() {
-	const tempTodo = { //change to proper Todo type
+	const tempTodo: TodoType = {
 		id: 1,
 		name: 'Zrób pranie',
 		details:
@@ -12,5 +14,5 @@ export default function TodoDetails() {
 	};
 
 	
-	return <TodoEditForm todo={tempTodo} />;
+	return <TodoEditForm {...tempTodo} />;
 }

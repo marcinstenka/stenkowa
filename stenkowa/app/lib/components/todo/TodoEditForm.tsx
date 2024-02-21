@@ -6,20 +6,10 @@ import { calculateTimedifference, formatDate } from '../../functions/functions';
 
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
+import { TodoType } from '../../types/types';
 
-type TodoEditFormProps = {
-	//change to proper Todo type
-	todo: {
-		id: number;
-		name: string;
-		details: string;
-		date_added: Date;
-		date_deadline: Date;
-		color: string;
-	};
-};
 
-export default function TodoEditForm({ todo }: TodoEditFormProps) {
+export default function TodoEditForm( todo : TodoType) {
 	const date_added = formatDate(todo.date_added, true);
 	const date_deadline = formatDate(todo.date_deadline, true);
 
