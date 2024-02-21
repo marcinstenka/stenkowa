@@ -27,6 +27,10 @@ export default function TodoEditForm({ todo }: TodoEditFormProps) {
 
 	const [details_header, setDetails_header] = useState(todo.name);
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const length = e.target.value.length;
+		if (length > 30 || length < 1) {
+			return;
+		}
 		setDetails_header(e.target.value);
 	};
 	return (
@@ -40,8 +44,9 @@ export default function TodoEditForm({ todo }: TodoEditFormProps) {
 						onChange={handleChange}
 						value={details_header}
 						autoComplete='off'
+						style={{ borderColor: `${todo.color}` }}
 					/>
-					<h4 style={{ borderColor: `${todo.color}` }}>{details_header}</h4>
+					<h4 className={styles.invisible}>{details_header}</h4>
 				</div>
 				<div className={styles.details_header_icons}>
 					<MdDelete style={{ color: `${todo.color}` }} />

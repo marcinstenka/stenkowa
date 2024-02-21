@@ -11,6 +11,7 @@ $marginBottom: 25px;
 		justify-content: space-between;
 		align-items: center;
 		width: 100%;
+		white-space: pre;
 		h4 {
 			font-size: 20px;
 			border-bottom-width: 2px;
@@ -18,15 +19,7 @@ $marginBottom: 25px;
 			font-weight: normal;
 			position: relative;
 		}
-		input:focus ~ h4 {
-			&::after {
-				content: '|';
-				position: absolute;
-				right: -5px;
-				top: 0px;
-				animation: blinking 0.4s infinite alternate;
-			}
-		}
+
 		p {
 			font-size: 16px;
 			border-bottom-style: solid;
@@ -116,19 +109,31 @@ $marginBottom: 25px;
 
 .input_container {
 	position: relative;
+	input {
+		font-size: 20px;
+		border: none;
+		padding: 0;
+		border-bottom-width: 2px;
+		border-bottom-style: solid;
+		&:focus {
+			outline: none;
+		}
+	}
 	input,
 	textarea {
 		position: absolute;
 		top: 0;
 		left: 0;
 		width: 100%;
-		opacity: 0;
 		z-index: 1;
 	}
 	textarea {
 		top: $paddingTop;
 		height: calc(100% - $paddingTop - $marginBottom);
 	}
+}
+.invisible {
+	opacity: 0;
 }
 @keyframes blinking {
 	from {
