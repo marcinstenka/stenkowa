@@ -4,9 +4,10 @@ import { BiSolidEdit } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 import Link from 'next/link';
 import { calculateTimedifference, formatDate } from '../../functions/functions';
+import { TodoType } from '../../types/types';
 
 export default function TodoDetails() {
-	const tempTodo = {
+	const tempTodo: TodoType = {
 		id: 1,
 		name: 'Zrób pranie',
 		details:

@@ -6,28 +6,25 @@ import { calculateTimedifference, formatDate } from '../../functions/functions';
 
 import Link from 'next/link';
 import { ChangeEvent, useState } from 'react';
+import { TodoType } from '../../types/types';
 
-type TodoEditFormProps = {
-	//change to proper Todo type
-	todo: {
-		id: number;
-		name: string;
-		details: string;
-		date_added: Date;
-		date_deadline: Date;
-		color: string;
-	};
-};
-
-export default function TodoEditForm({ todo }: TodoEditFormProps) {
+export default function TodoEditForm(todo: TodoType) {
 	const date_added = formatDate(todo.date_added, true);
 	const date_deadline = formatDate(todo.date_deadline, true);
 
 	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
 
 	const [details_header, setDetails_header] = useState(todo.name);
+	const [details, setDetails] = useState(todo.details);
 	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		const length = e.target.value.length;
+		if (length > 30 || length < 1) {
+			return;
+		}
 		setDetails_header(e.target.value);
+	};
+	const handleChange2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		setDetails(e.target.value);
 	};
 	return (
 		<form className={styles.details}>
@@ -40,16 +37,19 @@ export default function TodoEditForm({ todo }: TodoEditFormProps) {
 						onChange={handleChange}
 						value={details_header}
 						autoComplete='off'
+						style={{ borderColor: `${todo.color}` }}
 					/>
-					<h4 style={{ borderColor: `${todo.color}` }}>{details_header}</h4>
+					<h4 className={styles.invisible}>{details_header}</h4>
 				</div>
 				<div className={styles.details_header_icons}>
 					<MdDelete style={{ color: `${todo.color}` }} />
 				</div>
 			</div>
 			<div className={styles.input_container}>
-				<div className={styles.details_text}>{todo.details}</div>
-				<textarea name='details_text' id='details_text'></textarea>
+				<div className={styles.details_text}>{details}</div>
+				<textarea name='details_text' id='details_text' onChange={handleChange2}>
+					{details}
+				</textarea>
 			</div>
 
 			<div className={styles.details_dates}>
@@ -71,13 +71,28 @@ export default function TodoEditForm({ todo }: TodoEditFormProps) {
 			<h3>
 				Zostało: <span style={{ color: `${todo.color}` }}>{timeLeft}</span>
 			</h3>
-			<Link
-				className={styles.details_back}
-				href='/todo'
-				style={{ backgroundColor: `${todo.color}` }}
+			<p
+				className={styles.details_edit_info}
+				style={{ borderColor: `${todo.color}` }}
 			>
-				<IoReturnDownBackOutline />
-			</Link>
+				Kliknij element, aby zmienić
+			</p>
+			<div className={styles.details_back_button}>
+				<Link
+					className={styles.details_back}
+					href='/todo'
+					style={{ backgroundColor: `${todo.color}` }}
+				>
+					<IoReturnDownBackOutline />
+				</Link>
+				<Link
+					className={styles.details_back}
+					href='/todo'
+					style={{ backgroundColor: `${todo.color}` }}
+				>
+					<MdDone />
+				</Link>
+			</div>
 		</form>
 	);
 }
