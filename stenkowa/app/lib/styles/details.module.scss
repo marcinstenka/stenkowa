@@ -169,6 +169,30 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_input_container {
+	width: 127px;
+	height: 50%;
+	&:last-of-type {
+		input {
+			border-bottom-width: 2px;
+			border-bottom-style: solid;
+		}
+	}
 	input {
+		display: inline-block;
+		font-size: 15px;
+		display: flex;
+		padding: 0;
+		&::-webkit-calendar-picker-indicator {
+			background: transparent;
+			bottom: 0;
+			color: transparent;
+			cursor: pointer;
+			height: auto;
+			left: 0;
+			position: absolute;
+			right: 0;
+			top: 0;
+			width: auto;
+		}
 	}
 }

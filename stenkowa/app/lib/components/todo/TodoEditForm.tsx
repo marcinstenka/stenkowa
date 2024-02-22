@@ -63,12 +63,21 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 				<div className={styles.details_date}>
 					<div className={styles.date_input_container}>
-						<p>{date_added}</p>
-						<input type='date' name='details_date' id='details_date' />
+						<input
+							type='datetime-local'
+							name='details_date'
+							id='details_date'
+							defaultValue={todo.date_added.toISOString().slice(0, 16)}
+						/>
 					</div>
 					<div className={styles.date_input_container}>
-						<p style={{ borderColor: `${todo.color}` }}>{date_deadline}</p>
-						<input type='date' name='details_date' id='details_date' />
+						<input
+							type='datetime-local'
+							name='details_date'
+							id='details_date'
+							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
+							style={{ borderColor: `${todo.color}` }}
+						/>
 					</div>
 				</div>
 			</div>
