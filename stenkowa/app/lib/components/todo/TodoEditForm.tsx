@@ -2,30 +2,20 @@
 import styles from '../../styles/details.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { MdDelete, MdDone } from 'react-icons/md';
-import { calculateTimedifference, formatDate } from '../../functions/functions';
-
 import Link from 'next/link';
-import { ChangeEvent, useState } from 'react';
 import { TodoType } from '../../types/types';
+import useTodoEdit from '../../hooks/useTodoEdit';
 
 export default function TodoEditForm(todo: TodoType) {
-	const date_added = formatDate(todo.date_added, true);
-	const date_deadline = formatDate(todo.date_deadline, true);
-
-	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
-
-	const [details_header, setDetails_header] = useState(todo.name);
-	const [details, setDetails] = useState(todo.details);
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		const length = e.target.value.length;
-		if (length > 30 || length < 1) {
-			return;
-		}
-		setDetails_header(e.target.value);
-	};
-	const handleChange2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setDetails(e.target.value);
-	};
+	const {
+		handleHeaderChange,
+		handleDetailsChange,
+		handleDateAddedChange,
+		handleDateDeadlineChange,
+		details_header,
+		details,
+		timeLeft,
+	} = useTodoEdit(todo);
 	return (
 		<form className={styles.details}>
 			<div className={styles.details_header}>
@@ -34,7 +24,7 @@ export default function TodoEditForm(todo: TodoType) {
 						type='text'
 						name='details_header'
 						id='details_header'
-						onChange={handleChange}
+						onChange={handleHeaderChange}
 						value={details_header}
 						autoComplete='off'
 						style={{ borderColor: `${todo.color}` }}
@@ -45,9 +35,13 @@ export default function TodoEditForm(todo: TodoType) {
 					<MdDelete style={{ color: `${todo.color}` }} />
 				</div>
 			</div>
-			<div className={styles.input_container}>
+			<div className={styles.textarea_container}>
 				<div className={styles.details_text}>{details}</div>
-				<textarea name='details_text' id='details_text' onChange={handleChange2}>
+				<textarea
+					name='details_text'
+					id='details_text'
+					onChange={handleDetailsChange}
+				>
 					{details}
 				</textarea>
 			</div>
@@ -58,13 +52,24 @@ export default function TodoEditForm(todo: TodoType) {
 					<p style={{ borderColor: `${todo.color}` }}>Deadline:</p>
 				</div>
 				<div className={styles.details_date}>
-					<div className={styles.input_container}>
-						<p>{date_added}</p>
-						<input type='date' name='details_date' id='details_date' />
+					<div className={styles.date_input_container}>
+						<input
+							type='datetime-local'
+							name='details_date'
+							id='details_date'
+							defaultValue={todo.date_added.toISOString().slice(0, 16)}
+							onChange={handleDateAddedChange}
+						/>
 					</div>
-					<div className={styles.input_container}>
-						<p style={{ borderColor: `${todo.color}` }}>{date_deadline}</p>
-						<input type='date' name='details_date' id='details_date' />
+					<div className={styles.date_input_container}>
+						<input
+							type='datetime-local'
+							name='details_date'
+							id='details_date'
+							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
+							style={{ borderColor: `${todo.color}` }}
+							onChange={handleDateDeadlineChange}
+						/>
 					</div>
 				</div>
 			</div>
