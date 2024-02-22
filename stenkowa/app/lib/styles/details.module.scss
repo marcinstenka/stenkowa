@@ -1,6 +1,6 @@
 $paddingTop: 15px;
 $marginBottom: 25px;
-
+$textareaMinHeight: 48px;
 .details {
 	display: flex;
 	flex-direction: column;
@@ -41,6 +41,7 @@ $marginBottom: 25px;
 		margin: 15px 0 $marginBottom 0;
 		box-shadow: var(--shadow);
 		text-align: justify;
+		min-height: $textareaMinHeight;
 	}
 	&_lower {
 		display: flex;
@@ -120,32 +121,45 @@ $marginBottom: 25px;
 	}
 }
 
-.input_container {
+.input_container,
+.textarea_container,
+.date_input_container {
 	position: relative;
-	input {
-		font-size: 20px;
+	input,
+	textarea {
 		border: none;
-		padding: 0;
-		border-bottom-width: 2px;
-		border-bottom-style: solid;
+		position: absolute;
+		left: 0;
+		width: 100%;
+		top: 0;
+		z-index: 1;
 		&:focus {
 			outline: none;
 		}
 	}
-	input,
-	textarea {
-		position: absolute;
-		top: 0;
-		left: 0;
-		width: 100%;
-		z-index: 1;
+}
+
+.input_container {
+	input {
+		font-size: 20px;
+		padding: 0;
+		border-bottom-width: 2px;
+		border-bottom-style: solid;
 	}
+}
+.textarea_container {
+	width: 100%;
 	textarea {
-		top: $paddingTop;
 		height: calc(100% - $paddingTop - $marginBottom);
-		font-size: 15px;
+		margin: 15px 0 25px 0;
 		padding: $paddingTop 10px;
+		resize: none;
+		font-size: 15px;
 		text-align: justify;
-		border: none;
+		min-height: $textareaMinHeight;
+	}
+}
+.date_input_container {
+	input {
 	}
 }

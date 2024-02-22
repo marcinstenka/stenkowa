@@ -45,9 +45,13 @@ export default function TodoEditForm(todo: TodoType) {
 					<MdDelete style={{ color: `${todo.color}` }} />
 				</div>
 			</div>
-			<div className={styles.input_container}>
+			<div className={styles.textarea_container}>
 				<div className={styles.details_text}>{details}</div>
-				<textarea name='details_text' id='details_text' onChange={handleChange2}>
+				<textarea
+					name='details_text'
+					id='details_text'
+					onChange={handleChange2}
+				>
 					{details}
 				</textarea>
 			</div>
@@ -58,11 +62,11 @@ export default function TodoEditForm(todo: TodoType) {
 					<p style={{ borderColor: `${todo.color}` }}>Deadline:</p>
 				</div>
 				<div className={styles.details_date}>
-					<div className={styles.input_container}>
+					<div className={styles.date_input_container}>
 						<p>{date_added}</p>
 						<input type='date' name='details_date' id='details_date' />
 					</div>
-					<div className={styles.input_container}>
+					<div className={styles.date_input_container}>
 						<p style={{ borderColor: `${todo.color}` }}>{date_deadline}</p>
 						<input type='date' name='details_date' id='details_date' />
 					</div>
