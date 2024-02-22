@@ -169,7 +169,7 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_input_container {
-	width: 127px;
+	width: 112px;
 	height: 50%;
 	&:last-of-type {
 		input {
@@ -179,7 +179,7 @@ $textareaMinHeight: 48px;
 	}
 	input {
 		display: inline-block;
-		font-size: 15px;
+		font-size: 13px;
 		display: flex;
 		padding: 0;
 		&::-webkit-calendar-picker-indicator {
