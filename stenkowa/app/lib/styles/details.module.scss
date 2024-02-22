@@ -26,8 +26,9 @@ $textareaMinHeight: 48px;
 		}
 		&_icons {
 			display: flex;
+			align-items: center;
 			svg {
-				font-size: 23px;
+				font-size: 30px;
 				cursor: pointer;
 			}
 			a {
@@ -132,7 +133,8 @@ $textareaMinHeight: 48px;
 
 .input_container,
 .textarea_container,
-.date_input_container {
+.date_input_container,
+.input_color_container {
 	position: relative;
 	input,
 	textarea {
@@ -169,7 +171,7 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_input_container {
-	width: 112px;
+	width: 120px;
 	height: 50%;
 	&:last-of-type {
 		input {
@@ -179,7 +181,7 @@ $textareaMinHeight: 48px;
 	}
 	input {
 		display: inline-block;
-		font-size: 13px;
+		font-size: 14px;
 		display: flex;
 		padding: 0;
 		&::-webkit-calendar-picker-indicator {
@@ -193,6 +195,26 @@ $textareaMinHeight: 48px;
 			right: 0;
 			top: 0;
 			width: auto;
+		}
+	}
+}
+.input_color_container {
+	width: 30px;
+	height: 30px;
+	input {
+		width: 100%;
+		padding: 0;
+		height: 100%;
+		-webkit-appearance: none;
+		-moz-appearance: none;
+		appearance: none;
+		background-color: transparent;
+		border: none;
+		cursor: pointer;
+		&::-webkit-color-swatch {
+			border-radius: 50%;
+			border: none;
+			box-shadow: var(--shadow);
 		}
 	}
 }

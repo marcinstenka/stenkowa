@@ -7,13 +7,13 @@ import { IoReturnDownBackOutline } from 'react-icons/io5';
 export default function StorageItemDetails() {
 	const tempItem = {
 		name: 'Zrobić pranie',
-		color: 'hsl(214, 100%, 36%)',
+		color: '#0050b8',
 		details:
 			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
 		date_added: new Date(2023, 1, 12),
 		user: 'Marcin',
 	};
-    const date_added = formatDate(tempItem.date_added, false);
+	const date_added = formatDate(tempItem.date_added, false);
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>

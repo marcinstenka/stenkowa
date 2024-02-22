@@ -12,8 +12,10 @@ export default function TodoEditForm(todo: TodoType) {
 		handleDetailsChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
+		handleColorChange,
 		details_header,
 		details,
+		color,
 		timeLeft,
 	} = useTodoEdit(todo);
 	return (
@@ -27,12 +29,22 @@ export default function TodoEditForm(todo: TodoType) {
 						onChange={handleHeaderChange}
 						value={details_header}
 						autoComplete='off'
+						color-changing='border-color'
 						style={{ borderColor: `${todo.color}` }}
 					/>
 					<h4 className={styles.invisible}>{details_header}</h4>
 				</div>
 				<div className={styles.details_header_icons}>
-					<MdDelete style={{ color: `${todo.color}` }} />
+					<div className={styles.input_color_container}>
+						<input
+							type='color'
+							name='details_color'
+							id='details_color'
+							value={color}
+							onChange={handleColorChange}
+						/>
+					</div>
+					<MdDelete style={{ color: `${todo.color}` }} color-changing='color' />
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
@@ -49,7 +61,12 @@ export default function TodoEditForm(todo: TodoType) {
 			<div className={styles.details_dates}>
 				<div className={styles.details_date}>
 					<p>Dodane:</p>
-					<p style={{ borderColor: `${todo.color}` }}>Deadline:</p>
+					<p
+						style={{ borderColor: `${todo.color}` }}
+						color-changing='border-color'
+					>
+						Deadline:
+					</p>
 				</div>
 				<div className={styles.details_date}>
 					<div className={styles.date_input_container}>
@@ -68,17 +85,22 @@ export default function TodoEditForm(todo: TodoType) {
 							id='details_date'
 							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${todo.color}` }}
+							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
 						/>
 					</div>
 				</div>
 			</div>
 			<h3>
-				Zostało: <span style={{ color: `${todo.color}` }}>{timeLeft}</span>
+				Zostało:{' '}
+				<span style={{ color: `${todo.color}` }} color-changing='color'>
+					{timeLeft}
+				</span>
 			</h3>
 			<p
 				className={styles.details_edit_info}
 				style={{ borderColor: `${todo.color}` }}
+				color-changing='border-color'
 			>
 				Kliknij element, aby zmienić
 			</p>
@@ -87,6 +109,7 @@ export default function TodoEditForm(todo: TodoType) {
 					className={styles.details_back}
 					href='/todo'
 					style={{ backgroundColor: `${todo.color}` }}
+					color-changing='background'
 				>
 					<IoReturnDownBackOutline />
 				</Link>
@@ -94,6 +117,7 @@ export default function TodoEditForm(todo: TodoType) {
 					className={styles.details_back}
 					href='/todo'
 					style={{ backgroundColor: `${todo.color}` }}
+					color-changing='background'
 				>
 					<MdDone />
 				</Link>
