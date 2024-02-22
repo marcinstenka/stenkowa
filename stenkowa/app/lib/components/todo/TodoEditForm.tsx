@@ -2,29 +2,42 @@
 import styles from '../../styles/details.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { MdDelete, MdDone } from 'react-icons/md';
-import { calculateTimedifference, formatDate } from '../../functions/functions';
+import { calculateTimedifference } from '../../functions/functions';
 
 import Link from 'next/link';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 import { TodoType } from '../../types/types';
 
 export default function TodoEditForm(todo: TodoType) {
-	const date_added = formatDate(todo.date_added, true);
-	const date_deadline = formatDate(todo.date_deadline, true);
-
-	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
-
 	const [details_header, setDetails_header] = useState(todo.name);
 	const [details, setDetails] = useState(todo.details);
-	const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+	const [date_added, setDate_added] = useState(todo.date_added);
+	const [date_deadline, setDate_deadline] = useState(todo.date_deadline);
+	const [timeLeft, setTimeLeft] = useState(
+		calculateTimedifference(todo.date_added, todo.date_deadline)
+	);
+	useEffect(() => {
+		const new_date_added = new Date(date_added);
+		const new_date_deadline = new Date(date_deadline);
+
+		setTimeLeft(calculateTimedifference(new_date_added, new_date_deadline));
+	}, [date_added, date_deadline]);
+
+	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const length = e.target.value.length;
 		if (length > 30 || length < 1) {
 			return;
 		}
 		setDetails_header(e.target.value);
 	};
-	const handleChange2 = (e: ChangeEvent<HTMLTextAreaElement>) => {
+	const handleDetailsChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
 		setDetails(e.target.value);
+	};
+	const handleDateAddedChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setDate_added(new Date(e.target.value));
+	};
+	const handleDateDeadlineChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setDate_deadline(new Date(e.target.value));
 	};
 	return (
 		<form className={styles.details}>
@@ -34,7 +47,7 @@ export default function TodoEditForm(todo: TodoType) {
 						type='text'
 						name='details_header'
 						id='details_header'
-						onChange={handleChange}
+						onChange={handleHeaderChange}
 						value={details_header}
 						autoComplete='off'
 						style={{ borderColor: `${todo.color}` }}
@@ -50,7 +63,7 @@ export default function TodoEditForm(todo: TodoType) {
 				<textarea
 					name='details_text'
 					id='details_text'
-					onChange={handleChange2}
+					onChange={handleDetailsChange}
 				>
 					{details}
 				</textarea>
@@ -68,6 +81,7 @@ export default function TodoEditForm(todo: TodoType) {
 							name='details_date'
 							id='details_date'
 							defaultValue={todo.date_added.toISOString().slice(0, 16)}
+							onChange={handleDateAddedChange}
 						/>
 					</div>
 					<div className={styles.date_input_container}>
@@ -77,6 +91,7 @@ export default function TodoEditForm(todo: TodoType) {
 							id='details_date'
 							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${todo.color}` }}
+							onChange={handleDateDeadlineChange}
 						/>
 					</div>
 				</div>
