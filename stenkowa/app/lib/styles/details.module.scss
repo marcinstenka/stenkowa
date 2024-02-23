@@ -47,7 +47,7 @@ $textareaMinHeight: 48px;
 	&_lower {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: end;
 		width: 100%;
 		p {
 			font-size: 14px;
@@ -58,12 +58,17 @@ $textareaMinHeight: 48px;
 		&_icons {
 			display: flex;
 			svg {
-				font-size: 23px;
+				font-size: 30px;
 				cursor: pointer;
 			}
 			a {
 				display: flex;
 			}
+		}
+		.details_edit_info {
+			margin: 0;
+			align-self: initial;
+			font-size: 12px;
 		}
 	}
 	&_dates {
@@ -101,6 +106,7 @@ $textareaMinHeight: 48px;
 			}
 		}
 	}
+
 	&_edit_info {
 		font-size: 12px;
 		align-self: normal;

@@ -13,7 +13,20 @@ export default function StorageItemEditForm(item: StorageItem) {
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
-				<h4 style={{ borderColor: `${item.color}` }}>{item.name}</h4>
+				<div className={styles.input_container}>
+					<input
+						type='text'
+						name='details_header'
+						id='details_header'
+						// onChange={handleHeaderChange}
+						value={item.name}
+						autoComplete='off'
+						minLength={3}
+						color-changing='border-color'
+						style={{ borderColor: `${item.color}` }}
+					/>
+					<h4 className={styles.invisible}>{item.name}</h4>
+				</div>
 				<div
 					className={`${styles.date_input_container} ${styles.date_short_input_container}`}
 				>
@@ -28,16 +41,30 @@ export default function StorageItemEditForm(item: StorageItem) {
 					/>
 				</div>
 			</div>
-			<div className={styles.details_text}>{item.details}</div>
+			<div className={styles.textarea_container}>
+				<div className={styles.details_text}>{item.details}</div>
+				<textarea
+					name='details_text'
+					id='details_text'
+					// onChange={handleDetailsChange}
+				>
+					{item.details}
+				</textarea>
+			</div>
 
 			<div className={styles.details_lower}>
-				<p style={{ borderColor: `${item.color}` }}>
-					Dodane przez: {item.user}
+				<p
+					className={styles.details_edit_info}
+					style={{ borderColor: `${item.color}` }}
+					color-changing='border-color'
+				>
+					Kliknij element, aby zmienić
 				</p>
 				<div className={styles.details_lower_icons}>
 					<MdDelete style={{ color: `${item.color}` }} />
 				</div>
 			</div>
+
 			<div className={styles.details_back_button}>
 				<Link
 					className={styles.details_back}
