@@ -47,7 +47,7 @@ $textareaMinHeight: 48px;
 	&_lower {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: end;
 		width: 100%;
 		p {
 			font-size: 14px;
@@ -58,12 +58,17 @@ $textareaMinHeight: 48px;
 		&_icons {
 			display: flex;
 			svg {
-				font-size: 23px;
+				font-size: 30px;
 				cursor: pointer;
 			}
 			a {
 				display: flex;
 			}
+		}
+		.details_edit_info {
+			margin: 0;
+			align-self: initial;
+			font-size: 12px;
 		}
 	}
 	&_dates {
@@ -101,6 +106,7 @@ $textareaMinHeight: 48px;
 			}
 		}
 	}
+
 	&_edit_info {
 		font-size: 12px;
 		align-self: normal;
@@ -176,14 +182,13 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_short_input_container {
-	width: 86px !important;
+	width: 81px !important;
 	input {
-		font-size: 16px !important;
+		font-size: 15px !important;
 	}
 }
 .date_input_container {
 	width: 120px;
-	// height: 25.6px;
 	height: 50%;
 	&:last-of-type {
 		input {

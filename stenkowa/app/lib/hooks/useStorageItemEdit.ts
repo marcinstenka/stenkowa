@@ -1,24 +1,12 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { TodoType } from '../types/types';
+import { StorageItem } from '../types/types';
 import { calculateTimedifference } from '../functions/functions';
 
-export default function useTodoEdit(todo: TodoType) {
-	const [details_header, setDetails_header] = useState(todo.name);
-	const [details, setDetails] = useState(todo.details);
-	const [date_added, setDate_added] = useState(todo.date_added);
-	const [date_deadline, setDate_deadline] = useState(todo.date_deadline);
-	const [color, setColor] = useState(todo.color);
-	const [timeLeft, setTimeLeft] = useState(
-		calculateTimedifference(todo.date_added, todo.date_deadline)
-	);
-
-	// updaing time left live
-	useEffect(() => {
-		const new_date_added = new Date(date_added);
-		const new_date_deadline = new Date(date_deadline);
-
-		setTimeLeft(calculateTimedifference(new_date_added, new_date_deadline));
-	}, [date_added, date_deadline]);
+export default function useStorageItemEdit(item: StorageItem) {
+	const [details_header, setDetails_header] = useState(item.name);
+	const [details, setDetails] = useState(item.details);
+	const [date_added, setDate_added] = useState(item.date_added);
+	const [color, setColor] = useState(item.color);
 
 	// changing color live
 	useEffect(() => {
@@ -40,9 +28,6 @@ export default function useTodoEdit(todo: TodoType) {
 	const handleDateAddedChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDate_added(new Date(e.target.value));
 	};
-	const handleDateDeadlineChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setDate_deadline(new Date(e.target.value));
-	};
 	const handleColorChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setColor(e.target.value);
 	};
@@ -51,13 +36,10 @@ export default function useTodoEdit(todo: TodoType) {
 		handleHeaderChange,
 		handleDetailsChange,
 		handleDateAddedChange,
-		handleDateDeadlineChange,
 		handleColorChange,
 		details_header,
 		details,
 		date_added,
-		date_deadline,
 		color,
-		timeLeft,
 	};
 }
