@@ -12,5 +12,5 @@ export default function StorageItemDetailsEdit(){
 			user: 'Marcin',
 		};
 
-		return <StorageItemEditForm  />;
+		return <StorageItemEditForm {...tempItem} />;
 }
