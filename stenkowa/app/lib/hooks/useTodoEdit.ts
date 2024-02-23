@@ -33,9 +33,7 @@ export default function useTodoEdit(todo: TodoType) {
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		const length = e.target.value.length;
-		if (length > 30 || length < 1) {
-			return;
-		}
+
 		setDetails_header(e.target.value);
 	};
 	const handleDetailsChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
