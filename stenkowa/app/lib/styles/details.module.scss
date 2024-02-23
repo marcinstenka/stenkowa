@@ -176,12 +176,15 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_short_input_container {
-	width: 76px !important;
+	width: 86px !important;
+	input {
+		font-size: 16px !important;
+	}
 }
 .date_input_container {
 	width: 120px;
-	height: 25.6px;
-
+	// height: 25.6px;
+	height: 50%;
 	&:last-of-type {
 		input {
 			border-bottom-width: 2px;
@@ -194,6 +197,7 @@ $textareaMinHeight: 48px;
 		display: flex;
 		padding: 0;
 		height: 100%;
+		position: relative;
 		&::-webkit-calendar-picker-indicator {
 			background: transparent;
 			bottom: 0;
@@ -205,6 +209,9 @@ $textareaMinHeight: 48px;
 			right: 0;
 			top: 0;
 			width: auto;
+		}
+		&::-webkit-appearance {
+			background: none;
 		}
 	}
 }

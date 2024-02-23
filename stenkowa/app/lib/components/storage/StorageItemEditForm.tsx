@@ -9,7 +9,6 @@ import { BiSolidEdit } from 'react-icons/bi';
 import { formatDate } from '../../functions/functions';
 
 export default function StorageItemEditForm(item: StorageItem) {
-	console.log(item.date_added);
 	const date_added = formatDate(item.date_added, false);
 	return (
 		<div className={styles.details}>
