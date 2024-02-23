@@ -61,6 +61,9 @@ $textareaMinHeight: 48px;
 				font-size: 23px;
 				cursor: pointer;
 			}
+			a {
+				display: flex;
+			}
 		}
 	}
 	&_dates {

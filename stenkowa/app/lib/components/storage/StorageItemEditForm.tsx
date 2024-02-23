@@ -1,12 +1,15 @@
+'use client';
 import styles from '../../styles/details.module.scss';
-import { MdDelete } from 'react-icons/md';
+import { IoReturnDownBackOutline } from 'react-icons/io5';
+import { MdDelete, MdDone } from 'react-icons/md';
+import Link from 'next/link';
+import { TodoType } from '../../types/types';
+import useTodoEdit from '../../hooks/useTodoEdit';
 import { BiSolidEdit } from 'react-icons/bi';
 import { formatDate } from '../../functions/functions';
-import Link from 'next/link';
-import { IoReturnDownBackOutline } from 'react-icons/io5';
-export default function StorageItemDetails() {
+
+export default function StorageItemEditForm() {
 	const tempItem = {
-		id: 1,
 		name: 'Zrobić pranie',
 		color: '#0050b8',
 		details:
@@ -28,9 +31,7 @@ export default function StorageItemDetails() {
 					Dodane przez: {tempItem.user}
 				</p>
 				<div className={styles.details_lower_icons}>
-					<Link href={`/storage/${tempItem.id}/edit`}>
-						<BiSolidEdit style={{ color: `${tempItem.color}` }} />
-					</Link>
+					<BiSolidEdit style={{ color: `${tempItem.color}` }} />
 					<MdDelete style={{ color: `${tempItem.color}` }} />
 				</div>
 			</div>
