@@ -9,7 +9,7 @@ export default function StorageItem(item: StorageItem) {
 			className={styles.storage_item}
 			style={{ borderColor: item.color }}
 		>
-			{item.text}
+			{item.name}
 		</Link>
 	);
 }

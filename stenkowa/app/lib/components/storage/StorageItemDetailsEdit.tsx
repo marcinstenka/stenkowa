@@ -1,7 +1,9 @@
+import { StorageItem } from "../../types/types";
 import StorageItemEditForm from "./StorageItemEditForm";
 
 export default function StorageItemDetailsEdit(){
-    const tempItem = {
+    const tempItem:StorageItem= {
+            id: 1,
 			name: 'Zrobić pranie',
 			color: '#0050b8',
 			details:
