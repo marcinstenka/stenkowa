@@ -29,6 +29,7 @@ export default function TodoEditForm(todo: TodoType) {
 						onChange={handleHeaderChange}
 						value={details_header}
 						autoComplete='off'
+						minLength={3}
 						color-changing='border-color'
 						style={{ borderColor: `${todo.color}` }}
 					/>

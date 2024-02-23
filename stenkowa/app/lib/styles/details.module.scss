@@ -9,7 +9,7 @@ $textareaMinHeight: 48px;
 	&_header {
 		display: flex;
 		justify-content: space-between;
-		align-items: center;
+		align-items: end;
 		width: 100%;
 		white-space: pre;
 		h4 {
@@ -60,6 +60,9 @@ $textareaMinHeight: 48px;
 			svg {
 				font-size: 23px;
 				cursor: pointer;
+			}
+			a {
+				display: flex;
 			}
 		}
 	}
@@ -151,6 +154,8 @@ $textareaMinHeight: 48px;
 }
 
 .input_container {
+	min-width: 10px;
+	min-height: 24px;
 	input {
 		font-size: 20px;
 		padding: 0;
@@ -170,9 +175,13 @@ $textareaMinHeight: 48px;
 		min-height: $textareaMinHeight;
 	}
 }
+.date_short_input_container {
+	width: 76px !important;
+}
 .date_input_container {
 	width: 120px;
-	height: 50%;
+	height: 25.6px;
+
 	&:last-of-type {
 		input {
 			border-bottom-width: 2px;
@@ -184,6 +193,7 @@ $textareaMinHeight: 48px;
 		font-size: 14px;
 		display: flex;
 		padding: 0;
+		height: 100%;
 		&::-webkit-calendar-picker-indicator {
 			background: transparent;
 			bottom: 0;

@@ -6,6 +6,7 @@ import Link from 'next/link';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 export default function StorageItemDetails() {
 	const tempItem = {
+		id: 1,
 		name: 'Zrobić pranie',
 		color: '#0050b8',
 		details:
@@ -27,7 +28,9 @@ export default function StorageItemDetails() {
 					Dodane przez: {tempItem.user}
 				</p>
 				<div className={styles.details_lower_icons}>
-					<BiSolidEdit style={{ color: `${tempItem.color}` }} />
+					<Link href={`/storage/${tempItem.id}/edit`}>
+						<BiSolidEdit style={{ color: `${tempItem.color}` }} />
+					</Link>
 					<MdDelete style={{ color: `${tempItem.color}` }} />
 				</div>
 			</div>

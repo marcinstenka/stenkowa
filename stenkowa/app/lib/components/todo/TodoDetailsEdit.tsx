@@ -1,7 +1,7 @@
 import TodoEditForm from './TodoEditForm';
 import { TodoType } from '../../types/types';
 
-export default function TodoDetails() {
+export default function TodoDetailsEdit() {
 	const tempTodo: TodoType = {
 		id: 1,
 		name: 'Zrób pranie',

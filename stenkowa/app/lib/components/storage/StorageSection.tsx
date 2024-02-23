@@ -11,7 +11,7 @@ export default function StorageSection({ section }: StorageSectionProps) {
 			<h3 className={styles.storage_date}>{section.date}</h3>
 			<div className={styles.storage_items}>
 				{section.items.map((item, index) => (
-					<StorageItem id={item.id} color={item.color} text={item.text} key={index} />
+					<StorageItem {...item} key={index} />
 				))}
 			</div>
 		</section>
