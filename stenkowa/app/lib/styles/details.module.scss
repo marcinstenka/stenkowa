@@ -182,14 +182,13 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_short_input_container {
-	width: 86px !important;
+	width: 81px !important;
 	input {
-		font-size: 16px !important;
+		font-size: 15px !important;
 	}
 }
 .date_input_container {
 	width: 120px;
-	// height: 25.6px;
 	height: 50%;
 	&:last-of-type {
 		input {
