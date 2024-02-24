@@ -112,7 +112,7 @@ export default function TodoEditForm(todo: TodoType) {
 			<div className={styles.details_back_button}>
 				<Link
 					className={styles.details_back}
-					href='/todo'
+					href={`/todo/${todo.id}`}
 					style={{ backgroundColor: `${todo.color}` }}
 					color-changing='background'
 				>
@@ -120,7 +120,7 @@ export default function TodoEditForm(todo: TodoType) {
 				</Link>
 				<Link
 					className={styles.details_back}
-					href='/todo'
+					href={`/todo/${todo.id}`}
 					style={{ backgroundColor: `${todo.color}` }}
 					color-changing='background'
 				>

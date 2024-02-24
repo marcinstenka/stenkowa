@@ -9,7 +9,7 @@ $textareaMinHeight: 48px;
 	&_header {
 		display: flex;
 		justify-content: space-between;
-		align-items: end;
+		align-items: flex-end;
 		width: 100%;
 		white-space: pre;
 		h4 {
@@ -47,7 +47,7 @@ $textareaMinHeight: 48px;
 	&_lower {
 		display: flex;
 		justify-content: space-between;
-		align-items: end;
+		align-items: flex-end;
 		width: 100%;
 		p {
 			font-size: 14px;

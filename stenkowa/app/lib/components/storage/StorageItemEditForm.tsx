@@ -92,7 +92,7 @@ export default function StorageItemEditForm(item: StorageItem) {
 			<div className={styles.details_back_button}>
 				<Link
 					className={styles.details_back}
-					href='/storage'
+					href={`/storage/${item.id}`}
 					style={{ backgroundColor: `${color}` }}
 					color-changing='background'
 				>
@@ -100,7 +100,7 @@ export default function StorageItemEditForm(item: StorageItem) {
 				</Link>
 				<Link
 					className={styles.details_back}
-					href='/storage'
+					href={`/storage/${item.id}`}
 					style={{ backgroundColor: `${color}` }}
 					color-changing='background'
 				>
