@@ -5,7 +5,7 @@ $backgroundPadding: 80px;
 
 .container {
 	background: var(--background);
-	min-height: 900px;
+	min-height: calc(100vh - $backgroundPadding);
 	position: relative;
 	border-radius: 35px 35px 0 0;
 	h2 {
