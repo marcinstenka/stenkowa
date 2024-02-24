@@ -9,7 +9,7 @@ $textareaMinHeight: 48px;
 	&_header {
 		display: flex;
 		justify-content: space-between;
-		align-items: end;
+		align-items: flex-end;
 		width: 100%;
 		white-space: pre;
 		h4 {
@@ -47,7 +47,7 @@ $textareaMinHeight: 48px;
 	&_lower {
 		display: flex;
 		justify-content: space-between;
-		align-items: end;
+		align-items: flex-end;
 		width: 100%;
 		p {
 			font-size: 14px;
@@ -223,7 +223,11 @@ $textareaMinHeight: 48px;
 .input_color_container {
 	width: 30px;
 	height: 30px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
 	input {
+		opacity: 0;
 		width: 100%;
 		padding: 0;
 		height: 100%;
