@@ -14,7 +14,7 @@ export default function TodoCreate() {
 					<textarea name='new_todo_description' id='new_todo_description' />
 				</div>
 				<div className={styles.date_container}>
-					<label htmlFor='new_todo_added'>Data wprowadzenia:</label>
+					<label htmlFor='new_todo_added'>Początek:</label>
 					<input
 						type='datetime-local'
 						name='new_todo_added'
@@ -23,7 +23,7 @@ export default function TodoCreate() {
 					/>
 				</div>
 				<div className={styles.date_container}>
-					<label htmlFor='new_todo_deadline'>Data zakończenia:</label>
+					<label htmlFor='new_todo_deadline'>Deadline:</label>
 					<input
 						type='datetime-local'
 						name='new_todo_deadline'
