@@ -4,18 +4,14 @@ export default function TodoCreate() {
 	return (
 		<div className={styles.container}>
 			<h3>Dodaj nowe todo</h3>
-			<form>
+			<form action=''>
 				<div className={styles.input_container}>
 					<label htmlFor='new_todo_name'>Nazwa:</label>
 					<input type='text' name='new_todo_name' id='new_todo_name' />
 				</div>
 				<div className={styles.input_container}>
 					<label htmlFor='new_todo_description'>Opis:</label>
-					<input
-						type='text'
-						name='new_todo_description'
-						id='new_todo_description'
-					/>
+					<textarea name='new_todo_description' id='new_todo_description' />
 				</div>
 				<div className={styles.date_container}>
 					<label htmlFor='new_todo_added'>Data wprowadzenia:</label>
@@ -23,6 +19,7 @@ export default function TodoCreate() {
 						type='datetime-local'
 						name='new_todo_added'
 						id='new_todo_added'
+						defaultValue={new Date().toISOString().slice(0, 16)}
 					/>
 				</div>
 				<div className={styles.date_container}>
@@ -31,6 +28,7 @@ export default function TodoCreate() {
 						type='datetime-local'
 						name='new_todo_deadline'
 						id='new_todo_deadline'
+						defaultValue={new Date().toISOString().slice(0, 16)}
 					/>
 				</div>
 				<div className={styles.color_container}>

@@ -26,6 +26,7 @@
 .back_buttons {
 	display: flex;
 	gap: 20px;
+	justify-content: center;
 	.back_button {
 		min-width: 90px;
 		display: flex;
