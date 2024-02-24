@@ -1,7 +1,7 @@
 'use client';
 import styles from '../../styles/details.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
-import { MdDelete, MdDone } from 'react-icons/md';
+import { MdColorLens, MdDelete, MdDone } from 'react-icons/md';
 import Link from 'next/link';
 import { StorageItem, TodoType } from '../../types/types';
 import useTodoEdit from '../../hooks/useTodoEdit';
@@ -73,6 +73,10 @@ export default function StorageItemEditForm(item: StorageItem) {
 				</p>
 				<div className={styles.details_lower_icons}>
 					<div className={styles.input_color_container}>
+						<MdColorLens
+							style={{ color: `${item.color}` }}
+							color-changing='color'
+						/>
 						<input
 							type='color'
 							name='details_color'

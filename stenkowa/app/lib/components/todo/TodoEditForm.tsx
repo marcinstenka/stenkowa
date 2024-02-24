@@ -1,10 +1,10 @@
 'use client';
+import Link from 'next/link';
+import useTodoEdit from '../../hooks/useTodoEdit';
+import { TodoType } from '../../types/types';
 import styles from '../../styles/details.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
-import { MdDelete, MdDone } from 'react-icons/md';
-import Link from 'next/link';
-import { TodoType } from '../../types/types';
-import useTodoEdit from '../../hooks/useTodoEdit';
+import { MdDelete, MdDone, MdColorLens } from 'react-icons/md';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
@@ -37,6 +37,10 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 				<div className={styles.details_header_icons}>
 					<div className={styles.input_color_container}>
+						<MdColorLens
+							style={{ color: `${todo.color}` }}
+							color-changing='color'
+						/>
 						<input
 							type='color'
 							name='details_color'
