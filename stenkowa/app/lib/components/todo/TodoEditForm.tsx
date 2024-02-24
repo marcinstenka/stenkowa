@@ -5,6 +5,7 @@ import { TodoType } from '../../types/types';
 import styles from '../../styles/details.module.scss';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { MdDelete, MdDone, MdColorLens } from 'react-icons/md';
+import BackButtons from '../global/BackButtons';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
@@ -109,24 +110,7 @@ export default function TodoEditForm(todo: TodoType) {
 			>
 				Kliknij element, aby zmienić
 			</p>
-			<div className={styles.details_back_button}>
-				<Link
-					className={styles.details_back}
-					href={`/todo/${todo.id}`}
-					style={{ backgroundColor: `${todo.color}` }}
-					color-changing='background'
-				>
-					<IoReturnDownBackOutline />
-				</Link>
-				<Link
-					className={styles.details_back}
-					href={`/todo/${todo.id}`}
-					style={{ backgroundColor: `${todo.color}` }}
-					color-changing='background'
-				>
-					<MdDone />
-				</Link>
-			</div>
+			<BackButtons href={`/todo/${todo.id}`} color={color} />
 		</form>
 	);
 }

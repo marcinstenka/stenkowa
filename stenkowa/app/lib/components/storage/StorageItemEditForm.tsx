@@ -8,6 +8,7 @@ import useTodoEdit from '../../hooks/useTodoEdit';
 import { BiSolidEdit } from 'react-icons/bi';
 import { formatDate } from '../../functions/functions';
 import useStorageItemEdit from '../../hooks/useStorageItemEdit';
+import BackButtons from '../global/BackButtons';
 
 export default function StorageItemEditForm(item: StorageItem) {
 	// const date_added = formatDate(item.date_added, false);
@@ -88,25 +89,7 @@ export default function StorageItemEditForm(item: StorageItem) {
 					<MdDelete style={{ color: `${color}` }} />
 				</div>
 			</div>
-
-			<div className={styles.details_back_button}>
-				<Link
-					className={styles.details_back}
-					href={`/storage/${item.id}`}
-					style={{ backgroundColor: `${color}` }}
-					color-changing='background'
-				>
-					<IoReturnDownBackOutline />
-				</Link>
-				<Link
-					className={styles.details_back}
-					href={`/storage/${item.id}`}
-					style={{ backgroundColor: `${color}` }}
-					color-changing='background'
-				>
-					<MdDone />
-				</Link>
-			</div>
+			<BackButtons href={`/storage/${item.id}`} color={color} />
 		</div>
 	);
 }
