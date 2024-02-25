@@ -9,19 +9,18 @@ import { BiSolidEdit } from 'react-icons/bi';
 import { formatDate } from '../../functions/functions';
 import useStorageItemEdit from '../../hooks/useStorageItemEdit';
 import BackButtons from '../global/BackButtons';
+import useColorChanging from '../../hooks/useColorChanging';
 
 export default function StorageItemEditForm(item: StorageItem) {
-	// const date_added = formatDate(item.date_added, false);
 	const {
 		handleHeaderChange,
 		handleDetailsChange,
 		handleDateAddedChange,
-		handleColorChange,
 		details_header,
 		details,
 		date_added,
-		color,
 	} = useStorageItemEdit(item);
+	const { color, handleColorChange } = useColorChanging();
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>

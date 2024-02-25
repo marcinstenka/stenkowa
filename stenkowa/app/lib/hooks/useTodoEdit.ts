@@ -7,7 +7,6 @@ export default function useTodoEdit(todo: TodoType) {
 	const [details, setDetails] = useState(todo.details);
 	const [date_added, setDate_added] = useState(todo.date_added);
 	const [date_deadline, setDate_deadline] = useState(todo.date_deadline);
-	const [color, setColor] = useState(todo.color);
 	const [timeLeft, setTimeLeft] = useState(
 		calculateTimedifference(todo.date_added, todo.date_deadline)
 	);
@@ -19,17 +18,6 @@ export default function useTodoEdit(todo: TodoType) {
 
 		setTimeLeft(calculateTimedifference(new_date_added, new_date_deadline));
 	}, [date_added, date_deadline]);
-
-	// changing color live
-	useEffect(() => {
-		const colorChangingElements = document.querySelectorAll('[color-changing]');
-		colorChangingElements.forEach((element) => {
-			element.setAttribute(
-				'style',
-				`${element.getAttribute('color-changing')}: ${color}`
-			);
-		});
-	}, [color]);
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);
@@ -43,21 +31,16 @@ export default function useTodoEdit(todo: TodoType) {
 	const handleDateDeadlineChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDate_deadline(new Date(e.target.value));
 	};
-	const handleColorChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setColor(e.target.value);
-	};
 
 	return {
 		handleHeaderChange,
 		handleDetailsChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
-		handleColorChange,
 		details_header,
 		details,
 		date_added,
 		date_deadline,
-		color,
 		timeLeft,
 	};
 }
