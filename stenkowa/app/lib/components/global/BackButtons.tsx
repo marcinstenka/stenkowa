@@ -13,7 +13,6 @@ export default function BackButtons(options: BackButtonsProps) {
 				className={styles.back_button}
 				href={options.href}
 				style={{ backgroundColor: options.color }}
-				color-changing='background'
 			>
 				<IoReturnDownBackOutline />
 			</Link>
@@ -21,7 +20,6 @@ export default function BackButtons(options: BackButtonsProps) {
 				className={styles.back_button}
 				href={options.href}
 				style={{ backgroundColor: options.color }}
-				color-changing='background'
 			>
 				<MdDone />
 			</Link>

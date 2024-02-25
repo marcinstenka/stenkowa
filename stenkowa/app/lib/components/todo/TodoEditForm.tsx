@@ -1,11 +1,10 @@
 'use client';
-import Link from 'next/link';
 import useTodoEdit from '../../hooks/useTodoEdit';
 import { TodoType } from '../../types/types';
 import styles from '../../styles/details.module.scss';
-import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { MdDelete, MdDone, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
+import useColorChanging from '../../hooks/useColorChanging';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
@@ -13,12 +12,11 @@ export default function TodoEditForm(todo: TodoType) {
 		handleDetailsChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
-		handleColorChange,
 		details_header,
 		details,
-		color,
 		timeLeft,
 	} = useTodoEdit(todo);
+	const { color, handleColorChange } = useColorChanging();
 	return (
 		<form className={styles.details}>
 			<div className={styles.details_header}>
