@@ -26,16 +26,16 @@ export default function BookmarksCreate() {
 					<label htmlFor='new_bookmark_icon' color-changing='border-color'>
 						Ikona:
 					</label>
-					<BookmarkIconSelect />
+					<BookmarkIconSelect color={color} />
 				</div>
 				<div className={styles.color_container}>
-					<label htmlFor='new_item_color' color-changing='border-color'>
+					<label htmlFor='new_bookmark_color' color-changing='border-color'>
 						Kolor:
 					</label>
 					<input
 						type='color'
-						name='new_item_color'
-						id='new_item_color'
+						name='new_bookmark_color'
+						id='new_bookmark_color'
 						defaultValue='#0050b8'
 						onChange={handleColorChange}
 					/>

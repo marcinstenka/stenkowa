@@ -51,7 +51,8 @@
 
 .input_container,
 .date_container,
-.color_container {
+.color_container, 
+.icon_container {
 	label {
 		width: fit-content;
 		font-size: 18px;
@@ -112,13 +113,10 @@
 	display: none;
 }
 .icon_container {
-	label {
-		border: 1px solid blue;
-	}
-	border: 1px solid red;
 	display: flex;
 	align-items: center;
 	.select {
-		border: 1px solid green;
+		font-size: 40px;
+		margin: 0 0 0 30px;
 	}
 }

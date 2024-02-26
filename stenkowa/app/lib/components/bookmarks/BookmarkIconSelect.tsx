@@ -1,5 +1,12 @@
 import styles from '../../styles/create.module.scss';
-import Select, { SingleValue } from 'react-select';
+import Select, {
+	SingleValue,
+	components,
+	InputProps,
+	OptionProps,
+	SingleValueProps,
+	MultiValue,
+} from 'react-select';
 import { useState } from 'react';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
 import { FaFacebookMessenger, FaMoneyCheckDollar } from 'react-icons/fa6';
@@ -18,17 +25,46 @@ import { SiGmail, SiNetflix } from 'react-icons/si';
 import { IoIosDocument } from 'react-icons/io';
 import { MdOutlineGTranslate } from 'react-icons/md';
 import { CiMail } from 'react-icons/ci';
-
-export default function BookmarkIconSelect() {
+type BookmarkIconSelectProps = {
+	color: string;
+};
+export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
 	const [selectedOption, setSelectedOption] = useState<SingleValue<{
 		value: string;
 		label: JSX.Element;
 	}> | null>(null);
 
-	const handleChange = (
-		newValue: SingleValue<{ value: string; label: JSX.Element }>
+	const Input = (props: InputProps<{ value: string; label: JSX.Element }>) => {
+		return (
+			<div style={{ display: 'none' }}>
+				<components.Input {...props} />
+			</div>
+		);
+	};
+
+	const Option = (
+		props: OptionProps<{ value: string; label: JSX.Element }>
 	) => {
-		setSelectedOption(newValue);
+		return (
+			<div style={{ color: `${color}` }}>
+				<components.Option {...props} />
+			</div>
+		);
+	};
+	const SingleValue = (
+		props: SingleValueProps<{ value: string; label: JSX.Element }>
+	) => (
+		<components.SingleValue {...props}>{props.children}</components.SingleValue>
+	);
+
+	const handleChange = (
+		newValue:
+			| MultiValue<{ value: string; label: JSX.Element }>
+			| SingleValue<{ value: string; label: JSX.Element }>
+	) => {
+		setSelectedOption(
+			newValue as SingleValue<{ value: string; label: JSX.Element }>
+		);
 	};
 	const options = [
 		{ value: 'TiWeatherPartlySunny', label: <TiWeatherPartlySunny /> },
@@ -52,10 +88,17 @@ export default function BookmarkIconSelect() {
 	return (
 		<Select
 			className={styles.select}
-			unstyled
-			defaultValue={selectedOption}
+			styles={{
+				singleValue: (base) => ({
+					...base,
+					color: color,
+				}),
+			}}
+			components={{ Option, Input, SingleValue }}
+			defaultValue={options[0]}
 			onChange={handleChange}
 			options={options}
+			classNamePrefix='select'
 		/>
 	);
 }
