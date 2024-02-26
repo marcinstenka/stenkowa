@@ -15,10 +15,20 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": -2018.381917796272,
-                  "y": 9.945585585445883,
-                  "zoom": -0.4220425364529612
+                  "x": -323.0021714072515,
+                  "y": 468.5101110653486,
+                  "zoom": -1.422042536452961
                 }
+              }
+            }
+          },
+          {
+            "id": "865286ccb19fe990",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.8"
               }
             }
           }
@@ -72,7 +82,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 300
+    "width": 200,
+    "collapsed": true
   },
   "right": {
     "id": "d8b91caa70686982",
@@ -151,30 +162,45 @@
   },
   "active": "a6c479904325c3ee",
   "lastOpenFiles": [
-    "README.md",
+    "stenkowa/app/todo/create/page.tsx",
+    "stenkowa/app/todo/create",
+    "stenkowa/app/todo/[id]/edit/page.tsx",
+    "stenkowa/app/todo/[id]/edit",
+    "stenkowa/app/storage/create/page.tsx",
+    "stenkowa/app/storage/create",
+    "stenkowa/app/storage/[id]/edit/page.tsx",
+    "stenkowa/app/storage/[id]/edit",
+    "stenkowa/app/lib/styles/create.module.scss",
+    "stenkowa/app/lib/hooks/useTodoEdit.ts",
+    "stenkowa/app/lib/hooks/useStorageItemEdit.ts",
+    "stenkowa/node_modules/react-select/README.md",
+    "stenkowa/node_modules/cosmiconfig/README.md",
+    "stenkowa/node_modules/@emotion/cache/README.md",
+    "stenkowa/node_modules/hoist-non-react-statics/CHANGELOG.md",
+    "stenkowa/node_modules/find-root/LICENSE.md",
+    "stenkowa/node_modules/@babel/highlight/node_modules/color-convert/README.md",
+    "stenkowa/node_modules/@babel/code-frame/node_modules/color-convert/README.md",
+    "stenkowa/node_modules/source-map/CHANGELOG.md",
+    "stenkowa/node_modules/babel-plugin-macros/README.md",
+    "stenkowa/node_modules/@babel/highlight/node_modules/supports-color/readme.md",
+    "stenkowa/node_modules/@babel/code-frame/node_modules/chalk/readme.md",
+    "stenkowa/node_modules/@babel/highlight/node_modules/chalk/readme.md",
+    "stenkowa/node_modules/@babel/code-frame/node_modules/supports-color/readme.md",
+    "stenkowa/node_modules/json-parse-even-better-errors/README.md",
+    "stenkowa/node_modules/lines-and-columns/README.md",
+    "stenkowa/node_modules/babel-plugin-macros/CHANGELOG.md",
+    "stenkowa/node_modules/@babel/highlight/node_modules/ansi-styles/readme.md",
+    "stenkowa/node_modules/@babel/code-frame/node_modules/escape-string-regexp/readme.md",
+    "stenkowa/node_modules/@babel/code-frame/node_modules/ansi-styles/readme.md",
+    "stenkowa/node_modules/@babel/highlight/node_modules/escape-string-regexp/readme.md",
+    "stenkowa/node_modules/@babel/highlight/node_modules/has-flag/readme.md",
+    "stenkowa/node_modules/@babel/code-frame/node_modules/has-flag/readme.md",
+    "stenkowa/node_modules/convert-source-map/README.md",
+    "stenkowa/node_modules/to-fast-properties/readme.md",
+    "stenkowa/node_modules/json-parse-even-better-errors/LICENSE.md",
     "Untitled.canvas",
-    "project/Main page.md",
-    "2024-02-04.md",
     "project/Stenkowa Strona 3.0.canvas",
-    "stenkowa/app/login/page.module.scss",
-    "stenkowa/app/lib/components/main/mainLogin.module.scss",
-    "stenkowa/app/lib/components/main/MainLogin.tsx",
-    "stenkowa/app/lib/components/main/MainLogging.tsx",
-    "stenkowa/app/lib/components/global/StenkowaTitle.tsx",
-    "stenkowa/app/lib/components/global/StenkowaTitle.module.scss",
-    "stenkowa/app/lib/components/global/global.module.scss",
-    "stenkowa/app/lib/components/global/global.scss",
-    "stenkowa/app/lib/components/global/Options.tsx",
-    "stenkowa/app/lib/components/global/options.module.scss",
-    "project/Background.md",
-    "Untitled.md",
-    "project/Forms.md",
-    "project/Sign up & sign in.md",
     "stenkowa/public/vercel.svg",
-    "stenkowa/public/next.svg",
-    "stenkowa/README.md",
-    "project/Icon picker.md",
-    "project/Color picker.md",
-    "project/Faster bookmarks loading.md"
+    "stenkowa/public/next.svg"
   ]
 }
