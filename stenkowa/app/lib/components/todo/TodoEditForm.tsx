@@ -2,7 +2,7 @@
 import useTodoEdit from '../../hooks/useTodoEdit';
 import { TodoType } from '../../types/types';
 import styles from '../../styles/details.module.scss';
-import { MdDelete, MdDone, MdColorLens } from 'react-icons/md';
+import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
 
@@ -30,16 +30,13 @@ export default function TodoEditForm(todo: TodoType) {
 						autoComplete='off'
 						minLength={3}
 						color-changing='border-color'
-						style={{ borderColor: `${todo.color}` }}
+						style={{ borderColor: `${color}` }}
 					/>
 					<h4 className={styles.invisible}>{details_header}</h4>
 				</div>
 				<div className={styles.details_header_icons}>
 					<div className={styles.input_color_container}>
-						<MdColorLens
-							style={{ color: `${todo.color}` }}
-							color-changing='color'
-						/>
+						<MdColorLens style={{ color: `${color}` }} color-changing='color' />
 						<input
 							type='color'
 							name='details_color'
@@ -48,7 +45,7 @@ export default function TodoEditForm(todo: TodoType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<MdDelete style={{ color: `${todo.color}` }} color-changing='color' />
+					<MdDelete style={{ color: `${color}` }} color-changing='color' />
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
@@ -65,10 +62,7 @@ export default function TodoEditForm(todo: TodoType) {
 			<div className={styles.details_dates}>
 				<div className={styles.details_date}>
 					<p>Dodane:</p>
-					<p
-						style={{ borderColor: `${todo.color}` }}
-						color-changing='border-color'
-					>
+					<p style={{ borderColor: `${color}` }} color-changing='border-color'>
 						Deadline:
 					</p>
 				</div>
@@ -88,7 +82,7 @@ export default function TodoEditForm(todo: TodoType) {
 							name='details_date'
 							id='details_date'
 							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
-							style={{ borderColor: `${todo.color}` }}
+							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
 						/>
@@ -97,13 +91,13 @@ export default function TodoEditForm(todo: TodoType) {
 			</div>
 			<h3>
 				Zostało:{' '}
-				<span style={{ color: `${todo.color}` }} color-changing='color'>
+				<span style={{ color: `${color}` }} color-changing='color'>
 					{timeLeft}
 				</span>
 			</h3>
 			<p
 				className={styles.details_edit_info}
-				style={{ borderColor: `${todo.color}` }}
+				style={{ borderColor: `${color}` }}
 				color-changing='border-color'
 			>
 				Kliknij element, aby zmienić

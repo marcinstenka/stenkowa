@@ -33,3 +33,32 @@ a:visited {
 	transition: 0.5s;
 	transform: translateY(0);
 }
+
+// React select lib (on /bookmark/create)
+.select__control,
+.select__value-container {
+	border: none !important;
+	height: 100% !important;
+	cursor: pointer;
+}
+.select__indicators {
+	cursor: pointer;
+}
+.select__input-container {
+	margin: 0 !important;
+}
+.select__control {
+	box-shadow: var(--shadow) !important;
+	color: red;
+}
+.select__option {
+	display: flex !important;
+	justify-content: center !important;
+	padding: 12px 0 !important;
+}
+.select__single-value {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	padding: 8px 0 8px 0;
+}

@@ -51,7 +51,8 @@
 
 .input_container,
 .date_container,
-.color_container {
+.color_container, 
+.icon_container {
 	label {
 		width: fit-content;
 		font-size: 18px;
@@ -106,5 +107,16 @@
 			border: none;
 			box-shadow: var(--shadow);
 		}
+	}
+}
+.select__indicators {
+	display: none;
+}
+.icon_container {
+	display: flex;
+	align-items: center;
+	.select {
+		font-size: 40px;
+		margin: 0 0 0 30px;
 	}
 }
