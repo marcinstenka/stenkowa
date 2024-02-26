@@ -108,3 +108,17 @@
 		}
 	}
 }
+.select__indicators {
+	display: none;
+}
+.icon_container {
+	label {
+		border: 1px solid blue;
+	}
+	border: 1px solid red;
+	display: flex;
+	align-items: center;
+	.select {
+		border: 1px solid green;
+	}
+}
