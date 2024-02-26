@@ -7,7 +7,7 @@ import BookmarkIconSelect from './BookmarkIconSelect';
 export default function BookmarksCreate() {
 	const { color, handleColorChange } = useColorChanging();
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} >
 			<h3 color-changing='border-color'>Dodaj nową zakładkę</h3>
 			<form action=''>
 				<div className={styles.input_container}>
@@ -40,7 +40,7 @@ export default function BookmarksCreate() {
 						onChange={handleColorChange}
 					/>
 				</div>
-				<BackButtons href='/storage' color={color} />
+				<BackButtons href='/bookmarks' color={color} />
 			</form>
 		</div>
 	);

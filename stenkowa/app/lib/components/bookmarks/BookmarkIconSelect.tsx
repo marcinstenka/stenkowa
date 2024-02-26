@@ -6,6 +6,7 @@ import Select, {
 	OptionProps,
 	SingleValueProps,
 	MultiValue,
+	MenuListProps,
 } from 'react-select';
 import { useState } from 'react';
 import { TiWeatherPartlySunny } from 'react-icons/ti';
@@ -56,7 +57,13 @@ export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
 	) => (
 		<components.SingleValue {...props}>{props.children}</components.SingleValue>
 	);
-
+	const MenuList = (
+		props: MenuListProps<{ value: string; label: JSX.Element }>
+	) => {
+		return (
+			<components.MenuList {...props}>{props.children}</components.MenuList>
+		);
+	};
 	const handleChange = (
 		newValue:
 			| MultiValue<{ value: string; label: JSX.Element }>
@@ -66,6 +73,7 @@ export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
 			newValue as SingleValue<{ value: string; label: JSX.Element }>
 		);
 	};
+
 	const options = [
 		{ value: 'TiWeatherPartlySunny', label: <TiWeatherPartlySunny /> },
 		{ value: 'FaMoneyCheckDollar', label: <FaMoneyCheckDollar /> },
@@ -93,8 +101,12 @@ export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
 					...base,
 					color: color,
 				}),
+				menuList: (base) => ({
+					...base,
+					maxHeight: '200px',
+				}),
 			}}
-			components={{ Option, Input, SingleValue }}
+			components={{ Option, Input, SingleValue, MenuList }}
 			defaultValue={options[0]}
 			onChange={handleChange}
 			options={options}
