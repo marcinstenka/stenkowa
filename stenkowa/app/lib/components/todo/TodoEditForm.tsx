@@ -2,7 +2,7 @@
 import useTodoEdit from '../../hooks/useTodoEdit';
 import { TodoType } from '../../types/types';
 import styles from '../../styles/details.module.scss';
-import { MdDelete, MdDone, MdColorLens } from 'react-icons/md';
+import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
 
