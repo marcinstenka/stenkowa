@@ -34,7 +34,10 @@ export default function Bookmark({ bookmark }: BookmarkProps) {
 			)}
 
 			<p className={styles.bookmark_text}>{bookmark.name}</p>
-			<Link href={`/bookmarks/${bookmark.id}/edit`} className={styles.bookmark_edit}>
+			<Link
+				href={`/bookmarks/${bookmark.id}/edit`}
+				className={styles.bookmark_edit}
+			>
 				<BiSolidEdit style={{ color: `${bookmark.color}` }} />
 			</Link>
 		</a>
