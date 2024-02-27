@@ -1,19 +1,21 @@
 'use client';
 import styles from '../../styles/details.module.scss';
-import { MdColorLens, MdDelete, MdDone } from 'react-icons/md';
-import { BookmarkType, StorageItem, TodoType } from '../../types/types';
+import { MdColorLens, MdDelete } from 'react-icons/md';
+import { BookmarkType } from '../../types/types';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
+import useBookmarkEdit from '../../hooks/useBookmarkEdit';
+import BookmarkIconSelect from './BookmarkIconSelect';
 
 export default function BookmarkEditForm(bookmark: BookmarkType) {
-	// const {
-	// 	handleHeaderChange,
-	// 	handleDetailsChange,
-	// 	handleDateAddedChange,
-	// 	details_header,
-	// 	details,
-	// 	date_added,
-	// } = useStorageItemEdit(bookmark);
+	const {
+		handleHeaderChange,
+		handleLinkChange,
+		handleIconChange,
+		details_header,
+		link,
+		icon,
+	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging();
 	return (
 		<div className={styles.details}>
@@ -23,17 +25,29 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 						type='text'
 						name='details_header'
 						id='details_header'
-						// onChange={handleHeaderChange}
-						// value={details_header}
+						onChange={handleHeaderChange}
+						value={details_header}
 						autoComplete='off'
 						minLength={3}
 						color-changing='border-color'
 						style={{ borderColor: `${color}` }}
 					/>
-					<h4 className={styles.invisible}>{}</h4>
+					<h4 className={styles.invisible}>{details_header}</h4>
 				</div>
 			</div>
-
+			<div className={styles.textarea_container}>
+				<div className={styles.details_text}>{link}</div>
+				<textarea
+					name='details_text'
+					id='details_text'
+					onChange={handleLinkChange}
+				>
+					{link}
+				</textarea>
+			</div>
+			<div className={styles.icon_container}>
+				<BookmarkIconSelect color={color} value={icon} />
+			</div>
 			<div className={styles.details_lower}>
 				<p
 					className={styles.details_edit_info}
@@ -53,7 +67,7 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 							name='details_color'
 							id='details_color'
 							value={color}
-							// onChange={handleColorChange}
+							onChange={handleColorChange}
 						/>
 					</div>
 					<MdDelete style={{ color: `${color}` }} />

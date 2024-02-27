@@ -6,7 +6,7 @@ export default function BookmarkDetailsEdit() {
 		id: 1,
 		link: 'https://www.netflix.com/browse',
 		icon: 'SiNetflix',
-		text: 'Netflix',
+		name: 'Netflix',
 		color: '#E50914',
 	};
 

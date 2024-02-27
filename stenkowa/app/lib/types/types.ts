@@ -15,7 +15,7 @@ export type BookmarkType = {
 	icon: string;
 	link: string;
 	color: string;
-	text: string;
+	name: string;
 };
 export type TodoType = {
 	id: number;

@@ -28,8 +28,37 @@ import { MdOutlineGTranslate } from 'react-icons/md';
 import { CiMail } from 'react-icons/ci';
 type BookmarkIconSelectProps = {
 	color: string;
+	value: string;
 };
-export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
+
+type IconMap = {
+	[key: string]: React.ElementType;
+};
+
+const iconMap: IconMap = {
+	FaFacebookMessenger,
+	FaMoneyCheckDollar,
+	TiWeatherPartlySunny,
+	FaBook,
+	FaBusAlt,
+	FaCarAlt,
+	FaFacebookF,
+	FaGithub,
+	FaInstagram,
+	FaPlane,
+	FaStackOverflow,
+	FaYoutube,
+	SiGmail,
+	SiNetflix,
+	IoIosDocument,
+	MdOutlineGTranslate,
+	CiMail,
+};
+
+export default function BookmarkIconSelect({
+	color,
+	value,
+}: BookmarkIconSelectProps) {
 	const [selectedOption, setSelectedOption] = useState<SingleValue<{
 		value: string;
 		label: JSX.Element;
@@ -93,6 +122,10 @@ export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
 		{ value: 'FaGithub', label: <FaGithub /> },
 		{ value: 'CiMail', label: <CiMail /> },
 	];
+
+	const defaultOption =
+		options.find((option) => option.value === value) || options[0];
+
 	return (
 		<Select
 			className={styles.select}
@@ -107,7 +140,7 @@ export default function BookmarkIconSelect({ color }: BookmarkIconSelectProps) {
 				}),
 			}}
 			components={{ Option, Input, SingleValue, MenuList }}
-			defaultValue={options[0]}
+			defaultValue={defaultOption}
 			onChange={handleChange}
 			options={options}
 			classNamePrefix='select'

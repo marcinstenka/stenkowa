@@ -51,7 +51,7 @@
 
 .input_container,
 .date_container,
-.color_container, 
+.color_container,
 .icon_container {
 	label {
 		width: fit-content;
@@ -112,6 +112,7 @@
 .select__indicators {
 	display: none;
 }
+
 .icon_container {
 	display: flex;
 	align-items: center;
