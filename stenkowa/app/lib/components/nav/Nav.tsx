@@ -37,7 +37,7 @@ export default function Nav() {
 			})}
 			<div ref={indicator} className={styles.indicator}></div>
 			{shouldRenderAddIcon && (
-				<Link href={`${pathname}/create`} className={styles.button}>
+				<Link href={`${pathname}`} className={styles.button}>
 					<IoIosAdd />
 				</Link>
 			)}

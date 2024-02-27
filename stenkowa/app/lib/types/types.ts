@@ -11,6 +11,7 @@ export type StorageItem = {
 	user: string;
 };
 export type BookmarkType = {
+	id:number;
 	icon: string;
 	link: string;
 	color: string;
