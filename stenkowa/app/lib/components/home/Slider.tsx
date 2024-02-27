@@ -146,7 +146,13 @@ export default function Slider() {
 					<div className={styles.slide}>
 						<div className={styles.bookmarks}>
 							{bookmarks.map((bookmark, index) => {
-								return <Bookmark bookmark={bookmark} key={index} />;
+								return (
+									<Bookmark
+										bookmark={bookmark}
+										enableEdit={false}
+										key={index}
+									/>
+								);
 							})}
 						</div>
 						<p className={styles.slide_text}>

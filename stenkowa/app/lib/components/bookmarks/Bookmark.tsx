@@ -19,27 +19,31 @@ const iconMap: IconMap = {
 	SiGmail: SiGmail,
 };
 
-type BookmarkProps = { bookmark: BookmarkType };
-export default function Bookmark({ bookmark }: BookmarkProps) {
+type BookmarkProps = { bookmark: BookmarkType; enableEdit: boolean };
+export default function Bookmark({ bookmark, enableEdit }: BookmarkProps) {
 	const IconComponent = iconMap[bookmark.icon];
 
 	return (
-		<a href={bookmark.link} className={styles.bookmark}>
-			<div
-				style={{ background: `${bookmark.color}` }}
-				className={styles.bookmark_color}
-			></div>
-			{IconComponent && (
-				<IconComponent style={{ color: `${bookmark.color}` }} />
-			)}
+		<div className={styles.bookmark}>
+			<a href={bookmark.link}>
+				<div
+					style={{ background: `${bookmark.color}` }}
+					className={styles.bookmark_color}
+				></div>
+				{IconComponent && (
+					<IconComponent style={{ color: `${bookmark.color}` }} />
+				)}
 
-			<p className={styles.bookmark_text}>{bookmark.name}</p>
-			<Link
-				href={`/bookmarks/${bookmark.id}/edit`}
-				className={styles.bookmark_edit}
-			>
-				<BiSolidEdit style={{ color: `${bookmark.color}` }} />
-			</Link>
-		</a>
+				<p className={styles.bookmark_text}>{bookmark.name}</p>
+			</a>
+			{enableEdit && (
+				<Link
+					href={`/bookmarks/${bookmark.id}/edit`}
+					className={styles.bookmark_edit}
+				>
+					<BiSolidEdit style={{ color: `${bookmark.color}` }} />
+				</Link>
+			)}
+		</div>
 	);
 }
