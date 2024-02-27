@@ -1,4 +1,4 @@
-$todoHeight: 60px;
+$todoHeight:50px;
 
 .container {
 	padding: var(--containerPadding);
@@ -24,7 +24,7 @@ $todoHeight: 60px;
 		overflow: hidden;
 		display: -webkit-box;
 		-webkit-box-orient: vertical;
-		-webkit-line-clamp: 2;
+		-webkit-line-clamp: 1;
 		padding: 0 10px;
 	}
 	&:hover {
