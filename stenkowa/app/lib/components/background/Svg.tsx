@@ -64,8 +64,8 @@ export default function Svg({ primary }: SvgProps) {
 					gradientUnits='userSpaceOnUse'
 					id='SvgjsLinearGradient1111'
 				>
-					<stop stop-color='#0e2a47' offset='0'></stop>
-					<stop stop-color={primary} offset='0'></stop>
+					<stop stopColor='#0e2a47' offset='0'></stop>
+					<stop stopColor={primary} offset='0'></stop>
 				</linearGradient>
 			</defs>
 		</svg>
