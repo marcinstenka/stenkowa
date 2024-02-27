@@ -11,10 +11,11 @@ export type StorageItem = {
 	user: string;
 };
 export type BookmarkType = {
+	id:number;
 	icon: string;
 	link: string;
 	color: string;
-	text: string;
+	name: string;
 };
 export type TodoType = {
 	id: number;

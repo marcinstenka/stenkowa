@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
+import { Lato } from 'next/font/google';
 import './globals.scss';
-import Background from './lib/components/background/Background';
 import Nav from './lib/components/nav/Nav';
-const inter = Inter({ subsets: ['latin'] });
+const lato = Lato({ weight: ['300', '900'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'Stenkowa',
@@ -18,7 +17,7 @@ export default function RootLayout({
 }) {
 	return (
 		<html lang='pl'>
-			<body className={inter.className}>
+			<body className={lato.className}>
 				{children}
 				<Nav />
 			</body>

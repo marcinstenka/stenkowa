@@ -12,8 +12,10 @@ export default function Nav() {
 	const pathname = usePathname();
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
 	const { navItems } = useNavItems({ navItemsRefs, styles });
-	const { shouldRenderNav, shouldRenderAddIcon } = useNavRender(pathnames, pathname);
-	
+	const { shouldRenderNav, shouldRenderAddIcon } = useNavRender(
+		pathnames,
+		pathname
+	);
 
 	if (!shouldRenderNav) {
 		return;
@@ -35,9 +37,9 @@ export default function Nav() {
 			})}
 			<div ref={indicator} className={styles.indicator}></div>
 			{shouldRenderAddIcon && (
-				<div className={styles.button}>
+				<Link href={`${pathname}/create`} className={styles.button}>
 					<IoIosAdd />
-				</div>
+				</Link>
 			)}
 		</nav>
 	);

@@ -5,27 +5,31 @@ import styles from './bookmarks.module.scss';
 export default function BookmarksContainer() {
 	const bookmarks: BookmarkType[] = [
 		{
+			id: 1,
 			link: 'https://www.netflix.com/browse',
 			icon: 'SiNetflix',
-			text: 'Netflix',
+			name: 'Netflix',
 			color: '#E50914',
 		},
 		{
+			id: 2,
 			link: 'https://mail.google.com/mail/u/0/',
 			icon: 'SiGmail',
-			text: 'Gmail',
+			name: 'Gmail',
 			color: '#f2a60c',
 		},
 		{
+			id: 3,
 			link: 'https://www.facebook.com',
 			icon: 'FaFacebookF',
-			text: 'Facebook',
+			name: 'Facebook',
 			color: '#4267B2',
 		},
 		{
+			id: 4,
 			link: 'https://www.youtube.com/',
 			icon: 'FaYoutube',
-			text: 'Youtube',
+			name: 'Youtube',
 			color: '#FF0000',
 		},
 	];
