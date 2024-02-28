@@ -1,7 +1,7 @@
 import { ChangeEvent, useState } from 'react';
-import { StorageItem } from '../types/types';
+import { StorageItemType } from '../types/types';
 
-export default function useStorageItemEdit(item: StorageItem) {
+export default function useStorageItemEdit(item: StorageItemType) {
 	const [details_header, setDetails_header] = useState(item.name);
 	const [details, setDetails] = useState(item.details);
 	const [date_added, setDate_added] = useState(item.date_added);
