@@ -7,13 +7,16 @@
 	cursor: pointer;
 	transition: 0.3s;
 	transform: rotate(0);
+	animation: turn 1s;
 	svg {
 		font-size: 40px;
+		transition: 0.3s;
 	}
 	a {
 		opacity: 0;
 	}
 }
+
 .title {
 	font-size: 40px;
 	font-weight: normal;
