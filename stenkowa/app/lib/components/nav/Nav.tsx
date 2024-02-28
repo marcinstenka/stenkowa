@@ -7,14 +7,16 @@ import useNavItems from '../../hooks/useNavItems';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { pathnames } from './nav-links';
-import useNavRender from '../../hooks/useNavRender';
+import renderNav from '../../functions/functions';
 export default function Nav() {
+	const isLogged = true;
 	const pathname = usePathname();
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
 	const { navItems } = useNavItems({ navItemsRefs, styles });
-	const { shouldRenderNav, shouldRenderAddIcon } = useNavRender(
+	const { shouldRenderNav, shouldRenderAddIcon } = renderNav(
 		pathnames,
-		pathname
+		pathname,
+		isLogged
 	);
 
 	if (!shouldRenderNav) {

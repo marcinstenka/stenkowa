@@ -15,6 +15,11 @@
 		text-align: center;
 		margin: 25px 0 0px 0;
 	}
+	.last_added {
+		text-align: left;
+		margin: 30px 0 15px 0;
+		padding: 0 25px;
+	}
 	h4 {
 		font-size: 20px;
 		padding-top: 15px;
@@ -127,4 +132,27 @@
 			padding: 0;
 		}
 	}
+}
+
+.todo_container,
+.bookmarks_container,
+.storage_container {
+	padding: var(--containerPadding);
+	padding-top: 0 !important;
+}
+
+.todo_container {
+	display: flex;
+	flex-direction: column;
+	gap: 20px;
+}
+.bookmarks_container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+}
+.storage_container {
+	display: flex;
+	flex-direction: column;
+	gap: 15px;
 }

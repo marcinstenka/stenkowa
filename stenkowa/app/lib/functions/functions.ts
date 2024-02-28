@@ -79,3 +79,22 @@ export function formatDate(date: Date, full: boolean) {
 
 	return formatteDate;
 }
+
+export default function renderNav(
+	pathnames: string[],
+	pathname: string,
+	loggedIn: boolean
+) {
+	let shouldRenderNav = false;
+	let shouldRenderAddIcon = false;
+	pathnames.forEach((name) => {
+		if (pathname.includes(name)) {
+			shouldRenderNav = true;
+			if (!pathname.includes(`${name}/`)) {
+				shouldRenderAddIcon = true;
+			}
+		}
+		if (pathname == '/' && loggedIn) shouldRenderNav = true;
+	});
+	return { shouldRenderNav, shouldRenderAddIcon };
+}

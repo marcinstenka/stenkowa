@@ -1,8 +1,8 @@
 import styles from './storage.module.scss';
-import { StorageItem } from '../../types/types';
+import { StorageItemType } from '../../types/types';
 import Link from 'next/link';
 
-export default function StorageItem(item: StorageItem) {
+export default function StorageItem(item: StorageItemType) {
 	return (
 		<Link
 			href={`/storage/${item.id}`}
