@@ -1,5 +1,6 @@
 import Svg from './Svg';
 import styles from './background.module.scss';
+
 export default function Background() {
 	const primary = 'rgba(0, 80, 184, 1)';
 
@@ -8,6 +9,7 @@ export default function Background() {
 			<Svg primary={primary} />
 			<div className={styles.profile}>
 				<h2>Dostosuj swój profil</h2>
+			
 				<h3>Wybierz kolory:</h3>
 				<form className={`${styles.form} ${styles.colors}`}>
 					<div className={styles.colors_container}>
@@ -24,8 +26,6 @@ export default function Background() {
 							value='#ffffff'
 						/>
 					</div>
-
-					<button>Zaaktualizuj</button>
 				</form>
 				<h3>Zmień dane:</h3>
 				<form className={`${styles.form} ${styles.credentials}`}>
