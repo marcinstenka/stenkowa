@@ -2,15 +2,16 @@
 	position: absolute;
 	top: 15px;
 	right: 15px;
-	font-size: 40px;
+	font-size: 35px;
 	color: var(--background);
 	cursor: pointer;
 	transition: 0.3s;
-	width: 40px;
-	height: 40px;
 	transform: rotate(0);
-	&:hover {
-		transform: rotate(90deg);
+	svg {
+		font-size: 40px;
+	}
+	a {
+		opacity: 0;
 	}
 }
 .title {
