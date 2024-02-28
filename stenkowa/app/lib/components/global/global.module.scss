@@ -6,8 +6,8 @@
 	color: var(--background);
 	cursor: pointer;
 	transition: 0.3s;
-	transform: rotate(0);
-	animation: turn 1s;
+	gap: 5px;
+    display: flex;
 	svg {
 		font-size: 40px;
 		transition: 0.3s;
