@@ -1,8 +1,8 @@
 export type StorageSectionType = {
-	date: string;
-	items: StorageItem[];
+	date?: string;
+	items: StorageItemType[];
 };
-export type StorageItem = {
+export type StorageItemType = {
 	id: number;
 	color: string;
 	name: string;
@@ -11,7 +11,7 @@ export type StorageItem = {
 	user: string;
 };
 export type BookmarkType = {
-	id:number;
+	id: number;
 	icon: string;
 	link: string;
 	color: string;

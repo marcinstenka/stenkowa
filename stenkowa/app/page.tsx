@@ -1,13 +1,16 @@
 import Background from './lib/components/background/Background';
-import HomeContainer from './lib/components/home/HomeContainer';
+import HomeContainerLoggedOut from './lib/components/home/HomeContainerLoggedOut';
+import HomeContainerLoggedIn from './lib/components/home/HomeContainerLoggedIn';
 import Main from './lib/components/main/Main';
 
 export default function Home() {
+	const isLogged = true;
 	return (
 		<>
 			<Background />
 			<Main>
-				<HomeContainer />
+				{isLogged ? <HomeContainerLoggedIn /> : <HomeContainerLoggedOut />}
+				
 			</Main>
 		</>
 	);

@@ -1,17 +1,12 @@
 'use client';
 import styles from '../../styles/details.module.scss';
-import { IoReturnDownBackOutline } from 'react-icons/io5';
-import { MdColorLens, MdDelete, MdDone } from 'react-icons/md';
-import Link from 'next/link';
-import { StorageItem, TodoType } from '../../types/types';
-import useTodoEdit from '../../hooks/useTodoEdit';
-import { BiSolidEdit } from 'react-icons/bi';
-import { formatDate } from '../../functions/functions';
+import { MdColorLens, MdDelete } from 'react-icons/md';
+import { StorageItemType } from '../../types/types';
 import useStorageItemEdit from '../../hooks/useStorageItemEdit';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
 
-export default function StorageItemEditForm(item: StorageItem) {
+export default function StorageItemEditForm(item: StorageItemType) {
 	const {
 		handleHeaderChange,
 		handleDetailsChange,
