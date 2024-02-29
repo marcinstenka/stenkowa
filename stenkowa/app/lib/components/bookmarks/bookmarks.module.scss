@@ -47,3 +47,27 @@ $fontSizeHover: 16px;
 		box-shadow: var(--shadowHover);
 	}
 }
+@media (min-width: 900px) {
+	$fontSizeHover: 18px;
+	.bookmark {
+		height: 110px;
+		&_text {
+			font-size: 16px;
+			line-height: $fontSizeHover;
+		}
+		svg {
+			font-size: 45px;
+		}
+		&_edit {
+			right: 2px;
+			svg {
+				font-size: 24px;
+			}
+		}
+		&:hover {
+			.bookmark_text {
+				font-size: $fontSizeHover;
+			}
+		}
+	}
+}

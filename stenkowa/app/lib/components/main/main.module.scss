@@ -22,4 +22,10 @@ $backgroundPadding: 80px;
 	.main {
 		padding: $backgroundPadding $backgroundPadding 0 $backgroundPadding;
 	}
+	.container {
+		min-height: calc(100vh - $backgroundPadding);
+		h2 {
+			font-size: 48px;
+		}
+	}
 }

@@ -36,6 +36,8 @@ $todoHeight: 50px;
 	$todoHeight: 60px;
 	.todo {
 		height: $todoHeight;
+		font-size: 15px;
+
 		&_color {
 			height: $todoHeight;
 		}
