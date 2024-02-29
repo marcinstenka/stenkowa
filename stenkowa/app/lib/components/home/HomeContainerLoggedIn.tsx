@@ -105,7 +105,7 @@ export default function HomeContainerLoggedOut() {
 			<section>
 				<h3 className={styles.last_added}>Ostatnio dodane przedmioty:</h3>
 				<div className={styles.storage_container}>
-					<StorageSection section={data.storage} />;
+					<StorageSection section={data.storage} />
 				</div>
 			</section>
 			<section>

@@ -1,4 +1,4 @@
-$todoHeight:50px;
+$todoHeight: 50px;
 
 .container {
 	padding: var(--containerPadding);
@@ -30,5 +30,16 @@ $todoHeight:50px;
 	&:hover {
 		transform: translateY(-3px);
 		box-shadow: var(--shadowHover);
+	}
+}
+@media (min-width: 900px) {
+	$todoHeight: 60px;
+	.todo {
+		height: $todoHeight;
+		font-size: 15px;
+
+		&_color {
+			height: $todoHeight;
+		}
 	}
 }

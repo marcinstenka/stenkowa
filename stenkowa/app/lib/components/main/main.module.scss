@@ -17,3 +17,15 @@ $backgroundPadding: 80px;
 		transform: translate(-50%, var(--stenkowaTitleOffset));
 	}
 }
+@media (min-width: 900px) {
+	$backgroundPadding: 110px;
+	.main {
+		padding: $backgroundPadding $backgroundPadding 0 $backgroundPadding;
+	}
+	.container {
+		min-height: calc(100vh - $backgroundPadding);
+		h2 {
+			font-size: 48px;
+		}
+	}
+}

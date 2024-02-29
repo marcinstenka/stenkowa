@@ -7,7 +7,7 @@
 	cursor: pointer;
 	transition: 0.3s;
 	gap: 5px;
-    display: flex;
+	display: flex;
 	svg {
 		font-size: 40px;
 		transition: 0.3s;
@@ -15,16 +15,6 @@
 	a {
 		opacity: 0;
 	}
-}
-
-.title {
-	font-size: 40px;
-	font-weight: normal;
-	position: absolute;
-	top: 0;
-	left: 50%;
-	transform: translate(-50%, -36px);
-	cursor: pointer;
 }
 
 .back_buttons {

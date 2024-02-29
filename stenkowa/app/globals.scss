@@ -6,6 +6,7 @@
 	--containerPadding: 45px 10px 0 10px;
 	--loginBgPaddingTop: 400px;
 	--stenkowaTitleOffset: -36px;
+	--mediaMiddle: 900px;
 }
 
 * {
@@ -62,4 +63,9 @@ a:visited {
 	justify-content: center;
 	align-items: center;
 	padding: 8px 0 8px 0;
+}
+@media (min-width: 900px) {
+	:root {
+		--stenkowaTitleOffset: -44px;
+	}
 }
