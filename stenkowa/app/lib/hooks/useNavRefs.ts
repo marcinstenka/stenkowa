@@ -31,6 +31,7 @@ export default function useNavRefs({
 					currentItem.current.classList.contains(styles.active)
 				) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
 				}
 			}
 		}
@@ -47,6 +48,8 @@ export default function useNavRefs({
 							item.current && item.current.classList.remove(styles.active);
 						}
 					}
+					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
+
 					currentItem.current.classList.add(styles.active);
 				}
 			}
@@ -60,13 +63,14 @@ export default function useNavRefs({
 			if (indicator.current && currentItem.current) {
 				if (currentItem.current.classList.contains(styles.active)) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
 					activeExist = true;
 				}
 			}
 		}
 		// "from / to e.g. /todo and then going back to /" case - setting position out of view
 		if (!activeExist && indicator.current) {
-			indicator.current.style.transform = `translateX(-100%)`;
+			indicator.current.style.transform = `translate(0, 100%)`;
 		}
 
 		for (let i = 0; i < navItemsRefs.length; i++) {
@@ -102,4 +106,26 @@ export default function useNavRefs({
 	}, [pathname]);
 
 	return { navItemsRefs, indicator };
+}
+
+function checkIndicatorBorderRadius(
+	navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[],
+	currentItem: MutableRefObject<HTMLAnchorElement | null>,
+	indicator: MutableRefObject<HTMLDivElement | null>
+) {
+	if (window.innerWidth > 900) {
+		if (currentItem.current && indicator.current) {
+			if (currentItem == navItemsRefs[0]) {
+				indicator.current.style.borderRadius = '25px 0 0 0';
+			} else if (currentItem == navItemsRefs[2]) {
+				indicator.current.style.borderRadius = '0 25px 0 0';
+			} else {
+				indicator.current.style.borderRadius = '0';
+			}
+		}
+	} else {
+		if (indicator.current) {
+			indicator.current.style.borderRadius = '0';
+		}
+	}
 }
