@@ -32,6 +32,12 @@ export default function useNavRefs({
 				) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
 					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
+					const nav = document.getElementById('nav');
+					if (nav) {
+						window.innerWidth > 900
+							? (nav.style.transform = 'translate(-50%, 0)')
+							: (nav.style.transform = 'translateY(0) ');
+					}
 				}
 			}
 		}
@@ -63,6 +69,8 @@ export default function useNavRefs({
 			if (indicator.current && currentItem.current) {
 				if (currentItem.current.classList.contains(styles.active)) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+					indicator.current.style.opacity = '1';
+
 					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
 					activeExist = true;
 				}
@@ -70,7 +78,8 @@ export default function useNavRefs({
 		}
 		// "from / to e.g. /todo and then going back to /" case - setting position out of view
 		if (!activeExist && indicator.current) {
-			indicator.current.style.transform = `translate(0, 100%)`;
+			indicator.current.style.transform = `translate(-50%, 100%)`;
+			indicator.current.style.opacity = '0';
 		}
 
 		for (let i = 0; i < navItemsRefs.length; i++) {

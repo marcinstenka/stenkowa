@@ -20,7 +20,12 @@ export default function Options() {
 			if (logout) logout.style.transition = `0.3s`;
 			if (settings) settings.style.transform = `rotate(30deg)`;
 		} else {
-			if (nav) nav.style.transform = 'translate(-50%, 0) ';
+			if (nav) {
+				window.innerWidth > 900
+					? (nav.style.transform = 'translate(-50%, 0) ')
+					: (nav.style.transform = 'translateY(0) ');
+			}
+
 			if (container) container.style.transform = 'translateY(0)';
 			if (logout) logout.style.opacity = `0`;
 			if (settings) settings.style.transform = `rotate(0)`;
