@@ -32,8 +32,9 @@ $navItemWidht: 100px;
 		transform: translateX(-100%);
 		width: $navItemWidht;
 		z-index: -2;
-		
-		transition: transform 0.3s ease 0s, border-radius 0.1s 0.1s;
+		// opacity: 0;
+		transition: transform 0.3s ease 0s, border-radius 0.1s 0.1s,
+			opacity 0.1s 0.1s;
 		color: var(--background);
 		background: var(--primary);
 		svg {
