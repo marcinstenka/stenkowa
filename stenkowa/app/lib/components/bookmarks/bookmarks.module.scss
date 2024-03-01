@@ -1,9 +1,12 @@
 $fontSizeHover: 16px;
+$colorHeight: 12px;
 .container {
 	display: grid;
 	grid-template-columns: repeat(3, 1fr);
 	gap: 20px;
 	padding: var(--containerPadding);
+	max-width: 600px;
+	margin: 0 auto;
 }
 .bookmark {
 	height: 100px;
@@ -11,9 +14,14 @@ $fontSizeHover: 16px;
 	box-shadow: var(--shadow);
 	transition: 0.3s all ease;
 	position: relative;
+	&_link {
+		display: flex;
+		flex-direction: column;
+		height: calc(100px - $colorHeight);
+	}
 	&_color {
 		width: 100%;
-		height: 12px;
+		height: $colorHeight;
 	}
 	svg {
 		display: block;
@@ -47,19 +55,67 @@ $fontSizeHover: 16px;
 		box-shadow: var(--shadowHover);
 	}
 }
+@media (min-width: 600px) {
+	$fontSizeHover: 17px;
+	.bookmark {
+		height: 120px;
+		&_color {
+			width: 100%;
+			height: 13px;
+		}
+		&_text {
+			line-height: $fontSizeHover;
+		}
+		svg {
+			font-size: 50px;
+		}
+		&_edit {
+			top: 1px;
+			right: 3px;
+			svg {
+				font-size: 24px;
+			}
+		}
+		&:hover {
+			.bookmark_text {
+				font-size: $fontSizeHover;
+			}
+		}
+	}
+}
 @media (min-width: 900px) {
 	$fontSizeHover: 18px;
+	$colorHeight: 16px;
+
+	.container {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+		max-width: 1480px;
+		margin: 0 auto;
+	}
 	.bookmark {
-		height: 110px;
+		height: 170px;
+		width: 145px;
+		&_link {
+			display: flex;
+			flex-direction: column;
+			height: calc(170px - $colorHeight - 10px);
+			padding-top: 10px;
+		}
+		&_color {
+			height: $colorHeight;
+		}
 		&_text {
 			font-size: 16px;
 			line-height: $fontSizeHover;
 		}
 		svg {
-			font-size: 45px;
+			font-size: 63px;
 		}
 		&_edit {
 			right: 2px;
+			top: 5px;
 			svg {
 				font-size: 24px;
 			}

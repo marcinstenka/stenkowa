@@ -25,17 +25,17 @@ export default function Bookmark({ bookmark, enableEdit }: BookmarkProps) {
 
 	return (
 		<div className={styles.bookmark}>
-			<a href={bookmark.link}>
-				<div
-					style={{ background: `${bookmark.color}` }}
-					className={styles.bookmark_color}
-				></div>
+			<div
+				style={{ background: `${bookmark.color}` }}
+				className={styles.bookmark_color}
+			></div>
+			<Link className={styles.bookmark_link} href={bookmark.link}>
 				{IconComponent && (
 					<IconComponent style={{ color: `${bookmark.color}` }} />
 				)}
 
 				<p className={styles.bookmark_text}>{bookmark.name}</p>
-			</a>
+			</Link>
 			{enableEdit && (
 				<Link
 					href={`/bookmarks/${bookmark.id}/edit`}
