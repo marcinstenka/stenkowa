@@ -95,20 +95,6 @@ export default function BookmarksContainer() {
 			name: 'Youtube',
 			color: '#FF0000',
 		},
-		{
-			id: 4,
-			link: 'https://www.youtube.com/',
-			icon: 'FaYoutube',
-			name: 'Youtube',
-			color: '#FF0000',
-		},
-		{
-			id: 4,
-			link: 'https://www.youtube.com/',
-			icon: 'FaYoutube',
-			name: 'Youtube',
-			color: '#FF0000',
-		},
 	];
 	return (
 		<div className={styles.container}>

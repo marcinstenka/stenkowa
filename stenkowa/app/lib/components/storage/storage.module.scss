@@ -33,3 +33,24 @@
 		}
 	}
 }
+@media (min-width: 900px) {
+	.container {
+		padding: var(--containerPadding);
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		max-width: 1485px;
+		margin: 0 auto;
+	}
+	.storage_section {
+		display: flex;
+		flex-direction: column;
+		box-shadow: 0px 0px 4px 0px rgba(0, 0, 0, 0.25);
+		padding: 15px;
+		.storage_date {
+			font-size: 21px;
+		}
+		.storage_items {
+			font-size: 18px;
+		}
+	}
+}
