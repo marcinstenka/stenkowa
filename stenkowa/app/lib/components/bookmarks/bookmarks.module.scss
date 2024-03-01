@@ -98,8 +98,6 @@ $colorHeight: 12px;
 		height: 170px;
 		width: 145px;
 		&_link {
-			display: flex;
-			flex-direction: column;
 			height: calc(170px - $colorHeight - 10px);
 			padding-top: 10px;
 		}
