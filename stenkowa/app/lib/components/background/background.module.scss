@@ -16,6 +16,8 @@
 	padding: 40px 30px 0 30px;
 	gap: 20px;
 	font-size: 14px;
+	max-width: 500px;
+	margin: 0 auto;
 	ul {
 		margin: -20px 0 0 0;
 	}
@@ -24,7 +26,9 @@
 	}
 }
 .heading {
-	margin: 0 0 20px 0;
+	margin: 0 auto 20px auto;
+	width: 100%;
+	max-width: 350px;
 	h1 {
 		font-weight: normal;
 		font-size: 34px;
@@ -107,5 +111,25 @@
 @media (min-width: 900px) {
 	.profile {
 		padding: 50px 110px 30px 110px;
+	}
+	.about {
+		margin: 0 auto;
+		font-size: 18px;
+		max-width: fit-content;
+		p {
+			text-align: center;
+			width: fit-content;
+		}
+		ul {
+		}
+	}
+	.heading {
+		width: 400px;
+		margin: 0 auto;
+		h1 {
+			font-weight: normal;
+			font-size: 43px;
+			text-align: center !important;
+		}
 	}
 }
