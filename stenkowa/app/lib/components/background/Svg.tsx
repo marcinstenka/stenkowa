@@ -1,8 +1,9 @@
 import styles from './background.module.scss';
 type SvgProps = {
 	primary: string;
+	height: string;
 };
-export default function Svg({ primary }: SvgProps) {
+export default function Svg({ primary, height }: SvgProps) {
 	return (
 		<svg
 			className={styles.svg}
@@ -10,7 +11,7 @@ export default function Svg({ primary }: SvgProps) {
 			version='1.1'
 			xmlnsXlink='http://www.w3.org/1999/xlink'
 			width='430'
-			height='900'
+			height={height}
 			preserveAspectRatio='none'
 			viewBox='0 0 430 900'
 		>

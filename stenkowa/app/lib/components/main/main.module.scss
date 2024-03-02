@@ -8,7 +8,6 @@ $backgroundPadding: 80px;
 	min-height: calc(100vh - $backgroundPadding);
 	position: relative;
 	border-radius: 35px 35px 0 0;
-	
 }
 @media (min-width: 900px) {
 	$backgroundPadding: 110px;
@@ -17,6 +16,5 @@ $backgroundPadding: 80px;
 	}
 	.container {
 		min-height: calc(100vh - $backgroundPadding);
-		
 	}
 }

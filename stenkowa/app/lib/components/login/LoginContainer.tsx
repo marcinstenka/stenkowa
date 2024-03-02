@@ -6,7 +6,7 @@ import LoginButtons from './LoginButtons';
 
 export default function LoginContainer() {
 	return (
-		<div className={styles.container}>
+		<div className={styles.container} id='login'>
 			<form className={styles.form}>
 				<div className={styles.input}>
 					<input
