@@ -8,14 +8,6 @@ $backgroundPadding: 80px;
 	min-height: calc(100vh - $backgroundPadding);
 	position: relative;
 	border-radius: 35px 35px 0 0;
-	h2 {
-		font-size: 40px;
-		font-weight: normal;
-		position: absolute;
-		top: 0;
-		left: 50%;
-		transform: translate(-50%, var(--stenkowaTitleOffset));
-	}
 }
 @media (min-width: 900px) {
 	$backgroundPadding: 110px;
@@ -24,8 +16,5 @@ $backgroundPadding: 80px;
 	}
 	.container {
 		min-height: calc(100vh - $backgroundPadding);
-		h2 {
-			font-size: 48px;
-		}
 	}
 }

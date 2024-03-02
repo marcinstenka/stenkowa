@@ -10,7 +10,7 @@ export default function Svg({ primary }: SvgProps) {
 			version='1.1'
 			xmlnsXlink='http://www.w3.org/1999/xlink'
 			width='430'
-			height='900'
+			height='100vh'
 			preserveAspectRatio='none'
 			viewBox='0 0 430 900'
 		>

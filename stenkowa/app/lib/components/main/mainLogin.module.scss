@@ -4,7 +4,17 @@
 
 .container {
 	background: var(--background);
-	min-height: 60vh;
 	position: relative;
 	border-radius: 35px 35px 0 0;
+}
+@media (min-width: 900px) {
+	$backgroundPadding: 110px;
+	.main {
+		padding: $backgroundPadding $backgroundPadding 0 $backgroundPadding;
+	}
+}
+@media (min-height: 853px) {
+	.container {
+		border-radius: 35px 35px 35px 35px;
+	}
 }

@@ -92,8 +92,10 @@ $colorHeight: 12px;
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
-		max-width: 1485px;
+		max-width: var(--maxWidth);
 		margin: 0 auto;
+		padding-left: 20px;
+		padding-right: 20px;
 	}
 	.bookmark {
 		height: 170px;

@@ -8,6 +8,7 @@ type MainLoginProps = {
 };
 
 export default function Page({ page }: MainLoginProps) {
+	
 	return (
 		<main className={styles.main}>
 			<div className={styles.container}>
