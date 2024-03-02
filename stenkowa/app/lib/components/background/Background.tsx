@@ -6,7 +6,7 @@ export default function Background() {
 
 	return (
 		<div className={styles.container}>
-			<Svg primary={primary} height='100vh'/>
+			<Svg primary={primary} />
 			<div className={styles.profile}>
 				<h2>Dostosuj swój profil</h2>
 			

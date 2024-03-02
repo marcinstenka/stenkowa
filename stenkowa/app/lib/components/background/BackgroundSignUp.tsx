@@ -5,7 +5,7 @@ export default function BackgroundLogin() {
 
 	return (
 		<div className={styles.container}>
-			<Svg primary={primary} height='60vh' />
+			<Svg primary={primary} />
 			<div className={styles.about}>
 				<div className={styles.heading}>
 					<h1>Witaj na</h1>
