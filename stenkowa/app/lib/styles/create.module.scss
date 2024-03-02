@@ -112,12 +112,46 @@
 .select__indicators {
 	display: none;
 }
-
 .icon_container {
 	display: flex;
 	align-items: center;
 	.select {
 		font-size: 40px;
 		margin: 0 0 0 30px;
+	}
+}
+
+@media (min-width: 900px) {
+	.container {
+		max-width: var(--maxWidth);
+		margin: 0 auto;
+		h3 {
+			font-size: 24px;
+		}
+	}
+	.input_container,
+	.date_container,
+	.color_container,
+	.icon_container {
+		label {
+			font-size: 20px;
+		}
+	}
+	.input_container {
+		input,
+		textarea {
+			font-size: 18px;
+		}
+	}
+	.date_container {
+		input {
+			font-size: 20px;
+		}
+	}
+	.color_container {
+		input {
+			width: 50px;
+			height: 35px;
+		}
 	}
 }

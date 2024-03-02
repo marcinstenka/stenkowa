@@ -38,7 +38,7 @@
 		padding: var(--containerPadding);
 		display: grid;
 		grid-template-columns: 1fr 1fr;
-		max-width: 1485px;
+		max-width: var(--maxWidth);
 		margin: 0 auto;
 		padding-left: 20px;
 		padding-right: 20px;
