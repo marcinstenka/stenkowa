@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.scss';
 import Nav from './lib/components/nav/Nav';
-const lato = Lato({ weight: ['300', '900'], subsets: ['latin'] });
+const lato = Lato({ weight: ['300', '400', '900'], subsets: ['latin'] });
 
 export const metadata: Metadata = {
 	title: 'Stenkowa',
