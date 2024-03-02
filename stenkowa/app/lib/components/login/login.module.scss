@@ -5,6 +5,8 @@ $inputPadding: 40px;
 	flex-direction: column;
 	padding: 40px 25px 35px 25px;
 	gap: 35px;
+	max-width: 600px;
+	margin: 0 auto;
 }
 .input {
 	position: relative;
@@ -124,6 +126,25 @@ $inputPadding: 40px;
 			transform: translate(-50%, -50%);
 			font-size: 14px;
 			padding: 2px;
+		}
+	}
+}
+
+@media (min-width: 900px) {
+	$inputPadding: 50px;
+	.input {
+		input {
+			width: calc(100% - $inputPadding);
+			height: 40px;
+			padding: 5px 0 8px $inputPadding;
+			font-size: 20px;
+		}
+		svg {
+			font-size: 40px;
+			top: 45%;
+		}
+		label {
+			padding: 0 0 0 $inputPadding;
 		}
 	}
 }
