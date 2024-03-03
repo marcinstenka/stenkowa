@@ -74,6 +74,9 @@
 	}
 }
 @media (min-width: 900px) {
+	.options {
+		display: none;
+	}
 	.back_buttons {
 		.back_button {
 			min-width: 140px;
