@@ -161,15 +161,19 @@
 		h3 {
 			font-size: 22px;
 		}
-		section {
-			max-width: 430px;
-			margin: 0 auto;
-		}
+
 		.last_added {
 			text-align: left;
 			padding: 0;
 		}
 	}
+	.content {
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		padding: 0 35px;
+	}
+
 	.todo_container,
 	.bookmarks_container,
 	.storage_container {
