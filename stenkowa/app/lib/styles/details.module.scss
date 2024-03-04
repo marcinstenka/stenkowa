@@ -74,6 +74,7 @@ $textareaMinHeight: 48px;
 	&_dates {
 		display: flex;
 		justify-content: space-between;
+		align-items: flex-end;
 		width: 100%;
 		font-size: 15px;
 	}
@@ -134,8 +135,10 @@ $textareaMinHeight: 48px;
 		border: none;
 		position: absolute;
 		left: 0;
-		width: 100%;
 		top: 0;
+		bottom: 0;
+		right: 0;
+		width: 100%;
 		z-index: 1;
 		&:focus {
 			outline: none;
@@ -178,7 +181,6 @@ $textareaMinHeight: 48px;
 .date_input_container {
 	width: 120px;
 	height: 50%;
-	font-family: 'Lato';
 	&:last-of-type {
 		input {
 			border-bottom-width: 2px;
@@ -284,10 +286,15 @@ $textareaMinHeight: 48px;
 	}
 	.textarea_container {
 		textarea {
-			height: calc(100% - $paddingTop - $marginBottom);
+			height: initial;
 			padding: $paddingTop;
 			font-size: 18px;
-			// min-height: $textareaMinHeight;
+		}
+	}
+	.date_input_container {
+		width: 142px;
+		input {
+			font-size: 17px;
 		}
 	}
 }
