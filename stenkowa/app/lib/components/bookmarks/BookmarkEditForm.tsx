@@ -49,13 +49,6 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 				<BookmarkIconSelect color={color} value={icon} />
 			</div>
 			<div className={styles.details_lower}>
-				<p
-					className={styles.details_edit_info}
-					style={{ borderColor: `${color}` }}
-					color-changing='border-color'
-				>
-					Kliknij element, aby zmienić
-				</p>
 				<div className={styles.details_lower_icons}>
 					<div className={styles.input_color_container}>
 						<MdColorLens
@@ -74,6 +67,13 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 				</div>
 			</div>
 			<BackButtons href='/bookmarks' color={color} />
+			<p
+				className={styles.details_edit_info}
+				style={{ borderColor: `${color}` }}
+				color-changing='border-color'
+			>
+				Kliknij element, aby zmienić
+			</p>
 		</div>
 	);
 }

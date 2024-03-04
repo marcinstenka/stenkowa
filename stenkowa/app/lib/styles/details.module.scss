@@ -95,7 +95,7 @@ $textareaMinHeight: 48px;
 	&_edit_info {
 		font-size: 12px;
 		align-self: normal;
-		margin: 40px 0 -25px 0;
+		margin: 40px 0 0 0;
 		width: fit-content;
 		border-bottom: 2px solid;
 	}
@@ -273,8 +273,11 @@ $textareaMinHeight: 48px;
 		}
 		&_back {
 			border-radius: 20px;
-			min-height: 50px;
+			min-height: 45px;
 			font-size: 24px;
+		}
+		&_edit_info {
+			font-size: 14px;
 		}
 	}
 	.input_container {
