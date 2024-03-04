@@ -37,6 +37,7 @@ $textareaMinHeight: 48px;
 		}
 	}
 	&_text {
+		width: 100%;
 		font-size: 15px;
 		padding: $paddingTop 10px;
 		margin: 15px 0 $marginBottom 0;
@@ -49,9 +50,11 @@ $textareaMinHeight: 48px;
 		justify-content: space-between;
 		align-items: flex-end;
 		width: 100%;
+		&:has(~ p) {
+			justify-content: flex-end;
+		}
 		p {
 			font-size: 14px;
-
 			border-bottom-style: solid;
 			border-bottom-width: 2px;
 		}
@@ -260,6 +263,9 @@ $textareaMinHeight: 48px;
 					font-size: 35px;
 				}
 			}
+			p {
+				font-size: 20px;
+			}
 		}
 		&_dates {
 			font-size: 18px;
@@ -278,6 +284,16 @@ $textareaMinHeight: 48px;
 		}
 		&_edit_info {
 			font-size: 14px;
+		}
+		&_lower {
+			&_icons {
+				svg {
+					font-size: 35px;
+				}
+			}
+			p {
+				font-size: 18px;
+			}
 		}
 	}
 	.input_container {
@@ -298,6 +314,12 @@ $textareaMinHeight: 48px;
 		width: 142px;
 		input {
 			font-size: 17px;
+		}
+	}
+	.date_short_input_container {
+		width: 105px !important;
+		input {
+			font-size: 20px !important;
 		}
 	}
 }
