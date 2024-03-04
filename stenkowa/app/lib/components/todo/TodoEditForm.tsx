@@ -95,6 +95,8 @@ export default function TodoEditForm(todo: TodoType) {
 					{timeLeft}
 				</span>
 			</h3>
+
+			<BackButtons href={`/todo/${todo.id}`} color={color} />
 			<p
 				className={styles.details_edit_info}
 				style={{ borderColor: `${color}` }}
@@ -102,7 +104,6 @@ export default function TodoEditForm(todo: TodoType) {
 			>
 				Kliknij element, aby zmienić
 			</p>
-			<BackButtons href={`/todo/${todo.id}`} color={color} />
 		</form>
 	);
 }
