@@ -3,6 +3,7 @@ import { BookmarkType, StorageSectionType, TodoType } from '../../types/types';
 import Todo from '../todo/Todo';
 import Bookmark from '../bookmarks/Bookmark';
 import StorageSection from '../storage/StorageSection';
+import ProfileForm from '../global/ProfileForm';
 
 type TempData = {
 	user: string;
@@ -120,6 +121,7 @@ export default function HomeContainerLoggedOut() {
 					</div>
 				</section>
 			</div>
+			<ProfileForm />
 		</div>
 	);
 }
