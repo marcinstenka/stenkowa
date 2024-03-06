@@ -32,13 +32,14 @@ export default function useNavRefs({
 				) {
 					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
 					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
-					const nav = document.getElementById('nav');
-					if (nav) {
-						window.innerWidth > 900
-							? (nav.style.transform = 'translate(-50%, 0)')
-							: (nav.style.transform = 'translateY(0) ');
-					}
 				}
+			}
+			// handling position of nav when resizing window and expanded on mobile (related to useIsExpanded hook)
+			const nav = document.getElementById('nav');
+			if (nav) {
+				window.innerWidth > 900
+					? (nav.style.transform = 'translate(-50%, 0)')
+					: (nav.style.transform = 'translateY(0) ');
 			}
 		}
 		function handleNavItemClick(
