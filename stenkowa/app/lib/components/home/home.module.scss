@@ -157,6 +157,9 @@
 	flex-direction: column;
 	gap: 15px;
 }
+.form {
+	display: none;
+}
 @media (min-width: 900px) {
 	.container {
 		h3 {
@@ -179,5 +182,8 @@
 	.bookmarks_container,
 	.storage_container {
 		padding: 0;
+	}
+	.form {
+		display: block;
 	}
 }

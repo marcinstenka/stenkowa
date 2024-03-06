@@ -94,6 +94,7 @@
 	}
 	.color {
 		-webkit-appearance: none;
+		appearance: none;
 		width: 60px;
 		height: 60px;
 		border: 1px #fff solid;
@@ -122,14 +123,22 @@
 			width: 100%;
 			max-width: 300px;
 			border: none;
+			box-shadow: var(--shadow);
 		}
 	}
 	button {
 		border: none;
 		background: #fff;
 		border-radius: 22px;
-		padding: 10px 20px;
+		padding: 15px 25px;
 		font-size: 16px;
+		cursor: pointer;
+		box-shadow: var(--shadow);
+		transition: 0.3s all ease;
+		&:hover {
+			box-shadow: var(--shadowHover);
+			transform: translateY(-3px);
+		}
 	}
 }
 @media (min-width: 600px) {
@@ -156,5 +165,29 @@
 	}
 	.title {
 		font-size: 48px;
+	}
+	.profile {
+		position: relative;
+		padding-bottom: 80px;
+		h3,
+		h2 {
+			color: #000;
+		}
+		&_sections {
+			display: flex;
+			justify-content: center;
+			gap: 60px;
+		}
+		.credentials {
+			input {
+				font-size: 16px;
+				padding: 15px;
+				border-radius: 22px;
+				outline: none;
+				min-width: 300px;
+				border: none;
+				box-shadow: var(--shadow);
+			}
+		}
 	}
 }

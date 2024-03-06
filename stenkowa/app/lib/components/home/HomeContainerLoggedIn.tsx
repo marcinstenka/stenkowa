@@ -121,7 +121,9 @@ export default function HomeContainerLoggedOut() {
 					</div>
 				</section>
 			</div>
-			<ProfileForm />
+			<div className={styles.form}>
+				<ProfileForm />
+			</div>
 		</div>
 	);
 }
