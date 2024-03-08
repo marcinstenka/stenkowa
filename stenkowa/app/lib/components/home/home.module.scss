@@ -186,4 +186,39 @@
 	.form {
 		display: block;
 	}
+
+	.slider {
+		max-width: 800px;
+		margin: 0 auto;
+		.slide {
+			min-height: 440px !important;
+			&_text {
+				font-size: 22px;
+				margin: 0;
+			}
+		}
+		&_header {
+			font-size: 26px !important;
+			margin: 40px 0 10px 0 !important;
+		}
+	}
+	.right,
+	.left {
+		svg {
+			font-size: 30px;
+		}
+	}
+	.right {
+		right: 25px;
+	}
+	.left {
+		left: 25px;
+	}
+	.bookmarks {
+		display: grid;
+		grid-template-columns: repeat(2, 145px);
+		grid-template-rows: initial;
+		justify-content: center;
+		padding: 20px;
+	}
 }
