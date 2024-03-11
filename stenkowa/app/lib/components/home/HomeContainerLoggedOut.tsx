@@ -10,7 +10,7 @@ export default function HomeContainerLoggedOut() {
 				Jesteś na Stenkowej Stronie, nowej, modyfikowalnej stronie startowej.
 			</h4>
 			<LoginButtons type='login' />
-			<h3>Co umożliwia Stenkowa?</h3>
+			<h3 className={styles.slider_header}>Co umożliwia Stenkowa?</h3>
 			<Slider />
 			<p className={styles.text}>
 				Dostosuj wygląd Stenkowej według własnego uznania - zmieniaj kolory i
