@@ -104,6 +104,7 @@
 	}
 	&:last-of-type {
 		padding-top: 20px;
+		padding-bottom: 100px;
 	}
 }
 .colors {
@@ -220,5 +221,11 @@
 		grid-template-rows: initial;
 		justify-content: center;
 		padding: 20px;
+	}
+	.colors,
+	.text {
+		max-width: 800px;
+		margin: 0 auto;
+		font-size: 20px;
 	}
 }
