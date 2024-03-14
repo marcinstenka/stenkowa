@@ -10,12 +10,20 @@ const users = [
 ];
 const todos = [
 	{
-		name: 'Marcin',
 		user_id: '1',
 		name: '123456',
 		description: 'red',
 		color: 'blue',
 		date_deadline: new Date(),
+	},
+];
+const bookmarks = [
+	{
+		name: 'Facebook',
+		user_id: '1',
+		link: 'https://facebook.com/',
+		color: 'blue',
+		icon: 'FaFacebook',
 	},
 ];
 const bcrypt = require('bcrypt');
@@ -92,12 +100,48 @@ async function createTodos(client) {
 		throw error;
 	}
 }
+async function createBookmarks(client) {
+	try {
+		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
+		const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS bookmarks (
+        id SERIAL PRIMARY KEY,
+		user_id INT,
+		FOREIGN KEY (user_id) REFERENCES users(id),
+        name TEXT NOT NULL,
+        link TEXT NOT NULL,
+        color TEXT NOT NULL,
+        icon TEXT NOT NULL
+      );
+    `;
+		console.log(`Created "bookmarks" table`);
+		const insertedBookmarks = await Promise.all(
+			bookmarks.map(async (bookmark) => {
+				return client.sql`
+        INSERT INTO bookmarks (user_id, name, link, color, icon)
+        VALUES (${bookmark.user_id}, ${bookmark.name}, ${bookmark.link}, ${bookmark.color},${bookmark.icon});
+      `;
+			})
+		);
+
+		console.log(`Seeded ${insertedBookmarks.length} todos`);
+
+		return {
+			createTable,
+			bookmarks: insertedBookmarks,
+		};
+	} catch (error) {
+		console.error('Error seeding bookmarks:', error);
+		throw error;
+	}
+}
 
 async function main() {
 	const client = await db.connect();
 
 	await createUsers(client);
 	await createTodos(client);
+	await createBookmarks(client);
 
 	await client.end();
 }
