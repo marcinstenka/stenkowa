@@ -2,6 +2,8 @@ const { db } = require('@vercel/postgres');
 const users = [
 	{
 		user_name: 'Marcin',
+		todos_container_id: 1,
+		storage_id: 1,
 		email: 'marcinstenka01@gmail.com',
 		password: '123456',
 		primary_color: 'red',
@@ -17,11 +19,7 @@ const todos = [
 		date_deadline: new Date(),
 	},
 ];
-const todosContainers = [
-	{
-		user_id: '1',
-	},
-];
+const todosContainers = [{}];
 const bookmarks = [
 	{
 		name: 'Facebook',
@@ -31,11 +29,7 @@ const bookmarks = [
 		icon: 'FaFacebook',
 	},
 ];
-const storages = [
-	{
-		user_id: 1,
-	},
-];
+const storages = [{}];
 const storagesItems = [
 	{
 		storage_id: 1,
@@ -46,12 +40,61 @@ const storagesItems = [
 	},
 ];
 const bcrypt = require('bcrypt');
+async function createTodosContainers(client) {
+	try {
+		const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS todos_containers (
+        id SERIAL PRIMARY KEY
+      );
+    `;
+		console.log(`Created "todos_containers" table`);
+		const insertedTodosContainers = await client.sql`
+            INSERT INTO todos_containers DEFAULT VALUES RETURNING *;
+        `;
 
+		console.log(`Seeded todos_containers`);
+
+		return {
+			createTable,
+			todosContainers: insertedTodosContainers,
+		};
+	} catch (error) {
+		console.error('Error seeding todos_containers:', error);
+		throw error;
+	}
+}
+async function createStorages(client) {
+	try {
+		const createTable = await client.sql`
+            CREATE TABLE IF NOT EXISTS storages (
+                id SERIAL PRIMARY KEY
+            );
+        `;
+		console.log(`Created "storages" table`);
+		const insertedStorages = await client.sql`
+            INSERT INTO storages DEFAULT VALUES RETURNING *;
+        `;
+
+		console.log(`Seeded storages`);
+
+		return {
+			createTable,
+			storages: insertedStorages,
+		};
+	} catch (error) {
+		console.error('Error seeding storages:', error);
+		throw error;
+	}
+}
 async function createUsers(client) {
 	try {
 		const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
+		todos_container_id INT,
+		FOREIGN KEY (todos_container_id) REFERENCES todos_containers(id),
+		storage_id INT,
+		FOREIGN KEY (storage_id) REFERENCES storages(id),
         user_name VARCHAR(255) NOT NULL,
         email TEXT NOT NULL UNIQUE,
         password TEXT NOT NULL,
@@ -64,8 +107,8 @@ async function createUsers(client) {
 			users.map(async (user) => {
 				const hashedPassword = await bcrypt.hash(user.password, 10);
 				return client.sql`
-        INSERT INTO users (user_name, email, password, primary_color, secondary_color)
-        VALUES (${user.user_name}, ${user.email}, ${hashedPassword}, ${user.primary_color},${user.secondary_color});
+        INSERT INTO users (todos_container_id, storage_id,user_name, email, password, primary_color, secondary_color)
+        VALUES (${user.todos_container_id}, ${user.storage_id}, ${user.user_name}, ${user.email}, ${hashedPassword}, ${user.primary_color},${user.secondary_color});
       `;
 			})
 		);
@@ -78,36 +121,6 @@ async function createUsers(client) {
 		};
 	} catch (error) {
 		console.error('Error seeding users:', error);
-		throw error;
-	}
-}
-async function createTodosContainers(client) {
-	try {
-		const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS todos_containers (
-        id SERIAL PRIMARY KEY,
-		user_id INT,
-		FOREIGN KEY (user_id) REFERENCES users(id)
-      );
-    `;
-		console.log(`Created "todos_containers" table`);
-		const insertedTodosContainers = await Promise.all(
-			todosContainers.map(async (todosContainer) => {
-				return client.sql`
-        INSERT INTO todos_containers (user_id)
-        VALUES (${todosContainer.user_id});
-      `;
-			})
-		);
-
-		console.log(`Seeded ${insertedTodosContainers.length} todos_containers`);
-
-		return {
-			createTable,
-			todosContainers: insertedTodosContainers,
-		};
-	} catch (error) {
-		console.error('Error seeding todos_containers:', error);
 		throw error;
 	}
 }
@@ -142,36 +155,6 @@ async function createTodos(client) {
 		};
 	} catch (error) {
 		console.error('Error seeding todos:', error);
-		throw error;
-	}
-}
-async function createStorages(client) {
-	try {
-		const createTable = await client.sql`
-            CREATE TABLE IF NOT EXISTS storages (
-                id SERIAL PRIMARY KEY,
-                user_id INT,
-                FOREIGN KEY (user_id) REFERENCES users(id)
-            );
-        `;
-		console.log(`Created "storages" table`);
-		const insertedStorages = await Promise.all(
-			storages.map(async (storage) => {
-				return client.sql`
-                    INSERT INTO storages (user_id)
-                    VALUES (${storage.user_id});
-                `;
-			})
-		);
-
-		console.log(`Seeded ${insertedStorages.length} storages`);
-
-		return {
-			createTable,
-			storages: insertedStorages,
-		};
-	} catch (error) {
-		console.error('Error seeding storages:', error);
 		throw error;
 	}
 }
@@ -248,10 +231,10 @@ async function createBookmarks(client) {
 async function main() {
 	const client = await db.connect();
 
-	await createUsers(client);
 	await createTodosContainers(client);
-	await createTodos(client);
 	await createStorages(client);
+	await createTodos(client);
+	await createUsers(client);
 	await createStoragesItems(client);
 	await createBookmarks(client);
 
