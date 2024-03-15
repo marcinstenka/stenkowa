@@ -15,9 +15,9 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": 1727,
-                  "y": 293.4634071794371,
-                  "zoom": -1.6666666666666665
+                  "x": 1267.0295026269025,
+                  "y": 479.62674406185914,
+                  "zoom": -0.3333333333333334
                 }
               }
             }
@@ -152,6 +152,7 @@
   },
   "active": "a6c479904325c3ee",
   "lastOpenFiles": [
+    "stenkowa/scripts/clear-tables.js",
     "project/ID's.md",
     "ID's.md",
     "stenkowa/app/todo/create/page.tsx",
@@ -187,7 +188,6 @@
     "stenkowa/node_modules/@babel/highlight/node_modules/has-flag/readme.md",
     "stenkowa/node_modules/@babel/code-frame/node_modules/has-flag/readme.md",
     "stenkowa/node_modules/convert-source-map/README.md",
-    "stenkowa/node_modules/to-fast-properties/readme.md",
     "Untitled.canvas",
     "project/Stenkowa Strona 3.0.canvas",
     "stenkowa/public/vercel.svg",

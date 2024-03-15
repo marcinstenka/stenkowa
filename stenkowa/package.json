@@ -7,7 +7,8 @@
 		"build": "next build",
 		"start": "next start",
 		"lint": "next lint",
-		"seed": "node -r dotenv/config ./scripts/create-tables.js"
+		"seed": "node -r dotenv/config ./scripts/create-tables.js",
+		"clear": "node -r dotenv/config ./scripts/clear-tables.js"
 	},
 	"dependencies": {
 		"@vercel/postgres": "^0.7.2",
