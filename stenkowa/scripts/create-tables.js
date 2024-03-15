@@ -31,12 +31,12 @@ const bookmarks = [
 		icon: 'FaFacebook',
 	},
 ];
-const StoragesContainers = [
+const storages = [
 	{
 		user_id: 1,
 	},
 ];
-const StoragesItems = [
+const storagesItems = [
 	{
 		storage_id: 1,
 		name: 'Torby prezentowe',
@@ -49,8 +49,6 @@ const bcrypt = require('bcrypt');
 
 async function createUsers(client) {
 	try {
-		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
-		// Create the "users" table if it doesn't exist
 		const createTable = await client.sql`
       CREATE TABLE IF NOT EXISTS users (
         id SERIAL PRIMARY KEY,
@@ -85,56 +83,54 @@ async function createUsers(client) {
 }
 async function createTodosContainers(client) {
 	try {
-		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 		const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS todosContainers (
+      CREATE TABLE IF NOT EXISTS todos_containers (
         id SERIAL PRIMARY KEY,
 		user_id INT,
-		FOREIGN KEY (user_id) REFERENCES users(id),
+		FOREIGN KEY (user_id) REFERENCES users(id)
       );
     `;
-		console.log(`Created "todosContainers" table`);
+		console.log(`Created "todos_containers" table`);
 		const insertedTodosContainers = await Promise.all(
 			todosContainers.map(async (todosContainer) => {
 				return client.sql`
-        INSERT INTO todosContainers (user_id)
+        INSERT INTO todos_containers (user_id)
         VALUES (${todosContainer.user_id});
       `;
 			})
 		);
 
-		console.log(`Seeded ${insertedTodosContainers.length} todos`);
+		console.log(`Seeded ${insertedTodosContainers.length} todos_containers`);
 
 		return {
 			createTable,
 			todosContainers: insertedTodosContainers,
 		};
 	} catch (error) {
-		console.error('Error seeding todosContainers:', error);
+		console.error('Error seeding todos_containers:', error);
 		throw error;
 	}
 }
 async function createTodos(client) {
 	try {
-		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 		const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS todos (
-        id SERIAL PRIMARY KEY,
-		todos_container_id INT,
-		FOREIGN KEY (todos_container_id) REFERENCES todosContainers(id),
-        name TEXT NOT NULL,
-        details TEXT NOT NULL,
-        color TEXT NOT NULL,
-        date_deadline DATE NOT NULL
-      );
-    `;
+            CREATE TABLE IF NOT EXISTS todos (
+                id SERIAL PRIMARY KEY,
+                todos_container_id INT,
+                FOREIGN KEY (todos_container_id) REFERENCES todos_containers(id),
+                name TEXT NOT NULL,
+                details TEXT NOT NULL,
+                color TEXT NOT NULL,
+                date_deadline DATE NOT NULL
+            );
+        `;
 		console.log(`Created "todos" table`);
 		const insertedTodos = await Promise.all(
 			todos.map(async (todo) => {
 				return client.sql`
-        INSERT INTO todos (user_id, name, details, color, date_deadline)
-        VALUES (${todo.user_id}, ${todo.name}, ${todo.details}, ${todo.color},${todo.date_deadline});
-      `;
+                    INSERT INTO todos (todos_container_id, name, details, color, date_deadline)
+                    VALUES (${todo.todos_container_id}, ${todo.name}, ${todo.details}, ${todo.color}, ${todo.date_deadline});
+                `;
 			})
 		);
 
@@ -149,40 +145,70 @@ async function createTodos(client) {
 		throw error;
 	}
 }
-async function createStoragesContainers(client) {
+async function createStorages(client) {
 	try {
-		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
 		const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS storagesContainers (
+            CREATE TABLE IF NOT EXISTS storages (
+                id SERIAL PRIMARY KEY,
+                user_id INT,
+                FOREIGN KEY (user_id) REFERENCES users(id)
+            );
+        `;
+		console.log(`Created "storages" table`);
+		const insertedStorages = await Promise.all(
+			storages.map(async (storage) => {
+				return client.sql`
+                    INSERT INTO storages (user_id)
+                    VALUES (${storage.user_id});
+                `;
+			})
+		);
+
+		console.log(`Seeded ${insertedStorages.length} storages`);
+
+		return {
+			createTable,
+			storages: insertedStorages,
+		};
+	} catch (error) {
+		console.error('Error seeding storages:', error);
+		throw error;
+	}
+}
+async function createStoragesItems(client) {
+	try {
+		const createTable = await client.sql`
+      CREATE TABLE IF NOT EXISTS storages_items(
         id SERIAL PRIMARY KEY,
-		user_id INT,
-		FOREIGN KEY (user_id) REFERENCES users(id),
+		storage_id INT,
+		FOREIGN KEY (storage_id) REFERENCES storages(id),
+        name TEXT NOT NULL,
+        description TEXT NOT NULL,
+        color TEXT NOT NULL,
+        insert_date DATE NOT NULL
       );
     `;
-		console.log(`Created "storagesContainers" table`);
-		const insertedStoragesContainers = await Promise.all(
-			storagesContainers.map(async (storagesContainer) => {
+		console.log(`Created "storages_items" table`);
+		const insertedStorageItems = await Promise.all(
+			storagesItems.map(async (item) => {
 				return client.sql`
-        INSERT INTO storagesContainers (user_id)
-        VALUES (${storagesContainer.user_id});
+        INSERT INTO storages_items (storage_id, name, description, color, insert_date)
+        VALUES (${item.storage_id}, ${item.name}, ${item.description}, ${item.color},${item.insert_date});
       `;
 			})
 		);
 
-		console.log(
-			`Seeded ${insertedStoragesContainers.length} Storages Containers`
-		);
+		console.log(`Seeded ${insertedStorageItems.length} storage items`);
 
 		return {
 			createTable,
-			storagesContainers: insertedStoragesContainers,
+			storagesItems: insertedStorageItems,
 		};
 	} catch (error) {
-		console.error('Error seeding storagesContainers:', error);
+		console.error('Error seeding storage items:', error);
 		throw error;
 	}
 }
-
 async function createBookmarks(client) {
 	try {
 		await client.sql`CREATE EXTENSION IF NOT EXISTS "uuid-ossp"`;
@@ -225,6 +251,8 @@ async function main() {
 	await createUsers(client);
 	await createTodosContainers(client);
 	await createTodos(client);
+	await createStorages(client);
+	await createStoragesItems(client);
 	await createBookmarks(client);
 
 	await client.end();

@@ -152,6 +152,7 @@
   },
   "active": "a6c479904325c3ee",
   "lastOpenFiles": [
+    "stenkowa/scripts/clear-tables.js",
     "project/ID's.md",
     "ID's.md",
     "stenkowa/app/todo/create/page.tsx",
@@ -187,7 +188,6 @@
     "stenkowa/node_modules/@babel/highlight/node_modules/has-flag/readme.md",
     "stenkowa/node_modules/@babel/code-frame/node_modules/has-flag/readme.md",
     "stenkowa/node_modules/convert-source-map/README.md",
-    "stenkowa/node_modules/to-fast-properties/readme.md",
     "Untitled.canvas",
     "project/Stenkowa Strona 3.0.canvas",
     "stenkowa/public/vercel.svg",
