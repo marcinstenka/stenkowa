@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import styles from './login.module.scss';
 
@@ -5,11 +6,16 @@ import { MdOutlineAccountCircle } from 'react-icons/md';
 import { RiLockPasswordLine } from 'react-icons/ri';
 import { IoMailOutline } from 'react-icons/io5';
 import LoginButtons from './LoginButtons';
+import { useFormState } from 'react-dom';
+import { registerUser } from '../../functions/actions';
 
 export default function LoginContainer() {
+	const initialState = { message: null, errors: {} };
+	const [state, dispatch] = useFormState(registerUser, initialState);
+
 	return (
 		<div className={styles.container}>
-			<form className={styles.form}>
+			<form className={styles.form} action={dispatch}>
 				<div className={styles.input}>
 					<input
 						type='text'
