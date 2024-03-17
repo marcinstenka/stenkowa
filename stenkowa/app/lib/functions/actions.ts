@@ -43,12 +43,14 @@ export async function registerUser(prevState: State, formData: FormData) {
 				revalidatePath('/login');
 				redirect('/login');
 			} catch (error) {
-				console.log(error);
+				return {
+					message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+				};
 			}
 		}
 	} catch (error) {
 		return {
-			message: 'Coś poszło nie tak.',
+			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
 		};
 	}
 }

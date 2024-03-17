@@ -10,7 +10,7 @@ import { useFormState } from 'react-dom';
 import { registerUser } from '../../functions/actions';
 
 export default function LoginContainer() {
-	const initialState = { message: null, errors: {} };
+	const initialState = { message: '' };
 	const [state, dispatch] = useFormState(registerUser, initialState);
 
 	return (
