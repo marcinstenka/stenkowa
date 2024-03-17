@@ -129,7 +129,9 @@ $inputPadding: 40px;
 		}
 	}
 }
-
+.message {
+	color: var(--primary);
+}
 @media (min-width: 900px) {
 	$inputPadding: 50px;
 	.input {

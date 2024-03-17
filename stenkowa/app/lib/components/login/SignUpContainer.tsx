@@ -55,6 +55,7 @@ export default function LoginContainer() {
 					<label htmlFor='password'>Hasło</label>
 					<RiLockPasswordLine />
 				</div>
+				{state?.message && <p className={styles.message}>{state.message}</p>}
 				<LoginButtons type='sign-up' />
 			</form>
 		</div>

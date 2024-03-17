@@ -23,26 +23,32 @@ export async function registerUser(prevState: State, formData: FormData) {
 	}
 	try {
 		const result = await sql`
-        SELECT * from users where email = ${email}
+        SELECT email from users where email = ${email}
     `;
 		if (result.rows.length > 0) {
 			return {
-				message: 'Ten email jest już używany.',
+				message: 'Ten email jest już zajęty. Użyj innego.',
 			};
 		} else {
-			console.log('Działa');
 			try {
+				const storage_id =
+					await sql` INSERT INTO storages DEFAULT VALUES RETURNING id`;
+				const todos_container_id_id =
+					await sql` INSERT INTO todos_containers DEFAULT VALUES RETURNING id;`;
+
 				await sql`
               INSERT INTO users (todos_container_id, storage_id, user_name, email, password, primary_color, secondary_color)
-            VALUES (1, 1, ${userName}, ${email}, ${hashedPassword}, 'blue', 'white');
+            VALUES (${todos_container_id_id.rows[0].id}, ${storage_id.rows[0].id}, ${userName}, ${email}, ${hashedPassword}, '#0050b8', '#ffffff');
              `;
+				revalidatePath('/login');
+				redirect('/login');
 			} catch (error) {
-				console.log('nie działa', error);
+				console.log(error);
 			}
 		}
 	} catch (error) {
 		return {
-			message: 'Database Error.',
+			message: 'Coś poszło nie tak.',
 		};
 	}
 }
