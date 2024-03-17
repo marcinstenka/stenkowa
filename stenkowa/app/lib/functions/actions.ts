@@ -17,32 +17,30 @@ export async function registerUser(prevState: State, formData: FormData) {
 	const { userName, email, password } = validatedFields;
 	let hashedPassword = '';
 	if (password) {
-		bcrypt.hash(password, 10).then((hash) => {
+		await bcrypt.hash(password, 10).then((hash) => {
 			hashedPassword = hash;
 		});
 	}
 	try {
 		const result = await sql`
-        SELECT email from users where email = ${email}
-    `;
+        SELECT email from users where email = ${email}`;
 		if (result.rows.length > 0) {
 			return {
 				message: 'Ten email jest już zajęty. Użyj innego.',
 			};
 		} else {
 			try {
-				const storage_id =
-					await sql` INSERT INTO storages DEFAULT VALUES RETURNING id`;
-				const todos_container_id_id =
-					await sql` INSERT INTO todos_containers DEFAULT VALUES RETURNING id;`;
-
+				const storageResult =
+					await sql`INSERT INTO todos_containers DEFAULT VALUES RETURNING id`;
+				const storage_id = storageResult.rows[0].id;
+				const todosContainerResult =
+					await sql`INSERT INTO todos_containers DEFAULT VALUES RETURNING id`;
+				const todos_container_id = todosContainerResult.rows[0].id;
 				await sql`
-              INSERT INTO users (todos_container_id, storage_id, user_name, email, password, primary_color, secondary_color)
-            VALUES (${todos_container_id_id.rows[0].id}, ${storage_id.rows[0].id}, ${userName}, ${email}, ${hashedPassword}, '#0050b8', '#ffffff');
-             `;
-				revalidatePath('/login');
-				redirect('/login');
+					INSERT INTO users (todos_container_id, storage_id, user_name, email, password, primary_color, secondary_color)
+					VALUES (${storage_id}, ${todos_container_id}, ${userName}, ${email}, ${hashedPassword}, '#0050b8', '#ffffff');`;
 			} catch (error) {
+				console.log(error);
 				return {
 					message: 'Coś poszło nie tak. Spróbuj ponownie później.',
 				};
@@ -53,4 +51,6 @@ export async function registerUser(prevState: State, formData: FormData) {
 			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
 		};
 	}
+	revalidatePath('/login');
+	redirect('/login');
 }
