@@ -16,13 +16,13 @@ export default function BackButtons(options: BackButtonsProps) {
 			>
 				<IoReturnDownBackOutline />
 			</Link>
-			<Link
+			<button
 				className={styles.back_button}
-				href={options.href}
 				style={{ backgroundColor: options.color }}
+				type='submit'
 			>
 				<MdDone />
-			</Link>
+			</button>
 		</div>
 	);
 }

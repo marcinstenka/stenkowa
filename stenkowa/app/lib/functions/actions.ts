@@ -51,3 +51,11 @@ export async function registerUser(prevState: State, formData: FormData) {
 	revalidatePath('/login');
 	redirect('/login');
 }
+
+export async function createBookmark(prevState: State, formData: FormData) {
+	revalidatePath('/bookmarks');
+	redirect('/bookmarks');
+	return {
+		message: 'Test',
+	};
+}
