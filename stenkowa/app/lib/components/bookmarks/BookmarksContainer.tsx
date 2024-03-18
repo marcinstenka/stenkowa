@@ -1,8 +1,9 @@
+import { fetchBookmarks } from '../../functions/data';
 import { BookmarkType } from '../../types/types';
 import Bookmark from './Bookmark';
 import styles from './bookmarks.module.scss';
 
-export default function BookmarksContainer() {
+export default async function BookmarksContainer() {
 	const bookmarks: BookmarkType[] = [
 		{
 			id: 1,
@@ -96,11 +97,14 @@ export default function BookmarksContainer() {
 			color: '#FF0000',
 		},
 	];
+	const a = await fetchBookmarks();
 	return (
 		<div className={styles.container}>
-			{bookmarks.map((bookmark, index) => {
-				return <Bookmark bookmark={bookmark} enableEdit={true} key={index} />;
-			})}
+			{}
+			{a &&
+				a.map((bookmark, index) => {
+					return <Bookmark bookmark={bookmark} enableEdit={true} key={index} />;
+				})}
 		</div>
 	);
 }
