@@ -7,6 +7,9 @@ import bcrypt from 'bcrypt';
 export type State = {
 	message?: string | null;
 };
+
+const USER_ID = 1; //for testing
+
 export async function registerUser(prevState: State, formData: FormData) {
 	const validatedFields = {
 		userName: formData.get('userName')?.toString(),
@@ -60,10 +63,18 @@ export async function createBookmark(prevState: State, formData: FormData) {
 		color: formData.get('new_bookmark_color')?.toString(),
 	};
 	const { name, link, icon, color } = validatedFields;
-	console.log(name, link, icon, color);
+
+	try {
+		await sql`
+		INSERT INTO bookmarks (user_id, name, link, color, icon)
+        VALUES (${USER_ID}, ${name}, ${link}, ${color},${icon});
+		`;
+	} catch (error) {
+		return {
+			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+		};
+	}
+
 	revalidatePath('/bookmarks');
 	redirect('/bookmarks');
-	return {
-		message: 'Test',
-	};
 }
