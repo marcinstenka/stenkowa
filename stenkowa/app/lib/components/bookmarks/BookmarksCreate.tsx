@@ -19,13 +19,23 @@ export default function BookmarksCreate() {
 					<label htmlFor='new_bookmark_name' color-changing='border-color'>
 						Nazwa:
 					</label>
-					<input type='text' name='new_bookmark_name' id='new_bookmark_name' />
+					<input
+						type='text'
+						name='new_bookmark_name'
+						id='new_bookmark_name'
+						required
+					/>
 				</div>
 				<div className={styles.input_container}>
 					<label htmlFor='new_bookmark_link' color-changing='border-color'>
 						Link:
 					</label>
-					<input type='text' name='new_bookmark_link' id='new_bookmark_link' />
+					<input
+						type='text'
+						name='new_bookmark_link'
+						id='new_bookmark_link'
+						required
+					/>
 				</div>
 				<div className={styles.icon_container}>
 					<label htmlFor='new_bookmark_icon' color-changing='border-color'>

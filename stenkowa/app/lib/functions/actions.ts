@@ -53,6 +53,14 @@ export async function registerUser(prevState: State, formData: FormData) {
 }
 
 export async function createBookmark(prevState: State, formData: FormData) {
+	const validatedFields = {
+		name: formData.get('new_bookmark_name')?.toString(),
+		link: formData.get('new_bookmark_link')?.toString(),
+		icon: formData.get('new_bookmark_icon')?.toString(),
+		color: formData.get('new_bookmark_color')?.toString(),
+	};
+	const { name, link, icon, color } = validatedFields;
+	console.log(name, link, icon, color);
 	revalidatePath('/bookmarks');
 	redirect('/bookmarks');
 	return {
