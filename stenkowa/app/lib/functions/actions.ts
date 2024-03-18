@@ -21,30 +21,27 @@ export async function registerUser(prevState: State, formData: FormData) {
 			hashedPassword = hash;
 		});
 	}
+
 	try {
-		const result = await sql`
-        SELECT email from users where email = ${email}`;
-		if (result.rows.length > 0) {
+		const emails = await sql`
+			 SELECT email FROM users WHERE email = ${email};
+		`;
+		if (emails.rows.length) {
 			return {
 				message: 'Ten email jest już zajęty. Użyj innego.',
 			};
 		} else {
-			try {
-				const storageResult =
-					await sql`INSERT INTO todos_containers DEFAULT VALUES RETURNING id`;
-				const storage_id = storageResult.rows[0].id;
-				const todosContainerResult =
-					await sql`INSERT INTO todos_containers DEFAULT VALUES RETURNING id`;
-				const todos_container_id = todosContainerResult.rows[0].id;
-				await sql`
-					INSERT INTO users (todos_container_id, storage_id, user_name, email, password, primary_color, secondary_color)
-					VALUES (${storage_id}, ${todos_container_id}, ${userName}, ${email}, ${hashedPassword}, '#0050b8', '#ffffff');`;
-			} catch (error) {
-				console.log(error);
-				return {
-					message: 'Coś poszło nie tak. Spróbuj ponownie później.',
-				};
-			}
+			//creating new storage and todos_container for user
+			//then creating new user with ids from storage and todos_container
+			await sql`
+			WITH new_storage AS (
+				INSERT INTO storages DEFAULT VALUES RETURNING id AS storage_id
+			), new_todos_container AS (
+				INSERT INTO todos_containers DEFAULT VALUES RETURNING id AS todos_container_id
+			)
+			INSERT INTO users (todos_container_id, storage_id, user_name, email, password, primary_color, secondary_color)
+			SELECT todos_container_id, storage_id, ${userName}, ${email}, ${hashedPassword}, '#0050b8', '#ffffff'
+			FROM new_storage, new_todos_container;`;
 		}
 	} catch (error) {
 		return {
