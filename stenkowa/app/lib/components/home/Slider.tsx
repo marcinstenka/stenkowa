@@ -31,7 +31,7 @@ export default function Slider() {
 		{
 			id: 3,
 			link: 'https://www.facebook.com',
-			icon: 'FaFacebookF',
+			icon: 'FaFacebook',
 			name: 'Facebook',
 			color: '#4267B2',
 		},

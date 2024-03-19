@@ -10,10 +10,8 @@ export async function fetchBookmarks() {
 		const data = await sql<BookmarkType>`
         select * FROM bookmarks where user_id = ${USER_ID}
         `;
-		console.log(data.rows);
 		return data.rows;
 	} catch (error) {
 		console.log(error);
 	}
 }
-
