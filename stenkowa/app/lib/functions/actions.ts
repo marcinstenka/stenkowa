@@ -98,3 +98,13 @@ export async function updateBookmark(bookmarkId: number, formData: FormData) {
 	revalidatePath('/bookmarks');
 	redirect('/bookmarks');
 }
+export async function deleteBookmark(id: number) {
+	try {
+		await sql`
+       	 DELETE FROM bookmarks where id = ${id}`;
+		revalidatePath('/bookmarks');
+		redirect('/bookmarks');
+	} catch (error) {
+		console.log(error);
+	}
+}

@@ -6,8 +6,8 @@ import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
 import useBookmarkEdit from '../../hooks/useBookmarkEdit';
 import BookmarkIconSelect from './BookmarkIconSelect';
-import { useFormState } from 'react-dom';
-import { updateBookmark } from '../../functions/actions';
+import { deleteBookmark, updateBookmark } from '../../functions/actions';
+import { startTransition } from 'react';
 
 export default function BookmarkEditForm(bookmark: BookmarkType) {
 	const {
@@ -19,6 +19,7 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 		icon,
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
+	const initialState = { message: '' };
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
 
 	return (
@@ -68,7 +69,16 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<MdDelete style={{ color: `${color}` }} />
+					<button
+						className={styles.details_delete}
+						onClick={() =>
+							startTransition(() => {
+								deleteBookmark(bookmark.id);
+							})
+						}
+					>
+						<MdDelete style={{ color: `${color}` }} />
+					</button>
 				</div>
 			</div>
 			<BackButtons href='/bookmarks' color={color} />
