@@ -78,3 +78,23 @@ export async function createBookmark(prevState: State, formData: FormData) {
 	revalidatePath('/bookmarks');
 	redirect('/bookmarks');
 }
+
+export async function updateBookmark(bookmarkId: number, formData: FormData) {
+	const validatedFields = {
+		name: formData.get('details_header')?.toString(),
+		link: formData.get('details_text')?.toString(),
+		icon: formData.get('new_bookmark_icon')?.toString(),
+		color: formData.get('details_color')?.toString(),
+	};
+	const { name, link, icon, color } = validatedFields;
+
+	try {
+		await sql`
+		UPDATE bookmarks SET name = ${name}, link = ${link}, color = ${color}, icon = ${icon} WHERE id = ${bookmarkId}`;
+	} catch (error) {
+		console.log(error);
+	}
+
+	revalidatePath('/bookmarks');
+	redirect('/bookmarks');
+}

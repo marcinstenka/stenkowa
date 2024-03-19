@@ -6,6 +6,8 @@ import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
 import useBookmarkEdit from '../../hooks/useBookmarkEdit';
 import BookmarkIconSelect from './BookmarkIconSelect';
+import { useFormState } from 'react-dom';
+import { updateBookmark } from '../../functions/actions';
 
 export default function BookmarkEditForm(bookmark: BookmarkType) {
 	const {
@@ -17,8 +19,10 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 		icon,
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
+	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
+
 	return (
-		<div className={styles.details}>
+		<form className={styles.details} action={updateBookmarkWithId}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input
@@ -75,6 +79,6 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 			>
 				Kliknij element, aby zmienić
 			</p>
-		</div>
+		</form>
 	);
 }
