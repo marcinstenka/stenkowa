@@ -15,3 +15,14 @@ export async function fetchBookmarks() {
 		console.log(error);
 	}
 }
+export async function fetchBookmark(id: number) {
+	noStore();
+	try {
+		const data = await sql<BookmarkType>`
+        select * FROM bookmarks where user_id = ${USER_ID} and id = ${id}
+        `;
+		return data.rows[0];
+	} catch (error) {
+		console.log(error);
+	}
+}

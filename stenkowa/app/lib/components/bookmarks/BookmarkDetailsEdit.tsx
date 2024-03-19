@@ -1,14 +1,14 @@
+import { fetchBookmark } from '../../functions/data';
 import { BookmarkType } from '../../types/types';
 import BookmarkEditForm from './BookmarkEditForm';
 
-export default function BookmarkDetailsEdit() {
-	const tempBookmark: BookmarkType = {
-		id: 1,
-		link: 'https://www.netflix.com/browse',
-		icon: 'SiNetflix',
-		name: 'Netflix',
-		color: '#E50914',
-	};
+type BookmarkDetailsEditProps = { id: number };
 
-	return <BookmarkEditForm {...tempBookmark} />;
+export default async function BookmarkDetailsEdit({
+	id,
+}: BookmarkDetailsEditProps) {
+	const bookmark: BookmarkType | undefined = await fetchBookmark(id);
+	if (bookmark) {
+		return <BookmarkEditForm {...bookmark} />;
+	}
 }

@@ -16,7 +16,7 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 		link,
 		icon,
 	} = useBookmarkEdit(bookmark);
-	const { color, handleColorChange } = useColorChanging();
+	const { color, handleColorChange } = useColorChanging(bookmark.color);
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
