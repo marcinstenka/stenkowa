@@ -7,7 +7,7 @@ import BookmarkIconSelect from './BookmarkIconSelect';
 import { createBookmark } from '../../functions/actions';
 
 export default function BookmarksCreate() {
-	const { color, handleColorChange } = useColorChanging();
+	const { color, handleColorChange } = useColorChanging('');
 	const initialState = { message: '' };
 	const [state, dispatch] = useFormState(createBookmark, initialState);
 
