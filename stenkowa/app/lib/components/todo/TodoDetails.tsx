@@ -43,7 +43,9 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 				</div>
 				<div className={styles.details_date}>
 					<p>{date_added}</p>
-					<p style={{ borderColor: `${todo.color}` }}>{date_deadline}</p>
+					<p style={{ borderColor: `${todo.color}` }}>
+						{date_deadline}
+					</p>
 				</div>
 			</div>
 			<h3>

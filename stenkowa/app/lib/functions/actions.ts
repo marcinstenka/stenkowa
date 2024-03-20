@@ -115,14 +115,17 @@ export async function createTodo(prevState: State, formData: FormData) {
 		name: formData.get('new_todo_name')?.toString(),
 		description: formData.get('new_todo_description')?.toString(),
 		date_deadline_string: formData.get('new_todo_deadline')?.toString(),
+		date_added_string: formData.get('new_todo_added')?.toString(),
 		color: formData.get('new_todo_color')?.toString(),
 	};
-	const { name, description, date_deadline_string, color } = validatedFields;
+	const { name, description, date_deadline_string, date_added_string, color } =
+		validatedFields;
 
-	const date_added = new Date();
 	let date_deadline: Date = new Date();
-	if (date_deadline_string) {
+	let date_added: Date = new Date();
+	if (date_deadline_string && date_added_string) {
 		date_deadline = new Date(Date.parse(date_deadline_string));
+		date_added = new Date(Date.parse(date_added_string));
 	}
 	try {
 		await sql`

@@ -26,14 +26,17 @@ export default function TodoCreate() {
 				</div>
 				<div className={styles.date_container}>
 					<label htmlFor='new_todo_added' color-changing='border-color'>
-						Początek:
+						Dodano:
 					</label>
 					<input
 						type='datetime-local'
 						name='new_todo_added'
 						id='new_todo_added'
-						defaultValue={new Date().toISOString().slice(0, 16)}
+						defaultValue={new Date()
+							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+							.replace(',', '')}
 						required
+						disabled
 					/>
 				</div>
 				<div className={styles.date_container}>
@@ -44,7 +47,9 @@ export default function TodoCreate() {
 						type='datetime-local'
 						name='new_todo_deadline'
 						id='new_todo_deadline'
-						defaultValue={new Date().toISOString().slice(0, 16)}
+						defaultValue={new Date()
+							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+							.replace(',', '')}
 						required
 					/>
 				</div>
