@@ -216,6 +216,9 @@ $textareaMinHeight: 48px;
 		&::-webkit-appearance {
 			background: none;
 		}
+		&:disabled {
+			background: none;
+		}
 	}
 }
 .input_color_container {

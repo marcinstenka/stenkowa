@@ -138,3 +138,22 @@ export async function createTodo(prevState: State, formData: FormData) {
 	revalidatePath('/todo');
 	redirect('/todo');
 }
+export async function updateTodo(todoId: number, formData: FormData) {
+	const validatedFields = {
+		name: formData.get('details_header')?.toString(),
+		description: formData.get('details_text')?.toString(),
+		color: formData.get('details_color')?.toString(),
+		date_deadline: formData.get('date_deadline')?.toString(),
+	};
+	const { name, description, color, date_deadline } = validatedFields;
+
+	try {
+		await sql`
+		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${date_deadline} WHERE id = ${todoId}`;
+	} catch (error) {
+		console.log(error);
+	}
+
+	revalidatePath('/todo');
+	redirect('/todo');
+}

@@ -5,20 +5,22 @@ import styles from '../../styles/details.module.scss';
 import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
+import { updateTodo } from '../../functions/actions';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
 		handleHeaderChange,
-		handleDetailsChange,
+		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
 		details_header,
-		details,
+		description,
 		timeLeft,
 	} = useTodoEdit(todo);
-	const { color, handleColorChange } = useColorChanging("");
+	const { color, handleColorChange } = useColorChanging(todo.color);
+	const updateTodoWithId = updateTodo.bind(null, todo.id);
 	return (
-		<form className={styles.details}>
+		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input
@@ -49,13 +51,13 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{details}</div>
+				<div className={styles.details_text}>{description}</div>
 				<textarea
 					name='details_text'
 					id='details_text'
-					onChange={handleDetailsChange}
+					onChange={handleDescriptionChange}
 				>
-					{details}
+					{description}
 				</textarea>
 			</div>
 
@@ -70,17 +72,18 @@ export default function TodoEditForm(todo: TodoType) {
 					<div className={styles.date_input_container}>
 						<input
 							type='datetime-local'
-							name='details_date'
-							id='details_date'
+							name='date_added'
+							id='date_added'
 							defaultValue={todo.date_added.toISOString().slice(0, 16)}
 							onChange={handleDateAddedChange}
+							disabled
 						/>
 					</div>
 					<div className={styles.date_input_container}>
 						<input
 							type='datetime-local'
-							name='details_date'
-							id='details_date'
+							name='date_deadline'
+							id='date_deadline'
 							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'

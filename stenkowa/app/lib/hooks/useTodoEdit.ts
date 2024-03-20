@@ -4,7 +4,7 @@ import { calculateTimedifference } from '../functions/functions';
 
 export default function useTodoEdit(todo: TodoType) {
 	const [details_header, setDetails_header] = useState(todo.name);
-	const [details, setDetails] = useState(todo.details);
+	const [description, setDescription] = useState(todo.description);
 	const [date_added, setDate_added] = useState(todo.date_added);
 	const [date_deadline, setDate_deadline] = useState(todo.date_deadline);
 	const [timeLeft, setTimeLeft] = useState(
@@ -22,8 +22,8 @@ export default function useTodoEdit(todo: TodoType) {
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);
 	};
-	const handleDetailsChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setDetails(e.target.value);
+	const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
+		setDescription(e.target.value);
 	};
 	const handleDateAddedChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDate_added(new Date(e.target.value));
@@ -34,11 +34,11 @@ export default function useTodoEdit(todo: TodoType) {
 
 	return {
 		handleHeaderChange,
-		handleDetailsChange,
+		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
 		details_header,
-		details,
+		description,
 		date_added,
 		date_deadline,
 		timeLeft,
