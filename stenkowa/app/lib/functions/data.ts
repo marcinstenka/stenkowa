@@ -38,3 +38,15 @@ export async function fetchTodos() {
 		console.log(error);
 	}
 }
+
+export async function fetchTodo(id: number) {
+	noStore();
+	try {
+		const data = await sql<TodoType>`
+        select * FROM todos where todos_container_id = ${TODOS_CONTAINER_ID} and id = ${id}
+        `;
+		return data.rows[0];
+	} catch (error) {
+		console.log(error);
+	}
+}

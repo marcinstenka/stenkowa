@@ -135,8 +135,8 @@ async function createTodos(client) {
                 name TEXT NOT NULL,
                 description TEXT NOT NULL,
                 color TEXT NOT NULL,
-                date_deadline DATE NOT NULL,
-                date_added DATE NOT NULL
+                date_deadline TIMESTAMPTZ NOT NULL,
+                date_added TIMESTAMPTZ NOT NULL
             );
         `;
 		console.log(`Created "todos" table`);

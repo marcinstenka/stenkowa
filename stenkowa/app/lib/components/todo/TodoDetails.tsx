@@ -5,54 +5,45 @@ import { MdDelete } from 'react-icons/md';
 import Link from 'next/link';
 import { calculateTimedifference, formatDate } from '../../functions/functions';
 import { TodoType } from '../../types/types';
+import { fetchTodo } from '../../functions/data';
+type TodoDetailsProps = { id: number };
 
-export default function TodoDetails() {
-	const tempTodo: TodoType = {
-		id: 1,
-		name: 'Zrób pranie',
-		details:
-			'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim. Phasellus id mollis est. Integer euismod fermentum nunc ut dignissim. In nisl tellus, facilisis eu mi sed, bibendum gravida lectus. Quisque pulvinar tristique metus, ac eleifend magna consequat in.',
-		date_added: new Date(2024, 1, 20, 16, 31),
-		date_deadline: new Date(2024, 1, 21, 12, 0),
-		color: '#0050b8',
-	};
+export default async function TodoDetails({ id }: TodoDetailsProps) {
+	const todo: TodoType | undefined = await fetchTodo(id);
+	if (!todo) return;
+	const date_added = formatDate(todo.date_added, true);
+	const date_deadline = formatDate(todo.date_deadline, true);
 
-	const date_added = formatDate(tempTodo.date_added, true);
-	const date_deadline = formatDate(tempTodo.date_deadline, true);
-
-	const timeLeft = calculateTimedifference(
-		tempTodo.date_added,
-		tempTodo.date_deadline
-	);
+	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
-				<h4 style={{ borderColor: `${tempTodo.color}` }}>{tempTodo.name}</h4>
+				<h4 style={{ borderColor: `${todo.color}` }}>{todo.name}</h4>
 				<div className={styles.details_header_icons}>
-					<Link href={`/todo/${tempTodo.id}/edit`}>
-						<BiSolidEdit style={{ color: `${tempTodo.color}` }} />
+					<Link href={`/todo/${todo.id}/edit`}>
+						<BiSolidEdit style={{ color: `${todo.color}` }} />
 					</Link>
-					<MdDelete style={{ color: `${tempTodo.color}` }} />
+					<MdDelete style={{ color: `${todo.color}` }} />
 				</div>
 			</div>
-			<div className={styles.details_text}>{tempTodo.details}</div>
+			<div className={styles.details_text}>{todo.description}</div>
 			<div className={styles.details_dates}>
 				<div className={styles.details_date}>
 					<p>Dodane:</p>
-					<p style={{ borderColor: `${tempTodo.color}` }}>Deadline:</p>
+					<p style={{ borderColor: `${todo.color}` }}>Deadline:</p>
 				</div>
 				<div className={styles.details_date}>
 					<p>{date_added}</p>
-					<p style={{ borderColor: `${tempTodo.color}` }}>{date_deadline}</p>
+					<p style={{ borderColor: `${todo.color}` }}>{date_deadline}</p>
 				</div>
 			</div>
 			<h3>
-				Zostało: <span style={{ color: `${tempTodo.color}` }}>{timeLeft}</span>
+				Zostało: <span style={{ color: `${todo.color}` }}>{timeLeft}</span>
 			</h3>
 			<Link
 				className={styles.details_back}
 				href='/todo'
-				style={{ backgroundColor: `${tempTodo.color}` }}
+				style={{ backgroundColor: `${todo.color}` }}
 			>
 				<IoReturnDownBackOutline />
 			</Link>
