@@ -186,14 +186,11 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_short_input_container {
-	width: 81px !important;
 	input {
 		font-size: 15px !important;
 	}
 }
 .date_input_container {
-	width: 120px;
-	height: 50%;
 	&:last-of-type {
 		input {
 			border-bottom-width: 2px;
@@ -324,13 +321,11 @@ $textareaMinHeight: 48px;
 		}
 	}
 	.date_input_container {
-		width: 142px;
 		input {
 			font-size: 17px;
 		}
 	}
 	.date_short_input_container {
-		width: 105px !important;
 		input {
 			font-size: 20px !important;
 		}
