@@ -9,6 +9,7 @@ export type State = {
 };
 
 const USER_ID = 1; //for testing
+const TODOS_CONTAINER_ID = 1; // for testing
 
 export async function registerUser(prevState: State, formData: FormData) {
 	const validatedFields = {
@@ -107,4 +108,33 @@ export async function deleteBookmark(id: number) {
 	} catch (error) {
 		console.log(error);
 	}
+}
+
+export async function createTodo(prevState: State, formData: FormData) {
+	const validatedFields = {
+		name: formData.get('new_todo_name')?.toString(),
+		description: formData.get('new_todo_description')?.toString(),
+		date_deadline_string: formData.get('new_todo_deadline')?.toString(),
+		color: formData.get('new_todo_color')?.toString(),
+	};
+	const { name, description, date_deadline_string, color } = validatedFields;
+
+	const date_added = new Date();
+	let date_deadline: Date = new Date();
+	if (date_deadline_string) {
+		date_deadline = new Date(Date.parse(date_deadline_string));
+	}
+	try {
+		await sql`
+		 INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
+		VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline.toISOString()}, ${date_added.toISOString()});
+		`;
+	} catch (error) {
+		return {
+			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+		};
+	}
+
+	revalidatePath('/todo');
+	redirect('/todo');
 }

@@ -17,6 +17,7 @@ const todos = [
 		details: 'red',
 		color: 'blue',
 		date_deadline: new Date(),
+		date_added: new Date(),
 	},
 ];
 const todosContainers = [{}];
@@ -132,17 +133,18 @@ async function createTodos(client) {
                 todos_container_id INT,
                 FOREIGN KEY (todos_container_id) REFERENCES todos_containers(id),
                 name TEXT NOT NULL,
-                details TEXT NOT NULL,
+                description TEXT NOT NULL,
                 color TEXT NOT NULL,
-                date_deadline DATE NOT NULL
+                date_deadline DATE NOT NULL,
+                date_added DATE NOT NULL
             );
         `;
 		console.log(`Created "todos" table`);
 		const insertedTodos = await Promise.all(
 			todos.map(async (todo) => {
 				return client.sql`
-                    INSERT INTO todos (todos_container_id, name, details, color, date_deadline)
-                    VALUES (${todo.todos_container_id}, ${todo.name}, ${todo.details}, ${todo.color}, ${todo.date_deadline});
+                    INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
+                    VALUES (${todo.todos_container_id}, ${todo.name}, ${todo.details}, ${todo.color}, ${todo.date_deadline}, ${todo.date_added});
                 `;
 			})
 		);
