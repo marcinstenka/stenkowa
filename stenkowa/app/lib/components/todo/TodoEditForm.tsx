@@ -5,7 +5,8 @@ import styles from '../../styles/details.module.scss';
 import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
-import { updateTodo } from '../../functions/actions';
+import { deleteTodo, updateTodo } from '../../functions/actions';
+import { startTransition } from 'react';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
@@ -47,7 +48,16 @@ export default function TodoEditForm(todo: TodoType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<MdDelete style={{ color: `${color}` }} color-changing='color' />
+					<button
+						className={styles.details_delete}
+						onClick={() =>
+							startTransition(() => {
+								deleteTodo(todo.id);
+							})
+						}
+					>
+						<MdDelete style={{ color: `${color}` }} color-changing='color' />
+					</button>
 				</div>
 			</div>
 			<div className={styles.textarea_container}>

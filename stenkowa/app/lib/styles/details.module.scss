@@ -105,6 +105,12 @@ $textareaMinHeight: 48px;
 	&_delete {
 		border: none;
 		background: none;
+		padding: 0;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	&_back {
 		display: flex;
@@ -222,8 +228,6 @@ $textareaMinHeight: 48px;
 	}
 }
 .input_color_container {
-	width: 30px;
-	height: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: center;

@@ -6,6 +6,9 @@ import Link from 'next/link';
 import { calculateTimedifference, formatDate } from '../../functions/functions';
 import { TodoType } from '../../types/types';
 import { fetchTodo } from '../../functions/data';
+import { startTransition } from 'react';
+import { deleteTodo } from '../../functions/actions';
+
 type TodoDetailsProps = { id: number };
 
 export default async function TodoDetails({ id }: TodoDetailsProps) {
@@ -15,6 +18,8 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 	const date_deadline = formatDate(todo.date_deadline, true);
 
 	const timeLeft = calculateTimedifference(todo.date_added, todo.date_deadline);
+
+	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
@@ -23,7 +28,11 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 					<Link href={`/todo/${todo.id}/edit`}>
 						<BiSolidEdit style={{ color: `${todo.color}` }} />
 					</Link>
-					<MdDelete style={{ color: `${todo.color}` }} />
+					<form action={deleteTodoWithId}>
+						<button className={styles.details_delete}>
+							<MdDelete style={{ color: `${todo.color}` }} />
+						</button>
+					</form>
 				</div>
 			</div>
 			<div className={styles.details_text}>{todo.description}</div>

@@ -157,3 +157,13 @@ export async function updateTodo(todoId: number, formData: FormData) {
 	revalidatePath('/todo');
 	redirect('/todo');
 }
+export async function deleteTodo(id: number) {
+	try {
+		await sql`
+       	 DELETE FROM todos where id = ${id}`;
+	} catch (error) {
+		console.log(error);
+	}
+	revalidatePath('/todo');
+	redirect('/todo');
+}
