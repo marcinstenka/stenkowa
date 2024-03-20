@@ -16,7 +16,7 @@ export default function TodoEditForm(todo: TodoType) {
 		details,
 		timeLeft,
 	} = useTodoEdit(todo);
-	const { color, handleColorChange } = useColorChanging();
+	const { color, handleColorChange } = useColorChanging("");
 	return (
 		<form className={styles.details}>
 			<div className={styles.details_header}>

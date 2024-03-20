@@ -144,6 +144,8 @@ export default function BookmarkIconSelect({
 			onChange={handleChange}
 			options={options}
 			classNamePrefix='select'
+			required
+			name='new_bookmark_icon'
 		/>
 	);
 }

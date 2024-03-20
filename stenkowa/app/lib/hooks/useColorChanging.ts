@@ -1,7 +1,9 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 
-export default function useColorChanging() {
-	const [color, setColor] = useState('#0050b8');
+export default function useColorChanging(value: string) {
+	let colorValue: string = '#0050b8';
+	if (value) colorValue = value;
+	const [color, setColor] = useState(colorValue);
 	useEffect(() => {
 		const colorChangingElements = document.querySelectorAll('[color-changing]');
 		colorChangingElements.forEach((element) => {

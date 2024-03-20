@@ -3,7 +3,7 @@ import useColorChanging from '../../hooks/useColorChanging';
 import styles from '../../styles/create.module.scss';
 import BackButtons from '../global/BackButtons';
 export default function StorageItemCreate() {
-	const { color, handleColorChange } = useColorChanging();
+	const { color, handleColorChange } = useColorChanging("");
 	return (
 		<div className={styles.container}>
 			<h3 color-changing='border-color'>Dodaj nowy przedmiot</h3>

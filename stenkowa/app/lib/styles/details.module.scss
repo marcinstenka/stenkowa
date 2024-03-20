@@ -102,6 +102,10 @@ $textareaMinHeight: 48px;
 		width: fit-content;
 		border-bottom: 2px solid;
 	}
+	&_delete {
+		border: none;
+		background: none;
+	}
 	&_back {
 		display: flex;
 		justify-content: center;

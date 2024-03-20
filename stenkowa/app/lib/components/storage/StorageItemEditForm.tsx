@@ -15,7 +15,7 @@ export default function StorageItemEditForm(item: StorageItemType) {
 		details,
 		date_added,
 	} = useStorageItemEdit(item);
-	const { color, handleColorChange } = useColorChanging();
+	const { color, handleColorChange } = useColorChanging("");
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>

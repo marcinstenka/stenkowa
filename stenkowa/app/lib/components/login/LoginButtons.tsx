@@ -21,8 +21,8 @@ export default function LoginButtons({ type }: LoginButtonsProps) {
 
 	return (
 		<div className={styles.buttons}>
-			<button className={styles.button}>
-				<Link href={first.link}>{first.text}</Link>
+			<button className={styles.button} type='submit'>
+				<p>{first.text}</p>
 			</button>
 			<div className={styles.line}></div>
 			<Link

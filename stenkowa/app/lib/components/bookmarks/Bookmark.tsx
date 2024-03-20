@@ -2,10 +2,23 @@ import styles from './bookmarks.module.scss';
 import Link from 'next/link';
 
 import { BookmarkType } from '../../types/types';
-import { SiNetflix } from 'react-icons/si';
-import { FaFacebookF } from 'react-icons/fa';
-import { FaYoutube } from 'react-icons/fa';
-import { SiGmail } from 'react-icons/si';
+import { TiWeatherPartlySunny } from 'react-icons/ti';
+import { FaFacebookMessenger, FaMoneyCheckDollar } from 'react-icons/fa6';
+import {
+	FaBook,
+	FaBusAlt,
+	FaCarAlt,
+	FaFacebook,
+	FaGithub,
+	FaInstagram,
+	FaPlane,
+	FaStackOverflow,
+	FaYoutube,
+} from 'react-icons/fa';
+import { SiGmail, SiNetflix } from 'react-icons/si';
+import { IoIosDocument } from 'react-icons/io';
+import { MdOutlineGTranslate } from 'react-icons/md';
+import { CiMail } from 'react-icons/ci';
 import { BiSolidEdit } from 'react-icons/bi';
 
 type IconMap = {
@@ -13,10 +26,23 @@ type IconMap = {
 };
 
 const iconMap: IconMap = {
-	SiNetflix: SiNetflix,
-	FaFacebookF: FaFacebookF,
-	FaYoutube: FaYoutube,
-	SiGmail: SiGmail,
+	FaFacebookMessenger,
+	FaMoneyCheckDollar,
+	TiWeatherPartlySunny,
+	FaBook,
+	FaBusAlt,
+	FaCarAlt,
+	FaFacebook,
+	FaGithub,
+	FaInstagram,
+	FaPlane,
+	FaStackOverflow,
+	FaYoutube,
+	SiGmail,
+	SiNetflix,
+	IoIosDocument,
+	MdOutlineGTranslate,
+	CiMail,
 };
 
 type BookmarkProps = { bookmark: BookmarkType; enableEdit: boolean };
