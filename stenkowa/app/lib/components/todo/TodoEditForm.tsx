@@ -5,20 +5,24 @@ import styles from '../../styles/details.module.scss';
 import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
+import { deleteTodo, updateTodo } from '../../functions/actions';
+import { startTransition } from 'react';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
 		handleHeaderChange,
-		handleDetailsChange,
+		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
 		details_header,
-		details,
+		description,
 		timeLeft,
 	} = useTodoEdit(todo);
-	const { color, handleColorChange } = useColorChanging("");
+	const { color, handleColorChange } = useColorChanging(todo.color);
+	const updateTodoWithId = updateTodo.bind(null, todo.id);
+
 	return (
-		<form className={styles.details}>
+		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input
@@ -45,17 +49,26 @@ export default function TodoEditForm(todo: TodoType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<MdDelete style={{ color: `${color}` }} color-changing='color' />
+					<button
+						className={styles.details_delete}
+						onClick={() =>
+							startTransition(() => {
+								deleteTodo(todo.id);
+							})
+						}
+					>
+						<MdDelete style={{ color: `${color}` }} color-changing='color' />
+					</button>
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{details}</div>
+				<div className={styles.details_text}>{description}</div>
 				<textarea
 					name='details_text'
 					id='details_text'
-					onChange={handleDetailsChange}
+					onChange={handleDescriptionChange}
 				>
-					{details}
+					{description}
 				</textarea>
 			</div>
 
@@ -70,18 +83,23 @@ export default function TodoEditForm(todo: TodoType) {
 					<div className={styles.date_input_container}>
 						<input
 							type='datetime-local'
-							name='details_date'
-							id='details_date'
-							defaultValue={todo.date_added.toISOString().slice(0, 16)}
+							name='date_added'
+							id='date_added'
+							defaultValue={todo.date_added
+								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+								.replace(',', '')}
 							onChange={handleDateAddedChange}
+							disabled
 						/>
 					</div>
 					<div className={styles.date_input_container}>
 						<input
 							type='datetime-local'
-							name='details_date'
-							id='details_date'
-							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
+							name='date_deadline'
+							id='date_deadline'
+							defaultValue={todo.date_deadline
+								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+								.replace(',', '')}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}

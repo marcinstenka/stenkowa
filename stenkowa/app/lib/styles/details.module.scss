@@ -105,6 +105,12 @@ $textareaMinHeight: 48px;
 	&_delete {
 		border: none;
 		background: none;
+		padding: 0;
+		width: 30px;
+		height: 30px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 	}
 	&_back {
 		display: flex;
@@ -180,14 +186,11 @@ $textareaMinHeight: 48px;
 	}
 }
 .date_short_input_container {
-	width: 81px !important;
 	input {
 		font-size: 15px !important;
 	}
 }
 .date_input_container {
-	width: 120px;
-	height: 50%;
 	&:last-of-type {
 		input {
 			border-bottom-width: 2px;
@@ -201,6 +204,7 @@ $textareaMinHeight: 48px;
 		padding: 0;
 		height: 100%;
 		position: relative;
+		cursor: pointer;
 		&::-webkit-calendar-picker-indicator {
 			background: transparent;
 			bottom: 0;
@@ -216,11 +220,13 @@ $textareaMinHeight: 48px;
 		&::-webkit-appearance {
 			background: none;
 		}
+		&:disabled {
+			background: none;
+		}
 	}
 }
+
 .input_color_container {
-	width: 30px;
-	height: 30px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -315,13 +321,11 @@ $textareaMinHeight: 48px;
 		}
 	}
 	.date_input_container {
-		width: 142px;
 		input {
 			font-size: 17px;
 		}
 	}
 	.date_short_input_container {
-		width: 105px !important;
 		input {
 			font-size: 20px !important;
 		}

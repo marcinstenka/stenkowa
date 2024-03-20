@@ -40,9 +40,10 @@ function dateInflection(days: number, hours: number, minutes: number) {
 	return [dayWordInflection, hourWordInflection, minuteWordInflection];
 }
 
-export function calculateTimedifference(added: Date, deadline: Date) {
-	if (deadline < added) return '0';
-	const differenceInMiliSec = Math.abs(added.getTime() - deadline.getTime());
+export function calculateTimedifference( deadline: Date) {
+	const current = new Date(); 
+	if (deadline < current) return '0';
+	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)

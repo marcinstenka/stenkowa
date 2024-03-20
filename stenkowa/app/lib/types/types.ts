@@ -20,7 +20,7 @@ export type BookmarkType = {
 export type TodoType = {
 	id: number;
 	name: string;
-	details: string;
+	description: string;
 	date_added: Date;
 	date_deadline: Date;
 	color: string;

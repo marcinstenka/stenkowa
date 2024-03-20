@@ -19,7 +19,6 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 		icon,
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
-	const initialState = { message: '' };
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
 
 	return (

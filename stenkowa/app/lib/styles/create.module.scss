@@ -47,6 +47,11 @@
 	align-items: center;
 	gap: 20px;
 	width: 100%;
+	input {
+		&:disabled {
+			background: none;
+		}
+	}
 }
 
 .input_container,
