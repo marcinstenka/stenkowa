@@ -103,6 +103,7 @@ export default function TodoEditForm(todo: TodoType) {
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
+							step={'any'}
 						/>
 					</div>
 				</div>
