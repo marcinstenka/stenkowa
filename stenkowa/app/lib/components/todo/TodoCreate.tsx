@@ -36,7 +36,7 @@ export default function TodoCreate() {
 							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 							.replace(',', '')}
 						required
-						disabled
+						readOnly
 					/>
 				</div>
 				<div className={styles.date_container}>
@@ -51,6 +51,7 @@ export default function TodoCreate() {
 							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 							.replace(',', '')}
 						required
+						step={'any'}
 					/>
 				</div>
 				<div className={styles.color_container}>

@@ -220,7 +220,7 @@ $textareaMinHeight: 48px;
 		&::-webkit-appearance {
 			background: none;
 		}
-		&:disabled {
+		&:read-only {
 			background: none;
 		}
 	}

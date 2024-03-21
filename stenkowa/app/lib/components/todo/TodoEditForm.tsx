@@ -20,7 +20,16 @@ export default function TodoEditForm(todo: TodoType) {
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
-
+	console.log(
+		todo.date_added
+			.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+			.replace(',', '')
+	);
+	console.log(
+		todo.date_deadline
+			.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+			.replace(',', '')
+	);
 	return (
 		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
@@ -89,7 +98,7 @@ export default function TodoEditForm(todo: TodoType) {
 								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 								.replace(',', '')}
 							onChange={handleDateAddedChange}
-							disabled
+							readOnly
 						/>
 					</div>
 					<div className={styles.date_input_container}>
@@ -103,6 +112,7 @@ export default function TodoEditForm(todo: TodoType) {
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
+							step={'any'}
 						/>
 					</div>
 				</div>
