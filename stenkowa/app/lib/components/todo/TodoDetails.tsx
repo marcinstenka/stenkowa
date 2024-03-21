@@ -43,13 +43,14 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 				</div>
 				<div className={styles.details_date}>
 					<p>{date_added}</p>
-					<p style={{ borderColor: `${todo.color}` }}>
-						{date_deadline}
-					</p>
+					<p style={{ borderColor: `${todo.color}` }}>{date_deadline}</p>
 				</div>
 			</div>
 			<h3>
-				Zostało: <span style={{ color: `${todo.color}` }}>{timeLeft}</span>
+				{timeLeft.isTimeExpired ? '' : <span>Zostało: </span>}
+				<span style={{ color: `${todo.color}` }} color-changing='color'>
+					{timeLeft.formattedTime}
+				</span>
 			</h3>
 			<Link
 				className={styles.details_back}
