@@ -121,25 +121,28 @@ export async function createTodo(prevState: State, formData: FormData) {
 	const { name, description, date_deadline_string, date_added_string, color } =
 		validatedFields;
 
-	let date_deadline: Date = new Date();
-	let date_added: Date = new Date();
 	if (date_deadline_string && date_added_string) {
-		date_deadline = new Date(Date.parse(date_deadline_string));
-		date_added = new Date(Date.parse(date_added_string));
-	}
-	try {
-		await sql`
-		 INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
-		VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline.toISOString()}, ${date_added.toISOString()});
-		`;
-	} catch (error) {
+		const date_deadline = new Date(Date.parse(date_deadline_string));
+		const date_added = new Date(Date.parse(date_added_string));
+
+		try {
+			await sql`
+            INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
+            VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline.toISOString()}, ${date_added.toISOString()});
+        `;
+		} catch (error) {
+			return {
+				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+			};
+		}
+
+		revalidatePath('/todo');
+		redirect('/todo');
+	} else {
 		return {
-			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+			message: 'Brak danych dotyczących daty.',
 		};
 	}
-
-	revalidatePath('/todo');
-	redirect('/todo');
 }
 export async function updateTodo(todoId: number, formData: FormData) {
 	const validatedFields = {
@@ -160,6 +163,7 @@ export async function updateTodo(todoId: number, formData: FormData) {
 	revalidatePath('/todo');
 	redirect('/todo');
 }
+
 export async function deleteTodo(id: number) {
 	try {
 		await sql`
