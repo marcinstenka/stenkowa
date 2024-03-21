@@ -20,7 +20,6 @@ export default function TodoEditForm(todo: TodoType) {
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
-
 	return (
 		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
@@ -109,9 +108,9 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 			</div>
 			<h3>
-				Zostało:{' '}
+				{timeLeft.isTimeExpired ? '' : <span>Zostało: </span>}
 				<span style={{ color: `${color}` }} color-changing='color'>
-					{timeLeft}
+					{timeLeft.formattedTime}
 				</span>
 			</h3>
 
