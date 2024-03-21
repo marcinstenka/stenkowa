@@ -13,7 +13,7 @@ export default async function TodoContainer() {
 					return <Todo {...todo} key={index} />;
 				})
 			) : (
-				<h2 className={styles.no_results}>Brak zadań do zrobienia!</h2>
+				<h2 className='no_results'>Brak zadań do zrobienia!</h2>
 			)}
 		</div>
 	);
