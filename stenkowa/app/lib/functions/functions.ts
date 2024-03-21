@@ -40,9 +40,13 @@ function dateInflection(days: number, hours: number, minutes: number) {
 	return [dayWordInflection, hourWordInflection, minuteWordInflection];
 }
 
-export function calculateTimedifference( deadline: Date) {
-	const current = new Date(); 
-	if (deadline < current) return '0';
+export function calculateTimedifference(deadline: Date) {
+	const current = new Date();
+	if (deadline < current)
+		return {
+			isTimeExpired: true,
+			formattedTime: 'Czas minął!',
+		};
 	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
@@ -61,7 +65,10 @@ export function calculateTimedifference( deadline: Date) {
 	minutes > 0 && formattedParts.push(`${minutes} ${minuteWordInflection}`);
 
 	const formattedTime = formattedParts.join(', ');
-	return formattedTime;
+	return {
+		isTimeExpired: false,
+		formattedTime: formattedTime,
+	};
 }
 
 export function formatDate(date: Date, full: boolean) {
