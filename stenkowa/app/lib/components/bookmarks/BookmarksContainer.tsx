@@ -13,7 +13,7 @@ export default async function BookmarksContainer() {
 					return <Bookmark bookmark={bookmark} enableEdit={true} key={index} />;
 				})
 			) : (
-				<h2 className='no_results'>Brak zakładek! Dodaj nowe!</h2>
+				<h2 className='no_results'>Brak zakładek!</h2>
 			)}
 		</div>
 	);
