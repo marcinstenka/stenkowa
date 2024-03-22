@@ -20,6 +20,10 @@ export default function TodoEditForm(todo: TodoType) {
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
+	console.log('Edit start');
+	console.log(todo.date_added);
+	console.log(todo.date_deadline);
+	console.log('Edit end');
 	return (
 		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
@@ -84,9 +88,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_added'
 							id='date_added'
-							defaultValue={todo.date_added
-								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
-								.replace(',', '')}
+							defaultValue={todo.date_added.toISOString().slice(0, 16)}
 							onChange={handleDateAddedChange}
 							readOnly
 						/>
@@ -96,9 +98,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_deadline'
 							id='date_deadline'
-							defaultValue={todo.date_deadline
-								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
-								.replace(',', '')}
+							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
