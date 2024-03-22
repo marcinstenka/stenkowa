@@ -6,7 +6,6 @@ import Link from 'next/link';
 import { calculateTimedifference, formatDate } from '../../functions/functions';
 import { TodoType } from '../../types/types';
 import { fetchTodo } from '../../functions/data';
-import { startTransition } from 'react';
 import { deleteTodo } from '../../functions/actions';
 
 type TodoDetailsProps = { id: number };
@@ -17,12 +16,6 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 	const date_added = formatDate(todo.date_added, true);
 	const date_deadline = formatDate(todo.date_deadline, true);
 	const timeLeft = calculateTimedifference(todo.date_deadline);
-	console.log('Details start');
-	console.log(todo.date_added);
-	console.log(todo.date_deadline);
-	console.log(date_added);
-	console.log(date_deadline);
-	console.log('Details end');
 	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
 	return (
 		<div className={styles.details}>
