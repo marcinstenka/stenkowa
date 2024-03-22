@@ -3,8 +3,8 @@ import { StorageItemType } from '../types/types';
 
 export default function useStorageItemEdit(item: StorageItemType) {
 	const [details_header, setDetails_header] = useState(item.name);
-	const [details, setDetails] = useState(item.details);
-	const [date_added, setDate_added] = useState(item.date_added);
+	const [details, setDetails] = useState(item.description);
+	const [date_added, setDate_added] = useState(item.insert_date);
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);

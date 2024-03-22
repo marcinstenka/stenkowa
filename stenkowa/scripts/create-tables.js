@@ -31,13 +31,41 @@ const bookmarks = [
 	},
 ];
 const storages = [{}];
-const storagesItems = [
+const storageItems = [
 	{
 		storage_id: 1,
 		name: 'Torby prezentowe',
 		description: 'Kilka toreb prezentowych, w tym świąteczne',
 		color: 'blue',
-		insert_date: new Date(),
+		insert_date: new Date('2022-03-25'),
+	},
+	{
+		storage_id: 1,
+		name: 'Krzesła',
+		description: '',
+		color: 'red',
+		insert_date: new Date('2022-04-25'),
+	},
+	{
+		storage_id: 1,
+		name: 'Szafka',
+		description: '',
+		color: '#964000',
+		insert_date: new Date('2022-03-25'),
+	},
+	{
+		storage_id: 1,
+		name: 'Toster',
+		description: '',
+		color: '#eb9605',
+		insert_date: new Date('2022-04-25'),
+	},
+	{
+		storage_id: 1,
+		name: 'Jakieś rzeczy',
+		description: '',
+		color: '#bc544b',
+		insert_date: new Date('2022-02-25'),
 	},
 ];
 const bcrypt = require('bcrypt');
@@ -160,10 +188,10 @@ async function createTodos(client) {
 		throw error;
 	}
 }
-async function createStoragesItems(client) {
+async function createStorageItems(client) {
 	try {
 		const createTable = await client.sql`
-      CREATE TABLE IF NOT EXISTS storages_items(
+      CREATE TABLE IF NOT EXISTS storage_items(
         id SERIAL PRIMARY KEY,
 		storage_id INT,
 		FOREIGN KEY (storage_id) REFERENCES storages(id),
@@ -173,11 +201,11 @@ async function createStoragesItems(client) {
         insert_date DATE NOT NULL
       );
     `;
-		console.log(`Created "storages_items" table`);
+		console.log(`Created "storage_items" table`);
 		const insertedStorageItems = await Promise.all(
-			storagesItems.map(async (item) => {
+			storageItems.map(async (item) => {
 				return client.sql`
-        INSERT INTO storages_items (storage_id, name, description, color, insert_date)
+        INSERT INTO storage_items (storage_id, name, description, color, insert_date)
         VALUES (${item.storage_id}, ${item.name}, ${item.description}, ${item.color},${item.insert_date});
       `;
 			})
@@ -187,7 +215,7 @@ async function createStoragesItems(client) {
 
 		return {
 			createTable,
-			storagesItems: insertedStorageItems,
+			storageItems: insertedStorageItems,
 		};
 	} catch (error) {
 		console.error('Error seeding storage items:', error);
@@ -237,7 +265,7 @@ async function main() {
 	await createStorages(client);
 	await createTodos(client);
 	await createUsers(client);
-	await createStoragesItems(client);
+	await createStorageItems(client);
 	await createBookmarks(client);
 
 	await client.end();

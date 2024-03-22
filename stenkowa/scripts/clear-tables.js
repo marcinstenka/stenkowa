@@ -5,7 +5,7 @@ async function clearTables(client) {
 		await Promise.all([
 			client.sql`DROP TABLE IF EXISTS bookmarks;`,
 			client.sql`DROP TABLE IF EXISTS users;`,
-			client.sql`DROP TABLE IF EXISTS storages_items;`,
+			client.sql`DROP TABLE IF EXISTS storage_items;`,
 			client.sql`DROP TABLE IF EXISTS storages;`,
 			client.sql`DROP TABLE IF EXISTS todos;`,
 			client.sql`DROP TABLE IF EXISTS todos_containers;`,

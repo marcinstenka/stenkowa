@@ -4,11 +4,11 @@ export type StorageSectionType = {
 };
 export type StorageItemType = {
 	id: number;
+	storage_id: number;
 	color: string;
 	name: string;
-	details: string;
-	date_added: Date;
-	user: string;
+	description: string;
+	insert_date: Date;
 };
 export type BookmarkType = {
 	id: number;

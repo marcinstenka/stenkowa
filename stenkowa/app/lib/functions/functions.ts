@@ -1,3 +1,5 @@
+import { StorageItemType } from '../types/types';
+
 function addZero(number: number) {
 	if (number < 10) {
 		return `0${number.toString()}`;
@@ -42,8 +44,8 @@ function dateInflection(days: number, hours: number, minutes: number) {
 
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
-	const deadline_copy= new Date(deadline);
-	deadline_copy.setHours(deadline_copy.getHours() - 1)
+	const deadline_copy = new Date(deadline);
+	deadline_copy.setHours(deadline_copy.getHours() - 1);
 	if (deadline < current)
 		return {
 			isTimeExpired: true,
@@ -109,4 +111,69 @@ export default function renderNav(
 		if (pathname == '/' && loggedIn) shouldRenderNav = true;
 	});
 	return { shouldRenderNav, shouldRenderAddIcon };
+}
+
+export function transformStorageData(storage: StorageItemType[]) {
+	const storageSectionsMap = new Map();
+
+	storage.forEach((item) => {
+		const monthYear = `${item.insert_date.getFullYear()} ${
+			item.insert_date.getMonth() + 1
+		}`;
+
+		if (!storageSectionsMap.has(monthYear)) {
+			storageSectionsMap.set(monthYear, {
+				date: monthYear, 
+				items: [],
+			});
+		}
+
+		const section = storageSectionsMap.get(monthYear);
+		section.items.push({
+			id: item.storage_id,
+			name: item.name,
+			color: item.color,
+			description: item.description,
+			insert_date: item.insert_date,
+		});
+	});
+
+	const sortedSections = Array.from(storageSectionsMap.values()).sort(
+		(a, b) => {
+			const dateA = new Date(a.date);
+			const dateB = new Date(b.date);
+			return dateA.getTime() - dateB.getTime();
+		}
+	);
+	return sortedSections;
+}
+export function switchMonthName(monthNumber: number) {
+	switch (monthNumber) {
+		case 1:
+			return 'Styczeń';
+		case 2:
+			return 'Luty';
+		case 3:
+			return 'Marzec';
+		case 4:
+			return 'Kwiecień';
+		case 5:
+			return 'Maj';
+		case 6:
+			return 'Czerwiec';
+		case 7:
+			return 'Lipiec';
+		case 8:
+			return 'Sierpień';
+		case 9:
+			return 'Wrzesień';
+		case 10:
+			return 'Październik';
+		case 11:
+			return 'Listopad';
+		case 12:
+			return 'Grudzień';
+		default:
+			return 'Nie prawidłowa wartość miesiąca';
+	}
 }
