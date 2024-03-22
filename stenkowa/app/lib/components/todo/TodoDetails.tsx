@@ -16,7 +16,6 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 	if (!todo) return;
 	const date_added = formatDate(todo.date_added, true);
 	const date_deadline = formatDate(todo.date_deadline, true);
-
 	const timeLeft = calculateTimedifference(todo.date_deadline);
 
 	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
