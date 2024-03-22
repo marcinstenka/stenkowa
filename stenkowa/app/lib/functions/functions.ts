@@ -42,7 +42,6 @@ function dateInflection(days: number, hours: number, minutes: number) {
 
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
-	deadline.setHours(deadline.getHours() - 1); //localtime Poland coversion
 	if (deadline < current)
 		return {
 			isTimeExpired: true,
