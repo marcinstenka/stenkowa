@@ -40,7 +40,9 @@ export default function TodoCreate() {
 						type='datetime-local'
 						name='new_todo_added'
 						id='new_todo_added'
-						defaultValue={new Date(Date.now()).toISOString().slice(0, 16)}
+						defaultValue={new Date(Date.now())
+							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+							.replace(',', '')}
 						required
 						readOnly
 					/>
@@ -53,7 +55,9 @@ export default function TodoCreate() {
 						type='datetime-local'
 						name='new_todo_deadline'
 						id='new_todo_deadline'
-						defaultValue={new Date().toISOString().slice(0, 16)}
+						defaultValue={new Date()
+							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+							.replace(',', '')}
 						required
 						step={'any'}
 					/>
