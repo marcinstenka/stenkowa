@@ -8,6 +8,14 @@ export default function TodoCreate() {
 	const { color, handleColorChange } = useColorChanging('');
 	const initialState = { message: '' };
 	const [state, dispatch] = useFormState(createTodo, initialState);
+	console.log('Date ' + new Date());
+	console.log('Date start');
+	console.log(new Date());
+	console.log('Date end');
+	console.log('Date now ' + new Date(Date.now()));
+	console.log('Date utc ' + new Date().toUTCString());
+	console.log('Date ISO ' + new Date().toISOString());
+	console.log('Date to string ' + new Date().toString());
 	return (
 		<div className={styles.container}>
 			<h3 color-changing='border-color'>Dodaj nowe todo</h3>
@@ -32,7 +40,7 @@ export default function TodoCreate() {
 						type='datetime-local'
 						name='new_todo_added'
 						id='new_todo_added'
-						defaultValue={new Date()
+						defaultValue={new Date(Date.now())
 							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 							.replace(',', '')}
 						required
