@@ -9,6 +9,8 @@ import { deleteTodo, updateTodo } from '../../functions/actions';
 import { startTransition } from 'react';
 
 export default function TodoEditForm(todo: TodoType) {
+	console.log(todo.date_deadline.toString());
+	console.log(todo.date_deadline.toISOString());
 	const {
 		handleHeaderChange,
 		handleDescriptionChange,
@@ -20,6 +22,8 @@ export default function TodoEditForm(todo: TodoType) {
 		description,
 		timeLeft,
 	} = useTodoEdit(todo);
+	console.log(date_deadline.toString());
+	console.log(date_deadline.toISOString());
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
 	return (
