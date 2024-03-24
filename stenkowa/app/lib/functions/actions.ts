@@ -121,14 +121,16 @@ export async function createTodo(prevState: State, formData: FormData) {
 	const { name, description, date_deadline_string, date_added_string, color } =
 		validatedFields;
 
+	let date_deadline: string = '';
+	let date_added: string = '';
 	if (date_deadline_string && date_added_string) {
-		const date_deadline = new Date(Date.parse(date_deadline_string));
-		const date_added = new Date(Date.parse(date_added_string));
+		date_deadline = new Date(date_deadline_string).toString();
+		date_added = new Date(date_added_string).toString();
 
 		try {
 			await sql`
             INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
-            VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline.toISOString()}, ${date_added.toISOString()});
+            VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline}, ${date_added});
         `;
 		} catch (error) {
 			return {
