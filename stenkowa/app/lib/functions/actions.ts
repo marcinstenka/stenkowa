@@ -121,16 +121,18 @@ export async function createTodo(prevState: State, formData: FormData) {
 	const { name, description, date_deadline_string, date_added_string, color } =
 		validatedFields;
 
+	let date_deadline: string = '';
+	let date_added: string = '';
 	if (date_deadline_string && date_added_string) {
-		const date_deadline = new Date(Date.parse(date_deadline_string));
-		const date_added = new Date(Date.parse(date_added_string));
-
+		date_deadline = new Date(date_deadline_string).toISOString();
+		date_added = new Date(date_added_string).toISOString();
 		try {
 			await sql`
             INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
-            VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline.toISOString()}, ${date_added.toISOString()});
+            VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline}, ${date_added});
         `;
 		} catch (error) {
+			console.log(error);
 			return {
 				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
 			};
@@ -149,13 +151,15 @@ export async function updateTodo(todoId: number, formData: FormData) {
 		name: formData.get('details_header')?.toString(),
 		description: formData.get('details_text')?.toString(),
 		color: formData.get('details_color')?.toString(),
-		date_deadline: formData.get('date_deadline')?.toString(),
+		date_deadline_string: formData.get('date_deadline')?.toString(),
 	};
-	const { name, description, color, date_deadline } = validatedFields;
-
+	const { name, description, color, date_deadline_string } = validatedFields;
+	let deadline: string = '';
+	if (date_deadline_string)
+		deadline = new Date(date_deadline_string).toISOString();
 	try {
 		await sql`
-		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${date_deadline} WHERE id = ${todoId}`;
+		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${deadline} WHERE id = ${todoId}`;
 	} catch (error) {
 		console.log(error);
 	}

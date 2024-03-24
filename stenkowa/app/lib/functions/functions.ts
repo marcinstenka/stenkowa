@@ -44,10 +44,6 @@ function dateInflection(days: number, hours: number, minutes: number) {
 
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
-	console.log(current);
-	console.log(deadline);
-	// const deadline_copy = new Date(deadline);
-	// deadline_copy.setHours(deadline_copy.getHours() - 1);
 	if (deadline < current)
 		return {
 			isTimeExpired: true,
@@ -90,7 +86,6 @@ export function formatDate(date: Date, full: boolean) {
 			date.getMonth()
 		)}.${date.getFullYear()}`;
 	}
-
 	return formatteDate;
 }
 

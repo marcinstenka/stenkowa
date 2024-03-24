@@ -9,15 +9,21 @@ import { deleteTodo, updateTodo } from '../../functions/actions';
 import { startTransition } from 'react';
 
 export default function TodoEditForm(todo: TodoType) {
+	console.log(todo.date_deadline.toString());
+	console.log(todo.date_deadline.toISOString());
 	const {
 		handleHeaderChange,
 		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
 		details_header,
+		date_deadline,
+		date_added,
 		description,
 		timeLeft,
 	} = useTodoEdit(todo);
+	console.log(date_deadline.toString());
+	console.log(date_deadline.toISOString());
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
 	console.log('Edit start');
@@ -88,7 +94,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_added'
 							id='date_added'
-							defaultValue={todo.date_added.toISOString().slice(0, 16)}
+							defaultValue={date_added.toISOString().slice(0, 16)}
 							onChange={handleDateAddedChange}
 							readOnly
 						/>
@@ -98,7 +104,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_deadline'
 							id='date_deadline'
-							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
+							defaultValue={date_deadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
