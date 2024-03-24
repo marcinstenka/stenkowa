@@ -124,8 +124,8 @@ export async function createTodo(prevState: State, formData: FormData) {
 	let date_deadline: string = '';
 	let date_added: string = '';
 	if (date_deadline_string && date_added_string) {
-		date_deadline = new Date(date_deadline_string).toString();
-		date_added = new Date(date_added_string).toString();
+		date_deadline = new Date(date_deadline_string).toISOString();
+		date_added = new Date(date_added_string).toISOString();
 
 		try {
 			await sql`
@@ -133,6 +133,7 @@ export async function createTodo(prevState: State, formData: FormData) {
             VALUES (${TODOS_CONTAINER_ID}, ${name}, ${description}, ${color}, ${date_deadline}, ${date_added});
         `;
 		} catch (error) {
+			console.log(error);
 			return {
 				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
 			};
