@@ -15,6 +15,8 @@ export default function TodoEditForm(todo: TodoType) {
 		handleDateAddedChange,
 		handleDateDeadlineChange,
 		details_header,
+		date_deadline,
+		date_added,
 		description,
 		timeLeft,
 	} = useTodoEdit(todo);
@@ -84,7 +86,9 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_added'
 							id='date_added'
-							defaultValue={todo.date_added.toISOString().slice(0, 16)}
+							defaultValue={date_added
+								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+								.replace(',', '')}
 							onChange={handleDateAddedChange}
 							readOnly
 						/>
@@ -94,7 +98,9 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_deadline'
 							id='date_deadline'
-							defaultValue={todo.date_deadline.toISOString().slice(0, 16)}
+							defaultValue={date_deadline
+								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+								.replace(',', '')}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
