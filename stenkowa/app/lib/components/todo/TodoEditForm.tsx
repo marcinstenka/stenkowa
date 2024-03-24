@@ -20,6 +20,10 @@ export default function TodoEditForm(todo: TodoType) {
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
+	console.log('Edit start');
+	console.log(new Date());
+	console.log(todo.date_deadline);
+	console.log('edit end');
 	return (
 		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
