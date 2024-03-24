@@ -44,16 +44,12 @@ function dateInflection(days: number, hours: number, minutes: number) {
 
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
-	const deadline_copy = new Date(deadline);
-	deadline_copy.setHours(deadline_copy.getHours() - 1);
 	if (deadline < current)
 		return {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(
-		current.getTime() - deadline_copy.getTime()
-	);
+	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
@@ -90,7 +86,6 @@ export function formatDate(date: Date, full: boolean) {
 			date.getMonth()
 		)}.${date.getFullYear()}`;
 	}
-
 	return formatteDate;
 }
 
@@ -123,7 +118,7 @@ export function transformStorageData(storage: StorageItemType[]) {
 
 		if (!storageSectionsMap.has(monthYear)) {
 			storageSectionsMap.set(monthYear, {
-				date: monthYear, 
+				date: monthYear,
 				items: [],
 			});
 		}
