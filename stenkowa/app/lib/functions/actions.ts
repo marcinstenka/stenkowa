@@ -126,7 +126,6 @@ export async function createTodo(prevState: State, formData: FormData) {
 	if (date_deadline_string && date_added_string) {
 		date_deadline = new Date(date_deadline_string).toISOString();
 		date_added = new Date(date_added_string).toISOString();
-
 		try {
 			await sql`
             INSERT INTO todos (todos_container_id, name, description, color, date_deadline, date_added)
