@@ -94,9 +94,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_added'
 							id='date_added'
-							defaultValue={date_added
-								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
-								.replace(',', '')}
+							defaultValue={date_added.toISOString().slice(0, 16)}
 							onChange={handleDateAddedChange}
 							readOnly
 						/>
@@ -106,9 +104,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='date_deadline'
 							id='date_deadline'
-							defaultValue={date_deadline
-								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
-								.replace(',', '')}
+							defaultValue={date_deadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
