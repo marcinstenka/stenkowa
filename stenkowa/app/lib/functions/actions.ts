@@ -158,7 +158,7 @@ export async function updateTodo(todoId: number, formData: FormData) {
 	let uniq_deadline: string = '';
 	if (date_deadline_string) {
 		deadline = new Date(date_deadline_string);
-		deadline.setMilliseconds(deadline.getMilliseconds() + 1);
+		deadline.setMilliseconds(deadline.getUTCSeconds() + 1);
 		uniq_deadline = deadline.toISOString();
 	}
 
