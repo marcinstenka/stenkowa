@@ -154,17 +154,15 @@ export async function updateTodo(todoId: number, formData: FormData) {
 		date_deadline_string: formData.get('date_deadline')?.toString(),
 	};
 	const { name, description, color, date_deadline_string } = validatedFields;
-	let deadline: Date;
-	let uniq_deadline: string = '';
+	let deadline: string = '';
 	if (date_deadline_string) {
-		deadline = new Date(date_deadline_string);
-		deadline.setSeconds(deadline.getUTCSeconds() + 1);
-		uniq_deadline = deadline.toISOString();
+		deadline = new Date(date_deadline_string).toISOString();
 	}
 
 	try {
-		await sql`
-		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${uniq_deadline} WHERE id = ${todoId}`;
+		const test = await sql`
+		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${deadline} WHERE id = ${todoId} RETURNING *`;
+		console.log(test);
 	} catch (error) {
 		console.log(error);
 	}
