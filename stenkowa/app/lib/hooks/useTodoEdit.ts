@@ -14,6 +14,10 @@ export default function useTodoEdit(todo: TodoType) {
 	// updaing time left live
 	useEffect(() => {
 		const new_date_deadline = new Date(date_deadline);
+		console.log(todo.date_deadline.toISOString());
+		console.log(todo.date_deadline);
+		console.log(new Date());
+		console.log(new Date().toISOString());
 		setTimeLeft(calculateTimedifference(new_date_deadline));
 	}, [date_deadline]);
 
