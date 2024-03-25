@@ -8,6 +8,8 @@ export default function TodoCreate() {
 	const { color, handleColorChange } = useColorChanging('');
 	const initialState = { message: '' };
 	const [state, dispatch] = useFormState(createTodo, initialState);
+	console.log('create ' + new Date());
+	console.log('create ISO' + new Date().toISOString());
 	return (
 		<div className={styles.container}>
 			<h3 color-changing='border-color'>Dodaj nowe todo</h3>

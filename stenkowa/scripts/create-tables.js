@@ -16,8 +16,8 @@ const todos = [
 		name: '123456',
 		details: 'red',
 		color: 'blue',
-		date_deadline: new Date(),
-		date_added: new Date(),
+		date_deadline: new Date().toISOString(),
+		date_added: new Date().toISOString(),
 	},
 ];
 const todosContainers = [{}];
@@ -163,8 +163,8 @@ async function createTodos(client) {
                 name TEXT NOT NULL,
                 description TEXT NOT NULL,
                 color TEXT NOT NULL,
-                date_deadline TIMESTAMP NOT NULL,
-                date_added TIMESTAMP NOT NULL
+                date_deadline TIMESTAMPTZ NOT NULL,
+                date_added TIMESTAMPTZ NOT NULL
             );
         `;
 		console.log(`Created "todos" table`);
@@ -261,12 +261,12 @@ async function createBookmarks(client) {
 async function main() {
 	const client = await db.connect();
 
-	await createTodosContainers(client);
-	await createStorages(client);
+	// await createTodosContainers(client);
+	// await createStorages(client);
 	await createTodos(client);
-	await createUsers(client);
-	await createStorageItems(client);
-	await createBookmarks(client);
+	// await createUsers(client);
+	// await createStorageItems(client);
+	// await createBookmarks(client);
 
 	await client.end();
 }
