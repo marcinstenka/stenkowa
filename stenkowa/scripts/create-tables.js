@@ -261,12 +261,12 @@ async function createBookmarks(client) {
 async function main() {
 	const client = await db.connect();
 
-	// await createTodosContainers(client);
-	// await createStorages(client);
+	await createTodosContainers(client);
+	await createStorages(client);
 	await createTodos(client);
-	// await createUsers(client);
-	// await createStorageItems(client);
-	// await createBookmarks(client);
+	await createUsers(client);
+	await createStorageItems(client);
+	await createBookmarks(client);
 
 	await client.end();
 }
