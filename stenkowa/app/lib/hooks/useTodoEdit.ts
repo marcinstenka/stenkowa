@@ -14,7 +14,6 @@ export default function useTodoEdit(todo: TodoType) {
 	// updaing time left live
 	useEffect(() => {
 		const new_date_deadline = new Date(date_deadline);
-		new_date_deadline.setHours(new_date_deadline.getHours() - 1);
 		setTimeLeft(calculateTimedifference(new_date_deadline));
 	}, [date_deadline]);
 
