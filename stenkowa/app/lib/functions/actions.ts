@@ -160,8 +160,9 @@ export async function updateTodo(todoId: number, formData: FormData) {
 	}
 
 	try {
-		await sql`
-		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${deadline} WHERE id = ${todoId}`;
+		const test = await sql`
+		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${deadline} WHERE id = ${todoId} RETURNING *`;
+		console.log(test);
 	} catch (error) {
 		console.log(error);
 	}
