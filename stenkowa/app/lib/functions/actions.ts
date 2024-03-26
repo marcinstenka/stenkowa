@@ -1,7 +1,8 @@
 'use server';
 import { sql } from '@vercel/postgres';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
 import { redirect } from 'next/navigation';
+
 import bcrypt from 'bcrypt';
 
 export type State = {
@@ -80,11 +81,7 @@ export async function createBookmark(prevState: State, formData: FormData) {
 	redirect('/bookmarks');
 }
 
-export async function updateBookmark(
-	bookmarkId: number,
-	prevState: State,
-	formData: FormData
-) {
+export async function updateBookmark(bookmarkId: number, formData: FormData) {
 	const validatedFields = {
 		name: formData.get('details_header')?.toString(),
 		link: formData.get('details_text')?.toString(),
@@ -97,16 +94,16 @@ export async function updateBookmark(
 		UPDATE bookmarks SET name = ${name}, link = ${link}, color = ${color}, icon = ${icon} WHERE id = ${bookmarkId}`;
 	} catch (error) {
 		console.log(error);
-		return { message: 'Nie udało się zaktualizować zakładki!' };
 	}
 
 	revalidatePath('/bookmarks');
 	redirect('/bookmarks');
 }
 export async function deleteBookmark(id: number) {
+	noStore();
 	try {
 		await sql`
-       	 DELETE FROM bookmarks where id = ${id}`;
+       	 DELETE FROM bookmarks WHERE id = ${id}`;
 		revalidatePath('/bookmarks');
 		redirect('/bookmarks');
 	} catch (error) {
@@ -177,7 +174,7 @@ export async function updateTodo(todoId: number, formData: FormData) {
 export async function deleteTodo(id: number) {
 	try {
 		await sql`
-       	 DELETE FROM todos where id = ${id}`;
+       	 DELETE FROM todos WHERE id = ${id}`;
 		revalidatePath('/todo');
 		redirect('/todo');
 	} catch (error) {
