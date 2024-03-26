@@ -22,6 +22,7 @@ export default function TodoEditForm(todo: TodoType) {
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
+	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
 	return (
 		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>
@@ -50,16 +51,17 @@ export default function TodoEditForm(todo: TodoType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<button
-						className={styles.details_delete}
-						onClick={() =>
-							startTransition(() => {
-								deleteTodo(todo.id);
-							})
-						}
-					>
-						<MdDelete style={{ color: `${color}` }} color-changing='color' />
-					</button>
+					<div className={styles.details_delete}>
+						<MdDelete
+							style={{ color: `${color}` }}
+							color-changing='color'
+							onClick={() =>
+								startTransition(() => {
+									deleteTodoWithId();
+								})
+							}
+						/>
+					</div>
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
@@ -111,7 +113,6 @@ export default function TodoEditForm(todo: TodoType) {
 					{timeLeft.formattedTime}
 				</span>
 			</h3>
-
 			<BackButtons href={`/todo/${todo.id}`} color={color} />
 			<p
 				className={styles.details_edit_info}

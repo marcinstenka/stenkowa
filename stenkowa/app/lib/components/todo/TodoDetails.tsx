@@ -26,9 +26,12 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 					<Link href={`/todo/${todo.id}/edit`}>
 						<BiSolidEdit style={{ color: `${todo.color}` }} />
 					</Link>
-					<form action={deleteTodoWithId}>
-						<button className={styles.details_delete}>
-							<MdDelete style={{ color: `${todo.color}` }} />
+					<form action={deleteTodoWithId} className={styles.details_delete}>
+						<button type='submit'>
+							<MdDelete
+								style={{ color: `${todo.color}` }}
+								color-changing='color'
+							/>
 						</button>
 					</form>
 				</div>
