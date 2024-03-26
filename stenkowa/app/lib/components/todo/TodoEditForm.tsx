@@ -6,7 +6,7 @@ import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
 import { deleteTodo, updateTodo } from '../../functions/actions';
-import { useTransition } from 'react';
+import { startTransition } from 'react';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {
@@ -22,7 +22,6 @@ export default function TodoEditForm(todo: TodoType) {
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
 	const updateTodoWithId = updateTodo.bind(null, todo.id);
-	const [isPending, startTransition] = useTransition();
 	return (
 		<form className={styles.details} action={updateTodoWithId}>
 			<div className={styles.details_header}>

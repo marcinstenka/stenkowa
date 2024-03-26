@@ -80,11 +80,7 @@ export async function createBookmark(prevState: State, formData: FormData) {
 	redirect('/bookmarks');
 }
 
-export async function updateBookmark(
-	bookmarkId: number,
-	prevState: State,
-	formData: FormData
-) {
+export async function updateBookmark(bookmarkId: number, formData: FormData) {
 	const validatedFields = {
 		name: formData.get('details_header')?.toString(),
 		link: formData.get('details_text')?.toString(),
@@ -97,7 +93,6 @@ export async function updateBookmark(
 		UPDATE bookmarks SET name = ${name}, link = ${link}, color = ${color}, icon = ${icon} WHERE id = ${bookmarkId}`;
 	} catch (error) {
 		console.log(error);
-		return { message: 'Nie udało się zaktualizować zakładki!' };
 	}
 
 	revalidatePath('/bookmarks');

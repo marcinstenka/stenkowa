@@ -21,10 +21,8 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
-	const initialState = { message: '' };
-	const [state, dispatch] = useFormState(updateBookmarkWithId, initialState);
 	return (
-		<form className={styles.details} action={dispatch}>
+		<form className={styles.details} action={updateBookmarkWithId}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input

@@ -8,6 +8,7 @@ import { TodoType } from '../../types/types';
 import { fetchTodo } from '../../functions/data';
 import { deleteTodo } from '../../functions/actions';
 
+
 type TodoDetailsProps = { id: number };
 
 export default async function TodoDetails({ id }: TodoDetailsProps) {
@@ -17,7 +18,6 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 	const date_deadline = formatDate(todo.date_deadline, true);
 	const timeLeft = calculateTimedifference(todo.date_deadline);
 	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
-
 
 	return (
 		<div className={styles.details}>
