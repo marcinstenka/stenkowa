@@ -17,6 +17,8 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 	const date_deadline = formatDate(todo.date_deadline, true);
 	const timeLeft = calculateTimedifference(todo.date_deadline);
 	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
+
+
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>

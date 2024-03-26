@@ -174,9 +174,9 @@ export async function deleteTodo(id: number) {
 	try {
 		await sql`
        	 DELETE FROM todos where id = ${id}`;
+		revalidatePath('/todo');
+		redirect('/todo');
 	} catch (error) {
 		console.log(error);
 	}
-	revalidatePath('/todo');
-	redirect('/todo');
 }
