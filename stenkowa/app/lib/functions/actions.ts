@@ -1,6 +1,6 @@
 'use server';
 import { sql } from '@vercel/postgres';
-import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
+import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import bcrypt from 'bcrypt';
@@ -100,7 +100,6 @@ export async function updateBookmark(bookmarkId: number, formData: FormData) {
 	redirect('/bookmarks');
 }
 export async function deleteBookmark(id: number) {
-	noStore();
 	try {
 		await sql`
        	 DELETE FROM bookmarks WHERE id = ${id}`;
