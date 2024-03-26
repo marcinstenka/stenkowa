@@ -21,73 +21,71 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
+	const deleteBookmarkWithId = deleteBookmark.bind(null, bookmark.id);
 	return (
-		<form className={styles.details} action={updateBookmarkWithId}>
-			<div className={styles.details_header}>
-				<div className={styles.input_container}>
-					<input
-						type='text'
-						name='details_header'
-						id='details_header'
-						onChange={handleHeaderChange}
-						value={details_header}
-						autoComplete='off'
-						minLength={3}
-						color-changing='border-color'
-						style={{ borderColor: `${color}` }}
-					/>
-					<h4 className={styles.invisible}>{details_header}</h4>
-				</div>
-			</div>
-			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{link}</div>
-				<textarea
-					name='details_text'
-					id='details_text'
-					onChange={handleLinkChange}
-				>
-					{link}
-				</textarea>
-			</div>
-
-			<div className={styles.details_lower}>
-				<div className={styles.icon_container}>
-					<BookmarkIconSelect color={color} value={icon} />
-				</div>
-				<div className={styles.details_lower_icons}>
-					<div className={styles.input_color_container}>
-						<MdColorLens
-							style={{ color: `${bookmark.color}` }}
-							color-changing='color'
-						/>
+		<>
+			<form className={styles.details} action={updateBookmarkWithId}>
+				<div className={styles.details_header}>
+					<div className={styles.input_container}>
 						<input
-							type='color'
-							name='details_color'
-							id='details_color'
-							value={color}
-							onChange={handleColorChange}
+							type='text'
+							name='details_header'
+							id='details_header'
+							onChange={handleHeaderChange}
+							value={details_header}
+							autoComplete='off'
+							minLength={3}
+							color-changing='border-color'
+							style={{ borderColor: `${color}` }}
 						/>
+						<h4 className={styles.invisible}>{details_header}</h4>
 					</div>
-					<button
-						className={styles.details_delete}
-						onClick={() =>
-							startTransition(() => {
-								deleteBookmark(bookmark.id);
-							})
-						}
-					>
-						<MdDelete style={{ color: `${color}` }} />
-					</button>
 				</div>
-			</div>
-			<BackButtons href='/bookmarks' color={color} />
-			<p
-				className={styles.details_edit_info}
-				style={{ borderColor: `${color}` }}
-				color-changing='border-color'
-			>
-				Kliknij element, aby zmienić
-			</p>
-		</form>
+				<div className={styles.textarea_container}>
+					<div className={styles.details_text}>{link}</div>
+					<textarea
+						name='details_text'
+						id='details_text'
+						onChange={handleLinkChange}
+					>
+						{link}
+					</textarea>
+				</div>
+
+				<div className={styles.details_lower}>
+					<div className={styles.icon_container}>
+						<BookmarkIconSelect color={color} value={icon} />
+					</div>
+					<div className={styles.details_lower_icons}>
+						<div className={styles.input_color_container}>
+							<MdColorLens
+								style={{ color: `${bookmark.color}` }}
+								color-changing='color'
+							/>
+							<input
+								type='color'
+								name='details_color'
+								id='details_color'
+								value={color}
+								onChange={handleColorChange}
+							/>
+						</div>
+					</div>
+				</div>
+				<BackButtons href='/bookmarks' color={color} />
+				<p
+					className={styles.details_edit_info}
+					style={{ borderColor: `${color}` }}
+					color-changing='border-color'
+				>
+					Kliknij element, aby zmienić
+				</p>
+			</form>
+			<form action={deleteBookmarkWithId}>
+				<button className={styles.details_delete}>
+					<MdDelete style={{ color: `${color}` }} />
+				</button>
+			</form>
+		</>
 	);
 }
