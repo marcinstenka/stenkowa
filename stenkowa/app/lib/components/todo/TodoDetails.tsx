@@ -8,7 +8,6 @@ import { TodoType } from '../../types/types';
 import { fetchTodo } from '../../functions/data';
 import { deleteTodo } from '../../functions/actions';
 
-
 type TodoDetailsProps = { id: number };
 
 export default async function TodoDetails({ id }: TodoDetailsProps) {

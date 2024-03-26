@@ -1,7 +1,8 @@
 'use server';
 import { sql } from '@vercel/postgres';
-import { revalidatePath } from 'next/cache';
+import { revalidatePath, unstable_noStore as noStore } from 'next/cache';
 import { redirect } from 'next/navigation';
+
 import bcrypt from 'bcrypt';
 
 export type State = {
@@ -99,9 +100,10 @@ export async function updateBookmark(bookmarkId: number, formData: FormData) {
 	redirect('/bookmarks');
 }
 export async function deleteBookmark(id: number) {
+	noStore();
 	try {
 		await sql`
-       	 DELETE FROM bookmarks where id = ${id}`;
+       	 DELETE FROM bookmarks WHERE id = ${id}`;
 		revalidatePath('/bookmarks');
 		redirect('/bookmarks');
 	} catch (error) {
@@ -172,7 +174,7 @@ export async function updateTodo(todoId: number, formData: FormData) {
 export async function deleteTodo(id: number) {
 	try {
 		await sql`
-       	 DELETE FROM todos where id = ${id}`;
+       	 DELETE FROM todos WHERE id = ${id}`;
 		revalidatePath('/todo');
 		redirect('/todo');
 	} catch (error) {
