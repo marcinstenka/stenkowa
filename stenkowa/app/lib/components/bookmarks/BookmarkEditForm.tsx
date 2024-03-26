@@ -8,6 +8,7 @@ import useBookmarkEdit from '../../hooks/useBookmarkEdit';
 import BookmarkIconSelect from './BookmarkIconSelect';
 import { deleteBookmark, updateBookmark } from '../../functions/actions';
 import { startTransition } from 'react';
+import { useFormState } from 'react-dom';
 
 export default function BookmarkEditForm(bookmark: BookmarkType) {
 	const {
@@ -20,9 +21,10 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
-
+	const initialState = { message: '' };
+	const [state, dispatch] = useFormState(updateBookmarkWithId, initialState);
 	return (
-		<form className={styles.details} action={updateBookmarkWithId}>
+		<form className={styles.details} action={dispatch}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input

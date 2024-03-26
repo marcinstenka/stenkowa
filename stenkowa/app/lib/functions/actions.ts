@@ -80,7 +80,11 @@ export async function createBookmark(prevState: State, formData: FormData) {
 	redirect('/bookmarks');
 }
 
-export async function updateBookmark(bookmarkId: number, formData: FormData) {
+export async function updateBookmark(
+	bookmarkId: number,
+	prevState: State,
+	formData: FormData
+) {
 	const validatedFields = {
 		name: formData.get('details_header')?.toString(),
 		link: formData.get('details_text')?.toString(),
@@ -88,12 +92,12 @@ export async function updateBookmark(bookmarkId: number, formData: FormData) {
 		color: formData.get('details_color')?.toString(),
 	};
 	const { name, link, icon, color } = validatedFields;
-
 	try {
 		await sql`
 		UPDATE bookmarks SET name = ${name}, link = ${link}, color = ${color}, icon = ${icon} WHERE id = ${bookmarkId}`;
 	} catch (error) {
 		console.log(error);
+		return { message: 'Nie udało się zaktualizować zakładki!' };
 	}
 
 	revalidatePath('/bookmarks');
@@ -174,9 +178,9 @@ export async function deleteTodo(id: number) {
 	try {
 		await sql`
        	 DELETE FROM todos where id = ${id}`;
+		revalidatePath('/todo');
+		redirect('/todo');
 	} catch (error) {
 		console.log(error);
 	}
-	revalidatePath('/todo');
-	redirect('/todo');
 }
