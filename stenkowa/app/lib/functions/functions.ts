@@ -43,9 +43,13 @@ function dateInflection(days: number, hours: number, minutes: number) {
 }
 
 export function calculateTimedifference(deadline: Date) {
+	console.log(deadline);
 	const timeZone = deadline.getTimezoneOffset();
+	console.log(timeZone);
 	let proper_deadline = deadline;
-	proper_deadline.setHours(deadline.getHours() + timeZone / 60);
+	proper_deadline.setHours(deadline.getHours() - timeZone / 60);
+	console.log(proper_deadline);
+
 	const current = new Date();
 	if (proper_deadline < current)
 		return {
