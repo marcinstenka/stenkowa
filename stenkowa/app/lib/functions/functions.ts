@@ -44,14 +44,16 @@ function dateInflection(days: number, hours: number, minutes: number) {
 
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
-	console.log(current);
-	console.log(deadline);
-	if (deadline < current)
+	const proper_current = current;
+	proper_current.setHours(current.getHours() + 2);
+	if (deadline < proper_current)
 		return {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
+	const differenceInMiliSec = Math.abs(
+		proper_current.getTime() - deadline.getTime()
+	);
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
