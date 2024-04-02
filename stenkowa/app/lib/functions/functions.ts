@@ -43,13 +43,18 @@ function dateInflection(days: number, hours: number, minutes: number) {
 }
 
 export function calculateTimedifference(deadline: Date) {
+	const timeZone = deadline.getTimezoneOffset();
+	let proper_deadline = deadline;
+	proper_deadline.setHours(deadline.getHours() + timeZone / 60);
 	const current = new Date();
-	if (deadline < current)
+	if (proper_deadline < current)
 		return {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
+	const differenceInMiliSec = Math.abs(
+		current.getTime() - proper_deadline.getTime()
+	);
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
