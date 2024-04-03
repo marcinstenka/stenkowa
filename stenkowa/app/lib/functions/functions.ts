@@ -44,17 +44,19 @@ function dateInflection(days: number, hours: number, minutes: number) {
 }
 
 export function calculateTimedifference(deadline: Date) {
-	const current = moment();
-	current.tz('Europe/Warsaw');
+	const current = new Date();
+	if (moment().isDST()) {
+		current.setHours(current.getHours() + 2);
+	} else {
+		current.setHours(current.getHours() + 1);
+	}
+
 	// const proper_current = current.toLocaleString('pl-PL', {
 	// 	timeZone: 'Europe/Warsaw',
 	// });
-	const currentAsDate = current.toDate();
-
-	console.log(currentAsDate);
 	// console.log(proper_current);
 	// proper_current.setHours(current.getHours() + 2);
-	if (deadline < currentAsDate)
+	if (deadline < current)
 		return {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
