@@ -45,6 +45,9 @@ function dateInflection(days: number, hours: number, minutes: number) {
 
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
+	const test = moment();
+	console.log(test.tz('Europe/Warsaw').toString());
+	console.log(moment.tz.guess());
 	if (moment().isDST()) {
 		current.setHours(current.getHours() + 2);
 	} else {
@@ -61,9 +64,7 @@ export function calculateTimedifference(deadline: Date) {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(
-		current.getTime() - deadline.getTime()
-	);
+	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
