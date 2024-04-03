@@ -59,7 +59,9 @@ export function calculateTimedifference(deadline: Date) {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(current.unix() - deadline.getTime());
+	const differenceInMiliSec = Math.abs(
+		current.unix() * 1000 - deadline.getTime()
+	);
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
