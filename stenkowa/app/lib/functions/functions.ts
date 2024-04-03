@@ -43,12 +43,15 @@ function dateInflection(days: number, hours: number, minutes: number) {
 	return [dayWordInflection, hourWordInflection, minuteWordInflection];
 }
 
-export function calculateTimedifference(deadline: Date) {
+export function calculateTimeDifference(deadline: Date, addTimeZone: boolean) {
+	// the second argument exists because on todo details there's a server timezone equal to +0
 	const current = new Date();
 	const date = moment();
 	const polandTimeZone = date.tz('Europe/Warsaw').toString();
 	const howManyHoursToAdd = polandTimeZone.slice(-3).slice(0, 1);
-	current.setHours(current.getHours() + parseInt(howManyHoursToAdd));
+	if (addTimeZone) {
+		current.setHours(current.getHours() + parseInt(howManyHoursToAdd));
+	}
 	if (deadline < current)
 		return {
 			isTimeExpired: true,
