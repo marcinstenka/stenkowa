@@ -1,4 +1,5 @@
 import { StorageItemType } from '../types/types';
+import moment from 'moment-timezone';
 
 function addZero(number: number) {
 	if (number < 10) {
@@ -43,17 +44,22 @@ function dateInflection(days: number, hours: number, minutes: number) {
 }
 
 export function calculateTimedifference(deadline: Date) {
-	const current = new Date();
-	const proper_current = current;
-	proper_current.setHours(current.getHours() + 2);
-	if (deadline < proper_current)
+	const current = moment();
+	current.tz('Europe/Warsaw');
+	// const proper_current = current.toLocaleString('pl-PL', {
+	// 	timeZone: 'Europe/Warsaw',
+	// });
+	const currentAsDate = current.toDate();
+
+	console.log(currentAsDate);
+	// console.log(proper_current);
+	// proper_current.setHours(current.getHours() + 2);
+	if (deadline < currentAsDate)
 		return {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(
-		proper_current.getTime() - deadline.getTime()
-	);
+	const differenceInMiliSec = Math.abs(current.unix() - deadline.getTime());
 	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
 	const hours = Math.floor(
 		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
