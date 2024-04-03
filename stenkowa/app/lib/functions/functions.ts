@@ -46,14 +46,15 @@ function dateInflection(days: number, hours: number, minutes: number) {
 export function calculateTimedifference(deadline: Date) {
 	const current = new Date();
 	const test = moment();
-	console.log(test.tz('Europe/Warsaw').toString());
-	console.log(moment.tz.guess());
+	console.log();
+	const date = test.tz('Europe/Warsaw').toString();
+	console.log(date.slice(-3).slice(0, 1));
 	if (moment().isDST()) {
 		current.setHours(current.getHours() + 2);
 	} else {
 		current.setHours(current.getHours() + 1);
 	}
-
+	current.setHours(current.getHours() + parseInt(date.slice(-3).slice(0, 1)));
 	// const proper_current = current.toLocaleString('pl-PL', {
 	// 	timeZone: 'Europe/Warsaw',
 	// });
