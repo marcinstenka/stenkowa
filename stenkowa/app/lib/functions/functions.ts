@@ -1,4 +1,4 @@
-import { StorageItemType } from '../types/types';
+import { StorageItemType, StorageSectionType } from '../types/types';
 import moment from 'moment-timezone';
 
 function addZero(number: number) {
@@ -179,4 +179,13 @@ export function switchMonthName(monthNumber: number) {
 		default:
 			return 'Nie prawidłowa wartość miesiąca';
 	}
+}
+export function getSectionDate(section: StorageSectionType) {
+	let year = '';
+	let month = '';
+	if (section.date) {
+		year = section.date.split(' ')[0];
+		month = switchMonthName(parseInt(section.date.split(' ')[1]));
+	}
+	return month + ' ' + year;
 }
