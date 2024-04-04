@@ -11,6 +11,7 @@ export type State = {
 
 const USER_ID = 1; //for testing
 const TODOS_CONTAINER_ID = 1; // for testing
+const STORAGE_ID = 1; // for testing
 
 export async function registerUser(prevState: State, formData: FormData) {
 	const validatedFields = {
@@ -179,4 +180,36 @@ export async function deleteTodo(id: number) {
 	}
 	revalidatePath('/todo');
 	redirect('/todo');
+}
+export async function createStorageItem(prevState: State, formData: FormData) {
+	const validatedFields = {
+		name: formData.get('new_item_name')?.toString(),
+		description: formData.get('new_item_description')?.toString(),
+		date_added_string: formData.get('new_item_added')?.toString(),
+		color: formData.get('new_item_color')?.toString(),
+	};
+	const { name, description, date_added_string, color } = validatedFields;
+
+	let date_added: string = '';
+	if (date_added_string) {
+		date_added = new Date(date_added_string).toISOString();
+		try {
+			await sql`
+            INSERT INTO storage_items (storage_id, name, description, color, insert_date)
+        VALUES (${STORAGE_ID}, ${name}, ${description}, ${color},${date_added});
+        `;
+		} catch (error) {
+			console.log(error);
+			return {
+				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+			};
+		}
+
+		revalidatePath('/storage');
+		redirect('/storage');
+	} else {
+		return {
+			message: 'Brak danych dotyczących daty.',
+		};
+	}
 }
