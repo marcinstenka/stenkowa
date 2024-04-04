@@ -85,13 +85,13 @@ export function formatDate(date: Date, full: boolean) {
 	let formatteDate = '';
 	if (full) {
 		formatteDate = `${addZero(date.getDate())}.${addZero(
-			date.getMonth()
+			date.getMonth() + 1
 		)}.${date.getFullYear()} | ${addZero(date.getHours())}:${addZero(
 			date.getMinutes()
 		)}`;
 	} else {
 		formatteDate = `${addZero(date.getDate())}.${addZero(
-			date.getMonth()
+			date.getMonth() + 1
 		)}.${date.getFullYear()}`;
 	}
 	return formatteDate;
@@ -133,11 +133,12 @@ export function transformStorageData(storage: StorageItemType[]) {
 
 		const section = storageSectionsMap.get(monthYear);
 		section.items.push({
-			id: item.storage_id,
+			id: item.id,
 			name: item.name,
 			color: item.color,
 			description: item.description,
 			insert_date: item.insert_date,
+			storage_id: item.storage_id,
 		});
 	});
 
