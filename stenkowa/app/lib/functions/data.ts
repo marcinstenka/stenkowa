@@ -80,7 +80,7 @@ export async function fetchStorageItem(id: number) {
 		console.log(error);
 	}
 }
-export async function fetchUserNameFromStorageId(storage_id: number) {
+export async function fetchUserNameWithStorageId(storage_id: number) {
 	noStore();
 	try {
 		const data = await sql<UserType>`

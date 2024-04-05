@@ -6,7 +6,7 @@ import Link from 'next/link';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import {
 	fetchStorageItem,
-	fetchUserNameFromStorageId,
+	fetchUserNameWithStorageId,
 } from '../../functions/data';
 type StorageItemDetailsProps = {
 	id: number;
@@ -16,7 +16,7 @@ export default async function StorageItemDetails({
 }: StorageItemDetailsProps) {
 	const storageItem = await fetchStorageItem(id);
 	if (!storageItem) return;
-	const user = await fetchUserNameFromStorageId(storageItem?.storage_id);
+	const user = await fetchUserNameWithStorageId(storageItem?.storage_id);
 	if (!user) return;
 	const date_added = formatDate(storageItem.insert_date, false);
 	return (
