@@ -5,6 +5,7 @@ import { StorageItemType } from '../../types/types';
 import useStorageItemEdit from '../../hooks/useStorageItemEdit';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
+import { updateStorageItem } from '../../functions/actions';
 
 export default function StorageItemEditForm(item: StorageItemType) {
 	const {
@@ -16,8 +17,10 @@ export default function StorageItemEditForm(item: StorageItemType) {
 		date_added,
 	} = useStorageItemEdit(item);
 	const { color, handleColorChange } = useColorChanging(item.color);
+	const updateStorageItemWithId = updateStorageItem.bind(null, item.id);
+	
 	return (
-		<div className={styles.details}>
+		<form className={styles.details} action={updateStorageItemWithId}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input
@@ -88,6 +91,6 @@ export default function StorageItemEditForm(item: StorageItemType) {
 			>
 				Kliknij element, aby zmienić
 			</p>
-		</div>
+		</form>
 	);
 }
