@@ -25,3 +25,13 @@ export type TodoType = {
 	date_deadline: Date;
 	color: string;
 };
+export type UserType = {
+	id: number;
+	todos_container_id: number;
+	storage_id: number;
+	user_name: string;
+	email: string;
+	password: string;
+	primary_color: string;
+	secondary_color: string;
+};
