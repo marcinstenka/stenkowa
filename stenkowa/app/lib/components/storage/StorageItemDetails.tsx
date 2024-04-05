@@ -8,6 +8,7 @@ import {
 	fetchStorageItem,
 	fetchUserNameWithStorageId,
 } from '../../functions/data';
+import { deleteStorageItem } from '../../functions/actions';
 type StorageItemDetailsProps = {
 	id: number;
 };
@@ -19,6 +20,8 @@ export default async function StorageItemDetails({
 	const user = await fetchUserNameWithStorageId(storageItem?.storage_id);
 	if (!user) return;
 	const date_added = formatDate(storageItem.insert_date, false);
+	const deleteStorageItemWithId = deleteStorageItem.bind(null, id);
+
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
@@ -37,7 +40,17 @@ export default async function StorageItemDetails({
 					<Link href={`/storage/${storageItem.id}/edit`}>
 						<BiSolidEdit style={{ color: `${storageItem.color}` }} />
 					</Link>
-					<MdDelete style={{ color: `${storageItem.color}` }} />
+					<form
+						action={deleteStorageItemWithId}
+						className={styles.details_delete}
+					>
+						<button type='submit'>
+							<MdDelete
+								style={{ color: `${storageItem.color}` }}
+								color-changing='color'
+							/>
+						</button>
+					</form>
 				</div>
 			</div>
 			<Link

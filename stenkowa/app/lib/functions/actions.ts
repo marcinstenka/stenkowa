@@ -104,11 +104,11 @@ export async function deleteBookmark(id: number) {
 	try {
 		await sql`
        	 DELETE FROM bookmarks WHERE id = ${id}`;
-		revalidatePath('/bookmarks');
-		redirect('/bookmarks');
 	} catch (error) {
 		console.log(error);
 	}
+	revalidatePath('/bookmarks');
+	redirect('/bookmarks');
 }
 
 export async function createTodo(prevState: State, formData: FormData) {
@@ -236,6 +236,16 @@ export async function updateStorageItem(
 		console.log(error);
 	}
 
+	revalidatePath('/storage');
+	redirect('/storage');
+}
+export async function deleteStorageItem(id: number) {
+	try {
+		await sql`
+       	 DELETE FROM storage_items WHERE id = ${id}`;
+	} catch (error) {
+		console.log(error);
+	}
 	revalidatePath('/storage');
 	redirect('/storage');
 }

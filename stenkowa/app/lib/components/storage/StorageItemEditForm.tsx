@@ -5,7 +5,8 @@ import { StorageItemType } from '../../types/types';
 import useStorageItemEdit from '../../hooks/useStorageItemEdit';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
-import { updateStorageItem } from '../../functions/actions';
+import { updateStorageItem, deleteStorageItem } from '../../functions/actions';
+import { startTransition } from 'react';
 
 export default function StorageItemEditForm(item: StorageItemType) {
 	const {
@@ -18,6 +19,7 @@ export default function StorageItemEditForm(item: StorageItemType) {
 	} = useStorageItemEdit(item);
 	const { color, handleColorChange } = useColorChanging(item.color);
 	const updateStorageItemWithId = updateStorageItem.bind(null, item.id);
+	const deleteStorageItemWithId = deleteStorageItem.bind(null, item.id);
 	
 	return (
 		<form className={styles.details} action={updateStorageItemWithId}>
@@ -80,7 +82,14 @@ export default function StorageItemEditForm(item: StorageItemType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<MdDelete style={{ color: `${color}` }} />
+					<MdDelete
+						style={{ color: `${color}` }}
+						onClick={() =>
+							startTransition(() => {
+								deleteStorageItemWithId();
+							})
+						}
+					/>
 				</div>
 			</div>
 			<BackButtons href={`/storage/${item.id}`} color={color} />
