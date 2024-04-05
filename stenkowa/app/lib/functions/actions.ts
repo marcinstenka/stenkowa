@@ -213,3 +213,29 @@ export async function createStorageItem(prevState: State, formData: FormData) {
 		};
 	}
 }
+export async function updateStorageItem(
+	storageItemId: number,
+	formData: FormData
+) {
+	const validatedFields = {
+		name: formData.get('new_item_name')?.toString(),
+		description: formData.get('new_item_description')?.toString(),
+		date_added_string: formData.get('new_item_added')?.toString(),
+		color: formData.get('new_item_color')?.toString(),
+	};
+	const { name, description, color, date_added_string } = validatedFields;
+	let insert_date: string = '';
+	if (date_added_string) {
+		insert_date = new Date(date_added_string).toISOString();
+	}
+
+	try {
+		await sql`
+		UPDATE storage_items SET name = ${name}, description = ${description}, color = ${color}, insert_date = ${insert_date} WHERE id = ${storageItemId}`;
+	} catch (error) {
+		console.log(error);
+	}
+
+	revalidatePath('/storage');
+	redirect('/storage');
+}
