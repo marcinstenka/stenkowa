@@ -15,7 +15,7 @@ export default function StorageItemEditForm(item: StorageItemType) {
 		details,
 		date_added,
 	} = useStorageItemEdit(item);
-	const { color, handleColorChange } = useColorChanging("");
+	const { color, handleColorChange } = useColorChanging(item.color);
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
@@ -40,7 +40,11 @@ export default function StorageItemEditForm(item: StorageItemType) {
 						type='date'
 						name='details_date'
 						id='details_date'
-						defaultValue={date_added.toISOString().substr(0, 10)}
+						defaultValue={
+							date_added
+								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+								.split(' ')[0]
+						}
 						style={{ borderColor: `${color}` }}
 						color-changing='border-color'
 						onChange={handleDateAddedChange}
