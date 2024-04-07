@@ -5,6 +5,8 @@ import { StorageItemType } from '../../types/types';
 import useStorageItemEdit from '../../hooks/useStorageItemEdit';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
+import { updateStorageItem, deleteStorageItem } from '../../functions/actions';
+import { startTransition } from 'react';
 
 export default function StorageItemEditForm(item: StorageItemType) {
 	const {
@@ -15,9 +17,12 @@ export default function StorageItemEditForm(item: StorageItemType) {
 		details,
 		date_added,
 	} = useStorageItemEdit(item);
-	const { color, handleColorChange } = useColorChanging("");
+	const { color, handleColorChange } = useColorChanging(item.color);
+	const updateStorageItemWithId = updateStorageItem.bind(null, item.id);
+	const deleteStorageItemWithId = deleteStorageItem.bind(null, item.id);
+	
 	return (
-		<div className={styles.details}>
+		<form className={styles.details} action={updateStorageItemWithId}>
 			<div className={styles.details_header}>
 				<div className={styles.input_container}>
 					<input
@@ -40,7 +45,11 @@ export default function StorageItemEditForm(item: StorageItemType) {
 						type='date'
 						name='details_date'
 						id='details_date'
-						defaultValue={date_added.toISOString().substr(0, 10)}
+						defaultValue={
+							date_added
+								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
+								.split(' ')[0]
+						}
 						style={{ borderColor: `${color}` }}
 						color-changing='border-color'
 						onChange={handleDateAddedChange}
@@ -73,7 +82,14 @@ export default function StorageItemEditForm(item: StorageItemType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<MdDelete style={{ color: `${color}` }} />
+					<MdDelete
+						style={{ color: `${color}` }}
+						onClick={() =>
+							startTransition(() => {
+								deleteStorageItemWithId();
+							})
+						}
+					/>
 				</div>
 			</div>
 			<BackButtons href={`/storage/${item.id}`} color={color} />
@@ -84,6 +100,6 @@ export default function StorageItemEditForm(item: StorageItemType) {
 			>
 				Kliknij element, aby zmienić
 			</p>
-		</div>
+		</form>
 	);
 }

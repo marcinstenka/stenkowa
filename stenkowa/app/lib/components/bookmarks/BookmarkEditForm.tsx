@@ -20,7 +20,7 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
-
+	const deleteBookmarkWithId = deleteBookmark.bind(null, bookmark.id);
 	return (
 		<form className={styles.details} action={updateBookmarkWithId}>
 			<div className={styles.details_header}>
@@ -68,16 +68,16 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 							onChange={handleColorChange}
 						/>
 					</div>
-					<button
-						className={styles.details_delete}
-						onClick={() =>
-							startTransition(() => {
-								deleteBookmark(bookmark.id);
-							})
-						}
-					>
-						<MdDelete style={{ color: `${color}` }} />
-					</button>
+					<div className={styles.details_delete}>
+						<MdDelete
+							style={{ color: `${color}` }}
+							onClick={() =>
+								startTransition(() => {
+									deleteBookmarkWithId();
+								})
+							}
+						/>
+					</div>
 				</div>
 			</div>
 			<BackButtons href='/bookmarks' color={color} />

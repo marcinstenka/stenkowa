@@ -1,6 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { TodoType } from '../types/types';
-import { calculateTimedifference } from '../functions/functions';
+import { calculateTimeDifference } from '../functions/functions';
 
 export default function useTodoEdit(todo: TodoType) {
 	const [details_header, setDetails_header] = useState(todo.name);
@@ -8,13 +8,13 @@ export default function useTodoEdit(todo: TodoType) {
 	const [date_added, setDate_added] = useState(todo.date_added);
 	const [date_deadline, setDate_deadline] = useState(todo.date_deadline);
 	const [timeLeft, setTimeLeft] = useState(
-		calculateTimedifference(todo.date_deadline)
+		calculateTimeDifference(todo.date_deadline, false)
 	);
 
 	// updaing time left live
 	useEffect(() => {
 		const new_date_deadline = new Date(date_deadline);
-		setTimeLeft(calculateTimedifference(new_date_deadline));
+		setTimeLeft(calculateTimeDifference(new_date_deadline, false));
 	}, [date_deadline]);
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {

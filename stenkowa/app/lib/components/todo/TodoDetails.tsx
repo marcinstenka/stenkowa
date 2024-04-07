@@ -3,7 +3,7 @@ import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { BiSolidEdit } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
 import Link from 'next/link';
-import { calculateTimedifference, formatDate } from '../../functions/functions';
+import { calculateTimeDifference, formatDate } from '../../functions/functions';
 import { TodoType } from '../../types/types';
 import { fetchTodo } from '../../functions/data';
 import { deleteTodo } from '../../functions/actions';
@@ -15,8 +15,9 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 	if (!todo) return;
 	const date_added = formatDate(todo.date_added, true);
 	const date_deadline = formatDate(todo.date_deadline, true);
-	const timeLeft = calculateTimedifference(todo.date_deadline);
+	const timeLeft = calculateTimeDifference(todo.date_deadline, true);
 	const deleteTodoWithId = deleteTodo.bind(null, todo.id);
+
 	return (
 		<div className={styles.details}>
 			<div className={styles.details_header}>
@@ -25,9 +26,12 @@ export default async function TodoDetails({ id }: TodoDetailsProps) {
 					<Link href={`/todo/${todo.id}/edit`}>
 						<BiSolidEdit style={{ color: `${todo.color}` }} />
 					</Link>
-					<form action={deleteTodoWithId}>
-						<button className={styles.details_delete}>
-							<MdDelete style={{ color: `${todo.color}` }} />
+					<form action={deleteTodoWithId} className={styles.details_delete}>
+						<button type='submit'>
+							<MdDelete
+								style={{ color: `${todo.color}` }}
+								color-changing='color'
+							/>
 						</button>
 					</form>
 				</div>

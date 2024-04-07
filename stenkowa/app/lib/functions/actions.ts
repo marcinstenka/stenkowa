@@ -2,6 +2,7 @@
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+
 import bcrypt from 'bcrypt';
 
 export type State = {
@@ -10,6 +11,7 @@ export type State = {
 
 const USER_ID = 1; //for testing
 const TODOS_CONTAINER_ID = 1; // for testing
+const STORAGE_ID = 1; // for testing
 
 export async function registerUser(prevState: State, formData: FormData) {
 	const validatedFields = {
@@ -88,7 +90,6 @@ export async function updateBookmark(bookmarkId: number, formData: FormData) {
 		color: formData.get('details_color')?.toString(),
 	};
 	const { name, link, icon, color } = validatedFields;
-
 	try {
 		await sql`
 		UPDATE bookmarks SET name = ${name}, link = ${link}, color = ${color}, icon = ${icon} WHERE id = ${bookmarkId}`;
@@ -102,12 +103,12 @@ export async function updateBookmark(bookmarkId: number, formData: FormData) {
 export async function deleteBookmark(id: number) {
 	try {
 		await sql`
-       	 DELETE FROM bookmarks where id = ${id}`;
-		revalidatePath('/bookmarks');
-		redirect('/bookmarks');
+       	 DELETE FROM bookmarks WHERE id = ${id}`;
 	} catch (error) {
 		console.log(error);
 	}
+	revalidatePath('/bookmarks');
+	redirect('/bookmarks');
 }
 
 export async function createTodo(prevState: State, formData: FormData) {
@@ -155,8 +156,10 @@ export async function updateTodo(todoId: number, formData: FormData) {
 	};
 	const { name, description, color, date_deadline_string } = validatedFields;
 	let deadline: string = '';
-	if (date_deadline_string)
+	if (date_deadline_string) {
 		deadline = new Date(date_deadline_string).toISOString();
+	}
+
 	try {
 		const a = await sql`
 		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${deadline} WHERE id = ${todoId}`;
@@ -171,10 +174,78 @@ export async function updateTodo(todoId: number, formData: FormData) {
 export async function deleteTodo(id: number) {
 	try {
 		await sql`
-       	 DELETE FROM todos where id = ${id}`;
+       	 DELETE FROM todos WHERE id = ${id}`;
 	} catch (error) {
 		console.log(error);
 	}
 	revalidatePath('/todo');
 	redirect('/todo');
+}
+export async function createStorageItem(prevState: State, formData: FormData) {
+	const validatedFields = {
+		name: formData.get('new_item_name')?.toString(),
+		description: formData.get('new_item_description')?.toString(),
+		date_added_string: formData.get('new_item_added')?.toString(),
+		color: formData.get('new_item_color')?.toString(),
+	};
+	const { name, description, date_added_string, color } = validatedFields;
+
+	let date_added: string = '';
+	if (date_added_string) {
+		date_added = new Date(date_added_string).toISOString();
+		try {
+			await sql`
+            INSERT INTO storage_items (storage_id, name, description, color, insert_date)
+        VALUES (${STORAGE_ID}, ${name}, ${description}, ${color},${date_added});
+        `;
+		} catch (error) {
+			console.log(error);
+			return {
+				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+			};
+		}
+
+		revalidatePath('/storage');
+		redirect('/storage');
+	} else {
+		return {
+			message: 'Brak danych dotyczących daty.',
+		};
+	}
+}
+export async function updateStorageItem(
+	storageItemId: number,
+	formData: FormData
+) {
+	const validatedFields = {
+		name: formData.get('details_header')?.toString(),
+		description: formData.get('details_text')?.toString(),
+		date_added_string: formData.get('details_date')?.toString(),
+		color: formData.get('details_color')?.toString(),
+	};
+	const { name, description, color, date_added_string } = validatedFields;
+	let insert_date: string = '';
+	if (date_added_string) {
+		insert_date = new Date(date_added_string).toISOString();
+	}
+
+	try {
+		await sql`
+		UPDATE storage_items SET name = ${name}, description = ${description}, color = ${color}, insert_date = ${insert_date} WHERE id = ${storageItemId}`;
+	} catch (error) {
+		console.log(error);
+	}
+
+	revalidatePath('/storage');
+	redirect('/storage');
+}
+export async function deleteStorageItem(id: number) {
+	try {
+		await sql`
+       	 DELETE FROM storage_items WHERE id = ${id}`;
+	} catch (error) {
+		console.log(error);
+	}
+	revalidatePath('/storage');
+	redirect('/storage');
 }

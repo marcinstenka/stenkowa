@@ -110,11 +110,14 @@ $textareaMinHeight: 48px;
 		border: none;
 		background: none;
 		padding: 0;
-		width: 30px;
-		height: 30px;
 		display: flex;
 		justify-content: center;
 		align-items: center;
+		button {
+			border: none;
+			background: none;
+			padding: 0;
+		}
 	}
 	&_back {
 		display: flex;

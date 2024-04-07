@@ -16,8 +16,8 @@ const todos = [
 		name: '123456',
 		details: 'red',
 		color: 'blue',
-		date_deadline: new Date(),
-		date_added: new Date(),
+		date_deadline: new Date().toISOString(),
+		date_added: new Date().toISOString(),
 	},
 ];
 const todosContainers = [{}];

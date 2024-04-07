@@ -1,6 +1,11 @@
 import { sql } from '@vercel/postgres';
 import { unstable_noStore as noStore } from 'next/cache';
-import { BookmarkType, StorageItemType, TodoType } from '../types/types';
+import {
+	BookmarkType,
+	StorageItemType,
+	TodoType,
+	UserType,
+} from '../types/types';
 
 const USER_ID = 1; // for testing
 const TODOS_CONTAINER_ID = 1; // for testing
@@ -59,6 +64,29 @@ export async function fetchStorageItems() {
         select * FROM storage_items where storage_id = ${STORAGE_ID}
         `;
 		return data.rows;
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+export async function fetchStorageItem(id: number) {
+	noStore();
+	try {
+		const data = await sql<StorageItemType>`
+        select * FROM storage_items where storage_id = ${STORAGE_ID} and id = ${id}
+        `;
+		return data.rows[0];
+	} catch (error) {
+		console.log(error);
+	}
+}
+export async function fetchUserNameWithStorageId(storage_id: number) {
+	noStore();
+	try {
+		const data = await sql<UserType>`
+        select * FROM users, storages where users.storage_id = storages.id and users.storage_id = ${storage_id}
+        `;
+		return data.rows[0];
 	} catch (error) {
 		console.log(error);
 	}
