@@ -1,12 +1,12 @@
-import styles from '../../styles/details.module.scss';
+import Link from 'next/link';
+import { calculateTimeDifference, formatDate } from '../../functions/functions';
+import { fetchTodo } from '../../functions/data';
+import { deleteTodo } from '../../functions/actions';
 import { IoReturnDownBackOutline } from 'react-icons/io5';
 import { BiSolidEdit } from 'react-icons/bi';
 import { MdDelete } from 'react-icons/md';
-import Link from 'next/link';
-import { calculateTimeDifference, formatDate } from '../../functions/functions';
 import { TodoType } from '../../types/types';
-import { fetchTodo } from '../../functions/data';
-import { deleteTodo } from '../../functions/actions';
+import styles from '../../styles/details.module.scss';
 
 type TodoDetailsProps = { id: number };
 
