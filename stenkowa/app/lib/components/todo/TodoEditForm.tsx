@@ -1,12 +1,12 @@
 'use client';
-import useTodoEdit from '../../hooks/useTodoEdit';
-import { TodoType } from '../../types/types';
-import styles from '../../styles/details.module.scss';
-import { MdDelete, MdColorLens } from 'react-icons/md';
 import BackButtons from '../global/BackButtons';
 import useColorChanging from '../../hooks/useColorChanging';
-import { deleteTodo, updateTodo } from '../../functions/actions';
+import useTodoEdit from '../../hooks/useTodoEdit';
 import { startTransition } from 'react';
+import { deleteTodo, updateTodo } from '../../functions/actions';
+import { MdDelete, MdColorLens } from 'react-icons/md';
+import { TodoType } from '../../types/types';
+import styles from '../../styles/details.module.scss';
 
 export default function TodoEditForm(todo: TodoType) {
 	const {

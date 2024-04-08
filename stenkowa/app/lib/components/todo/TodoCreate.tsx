@@ -1,9 +1,10 @@
 'use client';
+import BackButtons from '../global/BackButtons';
+import useColorChanging from '../../hooks/useColorChanging';
 import { useFormState } from 'react-dom';
 import { createTodo } from '../../functions/actions';
-import useColorChanging from '../../hooks/useColorChanging';
 import styles from '../../styles/create.module.scss';
-import BackButtons from '../global/BackButtons';
+
 export default function TodoCreate() {
 	const { color, handleColorChange } = useColorChanging('');
 	const initialState = { message: '' };

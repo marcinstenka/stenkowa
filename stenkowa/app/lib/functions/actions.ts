@@ -161,7 +161,7 @@ export async function updateTodo(todoId: number, formData: FormData) {
 	}
 
 	try {
-		await sql`
+		const a = await sql`
 		UPDATE todos SET name = ${name}, description = ${description}, color = ${color}, date_deadline = ${deadline} WHERE id = ${todoId}`;
 	} catch (error) {
 		console.log(error);

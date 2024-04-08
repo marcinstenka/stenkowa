@@ -1,6 +1,6 @@
-import styles from './todo.module.scss';
-import { TodoType } from '../../types/types';
 import Link from 'next/link';
+import { TodoType } from '../../types/types';
+import styles from './todo.module.scss';
 
 
 export default function Todo( todo : TodoType) {
