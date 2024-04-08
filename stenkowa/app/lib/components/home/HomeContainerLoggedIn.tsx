@@ -4,6 +4,7 @@ import Todo from '../todo/Todo';
 import Bookmark from '../bookmarks/Bookmark';
 import StorageSection from '../storage/StorageSection';
 import ProfileForm from '../global/ProfileForm';
+import { fetchUser } from '../../functions/data';
 
 type TempData = {
 	user: string;
@@ -11,7 +12,10 @@ type TempData = {
 	storage: StorageSectionType;
 	bookmarks: BookmarkType[];
 };
-export default function HomeContainerLoggedOut() {
+const USER_ID = 1; //for testing
+export default async function HomeContainerLoggedOut() {
+	const user = await fetchUser(USER_ID);
+	if (!user) return null;
 	const data: TempData = {
 		user: 'Marcin',
 		todo: [
@@ -122,7 +126,7 @@ export default function HomeContainerLoggedOut() {
 				</section>
 			</div>
 			<div className={styles.form}>
-				<ProfileForm />
+				<ProfileForm user={user} />
 			</div>
 		</div>
 	);

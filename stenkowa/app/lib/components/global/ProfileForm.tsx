@@ -1,6 +1,27 @@
+'use client';
 import styles from './global.module.scss';
 
-export default function ProfileForm() {
+import useProfileForm from '../../hooks/useProfileForm';
+import { UserType } from '../../types/types';
+
+type ProfileFormProps = {
+	user: UserType;
+};
+export default function ProfileForm({ user }: ProfileFormProps) {
+	const {
+		handleuserNameChange,
+		handleNewPasswordChange,
+		handleEmailChange,
+		handlePrimaryColorChange,
+		handleSecondaryColorChange,
+		userName,
+		newPassword,
+		password,
+		email,
+		primaryColor,
+		secondaryColor,
+	} = useProfileForm({ user });
+
 	return (
 		<div className={styles.profile}>
 			<h2>Dostosuj swój profil</h2>
@@ -13,13 +34,15 @@ export default function ProfileForm() {
 								className={styles.color}
 								type='color'
 								name='primary'
-								value='#0050b8'
+								value={primaryColor}
+								onChange={handlePrimaryColorChange}
 							/>
 							<input
 								className={styles.color}
 								type='color'
 								name='secondary'
-								value='#ffffff'
+								value={secondaryColor}
+								onChange={handleSecondaryColorChange}
 							/>
 						</div>
 					</form>
@@ -27,9 +50,24 @@ export default function ProfileForm() {
 				<section>
 					<h3>Zmień dane:</h3>
 					<form className={`${styles.form} ${styles.credentials}`}>
-						<input type='text' name='userName' />
-						<input type='email' name='email' />
-						<input type='password' name='password' />
+						<input
+							type='text'
+							name='userName'
+							value={userName}
+							onChange={handleuserNameChange}
+						/>
+						<input
+							type='email'
+							name='email'
+							value={email}
+							onChange={handleEmailChange}
+						/>
+						<input
+							type='password'
+							name='new_password'
+							value={newPassword}
+							onChange={handleNewPasswordChange}
+						/>
 						<button>Zaaktualizuj</button>
 					</form>
 					<div className={styles.message}></div>
