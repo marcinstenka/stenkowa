@@ -15,14 +15,25 @@
               "state": {
                 "file": "project/Stenkowa Strona 3.0.canvas",
                 "viewState": {
-                  "x": 82.77773216504727,
-                  "y": -231.24534028085372,
-                  "zoom": -0.3333333333333334
+                  "x": 35.08325682123245,
+                  "y": 274.8082601736419,
+                  "zoom": -1.3333333333333328
                 }
               }
             }
+          },
+          {
+            "id": "032f1bc362399e2c",
+            "type": "leaf",
+            "state": {
+              "type": "release-notes",
+              "state": {
+                "currentVersion": "1.5.11"
+              }
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -150,8 +161,9 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "a6c479904325c3ee",
+  "active": "032f1bc362399e2c",
   "lastOpenFiles": [
+    "stenkowa/app/lib/components/todo/TodoDetails.1.tsx",
     "stenkowa/scripts/clear-tables.js",
     "project/ID's.md",
     "ID's.md",
@@ -164,7 +176,6 @@
     "stenkowa/app/storage/[id]/edit/page.tsx",
     "stenkowa/app/storage/[id]/edit",
     "stenkowa/app/lib/styles/create.module.scss",
-    "stenkowa/app/lib/hooks/useTodoEdit.ts",
     "stenkowa/node_modules/react-select/README.md",
     "stenkowa/node_modules/cosmiconfig/README.md",
     "stenkowa/node_modules/@emotion/cache/README.md",
