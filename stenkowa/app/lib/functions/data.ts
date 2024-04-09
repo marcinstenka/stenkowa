@@ -91,3 +91,15 @@ export async function fetchUserNameWithStorageId(storage_id: number) {
 		console.log(error);
 	}
 }
+
+export async function fetchUser(id: number) {
+	noStore();
+	try {
+		const data = await sql<UserType>`
+        select * FROM users WHERE id = ${USER_ID}
+        `;
+		return data.rows[0];
+	} catch (error) {
+		console.log(error);
+	}
+}
