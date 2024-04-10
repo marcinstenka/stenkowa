@@ -272,23 +272,36 @@ export async function updateUser(
 		primaryColor,
 		secondaryColor,
 	} = validatedFields;
+	let hashedNewPassword = '';
+	let passwordConfirmed = false;
 
 	try {
 		const user = await sql<UserType>`
 			 SELECT * FROM users WHERE id = ${id};
 		`;
+		if (password) {
+			await bcrypt
+				.compare(password, user.rows[0].password)
+				.then(function (result: boolean) {
+					if (result) {
+						passwordConfirmed = true;
+					}
+				});
+		}
 		if (!user.rows.length) {
 			return {
 				message: 'Coś poszło nie tak!',
 			};
 		} else {
-			if (password == user.rows[0].password) {
+			if (passwordConfirmed) {
 				if (newPassword) {
+					await bcrypt.hash(newPassword, 10).then((hash) => {
+						hashedNewPassword = hash;
+					});
 					await sql`
-			UPDATE users SET user_name = ${userName}, email = ${email}, password = ${newPassword}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
+						UPDATE users SET user_name = ${userName}, email = ${email}, password = ${hashedNewPassword}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
 				} else {
-					await sql`
-			UPDATE users SET user_name = ${userName}, email = ${email}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
+					await sql`UPDATE users SET user_name = ${userName}, email = ${email}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
 				}
 			} else {
 				return { message: 'Błędne hasło potwierdzające!' };
@@ -297,7 +310,6 @@ export async function updateUser(
 	} catch (error) {
 		console.log(error);
 	}
-
 	revalidatePath('/');
 	redirect('/');
 }

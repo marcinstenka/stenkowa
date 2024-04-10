@@ -82,10 +82,9 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 							onChange={handlePasswordChange}
 							placeholder='Potwierdź zmiany starym hasłem'
 						/>
-						{state.message && <p>{state.message}</p>}
 						<button>Zaaktualizuj</button>
 					</div>
-					<div className={styles.message}></div>
+					<div className={styles.message}>{state?.message}</div>
 				</section>
 			</div>
 		</form>
