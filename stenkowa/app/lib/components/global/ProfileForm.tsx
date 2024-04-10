@@ -84,7 +84,7 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 						/>
 						<button>Zaaktualizuj</button>
 					</div>
-					<div className={styles.message}>{state?.message}</div>
+					<p className={styles.message}>{state?.message}</p>
 				</section>
 			</div>
 		</form>
