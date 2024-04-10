@@ -5,6 +5,7 @@ import { redirect } from 'next/navigation';
 
 import bcrypt from 'bcrypt';
 import { UserType } from '../types/types';
+import { checkIsPasswordCorrect } from './functions';
 
 export type State = {
 	message?: string | null;
@@ -272,40 +273,33 @@ export async function updateUser(
 		primaryColor,
 		secondaryColor,
 	} = validatedFields;
-	let hashedNewPassword = '';
-	let passwordConfirmed = false;
 
+	if (!password) return { message: 'Wystąpił błąd!' };
 	try {
 		const user = await sql<UserType>`
 			 SELECT * FROM users WHERE id = ${id};
 		`;
-		if (password) {
-			await bcrypt
-				.compare(password, user.rows[0].password)
-				.then(function (result: boolean) {
-					if (result) {
-						passwordConfirmed = true;
-					}
+		if (!user.rows.length) return { message: 'Wystąpił błąd!' };
+
+		const passwordConfirmed = await checkIsPasswordCorrect(
+			password,
+			user.rows[0].password
+		);
+		
+		let hashedNewPassword = '';
+
+		if (passwordConfirmed) {
+			if (newPassword) {
+				await bcrypt.hash(newPassword, 10).then((hash) => {
+					hashedNewPassword = hash;
 				});
-		}
-		if (!user.rows.length) {
-			return {
-				message: 'Coś poszło nie tak!',
-			};
-		} else {
-			if (passwordConfirmed) {
-				if (newPassword) {
-					await bcrypt.hash(newPassword, 10).then((hash) => {
-						hashedNewPassword = hash;
-					});
-					await sql`
+				await sql`
 						UPDATE users SET user_name = ${userName}, email = ${email}, password = ${hashedNewPassword}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
-				} else {
-					await sql`UPDATE users SET user_name = ${userName}, email = ${email}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
-				}
 			} else {
-				return { message: 'Błędne hasło potwierdzające!' };
+				await sql`UPDATE users SET user_name = ${userName}, email = ${email}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
 			}
+		} else {
+			return { message: 'Błędne hasło potwierdzające!' };
 		}
 	} catch (error) {
 		console.log(error);

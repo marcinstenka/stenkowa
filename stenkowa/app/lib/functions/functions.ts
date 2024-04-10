@@ -1,5 +1,6 @@
 import { StorageItemType, StorageSectionType } from '../types/types';
 import moment from 'moment-timezone';
+import bcrypt from 'bcrypt';
 
 function addZero(number: number) {
 	if (number < 10) {
@@ -189,4 +190,19 @@ export function getSectionDate(section: StorageSectionType) {
 		month = switchMonthName(parseInt(section.date.split(' ')[1]));
 	}
 	return month + ' ' + year;
+}
+
+export async function checkIsPasswordCorrect(
+	password: string,
+	hashedPassword: string
+) {
+	let passwordConfirmed = false;
+	await bcrypt
+		.compare(password, hashedPassword)
+		.then(function (result: boolean) {
+			if (result) {
+				passwordConfirmed = true;
+			}
+		});
+	return passwordConfirmed;
 }
