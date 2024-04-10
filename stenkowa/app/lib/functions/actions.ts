@@ -5,7 +5,6 @@ import { redirect } from 'next/navigation';
 
 import bcrypt from 'bcrypt';
 import { UserType } from '../types/types';
-import { checkIsPasswordCorrect } from './functions';
 
 export type State = {
 	message?: string | null;
@@ -281,11 +280,15 @@ export async function updateUser(
 		`;
 		if (!user.rows.length) return { message: 'Wystąpił błąd!' };
 
-		const passwordConfirmed = await checkIsPasswordCorrect(
-			password,
-			user.rows[0].password
-		);
-		
+		let passwordConfirmed = false;
+		await bcrypt
+			.compare(password, user.rows[0].password)
+			.then(function (result: boolean) {
+				if (result) {
+					passwordConfirmed = true;
+				}
+			});
+
 		let hashedNewPassword = '';
 
 		if (passwordConfirmed) {
