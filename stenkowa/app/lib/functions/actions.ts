@@ -4,6 +4,7 @@ import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
 
 import bcrypt from 'bcrypt';
+import { UserType } from '../types/types';
 
 export type State = {
 	message?: string | null;
@@ -248,4 +249,55 @@ export async function deleteStorageItem(id: number) {
 	}
 	revalidatePath('/storage');
 	redirect('/storage');
+}
+
+export async function updateUser(
+	id: number,
+	prevState: State,
+	formData: FormData
+) {
+	const validatedFields = {
+		userName: formData.get('userName')?.toString(),
+		email: formData.get('email')?.toString(),
+		password: formData.get('password')?.toString(),
+		newPassword: formData.get('new_password')?.toString(),
+		primaryColor: formData.get('primary')?.toString(),
+		secondaryColor: formData.get('secondary')?.toString(),
+	};
+	const {
+		userName,
+		email,
+		password,
+		newPassword,
+		primaryColor,
+		secondaryColor,
+	} = validatedFields;
+
+	try {
+		const user = await sql<UserType>`
+			 SELECT * FROM users WHERE id = ${id};
+		`;
+		if (!user.rows.length) {
+			return {
+				message: 'Coś poszło nie tak!',
+			};
+		} else {
+			if (password == user.rows[0].password) {
+				if (newPassword) {
+					await sql`
+			UPDATE users SET user_name = ${userName}, email = ${email}, password = ${newPassword}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
+				} else {
+					await sql`
+			UPDATE users SET user_name = ${userName}, email = ${email}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
+				}
+			} else {
+				return { message: 'Błędne hasło potwierdzające!' };
+			}
+		}
+	} catch (error) {
+		console.log(error);
+	}
+
+	revalidatePath('/');
+	redirect('/');
 }
