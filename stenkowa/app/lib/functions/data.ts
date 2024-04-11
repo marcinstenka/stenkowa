@@ -80,6 +80,7 @@ export async function fetchStorageItem(id: number) {
 		console.log(error);
 	}
 }
+
 export async function fetchUserNameWithStorageId(storage_id: number) {
 	noStore();
 	try {
@@ -99,6 +100,37 @@ export async function fetchUser(id: number) {
         select * FROM users WHERE id = ${USER_ID}
         `;
 		return data.rows[0];
+	} catch (error) {
+		console.log(error);
+	}
+}
+
+export async function fetchLatestTodos(todos_container_id: number) {
+	noStore();
+	try {
+		const data = await sql<TodoType>`
+       	SELECT * FROM todos WHERE todos_container_id = ${todos_container_id} ORDER BY id DESC limit 3`;
+		return data.rows;
+	} catch (error) {
+		console.log(error);
+	}
+}
+export async function fetchLatestStorageItems(storage_id: number) {
+	noStore();
+	try {
+		const data = await sql<StorageItemType>`
+       	SELECT * FROM storage_items WHERE storage_id = ${storage_id} ORDER BY id DESC limit 3`;
+		return data.rows;
+	} catch (error) {
+		console.log(error);
+	}
+}
+export async function fetchLatestBookmarks(user_id: number) {
+	noStore();
+	try {
+		const data = await sql<BookmarkType>`
+       	SELECT * FROM bookmarks WHERE user_id = ${user_id} ORDER BY id DESC limit 3`;
+		return data.rows;
 	} catch (error) {
 		console.log(error);
 	}
