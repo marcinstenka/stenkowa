@@ -2,6 +2,7 @@
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 import bcrypt from 'bcrypt';
 import { UserType } from '../types/types';
@@ -307,6 +308,6 @@ export async function updateUser(
 	} catch (error) {
 		console.log(error);
 	}
-	revalidatePath('/');
-	redirect('/');
+	console.log('asd');
+	return { message: 'Zaaktualizowano pomyślnie!' };
 }

@@ -9,7 +9,7 @@ import { useFormState } from 'react-dom';
 type ProfileFormProps = {
 	user: UserType;
 };
-export default function ProfileForm({ user }: ProfileFormProps) {
+export default function ProfileForm({ user,  }: ProfileFormProps) {
 	const {
 		handleuserNameChange,
 		handleNewPasswordChange,
@@ -23,13 +23,21 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 		email,
 		primaryColor,
 		secondaryColor,
+		setNewPassword,
+		setPassword,
 	} = useProfileForm({ user });
 	const initialState = { message: '' };
 	const updateUserWithId = updateUser.bind(null, user.id);
 	const [state, dispatch] = useFormState(updateUserWithId, initialState);
-
 	return (
-		<form className={styles.profile} action={dispatch}>
+		<form
+			className={styles.profile}
+			action={async (formData) => {
+				await dispatch(formData);
+				setNewPassword('');
+				setPassword('');
+			}}
+		>
 			<h2>Dostosuj swój profil</h2>
 			<div className={styles.profile_sections}>
 				<section>

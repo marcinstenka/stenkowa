@@ -45,5 +45,7 @@ export default function useProfileForm({ user }: UseProfileFormProps) {
 		email,
 		primaryColor,
 		secondaryColor,
+		setNewPassword,
+		setPassword
 	};
 }
