@@ -2,8 +2,10 @@
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
+import { useRouter } from 'next/router';
 
 import bcrypt from 'bcrypt';
+import { UserType } from '../types/types';
 
 export type State = {
 	message?: string | null;
@@ -248,4 +250,64 @@ export async function deleteStorageItem(id: number) {
 	}
 	revalidatePath('/storage');
 	redirect('/storage');
+}
+
+export async function updateUser(
+	id: number,
+	prevState: State,
+	formData: FormData
+) {
+	const validatedFields = {
+		userName: formData.get('userName')?.toString(),
+		email: formData.get('email')?.toString(),
+		password: formData.get('password')?.toString(),
+		newPassword: formData.get('new_password')?.toString(),
+		primaryColor: formData.get('primary')?.toString(),
+		secondaryColor: formData.get('secondary')?.toString(),
+	};
+	const {
+		userName,
+		email,
+		password,
+		newPassword,
+		primaryColor,
+		secondaryColor,
+	} = validatedFields;
+
+	if (!password) return { message: 'Wystąpił błąd!' };
+	try {
+		const user = await sql<UserType>`
+			 SELECT * FROM users WHERE id = ${id};
+		`;
+		if (!user.rows.length) return { message: 'Wystąpił błąd!' };
+
+		let passwordConfirmed = false;
+		await bcrypt
+			.compare(password, user.rows[0].password)
+			.then(function (result: boolean) {
+				if (result) {
+					passwordConfirmed = true;
+				}
+			});
+
+		let hashedNewPassword = '';
+
+		if (passwordConfirmed) {
+			if (newPassword) {
+				await bcrypt.hash(newPassword, 10).then((hash) => {
+					hashedNewPassword = hash;
+				});
+				await sql`
+						UPDATE users SET user_name = ${userName}, email = ${email}, password = ${hashedNewPassword}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
+			} else {
+				await sql`UPDATE users SET user_name = ${userName}, email = ${email}, primary_color = ${primaryColor}, secondary_color = ${secondaryColor} WHERE id = ${id}`;
+			}
+		} else {
+			return { message: 'Błędne hasło potwierdzające!' };
+		}
+	} catch (error) {
+		console.log(error);
+	}
+	console.log('asd');
+	return { message: 'Zaaktualizowano pomyślnie!' };
 }

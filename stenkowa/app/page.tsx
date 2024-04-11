@@ -4,7 +4,7 @@ import HomeContainerLoggedIn from './lib/components/home/HomeContainerLoggedIn';
 import Main from './lib/components/main/Main';
 
 export default function Home() {
-	const isLogged = false;
+	const isLogged = true;
 	return (
 		<>
 			<Background />

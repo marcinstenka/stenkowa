@@ -7,7 +7,7 @@ type UseProfileFormProps = {
 };
 export default function useProfileForm({ user }: UseProfileFormProps) {
 	const [userName, setUserName] = useState(user.user_name);
-	const [password, setPassword] = useState(user.password);
+	const [password, setPassword] = useState('');
 	const [newPassword, setNewPassword] = useState('');
 	const [email, setEmail] = useState(user.email);
 	const [primaryColor, setPrimaryColor] = useState(user.primary_color);
@@ -18,6 +18,9 @@ export default function useProfileForm({ user }: UseProfileFormProps) {
 	};
 	const handleNewPasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setNewPassword(e.target.value);
+	};
+	const handlePasswordChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setPassword(e.target.value);
 	};
 	const handleEmailChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setEmail(e.target.value);
@@ -32,6 +35,7 @@ export default function useProfileForm({ user }: UseProfileFormProps) {
 	return {
 		handleuserNameChange,
 		handleNewPasswordChange,
+		handlePasswordChange,
 		handleEmailChange,
 		handlePrimaryColorChange,
 		handleSecondaryColorChange,
@@ -41,5 +45,7 @@ export default function useProfileForm({ user }: UseProfileFormProps) {
 		email,
 		primaryColor,
 		secondaryColor,
+		setNewPassword,
+		setPassword
 	};
 }

@@ -9,7 +9,7 @@ export default function useIsExpanded() {
 		const settings = document.getElementById('settings');
 		if (isExpanded) {
 			if (nav) nav.style.transform = 'translateY(300px)';
-			if (container) container.style.transform = `translateY(575px)`;
+			if (container) container.style.transform = `translateY(685px)`;
 			if (logout) logout.style.opacity = `1`;
 			if (logout) logout.style.transition = `0.3s`;
 			if (settings) settings.style.transform = `rotate(30deg)`;

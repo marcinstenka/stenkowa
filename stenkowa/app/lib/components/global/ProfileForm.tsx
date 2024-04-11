@@ -3,14 +3,17 @@ import styles from './global.module.scss';
 
 import useProfileForm from '../../hooks/useProfileForm';
 import { UserType } from '../../types/types';
+import { updateUser } from '../../functions/actions';
+import { useFormState } from 'react-dom';
 
 type ProfileFormProps = {
 	user: UserType;
 };
-export default function ProfileForm({ user }: ProfileFormProps) {
+export default function ProfileForm({ user,  }: ProfileFormProps) {
 	const {
 		handleuserNameChange,
 		handleNewPasswordChange,
+		handlePasswordChange,
 		handleEmailChange,
 		handlePrimaryColorChange,
 		handleSecondaryColorChange,
@@ -20,15 +23,26 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 		email,
 		primaryColor,
 		secondaryColor,
+		setNewPassword,
+		setPassword,
 	} = useProfileForm({ user });
-
+	const initialState = { message: '' };
+	const updateUserWithId = updateUser.bind(null, user.id);
+	const [state, dispatch] = useFormState(updateUserWithId, initialState);
 	return (
-		<div className={styles.profile}>
+		<form
+			className={styles.profile}
+			action={async (formData) => {
+				await dispatch(formData);
+				setNewPassword('');
+				setPassword('');
+			}}
+		>
 			<h2>Dostosuj swój profil</h2>
 			<div className={styles.profile_sections}>
 				<section>
 					<h3>Wybierz kolory:</h3>
-					<form className={`${styles.form} ${styles.colors}`}>
+					<div className={`${styles.form} ${styles.colors}`}>
 						<div className={styles.colors_container}>
 							<input
 								className={styles.color}
@@ -45,11 +59,11 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 								onChange={handleSecondaryColorChange}
 							/>
 						</div>
-					</form>
+					</div>
 				</section>
 				<section>
 					<h3>Zmień dane:</h3>
-					<form className={`${styles.form} ${styles.credentials}`}>
+					<div className={`${styles.form} ${styles.credentials}`}>
 						<input
 							type='text'
 							name='userName'
@@ -67,12 +81,20 @@ export default function ProfileForm({ user }: ProfileFormProps) {
 							name='new_password'
 							value={newPassword}
 							onChange={handleNewPasswordChange}
+							placeholder='Wpisz nowe hasło'
+						/>
+						<input
+							type='password'
+							name='password'
+							value={password}
+							onChange={handlePasswordChange}
+							placeholder='Potwierdź zmiany starym hasłem'
 						/>
 						<button>Zaaktualizuj</button>
-					</form>
-					<div className={styles.message}></div>
+					</div>
+					<p className={styles.message}>{state?.message}</p>
 				</section>
 			</div>
-		</div>
+		</form>
 	);
 }
