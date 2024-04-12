@@ -23,7 +23,7 @@ export default function LoginContainer() {
 						minLength={4}
 						autoComplete='off'
 					/>
-					<label htmlFor='userName'>Nazwa użytkownika</label>
+					<label htmlFor='userName'>Email</label>
 					<MdOutlineAccountCircle />
 				</div>
 				<div className={styles.input}>
