@@ -10,7 +10,6 @@ export const authConfig = {
 			const isOnTodos = nextUrl.pathname.startsWith('/todos');
 			const isOnStorage = nextUrl.pathname.startsWith('/storage');
 			const isOnBookmarks = nextUrl.pathname.startsWith('/bookmarks');
-
 			if (isOnTodos) {
 				if (isLoggedIn) return true;
 				return false;
