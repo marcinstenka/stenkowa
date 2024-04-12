@@ -2,8 +2,8 @@
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { useRouter } from 'next/router';
-
+import { signIn } from '@/auth';
+import { AuthError } from 'next-auth';
 import bcrypt from 'bcrypt';
 import { UserType } from '../types/types';
 
@@ -253,7 +253,7 @@ export async function deleteStorageItem(id: number) {
 }
 
 export async function updateUser(
-	id: number,
+	id: string,
 	prevState: State,
 	formData: FormData
 ) {
@@ -310,4 +310,25 @@ export async function updateUser(
 	}
 	console.log('asd');
 	return { message: 'Zaaktualizowano pomyślnie!' };
+}
+
+export async function authenticate(
+	state: { message: string },
+	formData: FormData
+): Promise<{ message: string }> {
+	console.log(formData);
+	try {
+		await signIn('credentials', formData);
+		return { message: 'ok' };
+	} catch (error) {
+		if (error instanceof AuthError) {
+			switch (error.type) {
+				case 'CredentialsSignin':
+					return { message: 'Invalid credentials.' };
+				default:
+					return { message: 'Something went wrong.' };
+			}
+		}
+		throw error;
+	}
 }
