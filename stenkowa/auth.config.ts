@@ -7,28 +7,14 @@ export const authConfig = {
 	callbacks: {
 		authorized({ auth, request: { nextUrl } }) {
 			const isLoggedIn = !!auth?.user;
-			const isOnTodos = nextUrl.pathname.startsWith('/todo');
-			const isOnStorage = nextUrl.pathname.startsWith('/storage');
-			const isOnBookmarks = nextUrl.pathname.startsWith('/bookmarks');
-			if (isOnTodos) {
-				if (isLoggedIn) return true;
-				return false;
-			} else if (isLoggedIn) {
-				return Response.redirect(new URL('/todo', nextUrl));
-			}
-
-			if (isOnStorage) {
-				if (isLoggedIn) return true;
-				return false;
-			} else if (isLoggedIn) {
-				return Response.redirect(new URL('/storage', nextUrl));
-			}
-
-			if (isOnBookmarks) {
-				if (isLoggedIn) return true;
-				return false;
-			} else if (isLoggedIn) {
-				return Response.redirect(new URL('/bookmarks', nextUrl));
+			const isOnLogin = nextUrl.pathname.startsWith('/login');
+			if (!isLoggedIn) return false;
+			if (isOnLogin) {
+				if (isLoggedIn) {
+					return Response.redirect(new URL('/', nextUrl));
+				} else {
+					return false;
+				}
 			}
 
 			return true;

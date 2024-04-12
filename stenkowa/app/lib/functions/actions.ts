@@ -2,7 +2,7 @@
 import { sql } from '@vercel/postgres';
 import { revalidatePath } from 'next/cache';
 import { redirect } from 'next/navigation';
-import { signIn } from '@/auth';
+import { signIn, signOut } from '@/auth';
 import { AuthError } from 'next-auth';
 import bcrypt from 'bcrypt';
 import { UserType } from '../types/types';
@@ -316,7 +316,6 @@ export async function authenticate(
 	state: { message: string },
 	formData: FormData
 ): Promise<{ message: string }> {
-	console.log(formData);
 	try {
 		await signIn('credentials', formData);
 		return { message: 'ok' };
@@ -327,6 +326,21 @@ export async function authenticate(
 					return { message: 'Invalid credentials.' };
 				default:
 					return { message: 'Something went wrong.' };
+			}
+		}
+		throw error;
+	}
+}
+export async function logout(formData: FormData) {
+	try {
+		await signOut();
+	} catch (error) {
+		if (error instanceof AuthError) {
+			switch (error.type) {
+				case 'SignOutError':
+					return 'Session error.';
+				default:
+					return 'Something went wrong.';
 			}
 		}
 		throw error;
