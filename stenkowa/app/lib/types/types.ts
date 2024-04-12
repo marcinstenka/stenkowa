@@ -26,7 +26,7 @@ export type TodoType = {
 	color: string;
 };
 export type UserType = {
-	id: number;
+	id: string;
 	todos_container_id: number;
 	storage_id: number;
 	user_name: string;
