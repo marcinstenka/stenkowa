@@ -7,17 +7,18 @@ export const authConfig = {
 	callbacks: {
 		authorized({ auth, request: { nextUrl } }) {
 			const isLoggedIn = !!auth?.user;
-			const isOnLogin = nextUrl.pathname.startsWith('/login');
-			if (!isLoggedIn) return false;
-			if (isOnLogin) {
-				if (isLoggedIn) {
-					return Response.redirect(new URL('/', nextUrl));
-				} else {
-					return false;
-				}
+			const { pathname } = nextUrl;
+			if (isLoggedIn && (pathname === '/login' || pathname === '/sign-up')) {
+				return Response.redirect(new URL('/', nextUrl));
 			}
-
-			return true;
+			if (
+				!isLoggedIn &&
+				(pathname === '/login' || pathname === '/sign-up' || pathname === '/')
+			) {
+				return true;
+			}
+			if (isLoggedIn) return true;
+			return false;
 		},
 	},
 	providers: [],
