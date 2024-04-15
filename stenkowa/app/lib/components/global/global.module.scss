@@ -8,15 +8,21 @@
 	transition: 0.3s;
 	gap: 5px;
 	display: flex;
+	align-items: center;
 	svg {
 		font-size: 40px;
 		transition: 0.3s;
 	}
-	a {
-		opacity: 0;
-	}
 }
-
+.logout {
+	background: none;
+	border: none;
+	color: white;
+	padding: 0;
+	display: flex;
+	cursor: pointer;
+	opacity: 0;
+}
 .back_buttons {
 	display: flex;
 	gap: 20px;
