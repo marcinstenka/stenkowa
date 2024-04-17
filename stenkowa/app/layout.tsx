@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { Lato } from 'next/font/google';
 import './globals.scss';
 import Nav from './lib/components/nav/Nav';
+import UserContextProvider from './lib/context/userContext';
 const lato = Lato({
 	weight: ['300', '400', '900'],
 	subsets: ['latin'],
@@ -22,8 +23,10 @@ export default function RootLayout({
 	return (
 		<html lang='pl'>
 			<body className={lato.className}>
-				{children}
-				<Nav />
+				<UserContextProvider>
+					{children}
+					<Nav />
+				</UserContextProvider>
 			</body>
 		</html>
 	);
