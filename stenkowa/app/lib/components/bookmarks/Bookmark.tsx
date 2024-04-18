@@ -1,4 +1,4 @@
-import styles from './bookmarks.module.scss';
+import styles from './bookmarkzs.module.scss';
 import Link from 'next/link';
 
 import { BookmarkType } from '../../types/types';
