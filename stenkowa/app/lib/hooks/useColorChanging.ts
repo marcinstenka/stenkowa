@@ -1,6 +1,13 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 
-export default function useColorChanging(value: string = '#0050b8') {
+type UseColorChangingReturn = {
+	color: string;
+	handleColorChange: (e: ChangeEvent<HTMLInputElement>) => void;
+};
+
+export default function useColorChanging(
+	value: string = '#0050b8'
+): UseColorChangingReturn {
 	const [color, setColor] = useState<string>(value);
 
 	useEffect(() => {
@@ -14,7 +21,7 @@ export default function useColorChanging(value: string = '#0050b8') {
 			);
 		});
 	}, [color]);
-	
+
 	const handleColorChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setColor(e.target.value);
 	};
