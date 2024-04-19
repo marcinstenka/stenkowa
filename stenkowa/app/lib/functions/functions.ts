@@ -190,3 +190,9 @@ export function getSectionDate(section: StorageSectionType) {
 	}
 	return month + ' ' + year;
 }
+export function pathnameToText(text: string): string {
+	const withoutSlash = text.substring(1);
+	const withoutFirstLetter = withoutSlash.substring(1);
+	const firstLetter = withoutSlash.charAt(0).toUpperCase();
+	return firstLetter + withoutFirstLetter;
+}
