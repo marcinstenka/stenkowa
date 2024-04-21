@@ -1,3 +1,4 @@
+import { MutableRefObject } from 'react';
 import { StorageItemType, StorageSectionType } from '../types/types';
 import moment from 'moment-timezone';
 
@@ -195,4 +196,26 @@ export function pathnameToText(text: string): string {
 	const withoutFirstLetter = withoutSlash.substring(1);
 	const firstLetter = withoutSlash.charAt(0).toUpperCase();
 	return firstLetter + withoutFirstLetter;
+}
+
+export function checkIndicatorBorderRadius(
+	navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[],
+	currentItem: MutableRefObject<HTMLAnchorElement | null>,
+	indicator: MutableRefObject<HTMLDivElement | null>
+) {
+	if (window.innerWidth > 900) {
+		if (currentItem.current && indicator.current) {
+			if (currentItem == navItemsRefs[0]) {
+				indicator.current.style.borderRadius = '25px 0 0 0';
+			} else if (currentItem == navItemsRefs[2]) {
+				indicator.current.style.borderRadius = '0 25px 0 0';
+			} else {
+				indicator.current.style.borderRadius = '0';
+			}
+		}
+	} else {
+		if (indicator.current) {
+			indicator.current.style.borderRadius = '0';
+		}
+	}
 }
