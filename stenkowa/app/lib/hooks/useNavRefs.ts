@@ -22,15 +22,65 @@ export default function useNavRefs({
 	const indicator = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
 
+	// nav items click & resize handling
 	useEffect(() => {
+		window.addEventListener('resize', handleResize);
+
 		for (let i = 0; i < navItemsRefs.length; i++) {
 			const currentItem = navItemsRefs[i];
-
 			currentItem.current?.addEventListener('click', () =>
 				handleNavItemClick(currentItem, i)
 			);
 		}
+		() => {
+			window.removeEventListener('resize', handleResize);
+			for (let i = 0; i < navItemsRefs.length; i++) {
+				const currentItem = navItemsRefs[i];
+				currentItem.current?.removeEventListener('click', () =>
+					handleNavItemClick(currentItem, i)
+				);
+			}
+		};
 	}, []);
+
+	// indicator position handling
+	useEffect(() => {
+		let activeExist = false;
+		// moving indicator to .active nav_link
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
+			if (indicator.current && currentItem.current) {
+				if (currentItem.current.classList.contains(styles.active)) {
+					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+					indicator.current.style.opacity = '1';
+
+					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
+					activeExist = true;
+				}
+			}
+		}
+		// "from / to e.g. /todo and then going back to /" case - setting position out of view
+		if (!activeExist && indicator.current) {
+			indicator.current.style.transform = `translate(-50%, 100%)`;
+			indicator.current.style.opacity = '0';
+		}
+
+		() => {};
+	}, [navItemsRefs]);
+
+	//indicator moving when clicking "back button"
+	useEffect(() => {
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			if (indicator.current) indicator.current.style.display = 'block';
+			const currentItem = navItemsRefs[i];
+			if (indicator.current && currentItem.current) {
+				if (currentItem.current.classList.contains(styles.active)) {
+					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+				}
+			}
+		}
+	}, [pathname]);
+
 	function handleResize() {
 		for (let i = 0; i < navItemsRefs.length; i++) {
 			const currentItem = navItemsRefs[i];
@@ -70,52 +120,6 @@ export default function useNavRefs({
 			}
 		}
 	}
-	useEffect(() => {
-		window.addEventListener('resize', handleResize);
-
-		let activeExist = false;
-		// moving indicator to .active nav_link
-		for (let i = 0; i < navItemsRefs.length; i++) {
-			const currentItem = navItemsRefs[i];
-			if (indicator.current && currentItem.current) {
-				if (currentItem.current.classList.contains(styles.active)) {
-					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-					indicator.current.style.opacity = '1';
-
-					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
-					activeExist = true;
-				}
-			}
-		}
-		// "from / to e.g. /todo and then going back to /" case - setting position out of view
-		if (!activeExist && indicator.current) {
-			indicator.current.style.transform = `translate(-50%, 100%)`;
-			indicator.current.style.opacity = '0';
-		}
-
-		() => {
-			window.removeEventListener('resize', handleResize);
-			for (let i = 0; i < navItemsRefs.length; i++) {
-				const currentItem = navItemsRefs[i];
-				currentItem.current?.removeEventListener('click', () =>
-					handleNavItemClick(currentItem, i)
-				);
-			}
-		};
-	}, [navItemsRefs]);
-
-	//indicator moving when clicking "back button"
-	useEffect(() => {
-		for (let i = 0; i < navItemsRefs.length; i++) {
-			if (indicator.current) indicator.current.style.display = 'block';
-			const currentItem = navItemsRefs[i];
-			if (indicator.current && currentItem.current) {
-				if (currentItem.current.classList.contains(styles.active)) {
-					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-				}
-			}
-		}
-	}, [pathname]);
 
 	return { navItemsRefs, indicator };
 }

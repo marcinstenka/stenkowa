@@ -13,6 +13,10 @@ type useNavItemsProps = {
 	styles: { readonly [key: string]: string };
 };
 
+type useNavItemsReturn = {
+	navItems: NavItem[];
+};
+
 type NavItem = {
 	pathname: string;
 	ref: Ref<HTMLAnchorElement>;
@@ -24,8 +28,8 @@ type NavItem = {
 export default function useNavItems({
 	navItemsRefs,
 	styles,
-}: useNavItemsProps): NavItem[]|null {
-	const [navItems, setNavItems] = useState<NavItem[] | null>(null);
+}: useNavItemsProps): useNavItemsReturn {
+	const [navItems, setNavItems] = useState<NavItem[]>([]);
 	const pathname = usePathname();
 
 	useEffect(() => {
@@ -47,6 +51,6 @@ export default function useNavItems({
 		});
 		setNavItems(newNavItems);
 	}, [pathname]);
-	if (!navItems) return null;
-	return navItems;
+
+	return { navItems };
 }
