@@ -23,45 +23,54 @@ export default function useNavRefs({
 	const pathname = usePathname();
 
 	useEffect(() => {
-		function handleResize() {
-			for (let i = 0; i < navItemsRefs.length; i++) {
-				const currentItem = navItemsRefs[i];
-				if (
-					indicator.current &&
-					currentItem.current &&
-					currentItem.current.classList.contains(styles.active)
-				) {
-					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
-				}
-			}
-			// handling position of nav when resizing window and expanded on mobile (related to useIsExpanded hook)
-			const nav = document.getElementById('nav');
-			if (nav) {
-				window.innerWidth > 900
-					? (nav.style.transform = 'translate(-50%, 0)')
-					: (nav.style.transform = 'translateY(0) ');
-			}
-		}
-		function handleNavItemClick(
-			currentItem: MutableRefObject<HTMLAnchorElement | null>,
-			i: number
-		) {
-			if (indicator.current && currentItem.current) {
-				indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-				if (!currentItem.current.classList.contains(styles.active)) {
-					for (let j = 0; j < navItemsRefs.length; j++) {
-						if (j != i) {
-							const item = navItemsRefs[j];
-							item.current && item.current.classList.remove(styles.active);
-						}
-					}
-					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
 
-					currentItem.current.classList.add(styles.active);
-				}
+			currentItem.current?.addEventListener('click', () =>
+				handleNavItemClick(currentItem, i)
+			);
+		}
+	}, []);
+	function handleResize() {
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
+			if (
+				indicator.current &&
+				currentItem.current &&
+				currentItem.current.classList.contains(styles.active)
+			) {
+				indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+				checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
 			}
 		}
+		// handling position of nav when resizing window and expanded on mobile (related to useIsExpanded hook)
+		const nav = document.getElementById('nav');
+		if (nav) {
+			window.innerWidth > 900
+				? (nav.style.transform = 'translate(-50%, 0)')
+				: (nav.style.transform = 'translateY(0) ');
+		}
+	}
+	function handleNavItemClick(
+		currentItem: MutableRefObject<HTMLAnchorElement | null>,
+		i: number
+	) {
+		if (indicator.current && currentItem.current) {
+			indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+			if (!currentItem.current.classList.contains(styles.active)) {
+				for (let j = 0; j < navItemsRefs.length; j++) {
+					if (j != i) {
+						const item = navItemsRefs[j];
+						item.current && item.current.classList.remove(styles.active);
+					}
+				}
+				checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
+
+				currentItem.current.classList.add(styles.active);
+			}
+		}
+	}
+	useEffect(() => {
 		window.addEventListener('resize', handleResize);
 
 		let activeExist = false;
@@ -82,14 +91,6 @@ export default function useNavRefs({
 		if (!activeExist && indicator.current) {
 			indicator.current.style.transform = `translate(-50%, 100%)`;
 			indicator.current.style.opacity = '0';
-		}
-
-		for (let i = 0; i < navItemsRefs.length; i++) {
-			const currentItem = navItemsRefs[i];
-
-			currentItem.current?.addEventListener('click', () =>
-				handleNavItemClick(currentItem, i)
-			);
 		}
 
 		() => {
@@ -118,4 +119,3 @@ export default function useNavRefs({
 
 	return { navItemsRefs, indicator };
 }
-

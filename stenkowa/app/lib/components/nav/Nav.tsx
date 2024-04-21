@@ -12,14 +12,14 @@ export default function Nav() {
 	const isLogged = true;
 	const pathname = usePathname();
 	const { navItemsRefs, indicator } = useNavRefs({ styles });
-	const { navItems } = useNavItems({ navItemsRefs, styles });
+	const navItems = useNavItems({ navItemsRefs, styles });
 	const { shouldRenderNav, shouldRenderAddIcon } = renderNav(
 		pathnames,
 		pathname,
 		isLogged
 	);
 
-	if (!shouldRenderNav) {
+	if (!shouldRenderNav || !navItems) {
 		return;
 	}
 	return (
