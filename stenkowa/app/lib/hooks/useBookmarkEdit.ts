@@ -1,10 +1,21 @@
 import { ChangeEvent, useState } from 'react';
 import { BookmarkType } from '../types/types';
 
-export default function useBookmarkEdit(bookmark: BookmarkType) {
-	const [details_header, setDetails_header] = useState(bookmark.name);
-	const [link, setLink] = useState(bookmark.link);
-	const [icon, setIcon] = useState(bookmark.icon);
+type UseBookmarkEditReturn = {
+	handleHeaderChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleLinkChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+	handleIconChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	details_header: string;
+	link: string;
+	icon: string;
+};
+
+export default function useBookmarkEdit(
+	bookmark: BookmarkType
+): UseBookmarkEditReturn {
+	const [details_header, setDetails_header] = useState<string>(bookmark.name);
+	const [link, setLink] = useState<string>(bookmark.link);
+	const [icon, setIcon] = useState<string>(bookmark.icon);
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);

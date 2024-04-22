@@ -1,13 +1,28 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { TodoType } from '../types/types';
+import { TimeLeftType, TodoType } from '../types/types';
 import { calculateTimeDifference } from '../functions/functions';
+import { useStateManager } from 'react-select';
+
+type UseTodoEditProps = TodoType;
+
+type UseProfileFormReturn = {
+	handleHeaderChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleDescriptionChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleDateAddedChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleDateDeadlineChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	details_header: string;
+	description: string;
+	date_added: Date;
+	date_deadline: Date;
+	timeLeft: TimeLeftType;
+};
 
 export default function useTodoEdit(todo: TodoType) {
-	const [details_header, setDetails_header] = useState(todo.name);
-	const [description, setDescription] = useState(todo.description);
-	const [date_added, setDate_added] = useState(todo.date_added);
-	const [date_deadline, setDate_deadline] = useState(todo.date_deadline);
-	const [timeLeft, setTimeLeft] = useState(
+	const [details_header, setDetails_header] = useState<string>(todo.name);
+	const [description, setDescription] = useState<string>(todo.description);
+	const [date_added, setDate_added] = useState<Date>(todo.date_added);
+	const [date_deadline, setDate_deadline] = useState<Date>(todo.date_deadline);
+	const [timeLeft, setTimeLeft] = useState<TimeLeftType>(
 		calculateTimeDifference(todo.date_deadline, false)
 	);
 

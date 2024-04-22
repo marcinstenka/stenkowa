@@ -1,5 +1,6 @@
 import { usePathname } from 'next/navigation';
 import { MutableRefObject, useEffect, useRef } from 'react';
+import { checkIndicatorBorderRadius } from '../functions/functions';
 
 type useNavRefProps = {
 	styles: { readonly [key: string]: string };
@@ -21,48 +22,29 @@ export default function useNavRefs({
 	const indicator = useRef<HTMLDivElement | null>(null);
 	const pathname = usePathname();
 
+	// nav items click & resize handling
 	useEffect(() => {
-		function handleResize() {
-			for (let i = 0; i < navItemsRefs.length; i++) {
-				const currentItem = navItemsRefs[i];
-				if (
-					indicator.current &&
-					currentItem.current &&
-					currentItem.current.classList.contains(styles.active)
-				) {
-					indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
-				}
-			}
-			// handling position of nav when resizing window and expanded on mobile (related to useIsExpanded hook)
-			const nav = document.getElementById('nav');
-			if (nav) {
-				window.innerWidth > 900
-					? (nav.style.transform = 'translate(-50%, 0)')
-					: (nav.style.transform = 'translateY(0) ');
-			}
-		}
-		function handleNavItemClick(
-			currentItem: MutableRefObject<HTMLAnchorElement | null>,
-			i: number
-		) {
-			if (indicator.current && currentItem.current) {
-				indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
-				if (!currentItem.current.classList.contains(styles.active)) {
-					for (let j = 0; j < navItemsRefs.length; j++) {
-						if (j != i) {
-							const item = navItemsRefs[j];
-							item.current && item.current.classList.remove(styles.active);
-						}
-					}
-					checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
-
-					currentItem.current.classList.add(styles.active);
-				}
-			}
-		}
 		window.addEventListener('resize', handleResize);
 
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
+			currentItem.current?.addEventListener('click', () =>
+				handleNavItemClick(currentItem, i)
+			);
+		}
+		() => {
+			window.removeEventListener('resize', handleResize);
+			for (let i = 0; i < navItemsRefs.length; i++) {
+				const currentItem = navItemsRefs[i];
+				currentItem.current?.removeEventListener('click', () =>
+					handleNavItemClick(currentItem, i)
+				);
+			}
+		};
+	}, []);
+
+	// indicator position handling
+	useEffect(() => {
 		let activeExist = false;
 		// moving indicator to .active nav_link
 		for (let i = 0; i < navItemsRefs.length; i++) {
@@ -83,23 +65,7 @@ export default function useNavRefs({
 			indicator.current.style.opacity = '0';
 		}
 
-		for (let i = 0; i < navItemsRefs.length; i++) {
-			const currentItem = navItemsRefs[i];
-
-			currentItem.current?.addEventListener('click', () =>
-				handleNavItemClick(currentItem, i)
-			);
-		}
-
-		() => {
-			window.removeEventListener('resize', handleResize);
-			for (let i = 0; i < navItemsRefs.length; i++) {
-				const currentItem = navItemsRefs[i];
-				currentItem.current?.removeEventListener('click', () =>
-					handleNavItemClick(currentItem, i)
-				);
-			}
-		};
+		() => {};
 	}, [navItemsRefs]);
 
 	//indicator moving when clicking "back button"
@@ -115,27 +81,45 @@ export default function useNavRefs({
 		}
 	}, [pathname]);
 
-	return { navItemsRefs, indicator };
-}
-
-function checkIndicatorBorderRadius(
-	navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[],
-	currentItem: MutableRefObject<HTMLAnchorElement | null>,
-	indicator: MutableRefObject<HTMLDivElement | null>
-) {
-	if (window.innerWidth > 900) {
-		if (currentItem.current && indicator.current) {
-			if (currentItem == navItemsRefs[0]) {
-				indicator.current.style.borderRadius = '25px 0 0 0';
-			} else if (currentItem == navItemsRefs[2]) {
-				indicator.current.style.borderRadius = '0 25px 0 0';
-			} else {
-				indicator.current.style.borderRadius = '0';
+	function handleResize() {
+		for (let i = 0; i < navItemsRefs.length; i++) {
+			const currentItem = navItemsRefs[i];
+			if (
+				indicator.current &&
+				currentItem.current &&
+				currentItem.current.classList.contains(styles.active)
+			) {
+				indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+				checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
 			}
 		}
-	} else {
-		if (indicator.current) {
-			indicator.current.style.borderRadius = '0';
+		// handling position of nav when resizing window and expanded on mobile (related to useIsExpanded hook)
+		const nav = document.getElementById('nav');
+		if (nav) {
+			window.innerWidth > 900
+				? (nav.style.transform = 'translate(-50%, 0)')
+				: (nav.style.transform = 'translateY(0) ');
 		}
 	}
+	function handleNavItemClick(
+		currentItem: MutableRefObject<HTMLAnchorElement | null>,
+		i: number
+	) {
+		if (indicator.current && currentItem.current) {
+			indicator.current.style.transform = `translateX(${currentItem.current.offsetLeft}px)`;
+			if (!currentItem.current.classList.contains(styles.active)) {
+				for (let j = 0; j < navItemsRefs.length; j++) {
+					if (j != i) {
+						const item = navItemsRefs[j];
+						item.current && item.current.classList.remove(styles.active);
+					}
+				}
+				checkIndicatorBorderRadius(navItemsRefs, currentItem, indicator);
+
+				currentItem.current.classList.add(styles.active);
+			}
+		}
+	}
+
+	return { navItemsRefs, indicator };
 }

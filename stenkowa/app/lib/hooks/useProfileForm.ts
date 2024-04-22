@@ -1,17 +1,37 @@
 'use client';
-import { ChangeEvent, useState } from 'react';
+import { ChangeEvent, SetStateAction, useState } from 'react';
 import { UserType } from '../types/types';
 
 type UseProfileFormProps = {
 	user: UserType;
 };
-export default function useProfileForm({ user }: UseProfileFormProps) {
-	const [userName, setUserName] = useState(user.user_name);
-	const [password, setPassword] = useState('');
-	const [newPassword, setNewPassword] = useState('');
-	const [email, setEmail] = useState(user.email);
-	const [primaryColor, setPrimaryColor] = useState(user.primary_color);
-	const [secondaryColor, setsecondaryColor] = useState(user.secondary_color);
+type UseProfileFormReturn = {
+	handleuserNameChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleNewPasswordChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handlePasswordChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleEmailChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handlePrimaryColorChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleSecondaryColorChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	userName: string;
+	newPassword: string;
+	password: string;
+	email: string;
+	primaryColor: string;
+	secondaryColor: string;
+	setNewPassword: (value: SetStateAction<string>) => void;
+	setPassword: (value: SetStateAction<string>) => void;
+};
+export default function useProfileForm({
+	user,
+}: UseProfileFormProps): UseProfileFormReturn {
+	const [userName, setUserName] = useState<string>(user.user_name);
+	const [password, setPassword] = useState<string>('');
+	const [newPassword, setNewPassword] = useState<string>('');
+	const [email, setEmail] = useState<string>(user.email);
+	const [primaryColor, setPrimaryColor] = useState<string>(user.primary_color);
+	const [secondaryColor, setsecondaryColor] = useState<string>(
+		user.secondary_color
+	);
 
 	const handleuserNameChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setUserName(e.target.value);
@@ -46,6 +66,6 @@ export default function useProfileForm({ user }: UseProfileFormProps) {
 		primaryColor,
 		secondaryColor,
 		setNewPassword,
-		setPassword
+		setPassword,
 	};
 }

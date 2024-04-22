@@ -1,11 +1,12 @@
-import { usePathname } from 'next/navigation';
 import { MutableRefObject, Ref, useEffect, useState } from 'react';
-import { IconType } from 'react-icons';
+import clsx from 'clsx';
+import { usePathname } from 'next/navigation';
 import { pathnames } from '../components/nav/nav-links';
+import { pathnameToText } from '../functions/functions';
 import { MdOutlineStorage } from 'react-icons/md';
 import { RiTodoLine } from 'react-icons/ri';
 import { TbTableShortcut } from 'react-icons/tb';
-import clsx from 'clsx';
+import { IconType } from 'react-icons';
 
 type useNavItemsProps = {
 	navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[];
@@ -23,12 +24,6 @@ type NavItem = {
 	text: string;
 	icon: IconType;
 };
-function pathnameToText(text: string) {
-	const withoutSlash = text.substring(1);
-	const withoutFirstLetter = withoutSlash.substring(1);
-	const firstLetter = withoutSlash.charAt(0).toUpperCase();
-	return firstLetter + withoutFirstLetter;
-}
 
 export default function useNavItems({
 	navItemsRefs,
