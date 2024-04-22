@@ -35,3 +35,8 @@ export type UserType = {
 	primary_color: string;
 	secondary_color: string;
 };
+
+export type TimeLeftType = {
+	isTimeExpired: boolean;
+	formattedTime: string;
+};
