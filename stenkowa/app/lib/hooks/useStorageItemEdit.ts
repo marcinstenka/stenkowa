@@ -1,10 +1,22 @@
 import { ChangeEvent, useState } from 'react';
 import { StorageItemType } from '../types/types';
 
-export default function useStorageItemEdit(item: StorageItemType) {
-	const [details_header, setDetails_header] = useState(item.name);
-	const [details, setDetails] = useState(item.description);
-	const [date_added, setDate_added] = useState(item.insert_date);
+type UseStorageItemEditProps = StorageItemType;
+type UseStorageItemEditReturn = {
+	handleHeaderChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleDetailsChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
+	handleDateAddedChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	details_header: string;
+	details: string;
+	date_added: Date;
+};
+
+export default function useStorageItemEdit(
+	item: UseStorageItemEditProps
+): UseStorageItemEditReturn {
+	const [details_header, setDetails_header] = useState<string>(item.name);
+	const [details, setDetails] = useState<string>(item.description);
+	const [date_added, setDate_added] = useState<Date>(item.insert_date);
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
 		setDetails_header(e.target.value);
