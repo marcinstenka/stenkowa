@@ -27,8 +27,8 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 				<div className={styles.input_container}>
 					<input
 						type='text'
-						name='details_header'
-						id='details_header'
+						name='bookmarkName'
+						id='bookmarkName'
 						onChange={handleHeaderChange}
 						value={bookmarkName}
 						autoComplete='off'
@@ -42,8 +42,8 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 			<div className={styles.textarea_container}>
 				<div className={styles.details_text}>{bookmarkLink}</div>
 				<textarea
-					name='details_text'
-					id='details_text'
+					name='bookmarkLink'
+					id='bookmarkLink'
 					onChange={handleLinkChange}
 				>
 					{bookmarkLink}
@@ -62,8 +62,8 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 						/>
 						<input
 							type='color'
-							name='details_color'
-							id='details_color'
+							name='bookmarkColor'
+							id='bookmarkColor'
 							value={color}
 							onChange={handleColorChange}
 						/>
