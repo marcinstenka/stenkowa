@@ -151,10 +151,10 @@ export async function createTodo(prevState: State, formData: FormData) {
 }
 export async function updateTodo(todoId: number, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('details_header')?.toString(),
-		description: formData.get('details_text')?.toString(),
-		color: formData.get('details_color')?.toString(),
-		date_deadline_string: formData.get('date_deadline')?.toString(),
+		name: formData.get('todoName')?.toString(),
+		description: formData.get('todoDescription')?.toString(),
+		color: formData.get('todoColor')?.toString(),
+		date_deadline_string: formData.get('todoDeadline')?.toString(),
 	};
 	const { name, description, color, date_deadline_string } = validatedFields;
 	let deadline: string = '';
