@@ -115,11 +115,11 @@ export async function deleteBookmark(id: number) {
 
 export async function createTodo(prevState: State, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('new_todo_name')?.toString(),
-		description: formData.get('new_todo_description')?.toString(),
-		date_deadline_string: formData.get('new_todo_deadline')?.toString(),
-		date_added_string: formData.get('new_todo_added')?.toString(),
-		color: formData.get('new_todo_color')?.toString(),
+		name: formData.get('todoName')?.toString(),
+		description: formData.get('todoDescription')?.toString(),
+		date_deadline_string: formData.get('todoDeadline')?.toString(),
+		date_added_string: formData.get('todoAdded')?.toString(),
+		color: formData.get('todoColor')?.toString(),
 	};
 	const { name, description, date_deadline_string, date_added_string, color } =
 		validatedFields;

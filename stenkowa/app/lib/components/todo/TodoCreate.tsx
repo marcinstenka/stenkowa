@@ -14,25 +14,25 @@ export default function TodoCreate() {
 			<h3 color-changing='border-color'>Dodaj nowe todo</h3>
 			<form action={dispatch}>
 				<div className={styles.input_container}>
-					<label htmlFor='new_todo_name' color-changing='border-color'>
+					<label htmlFor='todoName' color-changing='border-color'>
 						Nazwa:
 					</label>
-					<input type='text' name='new_todo_name' id='new_todo_name' required />
+					<input type='text' name='todoName' id='todoName' required />
 				</div>
 				<div className={styles.input_container}>
-					<label htmlFor='new_todo_description' color-changing='border-color'>
+					<label htmlFor='todoDescription' color-changing='border-color'>
 						Opis:
 					</label>
-					<textarea name='new_todo_description' id='new_todo_description' />
+					<textarea name='todoDescription' id='todoDescription' />
 				</div>
 				<div className={styles.date_container}>
-					<label htmlFor='new_todo_added' color-changing='border-color'>
+					<label htmlFor='todoAdded' color-changing='border-color'>
 						Dodano:
 					</label>
 					<input
 						type='datetime-local'
-						name='new_todo_added'
-						id='new_todo_added'
+						name='todoAdded'
+						id='todoAdded'
 						defaultValue={new Date()
 							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 							.replace(',', '')}
@@ -41,13 +41,13 @@ export default function TodoCreate() {
 					/>
 				</div>
 				<div className={styles.date_container}>
-					<label htmlFor='new_todo_deadline' color-changing='border-color'>
+					<label htmlFor='todoDeadline' color-changing='border-color'>
 						Deadline:
 					</label>
 					<input
 						type='datetime-local'
-						name='new_todo_deadline'
-						id='new_todo_deadline'
+						name='todoDeadline'
+						id='todoDeadline'
 						defaultValue={new Date()
 							.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 							.replace(',', '')}
@@ -56,13 +56,13 @@ export default function TodoCreate() {
 					/>
 				</div>
 				<div className={styles.color_container}>
-					<label htmlFor='new_todo_color' color-changing='border-color'>
+					<label htmlFor='todoColor' color-changing='border-color'>
 						Kolor:
 					</label>
 					<input
 						type='color'
-						name='new_todo_color'
-						id='new_todo_color'
+						name='todoColor'
+						id='todoColor'
 						defaultValue='#0050b8'
 						onChange={handleColorChange}
 						required
