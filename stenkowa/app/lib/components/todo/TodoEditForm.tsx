@@ -14,10 +14,10 @@ export default function TodoEditForm(todo: TodoType) {
 		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
-		details_header,
-		date_deadline,
-		date_added,
-		description,
+		todoName,
+		todoDescription,
+		todoAdded,
+		todoDeadline,
 		timeLeft,
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
@@ -32,13 +32,13 @@ export default function TodoEditForm(todo: TodoType) {
 						name='todoName'
 						id='todoName'
 						onChange={handleHeaderChange}
-						value={details_header}
+						value={todoName}
 						autoComplete='off'
 						minLength={3}
 						color-changing='border-color'
 						style={{ borderColor: `${color}` }}
 					/>
-					<h4 className={styles.invisible}>{details_header}</h4>
+					<h4 className={styles.invisible}>{todoName}</h4>
 				</div>
 				<div className={styles.details_header_icons}>
 					<div className={styles.input_color_container}>
@@ -65,13 +65,13 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{description}</div>
+				<div className={styles.details_text}>{todoDescription}</div>
 				<textarea
 					name='todoDescription'
 					id='todoDescription'
 					onChange={handleDescriptionChange}
 				>
-					{description}
+					{todoDescription}
 				</textarea>
 			</div>
 
@@ -88,7 +88,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='todoAdded'
 							id='todoAdded'
-							defaultValue={date_added.toISOString().slice(0, 16)}
+							defaultValue={todoAdded.toISOString().slice(0, 16)}
 							onChange={handleDateAddedChange}
 							readOnly
 						/>
@@ -98,7 +98,7 @@ export default function TodoEditForm(todo: TodoType) {
 							type='datetime-local'
 							name='todoDeadline'
 							id='todoDeadline'
-							defaultValue={date_deadline.toISOString().slice(0, 16)}
+							defaultValue={todoDeadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}
