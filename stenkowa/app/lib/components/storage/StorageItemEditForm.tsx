@@ -27,8 +27,8 @@ export default function StorageItemEditForm(item: StorageItemType) {
 				<div className={styles.input_container}>
 					<input
 						type='text'
-						name='details_header'
-						id='details_header'
+						name='storageItemName'
+						id='storageItemName'
 						onChange={handleHeaderChange}
 						value={details_header}
 						autoComplete='off'
@@ -43,8 +43,8 @@ export default function StorageItemEditForm(item: StorageItemType) {
 				>
 					<input
 						type='date'
-						name='details_date'
-						id='details_date'
+						name='storageItemAdded'
+						id='storageItemAdded'
 						defaultValue={
 							date_added
 								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
@@ -59,8 +59,8 @@ export default function StorageItemEditForm(item: StorageItemType) {
 			<div className={styles.textarea_container}>
 				<div className={styles.details_text}>{details}</div>
 				<textarea
-					name='details_text'
-					id='details_text'
+					name='storageItemDescription'
+					id='storageItemDescription'
 					onChange={handleDetailsChange}
 				>
 					{details}
@@ -76,8 +76,8 @@ export default function StorageItemEditForm(item: StorageItemType) {
 						/>
 						<input
 							type='color'
-							name='details_color'
-							id='details_color'
+							name='storageItemColor'
+							id='storageItemColor'
 							value={color}
 							onChange={handleColorChange}
 						/>
