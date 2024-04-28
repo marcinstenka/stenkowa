@@ -16,41 +16,31 @@ export default function BookmarksCreate() {
 			<h3 color-changing='border-color'>Dodaj nową zakładkę</h3>
 			<form action={dispatch}>
 				<div className={styles.input_container}>
-					<label htmlFor='new_bookmark_name' color-changing='border-color'>
+					<label htmlFor='bookmarkName' color-changing='border-color'>
 						Nazwa:
 					</label>
-					<input
-						type='text'
-						name='new_bookmark_name'
-						id='new_bookmark_name'
-						required
-					/>
+					<input type='text' name='bookmarkName' id='bookmarkName' required />
 				</div>
 				<div className={styles.input_container}>
-					<label htmlFor='new_bookmark_link' color-changing='border-color'>
+					<label htmlFor='bookmarkLink' color-changing='border-color'>
 						Link:
 					</label>
-					<input
-						type='text'
-						name='new_bookmark_link'
-						id='new_bookmark_link'
-						required
-					/>
+					<input type='text' name='bookmarkLink' id='bookmarkLink' required />
 				</div>
 				<div className={styles.icon_container}>
-					<label htmlFor='new_bookmark_icon' color-changing='border-color'>
+					<label htmlFor='bookmarkIcon' color-changing='border-color'>
 						Ikona:
 					</label>
 					<BookmarkIconSelect color={color} value='' />
 				</div>
 				<div className={styles.color_container}>
-					<label htmlFor='new_bookmark_color' color-changing='border-color'>
+					<label htmlFor='bookmarkColor' color-changing='border-color'>
 						Kolor:
 					</label>
 					<input
 						type='color'
-						name='new_bookmark_color'
-						id='new_bookmark_color'
+						name='bookmarkColor'
+						id='bookmarkColor'
 						defaultValue='#0050b8'
 						onChange={handleColorChange}
 					/>

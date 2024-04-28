@@ -14,10 +14,10 @@ export default function TodoEditForm(todo: TodoType) {
 		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
-		details_header,
-		date_deadline,
-		date_added,
-		description,
+		todoName,
+		todoDescription,
+		todoAdded,
+		todoDeadline,
 		timeLeft,
 	} = useTodoEdit(todo);
 	const { color, handleColorChange } = useColorChanging(todo.color);
@@ -29,24 +29,24 @@ export default function TodoEditForm(todo: TodoType) {
 				<div className={styles.input_container}>
 					<input
 						type='text'
-						name='details_header'
-						id='details_header'
+						name='todoName'
+						id='todoName'
 						onChange={handleHeaderChange}
-						value={details_header}
+						value={todoName}
 						autoComplete='off'
 						minLength={3}
 						color-changing='border-color'
 						style={{ borderColor: `${color}` }}
 					/>
-					<h4 className={styles.invisible}>{details_header}</h4>
+					<h4 className={styles.invisible}>{todoName}</h4>
 				</div>
 				<div className={styles.details_header_icons}>
 					<div className={styles.input_color_container}>
 						<MdColorLens style={{ color: `${color}` }} color-changing='color' />
 						<input
 							type='color'
-							name='details_color'
-							id='details_color'
+							name='todoColor'
+							id='todoColor'
 							value={color}
 							onChange={handleColorChange}
 						/>
@@ -65,13 +65,13 @@ export default function TodoEditForm(todo: TodoType) {
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{description}</div>
+				<div className={styles.details_text}>{todoDescription}</div>
 				<textarea
-					name='details_text'
-					id='details_text'
+					name='todoDescription'
+					id='todoDescription'
 					onChange={handleDescriptionChange}
 				>
-					{description}
+					{todoDescription}
 				</textarea>
 			</div>
 
@@ -86,9 +86,9 @@ export default function TodoEditForm(todo: TodoType) {
 					<div className={styles.date_input_container}>
 						<input
 							type='datetime-local'
-							name='date_added'
-							id='date_added'
-							defaultValue={date_added.toISOString().slice(0, 16)}
+							name='todoAdded'
+							id='todoAdded'
+							defaultValue={todoAdded.toISOString().slice(0, 16)}
 							onChange={handleDateAddedChange}
 							readOnly
 						/>
@@ -96,9 +96,9 @@ export default function TodoEditForm(todo: TodoType) {
 					<div className={styles.date_input_container}>
 						<input
 							type='datetime-local'
-							name='date_deadline'
-							id='date_deadline'
-							defaultValue={date_deadline.toISOString().slice(0, 16)}
+							name='todoDeadline'
+							id='todoDeadline'
+							defaultValue={todoDeadline.toISOString().slice(0, 16)}
 							style={{ borderColor: `${color}` }}
 							color-changing='border-color'
 							onChange={handleDateDeadlineChange}

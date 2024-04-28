@@ -14,9 +14,9 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 		handleHeaderChange,
 		handleLinkChange,
 		handleIconChange,
-		details_header,
-		link,
-		icon,
+		bookmarkName,
+		bookmarkLink,
+		bookmarkIcon,
 	} = useBookmarkEdit(bookmark);
 	const { color, handleColorChange } = useColorChanging(bookmark.color);
 	const updateBookmarkWithId = updateBookmark.bind(null, bookmark.id);
@@ -27,32 +27,32 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 				<div className={styles.input_container}>
 					<input
 						type='text'
-						name='details_header'
-						id='details_header'
+						name='bookmarkName'
+						id='bookmarkName'
 						onChange={handleHeaderChange}
-						value={details_header}
+						value={bookmarkName}
 						autoComplete='off'
 						minLength={3}
 						color-changing='border-color'
 						style={{ borderColor: `${color}` }}
 					/>
-					<h4 className={styles.invisible}>{details_header}</h4>
+					<h4 className={styles.invisible}>{bookmarkName}</h4>
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{link}</div>
+				<div className={styles.details_text}>{bookmarkLink}</div>
 				<textarea
-					name='details_text'
-					id='details_text'
+					name='bookmarkLink'
+					id='bookmarkLink'
 					onChange={handleLinkChange}
 				>
-					{link}
+					{bookmarkLink}
 				</textarea>
 			</div>
 
 			<div className={styles.details_lower}>
 				<div className={styles.icon_container}>
-					<BookmarkIconSelect color={color} value={icon} />
+					<BookmarkIconSelect color={color} value={bookmarkIcon} />
 				</div>
 				<div className={styles.details_lower_icons}>
 					<div className={styles.input_color_container}>
@@ -62,8 +62,8 @@ export default function BookmarkEditForm(bookmark: BookmarkType) {
 						/>
 						<input
 							type='color'
-							name='details_color'
-							id='details_color'
+							name='bookmarkColor'
+							id='bookmarkColor'
 							value={color}
 							onChange={handleColorChange}
 						/>

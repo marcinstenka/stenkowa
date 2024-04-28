@@ -13,37 +13,37 @@ export default function StorageItemCreate() {
 			<h3 color-changing='border-color'>Dodaj nowy przedmiot</h3>
 			<form action={dispatch}>
 				<div className={styles.input_container}>
-					<label htmlFor='new_item_name' color-changing='border-color'>
+					<label htmlFor='storageItemName' color-changing='border-color'>
 						Nazwa:
 					</label>
-					<input type='text' name='new_item_name' id='new_item_name' />
+					<input type='text' name='storageItemName' id='storageItemName' />
 				</div>
 				<div className={styles.input_container}>
-					<label htmlFor='new_item_description' color-changing='border-color'>
+					<label htmlFor='storageItemDescription' color-changing='border-color'>
 						Opis:
 					</label>
-					<textarea name='new_item_description' id='new_item_description' />
+					<textarea name='storageItemDescription' id='storageItemDescription' />
 				</div>
 				<div className={styles.date_container}>
-					<label htmlFor='new_item_added' color-changing='border-color'>
+					<label htmlFor='storageItemAdded' color-changing='border-color'>
 						Wprowadzenie:
 					</label>
 					<input
 						type='date'
-						name='new_item_added'
-						id='new_item_added'
+						name='storageItemAdded'
+						id='storageItemAdded'
 						defaultValue={new Date().toISOString().slice(0, 10)}
 					/>
 				</div>
 
 				<div className={styles.color_container}>
-					<label htmlFor='new_item_color' color-changing='border-color'>
+					<label htmlFor='storageItemColor' color-changing='border-color'>
 						Kolor:
 					</label>
 					<input
 						type='color'
-						name='new_item_color'
-						id='new_item_color'
+						name='storageItemColor'
+						id='storageItemColor'
 						defaultValue='#0050b8'
 						onChange={handleColorChange}
 					/>

@@ -7,42 +7,44 @@ type UseTodoEditProps = TodoType;
 
 type UseProfileFormReturn = {
 	handleHeaderChange: (e: ChangeEvent<HTMLInputElement>) => void;
-	handleDescriptionChange: (e: ChangeEvent<HTMLInputElement>) => void;
+	handleDescriptionChange: (e: ChangeEvent<HTMLTextAreaElement>) => void;
 	handleDateAddedChange: (e: ChangeEvent<HTMLInputElement>) => void;
 	handleDateDeadlineChange: (e: ChangeEvent<HTMLInputElement>) => void;
-	details_header: string;
-	description: string;
-	date_added: Date;
-	date_deadline: Date;
+	todoName: string;
+	todoDescription: string;
+	todoAdded: Date;
+	todoDeadline: Date;
 	timeLeft: TimeLeftType;
 };
 
-export default function useTodoEdit(todo: TodoType) {
-	const [details_header, setDetails_header] = useState<string>(todo.name);
-	const [description, setDescription] = useState<string>(todo.description);
-	const [date_added, setDate_added] = useState<Date>(todo.date_added);
-	const [date_deadline, setDate_deadline] = useState<Date>(todo.date_deadline);
+export default function useTodoEdit(todo: UseTodoEditProps): UseProfileFormReturn {
+	const [todoName, setTodoName] = useState<string>(todo.name);
+	const [todoDescription, setTodoDescription] = useState<string>(
+		todo.description
+	);
+	const [todoAdded, setTodoAdded] = useState<Date>(todo.date_added);
+	const [todoDeadline, setTodoDeadline] = useState<Date>(todo.date_deadline);
 	const [timeLeft, setTimeLeft] = useState<TimeLeftType>(
 		calculateTimeDifference(todo.date_deadline, false)
 	);
 
 	// updaing time left live
 	useEffect(() => {
-		const new_date_deadline = new Date(date_deadline);
+		const new_date_deadline = new Date(todoDeadline);
 		setTimeLeft(calculateTimeDifference(new_date_deadline, false));
-	}, [date_deadline]);
+	}, [todoDeadline]);
 
 	const handleHeaderChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setDetails_header(e.target.value);
+		setTodoName(e.target.value);
 	};
 	const handleDescriptionChange = (e: ChangeEvent<HTMLTextAreaElement>) => {
-		setDescription(e.target.value);
+		setTodoDescription(e.target.value);
 	};
 	const handleDateAddedChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setDate_added(new Date(e.target.value));
+		setTodoAdded(new Date(e.target.value));
 	};
 	const handleDateDeadlineChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setDate_deadline(new Date(e.target.value));
+		setTodoDeadline(new Date(e.target.value));
 	};
 
 	return {
@@ -50,10 +52,10 @@ export default function useTodoEdit(todo: TodoType) {
 		handleDescriptionChange,
 		handleDateAddedChange,
 		handleDateDeadlineChange,
-		details_header,
-		description,
-		date_added,
-		date_deadline,
+		todoName,
+		todoDescription,
+		todoAdded,
+		todoDeadline,
 		timeLeft,
 	};
 }

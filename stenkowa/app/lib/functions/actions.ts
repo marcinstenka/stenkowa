@@ -62,10 +62,10 @@ export async function registerUser(prevState: State, formData: FormData) {
 
 export async function createBookmark(prevState: State, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('new_bookmark_name')?.toString(),
-		link: formData.get('new_bookmark_link')?.toString(),
-		icon: formData.get('new_bookmark_icon')?.toString(),
-		color: formData.get('new_bookmark_color')?.toString(),
+		name: formData.get('bookmarkName')?.toString(),
+		link: formData.get('bookmarkLink')?.toString(),
+		icon: formData.get('bookmarkLink')?.toString(),
+		color: formData.get('bookmarkColor')?.toString(),
 	};
 	const { name, link, icon, color } = validatedFields;
 
@@ -86,10 +86,10 @@ export async function createBookmark(prevState: State, formData: FormData) {
 
 export async function updateBookmark(bookmarkId: number, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('details_header')?.toString(),
-		link: formData.get('details_text')?.toString(),
-		icon: formData.get('new_bookmark_icon')?.toString(),
-		color: formData.get('details_color')?.toString(),
+		name: formData.get('bookmarkName')?.toString(),
+		link: formData.get('bookmarkLink')?.toString(),
+		icon: formData.get('bookmarkIcon')?.toString(),
+		color: formData.get('bookmarkColor')?.toString(),
 	};
 	const { name, link, icon, color } = validatedFields;
 	try {
@@ -115,11 +115,11 @@ export async function deleteBookmark(id: number) {
 
 export async function createTodo(prevState: State, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('new_todo_name')?.toString(),
-		description: formData.get('new_todo_description')?.toString(),
-		date_deadline_string: formData.get('new_todo_deadline')?.toString(),
-		date_added_string: formData.get('new_todo_added')?.toString(),
-		color: formData.get('new_todo_color')?.toString(),
+		name: formData.get('todoName')?.toString(),
+		description: formData.get('todoDescription')?.toString(),
+		date_deadline_string: formData.get('todoDeadline')?.toString(),
+		date_added_string: formData.get('todoAdded')?.toString(),
+		color: formData.get('todoColor')?.toString(),
 	};
 	const { name, description, date_deadline_string, date_added_string, color } =
 		validatedFields;
@@ -151,10 +151,10 @@ export async function createTodo(prevState: State, formData: FormData) {
 }
 export async function updateTodo(todoId: number, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('details_header')?.toString(),
-		description: formData.get('details_text')?.toString(),
-		color: formData.get('details_color')?.toString(),
-		date_deadline_string: formData.get('date_deadline')?.toString(),
+		name: formData.get('todoName')?.toString(),
+		description: formData.get('todoDescription')?.toString(),
+		color: formData.get('todoColor')?.toString(),
+		date_deadline_string: formData.get('todoDeadline')?.toString(),
 	};
 	const { name, description, color, date_deadline_string } = validatedFields;
 	let deadline: string = '';
@@ -185,10 +185,10 @@ export async function deleteTodo(id: number) {
 }
 export async function createStorageItem(prevState: State, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('new_item_name')?.toString(),
-		description: formData.get('new_item_description')?.toString(),
-		date_added_string: formData.get('new_item_added')?.toString(),
-		color: formData.get('new_item_color')?.toString(),
+		name: formData.get('storageItemName')?.toString(),
+		description: formData.get('storageItemDescription')?.toString(),
+		date_added_string: formData.get('storageItemAdded')?.toString(),
+		color: formData.get('storageItemColor')?.toString(),
 	};
 	const { name, description, date_added_string, color } = validatedFields;
 
@@ -220,10 +220,10 @@ export async function updateStorageItem(
 	formData: FormData
 ) {
 	const validatedFields = {
-		name: formData.get('details_header')?.toString(),
-		description: formData.get('details_text')?.toString(),
-		date_added_string: formData.get('details_date')?.toString(),
-		color: formData.get('details_color')?.toString(),
+		name: formData.get('storageItemName')?.toString(),
+		description: formData.get('storageItemDescription')?.toString(),
+		date_added_string: formData.get('storageItemAdded')?.toString(),
+		color: formData.get('storageItemColor')?.toString(),
 	};
 	const { name, description, color, date_added_string } = validatedFields;
 	let insert_date: string = '';

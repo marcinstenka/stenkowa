@@ -10,12 +10,12 @@ import { startTransition } from 'react';
 
 export default function StorageItemEditForm(item: StorageItemType) {
 	const {
-		handleHeaderChange,
-		handleDetailsChange,
+		handleNameChange,
+		handleDescriptionChange,
 		handleDateAddedChange,
-		details_header,
-		details,
-		date_added,
+		storageItemName,
+		storageItemDescription,
+		storageItemAdded,
 	} = useStorageItemEdit(item);
 	const { color, handleColorChange } = useColorChanging(item.color);
 	const updateStorageItemWithId = updateStorageItem.bind(null, item.id);
@@ -27,26 +27,26 @@ export default function StorageItemEditForm(item: StorageItemType) {
 				<div className={styles.input_container}>
 					<input
 						type='text'
-						name='details_header'
-						id='details_header'
-						onChange={handleHeaderChange}
-						value={details_header}
+						name='storageItemName'
+						id='storageItemName'
+						onChange={handleNameChange}
+						value={storageItemName}
 						autoComplete='off'
 						minLength={3}
 						color-changing='border-color'
 						style={{ borderColor: `${color}` }}
 					/>
-					<h4 className={styles.invisible}>{details_header}</h4>
+					<h4 className={styles.invisible}>{storageItemName}</h4>
 				</div>
 				<div
 					className={`${styles.date_input_container} ${styles.date_short_input_container}`}
 				>
 					<input
 						type='date'
-						name='details_date'
-						id='details_date'
+						name='storageItemAdded'
+						id='storageItemAdded'
 						defaultValue={
-							date_added
+							storageItemAdded
 								.toLocaleString('sv', { timeZone: 'Europe/Warsaw' })
 								.split(' ')[0]
 						}
@@ -57,13 +57,13 @@ export default function StorageItemEditForm(item: StorageItemType) {
 				</div>
 			</div>
 			<div className={styles.textarea_container}>
-				<div className={styles.details_text}>{details}</div>
+				<div className={styles.details_text}>{storageItemDescription}</div>
 				<textarea
-					name='details_text'
-					id='details_text'
-					onChange={handleDetailsChange}
+					name='storageItemDescription'
+					id='storageItemDescription'
+					onChange={handleDescriptionChange}
 				>
-					{details}
+					{storageItemDescription}
 				</textarea>
 			</div>
 
@@ -76,8 +76,8 @@ export default function StorageItemEditForm(item: StorageItemType) {
 						/>
 						<input
 							type='color'
-							name='details_color'
-							id='details_color'
+							name='storageItemColor'
+							id='storageItemColor'
 							value={color}
 							onChange={handleColorChange}
 						/>
