@@ -185,10 +185,10 @@ export async function deleteTodo(id: number) {
 }
 export async function createStorageItem(prevState: State, formData: FormData) {
 	const validatedFields = {
-		name: formData.get('new_item_name')?.toString(),
-		description: formData.get('new_item_description')?.toString(),
-		date_added_string: formData.get('new_item_added')?.toString(),
-		color: formData.get('new_item_color')?.toString(),
+		name: formData.get('storageItemName')?.toString(),
+		description: formData.get('storageItemDescription')?.toString(),
+		date_added_string: formData.get('storageItemAdded')?.toString(),
+		color: formData.get('storageItemColor')?.toString(),
 	};
 	const { name, description, date_added_string, color } = validatedFields;
 
@@ -220,10 +220,10 @@ export async function updateStorageItem(
 	formData: FormData
 ) {
 	const validatedFields = {
-		name: formData.get('details_header')?.toString(),
-		description: formData.get('details_text')?.toString(),
-		date_added_string: formData.get('details_date')?.toString(),
-		color: formData.get('details_color')?.toString(),
+		name: formData.get('storageItemName')?.toString(),
+		description: formData.get('storageItemDescription')?.toString(),
+		date_added_string: formData.get('storageItemAdded')?.toString(),
+		color: formData.get('storageItemColor')?.toString(),
 	};
 	const { name, description, color, date_added_string } = validatedFields;
 	let insert_date: string = '';
