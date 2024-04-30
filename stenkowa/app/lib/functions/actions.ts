@@ -308,7 +308,6 @@ export async function updateUser(
 	} catch (error) {
 		console.log(error);
 	}
-	console.log('asd');
 	return { message: 'Zaaktualizowano pomyślnie!' };
 }
 
