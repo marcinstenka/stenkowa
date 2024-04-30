@@ -2,13 +2,17 @@ import { MutableRefObject } from 'react';
 import { StorageItemType, StorageSectionType } from '../types/types';
 import moment from 'moment-timezone';
 
-function addZero(number: number) {
+function addZero(number: number): string {
 	if (number < 10) {
 		return `0${number.toString()}`;
 	}
 	return number.toString();
 }
-function dateInflection(days: number, hours: number, minutes: number) {
+function dateInflection(
+	days: number,
+	hours: number,
+	minutes: number
+): [string, string, string] {
 	const wordInflection = {
 		days: {
 			one: 'dzień',
@@ -25,9 +29,9 @@ function dateInflection(days: number, hours: number, minutes: number) {
 			moreThanFour: 'minut',
 		},
 	};
-	let dayWordInflection = '';
-	let hourWordInflection = '';
-	let minuteWordInflection = '';
+	let dayWordInflection: string = '';
+	let hourWordInflection: string = '';
+	let minuteWordInflection: string = '';
 	if (days == 1) dayWordInflection = wordInflection.days.one;
 	else if (days > 1) dayWordInflection = wordInflection.days.moreThanOne;
 
@@ -44,27 +48,35 @@ function dateInflection(days: number, hours: number, minutes: number) {
 	return [dayWordInflection, hourWordInflection, minuteWordInflection];
 }
 
-export function calculateTimeDifference(deadline: Date, addTimeZone: boolean) {
+export function calculateTimeDifference(
+	deadline: Date,
+	addTimeZone: boolean
+): { isTimeExpired: boolean; formattedTime: string } {
 	// the second argument exists because on todo details there's a server timezone equal to +0
 	const current = new Date();
 	const date = moment();
 	const polandTimeZone = date.tz('Europe/Warsaw').toString();
 	const howManyHoursToAdd = polandTimeZone.slice(-3).slice(0, 1);
-	if (addTimeZone) {
+	if (addTimeZone)
 		current.setHours(current.getHours() + parseInt(howManyHoursToAdd));
-	}
-	if (deadline < current)
+
+	if (deadline < current) {
 		return {
 			isTimeExpired: true,
 			formattedTime: 'Czas minął!',
 		};
-	const differenceInMiliSec = Math.abs(current.getTime() - deadline.getTime());
-	const days = Math.floor(differenceInMiliSec / (1000 * 60 * 60 * 24));
-	const hours = Math.floor(
-		(differenceInMiliSec % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+	}
+
+	const differenceInMiliSec: number = Math.abs(
+		current.getTime() - deadline.getTime()
 	);
-	const minutes = Math.floor(
-		(differenceInMiliSec % (1000 * 60 * 60)) / (1000 * 60)
+	const msInOneHour: number = 1000 * 60 * 60;
+	const days: number = Math.floor(differenceInMiliSec / (msInOneHour * 24));
+	const hours: number = Math.floor(
+		(differenceInMiliSec % (msInOneHour * 24)) / msInOneHour
+	);
+	const minutes: number = Math.floor(
+		(differenceInMiliSec % msInOneHour) / (1000 * 60)
 	);
 
 	const [dayWordInflection, hourWordInflection, minuteWordInflection] =
@@ -82,7 +94,7 @@ export function calculateTimeDifference(deadline: Date, addTimeZone: boolean) {
 	};
 }
 
-export function formatDate(date: Date, full: boolean) {
+export function formatDate(date: Date, full: boolean): string {
 	let formatteDate = '';
 	if (full) {
 		formatteDate = `${addZero(date.getDate())}.${addZero(
@@ -102,7 +114,7 @@ export default function renderNav(
 	pathnames: string[],
 	pathname: string,
 	loggedIn: boolean
-) {
+): { shouldRenderNav: boolean; shouldRenderAddIcon: boolean } {
 	let shouldRenderNav = false;
 	let shouldRenderAddIcon = false;
 	pathnames.forEach((name) => {
@@ -117,8 +129,11 @@ export default function renderNav(
 	return { shouldRenderNav, shouldRenderAddIcon };
 }
 
-export function transformStorageData(storage: StorageItemType[]) {
-	const storageSectionsMap = new Map();
+export function transformStorageData(storage: StorageItemType[]): {
+	date: string;
+	items: any;
+}[] {
+	const storageSectionsMap = new Map<string, { date: string; items: any }>();
 
 	storage.forEach((item) => {
 		const monthYear = `${item.insert_date.getFullYear()} ${
@@ -133,14 +148,16 @@ export function transformStorageData(storage: StorageItemType[]) {
 		}
 
 		const section = storageSectionsMap.get(monthYear);
-		section.items.push({
-			id: item.id,
-			name: item.name,
-			color: item.color,
-			description: item.description,
-			insert_date: item.insert_date,
-			storage_id: item.storage_id,
-		});
+		if (section) {
+			section.items.push({
+				id: item.id,
+				name: item.name,
+				color: item.color,
+				description: item.description,
+				insert_date: item.insert_date,
+				storage_id: item.storage_id,
+			});
+		}
 	});
 
 	const sortedSections = Array.from(storageSectionsMap.values()).sort(
@@ -182,7 +199,7 @@ export function switchMonthName(monthNumber: number) {
 			return 'Nie prawidłowa wartość miesiąca';
 	}
 }
-export function getSectionDate(section: StorageSectionType) {
+export function getSectionDate(section: StorageSectionType): string {
 	let year = '';
 	let month = '';
 	if (section.date) {
@@ -202,7 +219,7 @@ export function checkIndicatorBorderRadius(
 	navItemsRefs: MutableRefObject<HTMLAnchorElement | null>[],
 	currentItem: MutableRefObject<HTMLAnchorElement | null>,
 	indicator: MutableRefObject<HTMLDivElement | null>
-) {
+): void {
 	if (window.innerWidth > 900) {
 		if (currentItem.current && indicator.current) {
 			if (currentItem == navItemsRefs[0]) {
