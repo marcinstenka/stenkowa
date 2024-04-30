@@ -15,7 +15,6 @@ export default function BackgroundLogin() {
 					Stwórz prywatne konto, loguj się na różnych urządzeniach i
 					synchronizuj swoje dane.
 				</p>
-
 				<p>Nie zapomnij ustawić Stenkowej jako domyślnej strony startowej!</p>
 			</div>
 		</div>

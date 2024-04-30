@@ -6,7 +6,6 @@ import styles from './background.module.scss';
 const USER_ID = 1; //For testing
 
 export default async function Background() {
-	const primary = 'rgba(0, 80, 184, 1)';
 	const user = await fetchUser(USER_ID);
 	if (!user) return null;
 	return (
