@@ -11,3 +11,5 @@ Soon
 - postgresql
 - obsidian (mind map)
 - figma (design project)
+# Made by
+Marcin Stenka
