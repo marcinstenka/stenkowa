@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const CONTAINER_SLIDE_DOWN = 685;
 const NAV_SLIDE_DOWN = 300;
-const SETTING_ICON_ROTATE = 30;
+const SETTINGS_ICON_ROTATE = 30;
 
 type UseIsExpandedReturn = () => void;
 
@@ -22,7 +22,7 @@ export default function useIsExpanded(): UseIsExpandedReturn {
 				logout.style.transition = `0.3s`;
 			}
 			if (settings)
-				settings.style.transform = `rotate(${SETTING_ICON_ROTATE}deg)`;
+				settings.style.transform = `rotate(${SETTINGS_ICON_ROTATE}deg)`;
 		} else {
 			if (nav) {
 				window.innerWidth > 900

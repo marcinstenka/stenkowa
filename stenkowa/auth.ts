@@ -2,19 +2,10 @@ import NextAuth from 'next-auth';
 import Credentials from 'next-auth/providers/credentials';
 import { authConfig } from './auth.config';
 import { z } from 'zod';
-import { sql } from '@vercel/postgres';
 import bcrypt from 'bcrypt';
-import { UserType } from './app/lib/types/types';
+import { fetchUserByMail } from './app/lib/functions/data';
 
-async function getUser(email: string): Promise<UserType | undefined> {
-	try {
-		const user = await sql<UserType>`SELECT * FROM users WHERE email=${email}`;
-		return user.rows[0];
-	} catch (error) {
-		console.error('Failed to fetch user:', error);
-		throw new Error('Failed to fetch user.');
-	}
-}
+
 
 export const { auth, signIn, signOut } = NextAuth({
 	...authConfig,
@@ -26,7 +17,7 @@ export const { auth, signIn, signOut } = NextAuth({
 					.safeParse(credentials);
 				if (parsedCredentials.success) {
 					const { email, password } = parsedCredentials.data;
-					const user = await getUser(email);
+					const user = await fetchUserByMail(email);
 					if (!user) return null;
 					const passwordsMatch = await bcrypt.compare(password, user.password);
 					if (passwordsMatch) return user;

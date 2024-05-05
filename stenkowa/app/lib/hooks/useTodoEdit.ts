@@ -1,7 +1,6 @@
 import { ChangeEvent, useEffect, useState } from 'react';
 import { TimeLeftType, TodoType } from '../types/types';
 import { calculateTimeDifference } from '../functions/functions';
-import { useStateManager } from 'react-select';
 
 type UseTodoEditProps = TodoType;
 

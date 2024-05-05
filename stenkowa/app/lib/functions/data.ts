@@ -105,6 +105,15 @@ export async function fetchUser(id: number) {
 	}
 }
 
+export async function fetchUserByMail(email: string): Promise<UserType | undefined> {
+	try {
+		const user = await sql<UserType>`SELECT * FROM users WHERE email=${email}`;
+		return user.rows[0];
+	} catch (error) {
+		console.error('Failed to fetch user:', error);
+		throw new Error('Failed to fetch user.');
+	}
+}
 export async function fetchLatestTodos(todos_container_id: number) {
 	noStore();
 	try {
