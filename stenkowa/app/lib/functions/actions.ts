@@ -14,7 +14,7 @@ export type State = {
 const USER_ID = 1; //for testing
 const TODOS_CONTAINER_ID = 1; // for testing
 const STORAGE_ID = 1; // for testing
-
+const SMTH_WENT_WRONG = 'Coś poszło nie tak, spróbuj ponownie później!';
 export async function registerUser(prevState: State, formData: FormData) {
 	const validatedFields = {
 		userName: formData.get('userName')?.toString(),
@@ -53,7 +53,7 @@ export async function registerUser(prevState: State, formData: FormData) {
 		}
 	} catch (error) {
 		return {
-			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+			message: SMTH_WENT_WRONG,
 		};
 	}
 	revalidatePath('/login');
@@ -76,7 +76,7 @@ export async function createBookmark(prevState: State, formData: FormData) {
 		`;
 	} catch (error) {
 		return {
-			message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+			message: SMTH_WENT_WRONG,
 		};
 	}
 
@@ -137,7 +137,7 @@ export async function createTodo(prevState: State, formData: FormData) {
 		} catch (error) {
 			console.log(error);
 			return {
-				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+				message: SMTH_WENT_WRONG,
 			};
 		}
 
@@ -203,7 +203,7 @@ export async function createStorageItem(prevState: State, formData: FormData) {
 		} catch (error) {
 			console.log(error);
 			return {
-				message: 'Coś poszło nie tak. Spróbuj ponownie później.',
+				message: SMTH_WENT_WRONG,
 			};
 		}
 
@@ -274,12 +274,12 @@ export async function updateUser(
 		secondaryColor,
 	} = validatedFields;
 
-	if (!password) return { message: 'Wystąpił błąd!' };
+	if (!password) return { message: SMTH_WENT_WRONG };
 	try {
 		const user = await sql<UserType>`
 			 SELECT * FROM users WHERE id = ${id};
 		`;
-		if (!user.rows.length) return { message: 'Wystąpił błąd!' };
+		if (!user.rows.length) return { message: SMTH_WENT_WRONG };
 
 		let passwordConfirmed = false;
 		await bcrypt
@@ -317,14 +317,14 @@ export async function authenticate(
 ): Promise<{ message: string }> {
 	try {
 		await signIn('credentials', formData);
-		return { message: 'ok' };
+		return { message: 'Zalogowano poprawnie!' };
 	} catch (error) {
 		if (error instanceof AuthError) {
 			switch (error.type) {
 				case 'CredentialsSignin':
-					return { message: 'Invalid credentials.' };
+					return { message: 'Niepoprawne dane! Spróbuj ponownie.' };
 				default:
-					return { message: 'Something went wrong.' };
+					return { message: SMTH_WENT_WRONG };
 			}
 		}
 		throw error;
@@ -337,9 +337,9 @@ export async function logout(formData: FormData) {
 		if (error instanceof AuthError) {
 			switch (error.type) {
 				case 'SignOutError':
-					return 'Session error.';
+					return 'Błąd sesji, spróbuj ponownie później!';
 				default:
-					return 'Something went wrong.';
+					return SMTH_WENT_WRONG;
 			}
 		}
 		throw error;
